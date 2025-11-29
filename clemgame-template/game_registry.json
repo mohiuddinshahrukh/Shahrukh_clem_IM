@@ -1,0 +1,9 @@
+{
+  "game_name": "Functionigma",
+  "description": "Functionigma",
+  "main_game": "Functionigma",
+  "players": 1,
+  "image": "none",
+  "languages": ["en"],
+  "benchmark": ["0.9", "1.0", "1.5", "2.0"]
+}

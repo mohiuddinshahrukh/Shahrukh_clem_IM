@@ -1,0 +1,1029 @@
+2025-11-29 19:35:41,152 - clemcore.cli - INFO - Found '1' game matching the game_selector="Functionigma Game"
+2025-11-29 19:35:41,152 - clemcore.cli - INFO - {
+  "game_name": "Functionigma Game",
+  "description": "Functionigma Game",
+  "main_game": "Functionigma Game",
+  "players": 1,
+  "image": "none",
+  "languages": [
+    "en"
+  ],
+  "benchmark": [],
+  "game_path": "E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\clemgame-template\\functionigma"
+}
+2025-11-29 19:35:41,153 - clemcore.backends.model_registry - WARNING - Package lookup failed with exception: 'charmap' codec can't decode byte 0x81 in position 128269: character maps to <undefined>
+2025-11-29 19:35:41,154 - clemcore.cli - INFO - Found registered model spec that unifies with {"model_name":"command-a-03-2025"} -> {'model_name': 'command-a-03-2025', 'backend': 'cohere', 'lookup_source': 'E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\model_registry.json', 'model_id': 'command-a-03-2025'}
+2025-11-29 19:35:41,156 - clemcore.cli - INFO - Found registry entry for backend cohere -> {'backend': 'cohere', 'file_name': 'cohere_api.py', 'file_path': 'C:\\Users\\mohiu\\anaconda3\\envs\\IM_Functionigma\\Lib\\site-packages\\clemcore\\backends\\cohere_api.py', 'lookup_source': 'packaged'}
+2025-11-29 19:35:41,157 - clemcore.cli - INFO - Dynamically import backend cohere
+2025-11-29 19:35:42,475 - clemcore.cli - INFO - Successfully loaded command-a-03-2025 model
+2025-11-29 19:35:42,475 - clemcore.cli - INFO - Loading models took: 0:00:01.318109
+2025-11-29 19:35:42,478 - clemcore.run - INFO - Loading game benchmark for Functionigma Game
+2025-11-29 19:35:42,484 - clemcore.run - INFO - Loading game benchmark for Functionigma Game took: 0:00:00.005038
+2025-11-29 19:35:42,484 - clemcore.cli - INFO - Running Functionigma Game (models=[<CohereModel name='command-a-03-2025' object at 0x255fe167d90>])
+2025-11-29 19:35:42,485 - clemcore.run - INFO - Prepared instance queue for Functionigma Game using 1 experiments ['python_easy'] and 1 instances in total.
+2025-11-29 19:35:42,486 - clemcore.run - INFO - Fallback to sequential because not all models support batching: models=[<CohereModel name='command-a-03-2025' object at 0x255fe167d90>], support=[False]
+2025-11-29 19:35:42,487 - clemcore.run - INFO - Start sequential runner for Functionigma Game with models=[command-a-03-2025] (batch_size=1)
+2025-11-29 19:35:42,994 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 19:35:43,402 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 19:35:43,932 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 19:35:44,388 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 19:35:44,827 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 19:35:46,304 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 19:35:46,713 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 19:35:47,148 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 19:35:47,155 - clemcore.clemgame.runners.sequential - ERROR - Functionigma Game: Exception for instance 0 (but continue)
+Traceback (most recent call last):
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\site-packages\clemcore\clemgame\runners\sequential.py", line 32, in run
+    callbacks.on_game_end(game_master, game_instance)
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\site-packages\clemcore\clemgame\callbacks\base.py", line 60, in on_game_end
+    callback.on_game_end(game_master, game_instance)
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\site-packages\clemcore\clemgame\callbacks\files.py", line 174, in on_game_end
+    self._store_files(recorder, game_master, game_instance)
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\site-packages\clemcore\clemgame\callbacks\files.py", line 179, in _store_files
+    store_json(recorder.requests, "requests.json", instance_dir_path)
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\site-packages\clemcore\clemgame\resources.py", line 49, in store_json
+    json.dump(data, f, ensure_ascii=ensure_ascii, indent=indent)
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\json\__init__.py", line 179, in dump
+    for chunk in iterable:
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\json\encoder.py", line 430, in _iterencode
+    yield from _iterencode_list(o, _current_indent_level)
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\json\encoder.py", line 326, in _iterencode_list
+    yield from chunks
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\json\encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\json\encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\json\encoder.py", line 326, in _iterencode_list
+    yield from chunks
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\json\encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type UserMessage is not JSON serializable
+2025-11-29 19:35:47,159 - clemcore.run - ERROR - Functionigma Game: '1' exceptions occurred: See clembench.log for details.
+2025-11-29 19:35:47,160 - clemcore.cli - INFO - Running Functionigma Game took: 0:00:04.675249
+2025-11-29 19:35:47,161 - clemcore.cli - INFO - Running all benchmarks took: 0:00:04.682426
+2025-11-29 19:35:47,161 - clemcore.cli - INFO - clem run took: 0:00:06.025931
+2025-11-29 19:39:02,294 - clemcore.cli - INFO - Found '1' game matching the game_selector="Functionigma Game"
+2025-11-29 19:39:02,294 - clemcore.cli - INFO - {
+  "game_name": "Functionigma Game",
+  "description": "Functionigma Game",
+  "main_game": "Functionigma Game",
+  "players": 1,
+  "image": "none",
+  "languages": [
+    "en"
+  ],
+  "benchmark": [],
+  "game_path": "E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\clemgame-template\\functionigma"
+}
+2025-11-29 19:39:02,296 - clemcore.backends.model_registry - WARNING - Package lookup failed with exception: 'charmap' codec can't decode byte 0x81 in position 128269: character maps to <undefined>
+2025-11-29 19:39:02,296 - clemcore.cli - INFO - Found registered model spec that unifies with {"model_name":"command-a-03-2025"} -> {'model_name': 'command-a-03-2025', 'backend': 'cohere', 'lookup_source': 'E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\model_registry.json', 'model_id': 'command-a-03-2025'}
+2025-11-29 19:39:02,297 - clemcore.cli - INFO - Found registry entry for backend cohere -> {'backend': 'cohere', 'file_name': 'cohere_api.py', 'file_path': 'C:\\Users\\mohiu\\anaconda3\\envs\\IM_Functionigma\\Lib\\site-packages\\clemcore\\backends\\cohere_api.py', 'lookup_source': 'packaged'}
+2025-11-29 19:39:02,297 - clemcore.cli - INFO - Dynamically import backend cohere
+2025-11-29 19:39:03,637 - clemcore.cli - INFO - Successfully loaded command-a-03-2025 model
+2025-11-29 19:39:03,637 - clemcore.cli - INFO - Loading models took: 0:00:01.339764
+2025-11-29 19:39:03,640 - clemcore.run - INFO - Loading game benchmark for Functionigma Game
+2025-11-29 19:39:03,645 - clemcore.run - INFO - Loading game benchmark for Functionigma Game took: 0:00:00.005000
+2025-11-29 19:39:03,645 - clemcore.cli - INFO - Running Functionigma Game (models=[<CohereModel name='command-a-03-2025' object at 0x1fd975f6710>])
+2025-11-29 19:39:03,646 - clemcore.run - INFO - Prepared instance queue for Functionigma Game using 1 experiments ['python_easy'] and 1 instances in total.
+2025-11-29 19:39:03,647 - clemcore.run - INFO - Fallback to sequential because not all models support batching: models=[<CohereModel name='command-a-03-2025' object at 0x1fd975f6710>], support=[False]
+2025-11-29 19:39:03,647 - clemcore.run - INFO - Start sequential runner for Functionigma Game with models=[command-a-03-2025] (batch_size=1)
+2025-11-29 19:39:04,123 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 19:39:04,481 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 19:39:04,856 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 19:39:05,370 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 19:39:05,823 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 19:39:06,243 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 19:39:06,776 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 19:39:07,205 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 19:39:07,212 - clemcore.clemgame.runners.sequential - ERROR - Functionigma Game: Exception for instance 0 (but continue)
+Traceback (most recent call last):
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\site-packages\clemcore\clemgame\runners\sequential.py", line 32, in run
+    callbacks.on_game_end(game_master, game_instance)
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\site-packages\clemcore\clemgame\callbacks\base.py", line 60, in on_game_end
+    callback.on_game_end(game_master, game_instance)
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\site-packages\clemcore\clemgame\callbacks\files.py", line 174, in on_game_end
+    self._store_files(recorder, game_master, game_instance)
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\site-packages\clemcore\clemgame\callbacks\files.py", line 179, in _store_files
+    store_json(recorder.requests, "requests.json", instance_dir_path)
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\site-packages\clemcore\clemgame\resources.py", line 49, in store_json
+    json.dump(data, f, ensure_ascii=ensure_ascii, indent=indent)
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\json\__init__.py", line 179, in dump
+    for chunk in iterable:
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\json\encoder.py", line 430, in _iterencode
+    yield from _iterencode_list(o, _current_indent_level)
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\json\encoder.py", line 326, in _iterencode_list
+    yield from chunks
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\json\encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\json\encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\json\encoder.py", line 326, in _iterencode_list
+    yield from chunks
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\json\encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type UserMessage is not JSON serializable
+2025-11-29 19:39:07,218 - clemcore.run - ERROR - Functionigma Game: '1' exceptions occurred: See clembench.log for details.
+2025-11-29 19:39:07,219 - clemcore.cli - INFO - Running Functionigma Game took: 0:00:03.574323
+2025-11-29 19:39:07,219 - clemcore.cli - INFO - Running all benchmarks took: 0:00:03.579323
+2025-11-29 19:39:07,220 - clemcore.cli - INFO - clem run took: 0:00:04.928311
+2025-11-29 19:42:11,507 - clemcore.cli - INFO - Found '1' game matching the game_selector="Functionigma Game"
+2025-11-29 19:42:11,507 - clemcore.cli - INFO - {
+  "game_name": "Functionigma Game",
+  "description": "Functionigma Game",
+  "main_game": "Functionigma Game",
+  "players": 1,
+  "image": "none",
+  "languages": [
+    "en"
+  ],
+  "benchmark": [],
+  "game_path": "E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\clemgame-template\\functionigma"
+}
+2025-11-29 19:42:11,509 - clemcore.backends.model_registry - WARNING - Package lookup failed with exception: 'charmap' codec can't decode byte 0x81 in position 128269: character maps to <undefined>
+2025-11-29 19:42:11,509 - clemcore.cli - INFO - Found registered model spec that unifies with {"model_name":"command-a-03-2025"} -> {'model_name': 'command-a-03-2025', 'backend': 'cohere', 'lookup_source': 'E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\model_registry.json', 'model_id': 'command-a-03-2025'}
+2025-11-29 19:42:11,510 - clemcore.cli - INFO - Found registry entry for backend cohere -> {'backend': 'cohere', 'file_name': 'cohere_api.py', 'file_path': 'C:\\Users\\mohiu\\anaconda3\\envs\\IM_Functionigma\\Lib\\site-packages\\clemcore\\backends\\cohere_api.py', 'lookup_source': 'packaged'}
+2025-11-29 19:42:11,510 - clemcore.cli - INFO - Dynamically import backend cohere
+2025-11-29 19:42:12,824 - clemcore.cli - INFO - Successfully loaded command-a-03-2025 model
+2025-11-29 19:42:12,824 - clemcore.cli - INFO - Loading models took: 0:00:01.313683
+2025-11-29 19:42:12,824 - clemcore.run - INFO - Loading game benchmark for Functionigma Game
+2025-11-29 19:42:12,838 - clemcore.run - INFO - Loading game benchmark for Functionigma Game took: 0:00:00.014569
+2025-11-29 19:42:12,838 - clemcore.cli - INFO - Running Functionigma Game (models=[<CohereModel name='command-a-03-2025' object at 0x2970e097f50>])
+2025-11-29 19:42:12,838 - clemcore.run - INFO - Prepared instance queue for Functionigma Game using 1 experiments ['python_easy'] and 1 instances in total.
+2025-11-29 19:42:12,838 - clemcore.run - INFO - Fallback to sequential because not all models support batching: models=[<CohereModel name='command-a-03-2025' object at 0x2970e097f50>], support=[False]
+2025-11-29 19:42:12,838 - clemcore.run - INFO - Start sequential runner for Functionigma Game with models=[command-a-03-2025] (batch_size=1)
+2025-11-29 19:42:13,307 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 19:42:13,730 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 19:42:14,163 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 19:42:14,542 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 19:42:15,010 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 19:42:15,440 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 19:42:15,822 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 19:42:16,232 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 19:42:16,239 - clemcore.clemgame.runners.sequential - ERROR - Functionigma Game: Exception for instance 0 (but continue)
+Traceback (most recent call last):
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\site-packages\clemcore\clemgame\runners\sequential.py", line 32, in run
+    callbacks.on_game_end(game_master, game_instance)
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\site-packages\clemcore\clemgame\callbacks\base.py", line 60, in on_game_end
+    callback.on_game_end(game_master, game_instance)
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\site-packages\clemcore\clemgame\callbacks\files.py", line 174, in on_game_end
+    self._store_files(recorder, game_master, game_instance)
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\site-packages\clemcore\clemgame\callbacks\files.py", line 179, in _store_files
+    store_json(recorder.requests, "requests.json", instance_dir_path)
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\site-packages\clemcore\clemgame\resources.py", line 49, in store_json
+    json.dump(data, f, ensure_ascii=ensure_ascii, indent=indent)
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\json\__init__.py", line 179, in dump
+    for chunk in iterable:
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\json\encoder.py", line 430, in _iterencode
+    yield from _iterencode_list(o, _current_indent_level)
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\json\encoder.py", line 326, in _iterencode_list
+    yield from chunks
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\json\encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\json\encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\json\encoder.py", line 326, in _iterencode_list
+    yield from chunks
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\json\encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type UserMessage is not JSON serializable
+2025-11-29 19:42:16,243 - clemcore.run - ERROR - Functionigma Game: '1' exceptions occurred: See clembench.log for details.
+2025-11-29 19:42:16,244 - clemcore.cli - INFO - Running Functionigma Game took: 0:00:03.405879
+2025-11-29 19:42:16,244 - clemcore.cli - INFO - Running all benchmarks took: 0:00:03.420448
+2025-11-29 19:42:16,246 - clemcore.cli - INFO - clem run took: 0:00:04.740339
+2025-11-29 19:45:43,792 - clemcore.cli - INFO - Found '1' game matching the game_selector="Functionigma Game"
+2025-11-29 19:45:43,792 - clemcore.cli - INFO - {
+  "game_name": "Functionigma Game",
+  "description": "Functionigma Game",
+  "main_game": "Functionigma Game",
+  "players": 1,
+  "image": "none",
+  "languages": [
+    "en"
+  ],
+  "benchmark": [],
+  "game_path": "E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\clemgame-template\\functionigma"
+}
+2025-11-29 19:45:43,792 - clemcore.backends.model_registry - WARNING - Package lookup failed with exception: 'charmap' codec can't decode byte 0x81 in position 128269: character maps to <undefined>
+2025-11-29 19:45:43,792 - clemcore.cli - INFO - Found registered model spec that unifies with {"model_name":"command-a-03-2025"} -> {'model_name': 'command-a-03-2025', 'backend': 'cohere', 'lookup_source': 'E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\model_registry.json', 'model_id': 'command-a-03-2025'}
+2025-11-29 19:45:43,792 - clemcore.cli - INFO - Found registry entry for backend cohere -> {'backend': 'cohere', 'file_name': 'cohere_api.py', 'file_path': 'C:\\Users\\mohiu\\anaconda3\\envs\\IM_Functionigma\\Lib\\site-packages\\clemcore\\backends\\cohere_api.py', 'lookup_source': 'packaged'}
+2025-11-29 19:45:43,792 - clemcore.cli - INFO - Dynamically import backend cohere
+2025-11-29 19:45:45,119 - clemcore.cli - INFO - Successfully loaded command-a-03-2025 model
+2025-11-29 19:45:45,119 - clemcore.cli - INFO - Loading models took: 0:00:01.327802
+2025-11-29 19:45:45,119 - clemcore.run - INFO - Loading game benchmark for Functionigma Game
+2025-11-29 19:45:45,119 - clemcore.run - INFO - Loading game benchmark for Functionigma Game took: 0:00:00
+2025-11-29 19:45:45,119 - clemcore.cli - INFO - Running Functionigma Game (models=[<CohereModel name='command-a-03-2025' object at 0x1c3964f5710>])
+2025-11-29 19:45:45,133 - clemcore.run - INFO - Prepared instance queue for Functionigma Game using 1 experiments ['python_easy'] and 1 instances in total.
+2025-11-29 19:45:45,133 - clemcore.run - INFO - Fallback to sequential because not all models support batching: models=[<CohereModel name='command-a-03-2025' object at 0x1c3964f5710>], support=[False]
+2025-11-29 19:45:45,133 - clemcore.run - INFO - Start sequential runner for Functionigma Game with models=[command-a-03-2025] (batch_size=1)
+2025-11-29 19:45:48,026 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 19:45:48,461 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 19:45:48,885 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 19:45:49,300 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 19:45:49,828 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 19:45:50,262 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 19:45:50,743 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 19:45:51,180 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 19:45:51,187 - clemcore.clemgame.runners.sequential - ERROR - Functionigma Game: Exception for instance 0 (but continue)
+Traceback (most recent call last):
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\site-packages\clemcore\clemgame\runners\sequential.py", line 32, in run
+    callbacks.on_game_end(game_master, game_instance)
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\site-packages\clemcore\clemgame\callbacks\base.py", line 60, in on_game_end
+    callback.on_game_end(game_master, game_instance)
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\site-packages\clemcore\clemgame\callbacks\files.py", line 174, in on_game_end
+    self._store_files(recorder, game_master, game_instance)
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\site-packages\clemcore\clemgame\callbacks\files.py", line 179, in _store_files
+    store_json(recorder.requests, "requests.json", instance_dir_path)
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\site-packages\clemcore\clemgame\resources.py", line 49, in store_json
+    json.dump(data, f, ensure_ascii=ensure_ascii, indent=indent)
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\json\__init__.py", line 179, in dump
+    for chunk in iterable:
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\json\encoder.py", line 430, in _iterencode
+    yield from _iterencode_list(o, _current_indent_level)
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\json\encoder.py", line 326, in _iterencode_list
+    yield from chunks
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\json\encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\json\encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\json\encoder.py", line 326, in _iterencode_list
+    yield from chunks
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\json\encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type UserMessage is not JSON serializable
+2025-11-29 19:45:51,192 - clemcore.run - ERROR - Functionigma Game: '1' exceptions occurred: See clembench.log for details.
+2025-11-29 19:45:51,193 - clemcore.cli - INFO - Running Functionigma Game took: 0:00:06.073484
+2025-11-29 19:45:51,193 - clemcore.cli - INFO - Running all benchmarks took: 0:00:06.073484
+2025-11-29 19:45:51,194 - clemcore.cli - INFO - clem run took: 0:00:07.402292
+2025-11-29 20:44:13,966 - clemcore.cli - INFO - Found '1' game matching the game_selector="Functionigma Game"
+2025-11-29 20:44:13,966 - clemcore.cli - INFO - {
+  "game_name": "Functionigma Game",
+  "description": "Functionigma Game",
+  "main_game": "Functionigma Game",
+  "players": 1,
+  "image": "none",
+  "languages": [
+    "en"
+  ],
+  "benchmark": [],
+  "game_path": "E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\clemgame-template\\functionigma"
+}
+2025-11-29 20:44:13,967 - clemcore.backends.model_registry - WARNING - Package lookup failed with exception: 'charmap' codec can't decode byte 0x81 in position 128269: character maps to <undefined>
+2025-11-29 20:44:13,968 - clemcore.cli - INFO - Found registered model spec that unifies with {"model_name":"command-a-03-2025"} -> {'model_name': 'command-a-03-2025', 'backend': 'cohere', 'lookup_source': 'E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\model_registry.json', 'model_id': 'command-a-03-2025'}
+2025-11-29 20:44:13,968 - clemcore.cli - INFO - Found registry entry for backend cohere -> {'backend': 'cohere', 'file_name': 'cohere_api.py', 'file_path': 'C:\\Users\\mohiu\\anaconda3\\envs\\IM_Functionigma\\Lib\\site-packages\\clemcore\\backends\\cohere_api.py', 'lookup_source': 'packaged'}
+2025-11-29 20:44:13,969 - clemcore.cli - INFO - Dynamically import backend cohere
+2025-11-29 20:44:15,311 - clemcore.cli - INFO - Successfully loaded command-a-03-2025 model
+2025-11-29 20:44:15,312 - clemcore.cli - INFO - Loading models took: 0:00:01.343076
+2025-11-29 20:44:15,315 - clemcore.run - INFO - Loading game benchmark for Functionigma Game
+2025-11-29 20:44:15,320 - clemcore.run - INFO - Loading game benchmark for Functionigma Game took: 0:00:00.004999
+2025-11-29 20:44:15,320 - clemcore.cli - INFO - Running Functionigma Game (models=[<CohereModel name='command-a-03-2025' object at 0x1caf6c06190>])
+2025-11-29 20:44:15,321 - clemcore.run - INFO - Prepared instance queue for Functionigma Game using 1 experiments ['python_easy'] and 1 instances in total.
+2025-11-29 20:44:15,322 - clemcore.run - INFO - Fallback to sequential because not all models support batching: models=[<CohereModel name='command-a-03-2025' object at 0x1caf6c06190>], support=[False]
+2025-11-29 20:44:15,322 - clemcore.run - INFO - Start sequential runner for Functionigma Game with models=[command-a-03-2025] (batch_size=1)
+2025-11-29 20:44:23,748 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 20:44:24,276 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 20:44:24,683 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 20:44:25,329 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 20:44:25,744 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 20:44:26,221 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 20:44:26,722 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 20:44:27,166 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 20:44:27,166 - clemcore.clemgame.runners.sequential - ERROR - Functionigma Game: Exception for instance 0 (but continue)
+Traceback (most recent call last):
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\site-packages\clemcore\clemgame\runners\sequential.py", line 32, in run
+    callbacks.on_game_end(game_master, game_instance)
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\site-packages\clemcore\clemgame\callbacks\base.py", line 60, in on_game_end
+    callback.on_game_end(game_master, game_instance)
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\site-packages\clemcore\clemgame\callbacks\files.py", line 174, in on_game_end
+    self._store_files(recorder, game_master, game_instance)
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\site-packages\clemcore\clemgame\callbacks\files.py", line 179, in _store_files
+    store_json(recorder.requests, "requests.json", instance_dir_path)
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\site-packages\clemcore\clemgame\resources.py", line 49, in store_json
+    json.dump(data, f, ensure_ascii=ensure_ascii, indent=indent)
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\json\__init__.py", line 179, in dump
+    for chunk in iterable:
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\json\encoder.py", line 430, in _iterencode
+    yield from _iterencode_list(o, _current_indent_level)
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\json\encoder.py", line 326, in _iterencode_list
+    yield from chunks
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\json\encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\json\encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\json\encoder.py", line 326, in _iterencode_list
+    yield from chunks
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\json\encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type UserMessage is not JSON serializable
+2025-11-29 20:44:27,182 - clemcore.run - ERROR - Functionigma Game: '1' exceptions occurred: See clembench.log for details.
+2025-11-29 20:44:27,182 - clemcore.cli - INFO - Running Functionigma Game took: 0:00:11.861696
+2025-11-29 20:44:27,182 - clemcore.cli - INFO - Running all benchmarks took: 0:00:11.866695
+2025-11-29 20:44:27,182 - clemcore.cli - INFO - clem run took: 0:00:13.217590
+2025-11-29 20:48:12,744 - clemcore.cli - INFO - Found '1' game matching the game_selector="Functionigma Game"
+2025-11-29 20:48:12,744 - clemcore.cli - INFO - {
+  "game_name": "Functionigma Game",
+  "description": "Functionigma Game",
+  "main_game": "Functionigma Game",
+  "players": 1,
+  "image": "none",
+  "languages": [
+    "en"
+  ],
+  "benchmark": [],
+  "game_path": "E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\clemgame-template\\functionigma"
+}
+2025-11-29 20:48:12,744 - clemcore.backends.model_registry - WARNING - Package lookup failed with exception: 'charmap' codec can't decode byte 0x81 in position 128269: character maps to <undefined>
+2025-11-29 20:48:12,744 - clemcore.cli - INFO - Found registered model spec that unifies with {"model_name":"command-a-03-2025"} -> {'model_name': 'command-a-03-2025', 'backend': 'cohere', 'lookup_source': 'E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\model_registry.json', 'model_id': 'command-a-03-2025'}
+2025-11-29 20:48:12,744 - clemcore.cli - INFO - Found registry entry for backend cohere -> {'backend': 'cohere', 'file_name': 'cohere_api.py', 'file_path': 'C:\\Users\\mohiu\\anaconda3\\envs\\IM_Functionigma\\Lib\\site-packages\\clemcore\\backends\\cohere_api.py', 'lookup_source': 'packaged'}
+2025-11-29 20:48:12,744 - clemcore.cli - INFO - Dynamically import backend cohere
+2025-11-29 20:48:14,075 - clemcore.cli - INFO - Successfully loaded command-a-03-2025 model
+2025-11-29 20:48:14,076 - clemcore.cli - INFO - Loading models took: 0:00:01.332418
+2025-11-29 20:48:14,078 - clemcore.run - INFO - Loading game benchmark for Functionigma Game
+2025-11-29 20:48:14,083 - clemcore.run - INFO - Loading game benchmark for Functionigma Game took: 0:00:00.004038
+2025-11-29 20:48:14,083 - clemcore.cli - INFO - Running Functionigma Game (models=[<CohereModel name='command-a-03-2025' object at 0x195e748a8d0>])
+2025-11-29 20:48:14,084 - clemcore.run - INFO - Prepared instance queue for Functionigma Game using 1 experiments ['python_easy'] and 1 instances in total.
+2025-11-29 20:48:14,085 - clemcore.run - INFO - Fallback to sequential because not all models support batching: models=[<CohereModel name='command-a-03-2025' object at 0x195e748a8d0>], support=[False]
+2025-11-29 20:48:14,085 - clemcore.run - INFO - Start sequential runner for Functionigma Game with models=[command-a-03-2025] (batch_size=1)
+2025-11-29 20:48:14,523 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 20:48:14,963 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 20:48:15,360 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 20:48:15,917 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 20:48:16,355 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 20:48:16,822 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 20:48:17,276 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 20:48:17,785 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 20:48:17,792 - clemcore.clemgame.runners.sequential - ERROR - Functionigma Game: Exception for instance 0 (but continue)
+Traceback (most recent call last):
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\site-packages\clemcore\clemgame\runners\sequential.py", line 32, in run
+    callbacks.on_game_end(game_master, game_instance)
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\site-packages\clemcore\clemgame\callbacks\base.py", line 60, in on_game_end
+    callback.on_game_end(game_master, game_instance)
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\site-packages\clemcore\clemgame\callbacks\files.py", line 174, in on_game_end
+    self._store_files(recorder, game_master, game_instance)
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\site-packages\clemcore\clemgame\callbacks\files.py", line 179, in _store_files
+    store_json(recorder.requests, "requests.json", instance_dir_path)
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\site-packages\clemcore\clemgame\resources.py", line 49, in store_json
+    json.dump(data, f, ensure_ascii=ensure_ascii, indent=indent)
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\json\__init__.py", line 179, in dump
+    for chunk in iterable:
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\json\encoder.py", line 430, in _iterencode
+    yield from _iterencode_list(o, _current_indent_level)
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\json\encoder.py", line 326, in _iterencode_list
+    yield from chunks
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\json\encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\json\encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\json\encoder.py", line 326, in _iterencode_list
+    yield from chunks
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\json\encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type UserMessage is not JSON serializable
+2025-11-29 20:48:17,798 - clemcore.run - ERROR - Functionigma Game: '1' exceptions occurred: See clembench.log for details.
+2025-11-29 20:48:17,799 - clemcore.cli - INFO - Running Functionigma Game took: 0:00:03.715240
+2025-11-29 20:48:17,799 - clemcore.cli - INFO - Running all benchmarks took: 0:00:03.720242
+2025-11-29 20:48:17,799 - clemcore.cli - INFO - clem run took: 0:00:05.054698
+2025-11-29 20:48:48,354 - clemcore.cli - INFO - Found '1' game matching the game_selector="Functionigma Game"
+2025-11-29 20:48:48,354 - clemcore.cli - INFO - {
+  "game_name": "Functionigma Game",
+  "description": "Functionigma Game",
+  "main_game": "Functionigma Game",
+  "players": 1,
+  "image": "none",
+  "languages": [
+    "en"
+  ],
+  "benchmark": [],
+  "game_path": "E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\clemgame-template\\functionigma"
+}
+2025-11-29 20:48:48,354 - clemcore.backends.model_registry - WARNING - Package lookup failed with exception: 'charmap' codec can't decode byte 0x81 in position 128269: character maps to <undefined>
+2025-11-29 20:48:48,354 - clemcore.cli - INFO - Found registered model spec that unifies with {"model_name":"command-a-03-2025"} -> {'model_name': 'command-a-03-2025', 'backend': 'cohere', 'lookup_source': 'E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\model_registry.json', 'model_id': 'command-a-03-2025'}
+2025-11-29 20:48:48,354 - clemcore.cli - INFO - Found registry entry for backend cohere -> {'backend': 'cohere', 'file_name': 'cohere_api.py', 'file_path': 'C:\\Users\\mohiu\\anaconda3\\envs\\IM_Functionigma\\Lib\\site-packages\\clemcore\\backends\\cohere_api.py', 'lookup_source': 'packaged'}
+2025-11-29 20:48:48,354 - clemcore.cli - INFO - Dynamically import backend cohere
+2025-11-29 20:48:49,666 - clemcore.cli - INFO - Successfully loaded command-a-03-2025 model
+2025-11-29 20:48:49,666 - clemcore.cli - INFO - Loading models took: 0:00:01.311874
+2025-11-29 20:48:49,666 - clemcore.run - INFO - Loading game benchmark for Functionigma Game
+2025-11-29 20:48:49,682 - clemcore.run - INFO - Loading game benchmark for Functionigma Game took: 0:00:00.016136
+2025-11-29 20:48:49,682 - clemcore.cli - INFO - Running Functionigma Game (models=[<CohereModel name='command-a-03-2025' object at 0x252bc265dd0>])
+2025-11-29 20:48:49,682 - clemcore.run - INFO - Prepared instance queue for Functionigma Game using 1 experiments ['python_easy'] and 1 instances in total.
+2025-11-29 20:48:49,682 - clemcore.run - INFO - Fallback to sequential because not all models support batching: models=[<CohereModel name='command-a-03-2025' object at 0x252bc265dd0>], support=[False]
+2025-11-29 20:48:49,682 - clemcore.run - INFO - Start sequential runner for Functionigma Game with models=[command-a-03-2025] (batch_size=1)
+2025-11-29 20:48:50,276 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 20:48:50,706 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 20:48:51,186 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 20:48:51,617 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 20:48:51,966 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 20:48:52,370 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 20:48:52,857 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 20:48:53,294 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 20:48:53,304 - clemcore.clemgame.runners.sequential - ERROR - Functionigma Game: Exception for instance 0 (but continue)
+Traceback (most recent call last):
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\site-packages\clemcore\clemgame\runners\sequential.py", line 32, in run
+    callbacks.on_game_end(game_master, game_instance)
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\site-packages\clemcore\clemgame\callbacks\base.py", line 60, in on_game_end
+    callback.on_game_end(game_master, game_instance)
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\site-packages\clemcore\clemgame\callbacks\files.py", line 174, in on_game_end
+    self._store_files(recorder, game_master, game_instance)
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\site-packages\clemcore\clemgame\callbacks\files.py", line 179, in _store_files
+    store_json(recorder.requests, "requests.json", instance_dir_path)
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\site-packages\clemcore\clemgame\resources.py", line 49, in store_json
+    json.dump(data, f, ensure_ascii=ensure_ascii, indent=indent)
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\json\__init__.py", line 179, in dump
+    for chunk in iterable:
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\json\encoder.py", line 430, in _iterencode
+    yield from _iterencode_list(o, _current_indent_level)
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\json\encoder.py", line 326, in _iterencode_list
+    yield from chunks
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\json\encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\json\encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\json\encoder.py", line 326, in _iterencode_list
+    yield from chunks
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\json\encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type UserMessage is not JSON serializable
+2025-11-29 20:48:53,313 - clemcore.run - ERROR - Functionigma Game: '1' exceptions occurred: See clembench.log for details.
+2025-11-29 20:48:53,314 - clemcore.cli - INFO - Running Functionigma Game took: 0:00:03.631451
+2025-11-29 20:48:53,314 - clemcore.cli - INFO - Running all benchmarks took: 0:00:03.647587
+2025-11-29 20:48:53,314 - clemcore.cli - INFO - clem run took: 0:00:04.959461
+2025-11-29 20:54:58,810 - clemcore.cli - INFO - Found '1' game matching the game_selector="Functionigma Game"
+2025-11-29 20:54:58,811 - clemcore.cli - INFO - {
+  "game_name": "Functionigma Game",
+  "description": "Functionigma Game",
+  "main_game": "Functionigma Game",
+  "players": 1,
+  "image": "none",
+  "languages": [
+    "en"
+  ],
+  "benchmark": [],
+  "game_path": "E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\clemgame-template\\functionigma"
+}
+2025-11-29 20:54:58,812 - clemcore.backends.model_registry - WARNING - Package lookup failed with exception: 'charmap' codec can't decode byte 0x81 in position 128269: character maps to <undefined>
+2025-11-29 20:54:58,813 - clemcore.cli - INFO - Found registered model spec that unifies with {"model_name":"command-a-03-2025"} -> {'model_name': 'command-a-03-2025', 'backend': 'cohere', 'lookup_source': 'E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\model_registry.json', 'model_id': 'command-a-03-2025'}
+2025-11-29 20:54:58,813 - clemcore.cli - INFO - Found registry entry for backend cohere -> {'backend': 'cohere', 'file_name': 'cohere_api.py', 'file_path': 'C:\\Users\\mohiu\\anaconda3\\envs\\IM_Functionigma\\Lib\\site-packages\\clemcore\\backends\\cohere_api.py', 'lookup_source': 'packaged'}
+2025-11-29 20:54:58,814 - clemcore.cli - INFO - Dynamically import backend cohere
+2025-11-29 20:55:00,135 - clemcore.cli - INFO - Successfully loaded command-a-03-2025 model
+2025-11-29 20:55:00,135 - clemcore.cli - INFO - Loading models took: 0:00:01.322003
+2025-11-29 20:55:00,135 - clemcore.run - INFO - Loading game benchmark for Functionigma Game
+2025-11-29 20:55:00,135 - clemcore.run - INFO - Loading game benchmark for Functionigma Game took: 0:00:00
+2025-11-29 20:55:00,135 - clemcore.cli - INFO - Running Functionigma Game (models=[<CohereModel name='command-a-03-2025' object at 0x12ce5f55f90>])
+2025-11-29 20:55:00,135 - clemcore.run - INFO - Prepared instance queue for Functionigma Game using 1 experiments ['python_easy'] and 1 instances in total.
+2025-11-29 20:55:00,135 - clemcore.run - INFO - Fallback to sequential because not all models support batching: models=[<CohereModel name='command-a-03-2025' object at 0x12ce5f55f90>], support=[False]
+2025-11-29 20:55:00,135 - clemcore.run - INFO - Start sequential runner for Functionigma Game with models=[command-a-03-2025] (batch_size=1)
+2025-11-29 20:55:03,145 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 20:55:03,151 - clemcore.clemgame.runners.sequential - ERROR - Functionigma Game: Exception for instance 0 (but continue)
+Traceback (most recent call last):
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\site-packages\clemcore\clemgame\runners\sequential.py", line 29, in run
+    done, info = game_master.step(response)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\site-packages\clemcore\clemgame\master.py", line 290, in step
+    self._advance_game(self.current_player, parsed_response)  # throws GameError
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\UNI\Semester 5\IM - Sherzod\Code\clemgame-template\functionigma\master.py", line 112, in _advance_game
+    self.add_user_message(self.guesser_player,
+    ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Functionigma_GameMaster' object has no attribute 'add_user_message'
+2025-11-29 20:55:03,151 - clemcore.run - ERROR - Functionigma Game: '1' exceptions occurred: See clembench.log for details.
+2025-11-29 20:55:03,151 - clemcore.cli - INFO - Running Functionigma Game took: 0:00:03.016347
+2025-11-29 20:55:03,151 - clemcore.cli - INFO - Running all benchmarks took: 0:00:03.016347
+2025-11-29 20:55:03,151 - clemcore.cli - INFO - clem run took: 0:00:04.343390
+2025-11-29 20:55:56,416 - clemcore.cli - INFO - Found '1' game matching the game_selector="Functionigma Game"
+2025-11-29 20:55:56,416 - clemcore.cli - INFO - {
+  "game_name": "Functionigma Game",
+  "description": "Functionigma Game",
+  "main_game": "Functionigma Game",
+  "players": 1,
+  "image": "none",
+  "languages": [
+    "en"
+  ],
+  "benchmark": [],
+  "game_path": "E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\clemgame-template\\functionigma"
+}
+2025-11-29 20:55:56,416 - clemcore.backends.model_registry - WARNING - Package lookup failed with exception: 'charmap' codec can't decode byte 0x81 in position 128269: character maps to <undefined>
+2025-11-29 20:55:56,416 - clemcore.cli - INFO - Found registered model spec that unifies with {"model_name":"command-a-03-2025"} -> {'model_name': 'command-a-03-2025', 'backend': 'cohere', 'lookup_source': 'E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\model_registry.json', 'model_id': 'command-a-03-2025'}
+2025-11-29 20:55:56,416 - clemcore.cli - INFO - Found registry entry for backend cohere -> {'backend': 'cohere', 'file_name': 'cohere_api.py', 'file_path': 'C:\\Users\\mohiu\\anaconda3\\envs\\IM_Functionigma\\Lib\\site-packages\\clemcore\\backends\\cohere_api.py', 'lookup_source': 'packaged'}
+2025-11-29 20:55:56,416 - clemcore.cli - INFO - Dynamically import backend cohere
+2025-11-29 20:55:57,729 - clemcore.cli - INFO - Successfully loaded command-a-03-2025 model
+2025-11-29 20:55:57,729 - clemcore.cli - INFO - Loading models took: 0:00:01.312540
+2025-11-29 20:55:57,729 - clemcore.run - INFO - Loading game benchmark for Functionigma Game
+2025-11-29 20:55:57,747 - clemcore.run - INFO - Loading game benchmark for Functionigma Game took: 0:00:00.018330
+2025-11-29 20:55:57,748 - clemcore.cli - INFO - Running Functionigma Game (models=[<CohereModel name='command-a-03-2025' object at 0x1864d086510>])
+2025-11-29 20:55:57,748 - clemcore.run - INFO - Prepared instance queue for Functionigma Game using 1 experiments ['python_easy'] and 1 instances in total.
+2025-11-29 20:55:57,749 - clemcore.run - INFO - Fallback to sequential because not all models support batching: models=[<CohereModel name='command-a-03-2025' object at 0x1864d086510>], support=[False]
+2025-11-29 20:55:57,750 - clemcore.run - INFO - Start sequential runner for Functionigma Game with models=[command-a-03-2025] (batch_size=1)
+2025-11-29 20:55:58,307 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 20:55:58,745 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 20:55:59,166 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 20:55:59,818 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 20:56:00,280 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 20:56:00,734 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 20:56:01,182 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 20:56:05,811 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 20:56:10,296 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 20:56:15,572 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 20:56:20,026 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 20:56:24,794 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 20:56:29,432 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 20:56:34,294 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 20:56:38,700 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 20:56:45,189 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 20:56:49,848 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 20:56:53,871 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 20:56:56,666 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 20:57:01,041 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 20:57:05,139 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 20:57:09,358 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 20:57:13,416 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 20:57:17,422 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 20:57:21,485 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 20:57:25,228 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 20:57:31,932 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 20:57:35,417 - clemcore.cli - INFO - clem run took: 0:01:39.000916
+2025-11-29 20:59:30,096 - clemcore.cli - INFO - Found '1' game matching the game_selector="Functionigma Game"
+2025-11-29 20:59:30,096 - clemcore.cli - INFO - {
+  "game_name": "Functionigma Game",
+  "description": "Functionigma Game",
+  "main_game": "Functionigma Game",
+  "players": 1,
+  "image": "none",
+  "languages": [
+    "en"
+  ],
+  "benchmark": [],
+  "game_path": "E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\clemgame-template\\functionigma"
+}
+2025-11-29 20:59:30,097 - clemcore.backends.model_registry - WARNING - Package lookup failed with exception: 'charmap' codec can't decode byte 0x81 in position 128269: character maps to <undefined>
+2025-11-29 20:59:30,098 - clemcore.cli - INFO - Found registered model spec that unifies with {"model_name":"command-a-03-2025"} -> {'model_name': 'command-a-03-2025', 'backend': 'cohere', 'lookup_source': 'E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\model_registry.json', 'model_id': 'command-a-03-2025'}
+2025-11-29 20:59:30,098 - clemcore.cli - INFO - Found registry entry for backend cohere -> {'backend': 'cohere', 'file_name': 'cohere_api.py', 'file_path': 'C:\\Users\\mohiu\\anaconda3\\envs\\IM_Functionigma\\Lib\\site-packages\\clemcore\\backends\\cohere_api.py', 'lookup_source': 'packaged'}
+2025-11-29 20:59:30,098 - clemcore.cli - INFO - Dynamically import backend cohere
+2025-11-29 20:59:31,486 - clemcore.cli - INFO - Successfully loaded command-a-03-2025 model
+2025-11-29 20:59:31,487 - clemcore.cli - INFO - Loading models took: 0:00:01.388428
+2025-11-29 20:59:31,490 - clemcore.run - INFO - Loading game benchmark for Functionigma Game
+2025-11-29 20:59:31,503 - clemcore.run - INFO - Loading game benchmark for Functionigma Game took: 0:00:00.012833
+2025-11-29 20:59:31,504 - clemcore.cli - INFO - Running Functionigma Game (models=[<CohereModel name='command-a-03-2025' object at 0x2347f7c5d10>])
+2025-11-29 20:59:31,505 - clemcore.run - INFO - Prepared instance queue for Functionigma Game using 1 experiments ['python_easy'] and 1 instances in total.
+2025-11-29 20:59:31,507 - clemcore.run - INFO - Fallback to sequential because not all models support batching: models=[<CohereModel name='command-a-03-2025' object at 0x2347f7c5d10>], support=[False]
+2025-11-29 20:59:31,507 - clemcore.run - INFO - Start sequential runner for Functionigma Game with models=[command-a-03-2025] (batch_size=1)
+2025-11-29 20:59:32,014 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 20:59:32,689 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 20:59:33,130 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 20:59:33,614 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 20:59:34,056 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 20:59:34,619 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 20:59:35,110 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 20:59:35,554 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 20:59:36,107 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 20:59:36,856 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 20:59:37,319 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 20:59:37,905 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 20:59:38,458 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 20:59:38,985 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 20:59:39,623 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 20:59:40,769 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 20:59:40,777 - clemcore.clemgame.runners.sequential - ERROR - Functionigma Game: Exception for instance 0 (but continue)
+Traceback (most recent call last):
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\site-packages\clemcore\clemgame\runners\sequential.py", line 29, in run
+    done, info = game_master.step(response)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\site-packages\clemcore\clemgame\master.py", line 289, in step
+    parsed_response = self._parse_response(self.current_player, response)  # throws ParseError
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\UNI\Semester 5\IM - Sherzod\Code\clemgame-template\functionigma\master.py", line 139, in _parse_response
+    correct_inputs = self.check_given_inputs(response_str)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\UNI\Semester 5\IM - Sherzod\Code\clemgame-template\functionigma\master.py", line 97, in check_given_inputs
+    raise ValueError("Invalid input format.")
+ValueError: Invalid input format.
+2025-11-29 20:59:40,780 - clemcore.run - ERROR - Functionigma Game: '1' exceptions occurred: See clembench.log for details.
+2025-11-29 20:59:40,781 - clemcore.cli - INFO - Running Functionigma Game took: 0:00:09.277282
+2025-11-29 20:59:40,781 - clemcore.cli - INFO - Running all benchmarks took: 0:00:09.291750
+2025-11-29 20:59:40,782 - clemcore.cli - INFO - clem run took: 0:00:10.688618
+2025-11-29 21:06:43,933 - clemcore.cli - INFO - Found '1' game matching the game_selector="Functionigma Game"
+2025-11-29 21:06:43,934 - clemcore.cli - INFO - {
+  "game_name": "Functionigma Game",
+  "description": "Functionigma Game",
+  "main_game": "Functionigma Game",
+  "players": 1,
+  "image": "none",
+  "languages": [
+    "en"
+  ],
+  "benchmark": [],
+  "game_path": "E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\clemgame-template\\functionigma"
+}
+2025-11-29 21:06:43,935 - clemcore.backends.model_registry - WARNING - Package lookup failed with exception: 'charmap' codec can't decode byte 0x81 in position 128269: character maps to <undefined>
+2025-11-29 21:06:43,936 - clemcore.cli - INFO - Found registered model spec that unifies with {"model_name":"command-a-03-2025"} -> {'model_name': 'command-a-03-2025', 'backend': 'cohere', 'lookup_source': 'E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\model_registry.json', 'model_id': 'command-a-03-2025'}
+2025-11-29 21:06:43,936 - clemcore.cli - INFO - Found registry entry for backend cohere -> {'backend': 'cohere', 'file_name': 'cohere_api.py', 'file_path': 'C:\\Users\\mohiu\\anaconda3\\envs\\IM_Functionigma\\Lib\\site-packages\\clemcore\\backends\\cohere_api.py', 'lookup_source': 'packaged'}
+2025-11-29 21:06:43,937 - clemcore.cli - INFO - Dynamically import backend cohere
+2025-11-29 21:06:45,287 - clemcore.cli - INFO - Successfully loaded command-a-03-2025 model
+2025-11-29 21:06:45,288 - clemcore.cli - INFO - Loading models took: 0:00:01.351464
+2025-11-29 21:06:45,290 - clemcore.run - INFO - Loading game benchmark for Functionigma Game
+2025-11-29 21:06:45,295 - clemcore.run - INFO - Loading game benchmark for Functionigma Game took: 0:00:00.005013
+2025-11-29 21:06:45,295 - clemcore.cli - INFO - Running Functionigma Game (models=[<CohereModel name='command-a-03-2025' object at 0x25d40e58bd0>])
+2025-11-29 21:06:45,296 - clemcore.run - INFO - Prepared instance queue for Functionigma Game using 1 experiments ['python_easy'] and 1 instances in total.
+2025-11-29 21:06:45,297 - clemcore.run - INFO - Fallback to sequential because not all models support batching: models=[<CohereModel name='command-a-03-2025' object at 0x25d40e58bd0>], support=[False]
+2025-11-29 21:06:45,297 - clemcore.run - INFO - Start sequential runner for Functionigma Game with models=[command-a-03-2025] (batch_size=1)
+2025-11-29 21:06:47,393 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:06:47,895 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:06:48,331 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:06:48,791 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:06:49,253 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:06:49,832 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:06:50,392 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:06:51,537 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:06:52,049 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:06:52,955 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:06:53,487 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:06:54,258 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:06:54,831 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:06:59,843 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:07:00,320 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:07:01,854 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:07:02,424 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:07:03,598 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:07:03,620 - clemcore.clemgame.runners.sequential - ERROR - Functionigma Game: Exception for instance 0 (but continue)
+Traceback (most recent call last):
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\site-packages\clemcore\clemgame\runners\sequential.py", line 29, in run
+    done, info = game_master.step(response)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\site-packages\clemcore\clemgame\master.py", line 290, in step
+    self._advance_game(self.current_player, parsed_response)  # throws GameError
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\UNI\Semester 5\IM - Sherzod\Code\clemgame-template\functionigma\master.py", line 86, in _advance_game
+    output = self.run_dynamic_function(self.state.function_callable, parsed_response)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\UNI\Semester 5\IM - Sherzod\Code\clemgame-template\functionigma\master.py", line 126, in run_dynamic_function
+    a, b = self.extract_given_inputs(text)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\UNI\Semester 5\IM - Sherzod\Code\clemgame-template\functionigma\master.py", line 103, in extract_given_inputs
+    return int(match.group(1)), int(match.group(2))
+               ^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'group'
+2025-11-29 21:07:03,623 - clemcore.run - ERROR - Functionigma Game: '1' exceptions occurred: See clembench.log for details.
+2025-11-29 21:07:03,623 - clemcore.cli - INFO - Running Functionigma Game took: 0:00:18.327531
+2025-11-29 21:07:03,624 - clemcore.cli - INFO - Running all benchmarks took: 0:00:18.333542
+2025-11-29 21:07:03,624 - clemcore.cli - INFO - clem run took: 0:00:19.692415
+2025-11-29 21:12:04,743 - clemcore.cli - INFO - Found '1' game matching the game_selector="Functionigma Game"
+2025-11-29 21:12:04,743 - clemcore.cli - INFO - {
+  "game_name": "Functionigma Game",
+  "description": "Functionigma Game",
+  "main_game": "Functionigma Game",
+  "players": 1,
+  "image": "none",
+  "languages": [
+    "en"
+  ],
+  "benchmark": [],
+  "game_path": "E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\clemgame-template\\functionigma"
+}
+2025-11-29 21:12:04,743 - clemcore.backends.model_registry - WARNING - Package lookup failed with exception: 'charmap' codec can't decode byte 0x81 in position 128269: character maps to <undefined>
+2025-11-29 21:12:04,743 - clemcore.cli - INFO - Found registered model spec that unifies with {"model_name":"command-a-03-2025"} -> {'model_name': 'command-a-03-2025', 'backend': 'cohere', 'lookup_source': 'E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\model_registry.json', 'model_id': 'command-a-03-2025'}
+2025-11-29 21:12:04,743 - clemcore.cli - INFO - Found registry entry for backend cohere -> {'backend': 'cohere', 'file_name': 'cohere_api.py', 'file_path': 'C:\\Users\\mohiu\\anaconda3\\envs\\IM_Functionigma\\Lib\\site-packages\\clemcore\\backends\\cohere_api.py', 'lookup_source': 'packaged'}
+2025-11-29 21:12:04,743 - clemcore.cli - INFO - Dynamically import backend cohere
+2025-11-29 21:12:06,086 - clemcore.cli - INFO - Successfully loaded command-a-03-2025 model
+2025-11-29 21:12:06,086 - clemcore.cli - INFO - Loading models took: 0:00:01.343003
+2025-11-29 21:12:06,086 - clemcore.run - INFO - Loading game benchmark for Functionigma Game
+2025-11-29 21:12:06,086 - clemcore.run - INFO - Loading game benchmark for Functionigma Game took: 0:00:00
+2025-11-29 21:12:06,101 - clemcore.cli - INFO - Running Functionigma Game (models=[<CohereModel name='command-a-03-2025' object at 0x1a4d4c75b50>])
+2025-11-29 21:12:06,101 - clemcore.run - INFO - Prepared instance queue for Functionigma Game using 1 experiments ['python_easy'] and 1 instances in total.
+2025-11-29 21:12:06,102 - clemcore.run - INFO - Fallback to sequential because not all models support batching: models=[<CohereModel name='command-a-03-2025' object at 0x1a4d4c75b50>], support=[False]
+2025-11-29 21:12:06,102 - clemcore.run - INFO - Start sequential runner for Functionigma Game with models=[command-a-03-2025] (batch_size=1)
+2025-11-29 21:12:06,649 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:12:07,039 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:12:07,399 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:12:07,778 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:12:08,245 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:12:09,009 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:12:09,509 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:12:10,012 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:12:10,569 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:12:11,215 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:12:11,836 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:12:12,370 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:12:12,833 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:12:13,400 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:12:13,949 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:12:14,649 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:12:15,546 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:12:15,554 - clemcore.clemgame.runners.sequential - ERROR - Functionigma Game: Exception for instance 0 (but continue)
+Traceback (most recent call last):
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\site-packages\clemcore\clemgame\runners\sequential.py", line 29, in run
+    done, info = game_master.step(response)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\site-packages\clemcore\clemgame\master.py", line 289, in step
+    parsed_response = self._parse_response(self.current_player, response)  # throws ParseError
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\UNI\Semester 5\IM - Sherzod\Code\clemgame-template\functionigma\master.py", line 148, in _parse_response
+    if not self.check_given_inputs(response_str):
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\UNI\Semester 5\IM - Sherzod\Code\clemgame-template\functionigma\master.py", line 97, in check_given_inputs
+    raise ValueError("Invalid input format.")
+ValueError: Invalid input format.
+2025-11-29 21:12:15,554 - clemcore.run - ERROR - Functionigma Game: '1' exceptions occurred: See clembench.log for details.
+2025-11-29 21:12:15,554 - clemcore.cli - INFO - Running Functionigma Game took: 0:00:09.468051
+2025-11-29 21:12:15,554 - clemcore.cli - INFO - Running all benchmarks took: 0:00:09.468051
+2025-11-29 21:12:15,554 - clemcore.cli - INFO - clem run took: 0:00:10.811054
+2025-11-29 21:16:54,522 - clemcore.cli - INFO - Found '1' game matching the game_selector="Functionigma Game"
+2025-11-29 21:16:54,522 - clemcore.cli - INFO - {
+  "game_name": "Functionigma Game",
+  "description": "Functionigma Game",
+  "main_game": "Functionigma Game",
+  "players": 1,
+  "image": "none",
+  "languages": [
+    "en"
+  ],
+  "benchmark": [],
+  "game_path": "E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\clemgame-template\\functionigma"
+}
+2025-11-29 21:16:54,538 - clemcore.backends.model_registry - WARNING - Package lookup failed with exception: 'charmap' codec can't decode byte 0x81 in position 128269: character maps to <undefined>
+2025-11-29 21:16:54,538 - clemcore.cli - INFO - Found registered model spec that unifies with {"model_name":"command-a-03-2025"} -> {'model_name': 'command-a-03-2025', 'backend': 'cohere', 'lookup_source': 'E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\model_registry.json', 'model_id': 'command-a-03-2025'}
+2025-11-29 21:16:54,538 - clemcore.cli - INFO - Found registry entry for backend cohere -> {'backend': 'cohere', 'file_name': 'cohere_api.py', 'file_path': 'C:\\Users\\mohiu\\anaconda3\\envs\\IM_Functionigma\\Lib\\site-packages\\clemcore\\backends\\cohere_api.py', 'lookup_source': 'packaged'}
+2025-11-29 21:16:54,538 - clemcore.cli - INFO - Dynamically import backend cohere
+2025-11-29 21:16:55,996 - clemcore.cli - INFO - Successfully loaded command-a-03-2025 model
+2025-11-29 21:16:55,996 - clemcore.cli - INFO - Loading models took: 0:00:01.457640
+2025-11-29 21:16:56,012 - clemcore.run - INFO - Loading game benchmark for Functionigma Game
+2025-11-29 21:16:56,017 - clemcore.run - INFO - Loading game benchmark for Functionigma Game took: 0:00:00.005285
+2025-11-29 21:16:56,017 - clemcore.cli - INFO - Running Functionigma Game (models=[<CohereModel name='command-a-03-2025' object at 0x28adb145e90>])
+2025-11-29 21:16:56,017 - clemcore.run - INFO - Prepared instance queue for Functionigma Game using 1 experiments ['python_easy'] and 1 instances in total.
+2025-11-29 21:16:56,017 - clemcore.run - INFO - Fallback to sequential because not all models support batching: models=[<CohereModel name='command-a-03-2025' object at 0x28adb145e90>], support=[False]
+2025-11-29 21:16:56,017 - clemcore.run - INFO - Start sequential runner for Functionigma Game with models=[command-a-03-2025] (batch_size=1)
+2025-11-29 21:16:56,481 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:16:57,081 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:16:57,457 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:16:57,942 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:16:58,303 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:16:58,836 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:16:59,425 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:17:00,123 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:17:00,756 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:17:01,362 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:17:02,009 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:17:02,564 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:17:03,167 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:17:03,687 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:17:04,241 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:17:04,992 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:17:05,827 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:17:05,843 - clemcore.clemgame.runners.sequential - ERROR - Functionigma Game: Exception for instance 0 (but continue)
+Traceback (most recent call last):
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\site-packages\clemcore\clemgame\runners\sequential.py", line 32, in run
+    callbacks.on_game_end(game_master, game_instance)
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\site-packages\clemcore\clemgame\callbacks\base.py", line 60, in on_game_end
+    callback.on_game_end(game_master, game_instance)
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\site-packages\clemcore\clemgame\callbacks\files.py", line 174, in on_game_end
+    self._store_files(recorder, game_master, game_instance)
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\site-packages\clemcore\clemgame\callbacks\files.py", line 179, in _store_files
+    store_json(recorder.requests, "requests.json", instance_dir_path)
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\site-packages\clemcore\clemgame\resources.py", line 49, in store_json
+    json.dump(data, f, ensure_ascii=ensure_ascii, indent=indent)
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\json\__init__.py", line 179, in dump
+    for chunk in iterable:
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\json\encoder.py", line 430, in _iterencode
+    yield from _iterencode_list(o, _current_indent_level)
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\json\encoder.py", line 326, in _iterencode_list
+    yield from chunks
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\json\encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\json\encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\json\encoder.py", line 326, in _iterencode_list
+    yield from chunks
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\json\encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type UserMessage is not JSON serializable
+2025-11-29 21:17:05,843 - clemcore.run - ERROR - Functionigma Game: '1' exceptions occurred: See clembench.log for details.
+2025-11-29 21:17:05,843 - clemcore.cli - INFO - Running Functionigma Game took: 0:00:09.826270
+2025-11-29 21:17:05,843 - clemcore.cli - INFO - Running all benchmarks took: 0:00:09.847457
+2025-11-29 21:17:05,859 - clemcore.cli - INFO - clem run took: 0:00:11.337025
+2025-11-29 21:20:52,438 - clemcore.cli - INFO - Found '1' game matching the game_selector="Functionigma Game"
+2025-11-29 21:20:52,438 - clemcore.cli - INFO - {
+  "game_name": "Functionigma Game",
+  "description": "Functionigma Game",
+  "main_game": "Functionigma Game",
+  "players": 1,
+  "image": "none",
+  "languages": [
+    "en"
+  ],
+  "benchmark": [],
+  "game_path": "E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\clemgame-template\\functionigma"
+}
+2025-11-29 21:20:52,438 - clemcore.backends.model_registry - WARNING - Package lookup failed with exception: 'charmap' codec can't decode byte 0x81 in position 128269: character maps to <undefined>
+2025-11-29 21:20:52,438 - clemcore.cli - INFO - Found registered model spec that unifies with {"model_name":"command-a-03-2025"} -> {'model_name': 'command-a-03-2025', 'backend': 'cohere', 'lookup_source': 'E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\model_registry.json', 'model_id': 'command-a-03-2025'}
+2025-11-29 21:20:52,438 - clemcore.cli - INFO - Found registry entry for backend cohere -> {'backend': 'cohere', 'file_name': 'cohere_api.py', 'file_path': 'C:\\Users\\mohiu\\anaconda3\\envs\\IM_Functionigma\\Lib\\site-packages\\clemcore\\backends\\cohere_api.py', 'lookup_source': 'packaged'}
+2025-11-29 21:20:52,438 - clemcore.cli - INFO - Dynamically import backend cohere
+2025-11-29 21:20:54,140 - clemcore.cli - INFO - Successfully loaded command-a-03-2025 model
+2025-11-29 21:20:54,140 - clemcore.cli - INFO - Loading models took: 0:00:01.702356
+2025-11-29 21:20:54,140 - clemcore.run - INFO - Loading game benchmark for Functionigma Game
+2025-11-29 21:20:54,140 - clemcore.run - INFO - Loading game benchmark for Functionigma Game took: 0:00:00
+2025-11-29 21:20:54,151 - clemcore.cli - INFO - Running Functionigma Game (models=[<CohereModel name='command-a-03-2025' object at 0x239a55c2710>])
+2025-11-29 21:20:54,151 - clemcore.run - INFO - Prepared instance queue for Functionigma Game using 1 experiments ['python_easy'] and 1 instances in total.
+2025-11-29 21:20:54,151 - clemcore.run - INFO - Fallback to sequential because not all models support batching: models=[<CohereModel name='command-a-03-2025' object at 0x239a55c2710>], support=[False]
+2025-11-29 21:20:54,151 - clemcore.run - INFO - Start sequential runner for Functionigma Game with models=[command-a-03-2025] (batch_size=1)
+2025-11-29 21:20:57,381 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:20:57,736 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:20:58,204 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:20:58,558 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:20:59,518 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:21:00,086 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:21:00,555 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:21:05,107 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:21:06,329 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:21:06,832 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:21:07,385 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:21:09,650 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:21:10,369 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:21:13,583 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:21:15,074 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:21:16,573 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:21:17,209 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:21:17,902 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:21:18,442 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:21:19,442 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:21:19,453 - clemcore.clemgame.runners.sequential - ERROR - Functionigma Game: Exception for instance 0 (but continue)
+Traceback (most recent call last):
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\site-packages\clemcore\clemgame\runners\sequential.py", line 29, in run
+    done, info = game_master.step(response)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\site-packages\clemcore\clemgame\master.py", line 289, in step
+    parsed_response = self._parse_response(self.current_player, response)  # throws ParseError
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\UNI\Semester 5\IM - Sherzod\Code\clemgame-template\functionigma\master.py", line 146, in _parse_response
+    if not self.check_given_inputs(response_str):
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\UNI\Semester 5\IM - Sherzod\Code\clemgame-template\functionigma\master.py", line 94, in check_given_inputs
+    raise ValueError("Invalid input format.")
+ValueError: Invalid input format.
+2025-11-29 21:21:19,458 - clemcore.run - ERROR - Functionigma Game: '1' exceptions occurred: See clembench.log for details.
+2025-11-29 21:21:19,458 - clemcore.cli - INFO - Running Functionigma Game took: 0:00:25.306635
+2025-11-29 21:21:19,458 - clemcore.cli - INFO - Running all benchmarks took: 0:00:25.317761
+2025-11-29 21:21:19,458 - clemcore.cli - INFO - clem run took: 0:00:27.020117
+2025-11-29 21:23:52,449 - clemcore.cli - INFO - Found '1' game matching the game_selector="Functionigma Game"
+2025-11-29 21:23:52,449 - clemcore.cli - INFO - {
+  "game_name": "Functionigma Game",
+  "description": "Functionigma Game",
+  "main_game": "Functionigma Game",
+  "players": 1,
+  "image": "none",
+  "languages": [
+    "en"
+  ],
+  "benchmark": [],
+  "game_path": "E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\clemgame-template\\functionigma"
+}
+2025-11-29 21:23:52,451 - clemcore.backends.model_registry - WARNING - Package lookup failed with exception: 'charmap' codec can't decode byte 0x81 in position 128269: character maps to <undefined>
+2025-11-29 21:23:52,452 - clemcore.cli - INFO - Found registered model spec that unifies with {"model_name":"command-a-03-2025"} -> {'model_name': 'command-a-03-2025', 'backend': 'cohere', 'lookup_source': 'E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\model_registry.json', 'model_id': 'command-a-03-2025'}
+2025-11-29 21:23:52,452 - clemcore.cli - INFO - Found registry entry for backend cohere -> {'backend': 'cohere', 'file_name': 'cohere_api.py', 'file_path': 'C:\\Users\\mohiu\\anaconda3\\envs\\IM_Functionigma\\Lib\\site-packages\\clemcore\\backends\\cohere_api.py', 'lookup_source': 'packaged'}
+2025-11-29 21:23:52,452 - clemcore.cli - INFO - Dynamically import backend cohere
+2025-11-29 21:23:53,791 - clemcore.cli - INFO - Successfully loaded command-a-03-2025 model
+2025-11-29 21:23:53,791 - clemcore.cli - INFO - Loading models took: 0:00:01.338983
+2025-11-29 21:23:53,796 - clemcore.run - INFO - Loading game benchmark for Functionigma Game
+2025-11-29 21:23:53,803 - clemcore.run - INFO - Loading game benchmark for Functionigma Game took: 0:00:00.006253
+2025-11-29 21:23:53,804 - clemcore.cli - INFO - Running Functionigma Game (models=[<CohereModel name='command-a-03-2025' object at 0x27f17495690>])
+2025-11-29 21:23:53,805 - clemcore.run - INFO - Prepared instance queue for Functionigma Game using 1 experiments ['python_easy'] and 1 instances in total.
+2025-11-29 21:23:53,806 - clemcore.run - INFO - Fallback to sequential because not all models support batching: models=[<CohereModel name='command-a-03-2025' object at 0x27f17495690>], support=[False]
+2025-11-29 21:23:53,807 - clemcore.run - INFO - Start sequential runner for Functionigma Game with models=[command-a-03-2025] (batch_size=1)
+2025-11-29 21:23:54,368 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:23:54,961 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:23:55,349 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:23:55,798 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:23:56,286 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:23:56,805 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:23:57,373 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:23:57,863 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:23:58,368 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:23:58,880 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:23:59,457 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:23:59,942 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:24:00,442 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:24:00,911 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:24:01,455 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:24:02,021 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:24:02,786 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:24:02,802 - clemcore.clemgame.runners.sequential - ERROR - Functionigma Game: Exception for instance 0 (but continue)
+Traceback (most recent call last):
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\site-packages\clemcore\clemgame\runners\sequential.py", line 29, in run
+    done, info = game_master.step(response)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\site-packages\clemcore\clemgame\master.py", line 290, in step
+    self._advance_game(self.current_player, parsed_response)  # throws GameError
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\UNI\Semester 5\IM - Sherzod\Code\clemgame-template\functionigma\master.py", line 86, in _advance_game
+    output = self.run_dynamic_function(self.state.function_callable, parsed_response)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\UNI\Semester 5\IM - Sherzod\Code\clemgame-template\functionigma\master.py", line 123, in run_dynamic_function
+    a, b = self.extract_given_inputs(text)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\UNI\Semester 5\IM - Sherzod\Code\clemgame-template\functionigma\master.py", line 100, in extract_given_inputs
+    return int(match.group(1)), int(match.group(2))
+               ^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'group'
+2025-11-29 21:24:02,802 - clemcore.run - ERROR - Functionigma Game: '1' exceptions occurred: See clembench.log for details.
+2025-11-29 21:24:02,802 - clemcore.cli - INFO - Running Functionigma Game took: 0:00:08.999532
+2025-11-29 21:24:02,802 - clemcore.cli - INFO - Running all benchmarks took: 0:00:09.005785
+2025-11-29 21:24:02,802 - clemcore.cli - INFO - clem run took: 0:00:10.354767
+2025-11-29 21:25:37,018 - clemcore.cli - INFO - Found '1' game matching the game_selector="Functionigma Game"
+2025-11-29 21:25:37,018 - clemcore.cli - INFO - {
+  "game_name": "Functionigma Game",
+  "description": "Functionigma Game",
+  "main_game": "Functionigma Game",
+  "players": 1,
+  "image": "none",
+  "languages": [
+    "en"
+  ],
+  "benchmark": [],
+  "game_path": "E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\clemgame-template\\functionigma"
+}
+2025-11-29 21:25:37,018 - clemcore.backends.model_registry - WARNING - Package lookup failed with exception: 'charmap' codec can't decode byte 0x81 in position 128269: character maps to <undefined>
+2025-11-29 21:25:37,018 - clemcore.cli - INFO - Found registered model spec that unifies with {"model_name":"command-a-03-2025"} -> {'model_name': 'command-a-03-2025', 'backend': 'cohere', 'lookup_source': 'E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\model_registry.json', 'model_id': 'command-a-03-2025'}
+2025-11-29 21:25:37,018 - clemcore.cli - INFO - Found registry entry for backend cohere -> {'backend': 'cohere', 'file_name': 'cohere_api.py', 'file_path': 'C:\\Users\\mohiu\\anaconda3\\envs\\IM_Functionigma\\Lib\\site-packages\\clemcore\\backends\\cohere_api.py', 'lookup_source': 'packaged'}
+2025-11-29 21:25:37,018 - clemcore.cli - INFO - Dynamically import backend cohere
+2025-11-29 21:25:38,355 - clemcore.cli - INFO - Successfully loaded command-a-03-2025 model
+2025-11-29 21:25:38,355 - clemcore.cli - INFO - Loading models took: 0:00:01.336784
+2025-11-29 21:25:38,358 - clemcore.run - INFO - Loading game benchmark for Functionigma Game
+2025-11-29 21:25:38,362 - clemcore.run - INFO - Loading game benchmark for Functionigma Game took: 0:00:00.004082
+2025-11-29 21:25:38,362 - clemcore.cli - INFO - Running Functionigma Game (models=[<CohereModel name='command-a-03-2025' object at 0x2151ad95490>])
+2025-11-29 21:25:38,363 - clemcore.run - INFO - Prepared instance queue for Functionigma Game using 1 experiments ['python_easy'] and 1 instances in total.
+2025-11-29 21:25:38,364 - clemcore.run - INFO - Fallback to sequential because not all models support batching: models=[<CohereModel name='command-a-03-2025' object at 0x2151ad95490>], support=[False]
+2025-11-29 21:25:38,364 - clemcore.run - INFO - Start sequential runner for Functionigma Game with models=[command-a-03-2025] (batch_size=1)
+2025-11-29 21:25:38,830 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:25:42,705 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:25:43,616 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:25:44,236 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:25:44,815 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:25:45,284 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:25:45,765 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:25:46,222 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:25:46,834 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:25:47,472 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:25:48,043 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:25:48,497 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:25:49,043 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:25:49,520 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:25:50,033 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:25:51,737 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:25:52,439 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:25:53,220 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:25:54,189 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2025-11-29 21:25:54,205 - clemcore.clemgame.runners.sequential - ERROR - Functionigma Game: Exception for instance 0 (but continue)
+Traceback (most recent call last):
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\site-packages\clemcore\clemgame\runners\sequential.py", line 32, in run
+    callbacks.on_game_end(game_master, game_instance)
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\site-packages\clemcore\clemgame\callbacks\base.py", line 60, in on_game_end
+    callback.on_game_end(game_master, game_instance)
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\site-packages\clemcore\clemgame\callbacks\files.py", line 174, in on_game_end
+    self._store_files(recorder, game_master, game_instance)
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\site-packages\clemcore\clemgame\callbacks\files.py", line 179, in _store_files
+    store_json(recorder.requests, "requests.json", instance_dir_path)
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\site-packages\clemcore\clemgame\resources.py", line 49, in store_json
+    json.dump(data, f, ensure_ascii=ensure_ascii, indent=indent)
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\json\__init__.py", line 179, in dump
+    for chunk in iterable:
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\json\encoder.py", line 430, in _iterencode
+    yield from _iterencode_list(o, _current_indent_level)
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\json\encoder.py", line 326, in _iterencode_list
+    yield from chunks
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\json\encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\json\encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\json\encoder.py", line 326, in _iterencode_list
+    yield from chunks
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\json\encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "C:\Users\mohiu\anaconda3\envs\IM_Functionigma\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type UserMessage is not JSON serializable
+2025-11-29 21:25:54,205 - clemcore.run - ERROR - Functionigma Game: '1' exceptions occurred: See clembench.log for details.
+2025-11-29 21:25:54,205 - clemcore.cli - INFO - Running Functionigma Game took: 0:00:15.843132
+2025-11-29 21:25:54,205 - clemcore.cli - INFO - Running all benchmarks took: 0:00:15.847512
+2025-11-29 21:25:54,205 - clemcore.cli - INFO - clem run took: 0:00:17.187397

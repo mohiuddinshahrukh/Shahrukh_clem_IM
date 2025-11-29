@@ -1,0 +1,6 @@
+{
+  "game_id": 0,
+  "signature": "my_function(x:int, y:int) -> int",
+  "logic_description": "return (x + y) % 10",
+  "callable": "f_add_mod_10"
+}
