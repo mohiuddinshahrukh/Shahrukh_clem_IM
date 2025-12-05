@@ -6,6 +6,43 @@ import importlib
 import re
 import sys
 import os
+import json
+import ast
+from utils import parse_signature_with_types
+from utils import extract_function_code, validate_function_logic, generate_random_value
+
+# --- FINAL ROBUST FIX: MONKEY PATCH FOR JSON SERIALIZATION ---
+_original_json_default = json.JSONEncoder.default
+
+
+def _patched_json_default(self, obj):
+    # 1. Explicitly handle the classes we've seen so far
+    known_classes = [
+        "UserMessage", "SystemMessage", "AssistantMessage",
+        "Message", "ChatbotMessage", "ApiMeta"
+    ]
+
+    if type(obj).__name__ in known_classes:
+        if hasattr(obj, "__dict__"):
+            return obj.__dict__
+        return str(obj)
+
+    # 2. UNIVERSAL FALLBACK:
+    # If the object has a __dict__ attribute (standard Python objects),
+    # serialize that instead of crashing. This catches any future unknown classes.
+    if hasattr(obj, "__dict__"):
+        return obj.__dict__
+
+    # 3. Last resort for weird objects: return their string representation
+    # (Only do this if it's not a basic type that json handles naturally)
+    if not isinstance(obj, (int, float, str, bool, list, dict, tuple, type(None))):
+        return str(obj)
+
+    return _original_json_default(self, obj)
+
+
+json.JSONEncoder.default = _patched_json_default
+# -----------------------------------------------------------
 
 from clemcore.backends import Model
 from clemcore.clemgame import GameSpec, GameBenchmark, GameMaster, Player, DialogueGameMaster, GameScorer, \
@@ -29,11 +66,10 @@ class GameState:
     aborted: bool = False
 
 
-
-
 class guesser(Player):
     def __init__(self, model: Model):
         super().__init__(model)
+
     def _custom_response(self, messages):
         """
         Convert any UserMessage or non-string to string before returning.
@@ -63,41 +99,86 @@ class Functionigma_GameMaster(DialogueGameMaster):
         self.game_instance = game_instance
         self.signature = game_instance["signature"]
         self.max_turns = self.experiments["max_turns"]
+        # parse signature to get param names/types
+        self.param_names, self.param_types, self.return_type = parse_signature_with_types(self.signature)
+        self.num_params = len(self.param_names)
 
+        # category if present (fallback to MATH)
+        self.category = game_instance.get("category", "MATH")
+
+        # Build parameter list string for prompt
+        param_list_str = ", ".join(
+            f"{n}: {t}" for n, t in zip(self.param_names, self.param_types)) if self.param_names else "none"
+
+        prompt = self.experiments['initial_prompt_guesser']
+        prompt = prompt.replace('$SIGNATURE_OF_CURRENT_FUNCTION$', self.signature)
+        prompt = prompt.replace('$NUM_PARAMS$', str(self.num_params))
+        prompt = prompt.replace('$PARAM_LIST$', param_list_str)
+        prompt = prompt.replace('$CATEGORY$', str(self.category))
+        # Register player with initial context
         self.guesser_player = guesser(self.player_models[0])
-        self.add_player(self.guesser_player, initial_context=self.experiments['initial_prompt_guesser'].replace(
-            '$SIGNATURE_OF_CURRENT_FUNCTION$', self.signature))
-
-        print(self.game_instance)
+        self.add_player(self.guesser_player, initial_context=prompt)
         self.state = GameState(max_turns=self.max_turns, function_signature=self.signature,
                                function_callable=self.game_instance['callable'])
 
     ##################
 
-    def _advance_game(self, player: Player, parsed_response: str):
-        # if self.current_round >= self.state.max_turns:
-        #     self.state.aborted = True
-        #     raise RuleViolationError(
-        #         f"Maximum turns ({self.state.max_turns}) reached"
-        #     )
-        if not parsed_response:
-            raise RuleViolationError
-
-        output = self.run_dynamic_function(self.state.function_callable, parsed_response)
-        print("Output:", output)
-
+    import ast
 
     def check_given_inputs(self, response: str) -> bool:
-        pattern = r"^Input:\s*(-?\d+)\s*,\s*(-?\d+)\s*$"
-        match = re.match(pattern, response)
-        if not match:
-            raise ValueError("Invalid input format.")
-        return match is not None
+        # Accept only responses starting with "Input:"
+        if not isinstance(response, str):
+            return False
+        response = response.strip()
+        if not response.startswith("Input:"):
+            return False
+        raw = response[len("Input:"):].strip()
+        if self.num_params == 0:
+            return raw == ""
+        # Split by commas, but allow commas inside strings by using a small parser
+        try:
+            # Build a tuple text and parse using ast.literal_eval
+            tuple_text = f"({raw})" if self.num_params > 1 else raw
+            parsed = ast.literal_eval(tuple_text)
+            if self.num_params == 1:
+                parsed = (parsed,)
+            if not isinstance(parsed, tuple):
+                parsed = tuple(parsed)
+            if len(parsed) != self.num_params:
+                self.log_to_self("Input parameter count mismatch.", "end game")
+                return False
+            # Type-check each parsed value against expected type strings
+            for val, expected in zip(parsed, self.param_types):
+                if expected in ("int", "Integer"):
+                    if not isinstance(val, int) or isinstance(val, bool):
+                        return False
+                elif expected in ("float", "double"):
+                    if not isinstance(val, (int, float)) or isinstance(val, bool):
+                        return False
+                elif expected in ("str", "string"):
+                    if not isinstance(val, str):
+                        return False
+                elif expected in ("bool", "boolean"):
+                    if not isinstance(val, bool):
+                        return False
+                else:
+                    # Any or unknown type: accept but no strict check
+                    pass
+            return True
+        except Exception as e:
+            # parsing failed
+            return False
 
-    def extract_given_inputs(self, response):
-        match = re.match(r"^Input:\s*(-?\d+)\s*,\s*(-?\d+)\s*$", response)
-
-        return int(match.group(1)), int(match.group(2))
+    def extract_given_inputs(self, response: str):
+        raw = response.strip()[len("Input:"):].strip()
+        if self.num_params == 0:
+            return []
+        # Use ast.literal_eval to safely parse values
+        if self.num_params == 1:
+            val = ast.literal_eval(raw)
+            return [val]
+        parsed = ast.literal_eval(f"({raw})")
+        return list(parsed)
 
     def load_function(self, module_name: str, function_name: str):
         try:
@@ -113,40 +194,85 @@ class Functionigma_GameMaster(DialogueGameMaster):
         return func
 
     def run_dynamic_function(self, func_name: str, text: str) -> str:
-        # Import the function dynamically
-        func_name = self.state.function_callable
-        print("Attempting to load function:", func_name)
         func = self.load_function("functionigma.functions", func_name)
-        print("Loaded function:", func)
+        args = self.extract_given_inputs(text)
+        try:
+            result = func(*args)
+        except Exception as e:
+            raise RuntimeError(f"Function execution error: {e}")
+        # Return a string representation consistent with return type
+        # For strings, return as-is; for bool, True/False; for numbers, str()
+        if isinstance(result, str):
+            return result
+        return str(result)
 
-        # Parse the input
-        a, b = self.extract_given_inputs(text)
-        print(f'A AND B: \n{a} {b}\n')
-
-        # Run the hidden function
-        return str(func(a, b))
-
-    def _parse_response(self, player: Player, response: str) -> str:
-        print("\nINSIDE PARSE RESPONSE\n")
+    def _parse_response(self, player: Player, response: str) -> Tuple[str, str]:
         print(f"RESPONSE: {response}")
         response_str = str(response).strip()
 
-        # Step 1: Check if this is a function guess
+        # --- LOGIC TO HANDLE GUESS ---
         if response_str.startswith("GUESS:"):
             print("User is submitting a function guess!")
-            # Remove the tag and store the actual code
-            function_code = response_str[len("GUESS:"):].strip()
-            print("FUNCTION CODE: ", function_code)
-            # Log and end game immediately
-            self.log_to_self("player_guess_submitted", "end game")
-            self.state.success = True  # mark game as ended successfully
-            # Stop any further processing
-            raise RuleViolationError("Function guess submitted — ending game.")
 
-        # Step 2: Otherwise, treat as normal input query
-        if not self.check_given_inputs(response_str):
-            raise ParseError("Invalid input format.")
-        return response_str
+            # Use the utility function to get clean code
+            extracted_code = extract_function_code(response_str)
+
+            if not extracted_code:
+                # Fallback: If regex fails (e.g. user forgot backticks),
+                # you might want to take everything after "GUESS:"
+                # or raise a ParseError.
+                # raising ParseError forces the model to retry with correct formatting.
+                raise ParseError("Guess must contain a markdown code block (```python ... ```).")
+
+            print("FUNCTION CODE FOUND:\n", extracted_code)
+
+            # Return tuple: (action, content)
+            return "guess", extracted_code
+
+        # --- LOGIC TO HANDLE INPUTS ---
+        if self.check_given_inputs(response_str):
+            return "call", response_str
+
+        # --- FAILURE ---
+        raise ParseError("Invalid format. Must be 'Input: x, y' or 'GUESS: ```python ... ```'")
+
+    def _advance_game(self, player: Player, parsed_response: Tuple[str, str]):
+        action_type, content = parsed_response
+
+        # LOGIC 1: Player wants to run the function (Test Input)
+        if action_type == "call":
+            try:
+                # Run the hidden function on the inputs
+                output = self.run_dynamic_function(self.state.function_callable, content)
+                # Send result back to player
+                self.set_context_for(self.guesser_player, f"Function Output: {output}")
+            except Exception as e:
+                # Handle cases where the model gives input that crash the function
+                self.set_context_for(self.guesser_player, f"Error executing function: {e}")
+
+        # LOGIC 2: Player wants to solve the puzzle (Make a Guess)
+        elif action_type == "guess":
+            print(f"Player guessed code:\n{content}")
+
+            # A. Load the Real Function (Ground Truth)
+            actual_func = self.load_function("functionigma.functions", self.state.function_callable)
+
+            # B. Validate the Guess (Logic Check)
+            # This runs the random/edge-case tests defined in utils.py
+            is_correct = validate_function_logic(content, actual_func)
+
+            if is_correct:
+                print("LOGIC MATCH! Game Won.")
+                self.state.success = True
+                self.log_to_self("outcome", "win")
+            else:
+                print("LOGIC MISMATCH. Game Lost.")
+                self.state.success = False
+                self.state.failure = True  # Mark as failure so the game stops
+                self.log_to_self("outcome", "logic_error")
+
+            # Log the code they submitted
+            self.log_to_self("final_guess_code", content)
 
     def _on_parse_error(self, error: GameError):
         self.success = False

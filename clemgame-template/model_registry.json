@@ -122,9 +122,9 @@
         }
     },
     {
-        "model_name": "my_model",
-        "model_id": "my_model",
-        "backend": "openai_compatible",
+        "model_name": "command-a-03-2025",
+        "model_id": "command-a-03-2025",
+        "backend": "cohere",
         "release_date": "2025-03-19",
         "open_weight": true,
         "parameters": "1B",
