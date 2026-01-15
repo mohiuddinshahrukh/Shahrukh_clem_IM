@@ -1,6 +1,4 @@
 {
-
-
   "openai": {
     "organisation": "",
     "api_key": ""
@@ -21,8 +19,8 @@
     "api_key": "",
     "organisation": ""
   },
-  "generic_openai_compatible": {
-    "api_key": "r0821BA72B86YjfIEK03A0xljZO4DSfH38fKYiOW",
-    "base_url": "https://api.cohere.com/v2"
+  "openai_compatible": {
+    "api_key": "asd-asd-asd",
+    "base_url": "https://jarvis.ling.uni-potsdam.de/clp-chat/api/v1"
   }
 }

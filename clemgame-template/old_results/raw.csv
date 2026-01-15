@@ -1,0 +1,21 @@
+,game,model,experiment,episode,metric,value
+0,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00000,Request Count,5.0
+1,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00000,Parsed Request Count,5.0
+2,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00000,Violated Request Count,0.0
+3,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00000,Request Success Ratio,1.0
+4,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00000,Aborted,0.0
+5,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00000,Lose,1.0
+6,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00000,Success,0.0
+7,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00000,accuracy,16.0
+8,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00000,Main Score,16.0
+9,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00001,Request Count,4.0
+10,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00001,Parsed Request Count,4.0
+11,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00001,Violated Request Count,0.0
+12,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00001,Request Success Ratio,1.0
+13,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00001,Aborted,0.0
+14,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00001,Lose,0.0
+15,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00001,Success,1.0
+16,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00001,accuracy,100.0
+17,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00001,Main Score,100.0
+18,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00000,Played,1.0
+19,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00001,Played,1.0

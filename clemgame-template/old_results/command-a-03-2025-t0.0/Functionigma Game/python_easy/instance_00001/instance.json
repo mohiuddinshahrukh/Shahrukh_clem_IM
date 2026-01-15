@@ -1,0 +1,8 @@
+{
+  "game_id": 1,
+  "callable": "rev_str",
+  "signature": "(x: str) -> str",
+  "category": "string",
+  "difficulty": "easy",
+  "docstring": null
+}

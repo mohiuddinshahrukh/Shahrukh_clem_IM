@@ -1,0 +1,336 @@
+2026-01-10 21:34:35,408 - clemcore.cli - INFO - Found '1' game matching the game_selector="Functionigma Game"
+2026-01-10 21:34:35,408 - clemcore.cli - INFO - {
+  "game_name": "Functionigma Game",
+  "description": "Functionigma Game",
+  "main_game": "Functionigma Game",
+  "players": 1,
+  "image": "none",
+  "languages": [
+    "en"
+  ],
+  "benchmark": [],
+  "game_path": "E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\clemgame-template\\functionigma"
+}
+2026-01-10 21:34:35,410 - clemcore.backends.model_registry - WARNING - Package lookup failed with exception: 'charmap' codec can't decode byte 0x81 in position 128269: character maps to <undefined>
+2026-01-10 21:34:35,411 - clemcore.cli - INFO - Found registered model spec that unifies with {"model_name":"Qwen3-VL-30B-A3B-Thinking"} -> {'model_name': 'Qwen3-VL-30B-A3B-Thinking', 'backend': 'openai_compatible', 'context_size': '8k', 'languages': ['en', 'zh'], 'license': {'name': 'Meta', 'url': 'https://www.llama.com/llama3/license/'}, 'lookup_source': 'E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\model_registry.json', 'model_config': {}, 'model_id': 'Qwen/Qwen3-VL-30B-A3B-Thinking-FP8', 'open_weight': True, 'parameters': '30B', 'release_date': '2024-04-18'}
+2026-01-10 21:34:35,411 - clemcore.cli - INFO - Found registry entry for backend openai_compatible -> {'backend': 'openai_compatible', 'file_name': 'openai_compatible_api.py', 'file_path': 'C:\\Users\\mohiu\\anaconda3\\envs\\IM_Functionigma\\Lib\\site-packages\\clemcore\\backends\\openai_compatible_api.py', 'lookup_source': 'packaged'}
+2026-01-10 21:34:35,411 - clemcore.cli - INFO - Dynamically import backend openai_compatible
+2026-01-10 21:34:36,799 - clemcore.cli - INFO - Successfully loaded Qwen3-VL-30B-A3B-Thinking model
+2026-01-10 21:34:36,799 - clemcore.cli - INFO - Loading models took: 0:00:01.388734
+2026-01-10 21:34:36,800 - clemcore.run - INFO - Loading game benchmark for Functionigma Game
+2026-01-10 21:34:36,821 - clemcore.run - INFO - Loading game benchmark for Functionigma Game took: 0:00:00.020399
+2026-01-10 21:34:36,821 - clemcore.cli - INFO - Running Functionigma Game (models=[<OpenAIModel name='Qwen3-VL-30B-A3B-Thinking' object at 0x18d84e5b310>])
+2026-01-10 21:34:36,841 - clemcore.run - INFO - Prepared instance queue for Functionigma Game using 3 experiments ['python_easy', 'python_medium', 'python_hard'] and 2 instances in total.
+2026-01-10 21:34:36,843 - clemcore.run - INFO - Fallback to sequential because not all models support batching: models=[<OpenAIModel name='Qwen3-VL-30B-A3B-Thinking' object at 0x18d84e5b310>], support=[False]
+2026-01-10 21:34:36,843 - clemcore.run - INFO - Start sequential runner for Functionigma Game with models=[Qwen3-VL-30B-A3B-Thinking] (batch_size=1)
+2026-01-10 21:34:37,832 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v2/chat/completions "HTTP/1.1 405 Method Not Allowed"
+2026-01-10 21:34:37,832 - clemcore.backends.openai_api - WARNING - Error code: 405, retrying in 90 seconds...
+2026-01-10 21:34:42,931 - clemcore.cli - INFO - clem run took: 0:00:07.534589
+2026-01-10 21:35:13,121 - clemcore.cli - INFO - Found '1' game matching the game_selector="Functionigma Game"
+2026-01-10 21:35:13,121 - clemcore.cli - INFO - {
+  "game_name": "Functionigma Game",
+  "description": "Functionigma Game",
+  "main_game": "Functionigma Game",
+  "players": 1,
+  "image": "none",
+  "languages": [
+    "en"
+  ],
+  "benchmark": [],
+  "game_path": "E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\clemgame-template\\functionigma"
+}
+2026-01-10 21:35:13,121 - clemcore.backends.model_registry - WARNING - Package lookup failed with exception: 'charmap' codec can't decode byte 0x81 in position 128269: character maps to <undefined>
+2026-01-10 21:35:13,121 - clemcore.cli - INFO - Found registered model spec that unifies with {"model_name":"Qwen3-VL-30B-A3B-Thinking"} -> {'model_name': 'Qwen3-VL-30B-A3B-Thinking', 'backend': 'openai_compatible', 'context_size': '8k', 'languages': ['en', 'zh'], 'license': {'name': 'Meta', 'url': 'https://www.llama.com/llama3/license/'}, 'lookup_source': 'E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\model_registry.json', 'model_config': {}, 'model_id': 'Qwen/Qwen3-VL-30B-A3B-Thinking-FP8', 'open_weight': True, 'parameters': '30B', 'release_date': '2024-04-18'}
+2026-01-10 21:35:13,121 - clemcore.cli - INFO - Found registry entry for backend openai_compatible -> {'backend': 'openai_compatible', 'file_name': 'openai_compatible_api.py', 'file_path': 'C:\\Users\\mohiu\\anaconda3\\envs\\IM_Functionigma\\Lib\\site-packages\\clemcore\\backends\\openai_compatible_api.py', 'lookup_source': 'packaged'}
+2026-01-10 21:35:13,121 - clemcore.cli - INFO - Dynamically import backend openai_compatible
+2026-01-10 21:35:14,077 - clemcore.cli - INFO - Successfully loaded Qwen3-VL-30B-A3B-Thinking model
+2026-01-10 21:35:14,077 - clemcore.cli - INFO - Loading models took: 0:00:00.956131
+2026-01-10 21:35:14,077 - clemcore.run - INFO - Loading game benchmark for Functionigma Game
+2026-01-10 21:35:14,086 - clemcore.run - INFO - Loading game benchmark for Functionigma Game took: 0:00:00.008943
+2026-01-10 21:35:14,086 - clemcore.cli - INFO - Running Functionigma Game (models=[<OpenAIModel name='Qwen3-VL-30B-A3B-Thinking' object at 0x21a8225b610>])
+2026-01-10 21:35:14,086 - clemcore.run - INFO - Prepared instance queue for Functionigma Game using 3 experiments ['python_easy', 'python_medium', 'python_hard'] and 2 instances in total.
+2026-01-10 21:35:14,088 - clemcore.run - INFO - Fallback to sequential because not all models support batching: models=[<OpenAIModel name='Qwen3-VL-30B-A3B-Thinking' object at 0x21a8225b610>], support=[False]
+2026-01-10 21:35:14,088 - clemcore.run - INFO - Start sequential runner for Functionigma Game with models=[Qwen3-VL-30B-A3B-Thinking] (batch_size=1)
+2026-01-10 21:35:15,526 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v2/chat/completions "HTTP/1.1 405 Method Not Allowed"
+2026-01-10 21:35:15,527 - clemcore.backends.openai_api - WARNING - Error code: 405, retrying in 90 seconds...
+2026-01-10 21:35:34,631 - clemcore.cli - INFO - clem run took: 0:00:21.512544
+2026-01-10 21:35:39,154 - clemcore.cli - INFO - Found '1' game matching the game_selector="Functionigma Game"
+2026-01-10 21:35:39,154 - clemcore.cli - INFO - {
+  "game_name": "Functionigma Game",
+  "description": "Functionigma Game",
+  "main_game": "Functionigma Game",
+  "players": 1,
+  "image": "none",
+  "languages": [
+    "en"
+  ],
+  "benchmark": [],
+  "game_path": "E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\clemgame-template\\functionigma"
+}
+2026-01-10 21:35:39,154 - clemcore.backends.model_registry - WARNING - Package lookup failed with exception: 'charmap' codec can't decode byte 0x81 in position 128269: character maps to <undefined>
+2026-01-10 21:35:39,154 - clemcore.cli - INFO - Found registered model spec that unifies with {"model_name":"Qwen3-VL-30B-A3B-Thinking"} -> {'model_name': 'Qwen3-VL-30B-A3B-Thinking', 'backend': 'openai_compatible', 'context_size': '8k', 'languages': ['en', 'zh'], 'license': {'name': 'Meta', 'url': 'https://www.llama.com/llama3/license/'}, 'lookup_source': 'E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\model_registry.json', 'model_config': {}, 'model_id': 'Qwen/Qwen3-VL-30B-A3B-Thinking-FP8', 'open_weight': True, 'parameters': '30B', 'release_date': '2024-04-18'}
+2026-01-10 21:35:39,154 - clemcore.cli - INFO - Found registry entry for backend openai_compatible -> {'backend': 'openai_compatible', 'file_name': 'openai_compatible_api.py', 'file_path': 'C:\\Users\\mohiu\\anaconda3\\envs\\IM_Functionigma\\Lib\\site-packages\\clemcore\\backends\\openai_compatible_api.py', 'lookup_source': 'packaged'}
+2026-01-10 21:35:39,154 - clemcore.cli - INFO - Dynamically import backend openai_compatible
+2026-01-10 21:35:40,053 - clemcore.cli - INFO - Successfully loaded Qwen3-VL-30B-A3B-Thinking model
+2026-01-10 21:35:40,053 - clemcore.cli - INFO - Loading models took: 0:00:00.898890
+2026-01-10 21:35:40,067 - clemcore.run - INFO - Loading game benchmark for Functionigma Game
+2026-01-10 21:35:40,067 - clemcore.run - INFO - Loading game benchmark for Functionigma Game took: 0:00:00
+2026-01-10 21:35:40,067 - clemcore.cli - INFO - Running Functionigma Game (models=[<OpenAIModel name='Qwen3-VL-30B-A3B-Thinking' object at 0x227bef8b550>])
+2026-01-10 21:35:40,072 - clemcore.run - INFO - Prepared instance queue for Functionigma Game using 3 experiments ['python_easy', 'python_medium', 'python_hard'] and 2 instances in total.
+2026-01-10 21:35:40,074 - clemcore.run - INFO - Fallback to sequential because not all models support batching: models=[<OpenAIModel name='Qwen3-VL-30B-A3B-Thinking' object at 0x227bef8b550>], support=[False]
+2026-01-10 21:35:40,074 - clemcore.run - INFO - Start sequential runner for Functionigma Game with models=[Qwen3-VL-30B-A3B-Thinking] (batch_size=1)
+2026-01-10 21:35:40,639 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v2/chat/completions "HTTP/1.1 405 Method Not Allowed"
+2026-01-10 21:35:40,641 - clemcore.backends.openai_api - WARNING - Error code: 405, retrying in 90 seconds...
+2026-01-10 21:35:43,178 - clemcore.cli - INFO - clem run took: 0:00:04.024089
+2026-01-10 21:37:03,391 - clemcore.cli - INFO - Found '1' game matching the game_selector="Functionigma Game"
+2026-01-10 21:37:03,391 - clemcore.cli - INFO - {
+  "game_name": "Functionigma Game",
+  "description": "Functionigma Game",
+  "main_game": "Functionigma Game",
+  "players": 1,
+  "image": "none",
+  "languages": [
+    "en"
+  ],
+  "benchmark": [],
+  "game_path": "E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\clemgame-template\\functionigma"
+}
+2026-01-10 21:37:03,401 - clemcore.backends.model_registry - WARNING - Package lookup failed with exception: 'charmap' codec can't decode byte 0x81 in position 128269: character maps to <undefined>
+2026-01-10 21:37:03,401 - clemcore.cli - INFO - clem run took: 0:00:00.009526
+2026-01-10 21:37:08,720 - clemcore.cli - INFO - Found '1' game matching the game_selector="Functionigma Game"
+2026-01-10 21:37:08,720 - clemcore.cli - INFO - {
+  "game_name": "Functionigma Game",
+  "description": "Functionigma Game",
+  "main_game": "Functionigma Game",
+  "players": 1,
+  "image": "none",
+  "languages": [
+    "en"
+  ],
+  "benchmark": [],
+  "game_path": "E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\clemgame-template\\functionigma"
+}
+2026-01-10 21:37:08,720 - clemcore.backends.model_registry - WARNING - Package lookup failed with exception: 'charmap' codec can't decode byte 0x81 in position 128269: character maps to <undefined>
+2026-01-10 21:37:08,720 - clemcore.cli - INFO - Found registered model spec that unifies with {"model_name":"Qwen3-VL-30B-A3B-Thinking"} -> {'model_name': 'Qwen3-VL-30B-A3B-Thinking', 'backend': 'openai_compatible', 'context_size': '8k', 'languages': ['en', 'zh'], 'license': {'name': 'Meta', 'url': 'https://www.llama.com/llama3/license/'}, 'lookup_source': 'E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\model_registry.json', 'model_config': {}, 'model_id': 'Qwen/Qwen3-VL-30B-A3B-Thinking-FP8', 'open_weight': True, 'parameters': '30B', 'release_date': '2024-04-18'}
+2026-01-10 21:37:08,720 - clemcore.cli - INFO - Found registry entry for backend openai_compatible -> {'backend': 'openai_compatible', 'file_name': 'openai_compatible_api.py', 'file_path': 'C:\\Users\\mohiu\\anaconda3\\envs\\IM_Functionigma\\Lib\\site-packages\\clemcore\\backends\\openai_compatible_api.py', 'lookup_source': 'packaged'}
+2026-01-10 21:37:08,720 - clemcore.cli - INFO - Dynamically import backend openai_compatible
+2026-01-10 21:37:09,624 - clemcore.cli - INFO - Successfully loaded Qwen3-VL-30B-A3B-Thinking model
+2026-01-10 21:37:09,624 - clemcore.cli - INFO - Loading models took: 0:00:00.904142
+2026-01-10 21:37:09,624 - clemcore.run - INFO - Loading game benchmark for Functionigma Game
+2026-01-10 21:37:09,631 - clemcore.run - INFO - Loading game benchmark for Functionigma Game took: 0:00:00.006555
+2026-01-10 21:37:09,631 - clemcore.cli - INFO - Running Functionigma Game (models=[<OpenAIModel name='Qwen3-VL-30B-A3B-Thinking' object at 0x1f490a0bb90>])
+2026-01-10 21:37:09,631 - clemcore.run - INFO - Prepared instance queue for Functionigma Game using 3 experiments ['python_easy', 'python_medium', 'python_hard'] and 2 instances in total.
+2026-01-10 21:37:09,631 - clemcore.run - INFO - Fallback to sequential because not all models support batching: models=[<OpenAIModel name='Qwen3-VL-30B-A3B-Thinking' object at 0x1f490a0bb90>], support=[False]
+2026-01-10 21:37:09,631 - clemcore.run - INFO - Start sequential runner for Functionigma Game with models=[Qwen3-VL-30B-A3B-Thinking] (batch_size=1)
+2026-01-10 21:37:10,203 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v2/chat/completions "HTTP/1.1 405 Method Not Allowed"
+2026-01-10 21:37:10,203 - clemcore.backends.openai_api - WARNING - Error code: 405, retrying in 90 seconds...
+2026-01-10 21:37:12,079 - clemcore.cli - INFO - clem run took: 0:00:03.358827
+2026-01-10 21:38:23,213 - clemcore.cli - INFO - Found '1' game matching the game_selector="Functionigma Game"
+2026-01-10 21:38:23,213 - clemcore.cli - INFO - {
+  "game_name": "Functionigma Game",
+  "description": "Functionigma Game",
+  "main_game": "Functionigma Game",
+  "players": 1,
+  "image": "none",
+  "languages": [
+    "en"
+  ],
+  "benchmark": [],
+  "game_path": "E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\clemgame-template\\functionigma"
+}
+2026-01-10 21:38:23,217 - clemcore.backends.model_registry - WARNING - Package lookup failed with exception: 'charmap' codec can't decode byte 0x81 in position 128269: character maps to <undefined>
+2026-01-10 21:38:23,217 - clemcore.cli - INFO - Found registered model spec that unifies with {"model_name":"Qwen3-VL-30B-A3B-Thinking"} -> {'model_name': 'Qwen3-VL-30B-A3B-Thinking', 'backend': 'openai_compatible', 'context_size': '8k', 'languages': ['en', 'zh'], 'license': {'name': 'Meta', 'url': 'https://www.llama.com/llama3/license/'}, 'lookup_source': 'E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\model_registry.json', 'model_config': {}, 'model_id': 'Qwen/Qwen3-VL-30B-A3B-Thinking-FP8', 'open_weight': True, 'parameters': '30B', 'release_date': '2024-04-18'}
+2026-01-10 21:38:23,217 - clemcore.cli - INFO - Found registry entry for backend openai_compatible -> {'backend': 'openai_compatible', 'file_name': 'openai_compatible_api.py', 'file_path': 'C:\\Users\\mohiu\\anaconda3\\envs\\IM_Functionigma\\Lib\\site-packages\\clemcore\\backends\\openai_compatible_api.py', 'lookup_source': 'packaged'}
+2026-01-10 21:38:23,217 - clemcore.cli - INFO - Dynamically import backend openai_compatible
+2026-01-10 21:38:24,117 - clemcore.cli - INFO - Successfully loaded Qwen3-VL-30B-A3B-Thinking model
+2026-01-10 21:38:24,117 - clemcore.cli - INFO - Loading models took: 0:00:00.899809
+2026-01-10 21:38:24,138 - clemcore.run - INFO - Loading game benchmark for Functionigma Game
+2026-01-10 21:38:24,138 - clemcore.run - INFO - Loading game benchmark for Functionigma Game took: 0:00:00
+2026-01-10 21:38:24,138 - clemcore.cli - INFO - Running Functionigma Game (models=[<OpenAIModel name='Qwen3-VL-30B-A3B-Thinking' object at 0x18b011c7290>])
+2026-01-10 21:38:24,138 - clemcore.run - INFO - Prepared instance queue for Functionigma Game using 3 experiments ['python_easy', 'python_medium', 'python_hard'] and 2 instances in total.
+2026-01-10 21:38:24,146 - clemcore.run - INFO - Fallback to sequential because not all models support batching: models=[<OpenAIModel name='Qwen3-VL-30B-A3B-Thinking' object at 0x18b011c7290>], support=[False]
+2026-01-10 21:38:24,146 - clemcore.run - INFO - Start sequential runner for Functionigma Game with models=[Qwen3-VL-30B-A3B-Thinking] (batch_size=1)
+2026-01-10 21:38:24,575 - httpx - INFO - HTTP Request: POST https://jarvis.ling.uni-potsdam.de/clp-chat/api/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-01-10 21:38:24,575 - clemcore.backends.openai_api - WARNING - Error code: 401 - {'error': 'Unauthorized'}, retrying in 90 seconds...
+2026-01-10 21:38:42,720 - clemcore.cli - INFO - clem run took: 0:00:19.506833
+2026-01-10 21:39:54,433 - clemcore.cli - INFO - Found '1' game matching the game_selector="Functionigma Game"
+2026-01-10 21:39:54,433 - clemcore.cli - INFO - {
+  "game_name": "Functionigma Game",
+  "description": "Functionigma Game",
+  "main_game": "Functionigma Game",
+  "players": 1,
+  "image": "none",
+  "languages": [
+    "en"
+  ],
+  "benchmark": [],
+  "game_path": "E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\clemgame-template\\functionigma"
+}
+2026-01-10 21:39:54,433 - clemcore.backends.model_registry - WARNING - Package lookup failed with exception: 'charmap' codec can't decode byte 0x81 in position 128269: character maps to <undefined>
+2026-01-10 21:39:54,433 - clemcore.cli - INFO - Found registered model spec that unifies with {"model_name":"Qwen3-VL-30B-A3B-Thinking"} -> {'model_name': 'Qwen3-VL-30B-A3B-Thinking', 'backend': 'openai_compatible', 'context_size': '8k', 'languages': ['en', 'zh'], 'license': {'name': 'Meta', 'url': 'https://www.llama.com/llama3/license/'}, 'lookup_source': 'E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\model_registry.json', 'model_config': {}, 'model_id': 'Qwen/Qwen3-VL-30B-A3B-Thinking-FP8', 'open_weight': True, 'parameters': '30B', 'release_date': '2024-04-18'}
+2026-01-10 21:39:54,433 - clemcore.cli - INFO - Found registry entry for backend openai_compatible -> {'backend': 'openai_compatible', 'file_name': 'openai_compatible_api.py', 'file_path': 'C:\\Users\\mohiu\\anaconda3\\envs\\IM_Functionigma\\Lib\\site-packages\\clemcore\\backends\\openai_compatible_api.py', 'lookup_source': 'packaged'}
+2026-01-10 21:39:54,433 - clemcore.cli - INFO - Dynamically import backend openai_compatible
+2026-01-10 21:39:55,329 - clemcore.cli - INFO - Successfully loaded Qwen3-VL-30B-A3B-Thinking model
+2026-01-10 21:39:55,329 - clemcore.cli - INFO - Loading models took: 0:00:00.895829
+2026-01-10 21:39:55,344 - clemcore.run - INFO - Loading game benchmark for Functionigma Game
+2026-01-10 21:39:55,350 - clemcore.run - INFO - Loading game benchmark for Functionigma Game took: 0:00:00.006096
+2026-01-10 21:39:55,350 - clemcore.cli - INFO - Running Functionigma Game (models=[<OpenAIModel name='Qwen3-VL-30B-A3B-Thinking' object at 0x213c88cbc50>])
+2026-01-10 21:39:55,350 - clemcore.run - INFO - Prepared instance queue for Functionigma Game using 3 experiments ['python_easy', 'python_medium', 'python_hard'] and 2 instances in total.
+2026-01-10 21:39:55,352 - clemcore.run - INFO - Fallback to sequential because not all models support batching: models=[<OpenAIModel name='Qwen3-VL-30B-A3B-Thinking' object at 0x213c88cbc50>], support=[False]
+2026-01-10 21:39:55,352 - clemcore.run - INFO - Start sequential runner for Functionigma Game with models=[Qwen3-VL-30B-A3B-Thinking] (batch_size=1)
+2026-01-10 21:39:58,063 - httpx - INFO - HTTP Request: POST https://jarvis.ling.uni-potsdam.de/clp-chat/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-10 21:40:00,229 - httpx - INFO - HTTP Request: POST https://jarvis.ling.uni-potsdam.de/clp-chat/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-10 21:40:02,533 - httpx - INFO - HTTP Request: POST https://jarvis.ling.uni-potsdam.de/clp-chat/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-10 21:40:04,926 - httpx - INFO - HTTP Request: POST https://jarvis.ling.uni-potsdam.de/clp-chat/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-10 21:40:07,322 - httpx - INFO - HTTP Request: POST https://jarvis.ling.uni-potsdam.de/clp-chat/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-10 21:40:09,743 - httpx - INFO - HTTP Request: POST https://jarvis.ling.uni-potsdam.de/clp-chat/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-10 21:40:12,175 - httpx - INFO - HTTP Request: POST https://jarvis.ling.uni-potsdam.de/clp-chat/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-10 21:40:14,631 - httpx - INFO - HTTP Request: POST https://jarvis.ling.uni-potsdam.de/clp-chat/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-10 21:40:17,130 - httpx - INFO - HTTP Request: POST https://jarvis.ling.uni-potsdam.de/clp-chat/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-10 21:40:19,664 - httpx - INFO - HTTP Request: POST https://jarvis.ling.uni-potsdam.de/clp-chat/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-10 21:40:22,235 - httpx - INFO - HTTP Request: POST https://jarvis.ling.uni-potsdam.de/clp-chat/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-10 21:40:24,848 - httpx - INFO - HTTP Request: POST https://jarvis.ling.uni-potsdam.de/clp-chat/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-10 21:40:27,453 - httpx - INFO - HTTP Request: POST https://jarvis.ling.uni-potsdam.de/clp-chat/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-10 21:40:30,073 - httpx - INFO - HTTP Request: POST https://jarvis.ling.uni-potsdam.de/clp-chat/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-10 21:40:32,689 - httpx - INFO - HTTP Request: POST https://jarvis.ling.uni-potsdam.de/clp-chat/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-10 21:40:35,322 - httpx - INFO - HTTP Request: POST https://jarvis.ling.uni-potsdam.de/clp-chat/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-10 21:40:37,966 - httpx - INFO - HTTP Request: POST https://jarvis.ling.uni-potsdam.de/clp-chat/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-10 21:40:40,683 - httpx - INFO - HTTP Request: POST https://jarvis.ling.uni-potsdam.de/clp-chat/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-10 21:40:43,417 - httpx - INFO - HTTP Request: POST https://jarvis.ling.uni-potsdam.de/clp-chat/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-10 21:40:46,166 - httpx - INFO - HTTP Request: POST https://jarvis.ling.uni-potsdam.de/clp-chat/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-10 21:40:48,926 - httpx - INFO - HTTP Request: POST https://jarvis.ling.uni-potsdam.de/clp-chat/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-10 21:40:51,686 - httpx - INFO - HTTP Request: POST https://jarvis.ling.uni-potsdam.de/clp-chat/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-10 21:40:54,473 - httpx - INFO - HTTP Request: POST https://jarvis.ling.uni-potsdam.de/clp-chat/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-10 21:40:57,253 - httpx - INFO - HTTP Request: POST https://jarvis.ling.uni-potsdam.de/clp-chat/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-10 21:41:00,054 - httpx - INFO - HTTP Request: POST https://jarvis.ling.uni-potsdam.de/clp-chat/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-10 21:41:02,929 - httpx - INFO - HTTP Request: POST https://jarvis.ling.uni-potsdam.de/clp-chat/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-10 21:41:05,816 - httpx - INFO - HTTP Request: POST https://jarvis.ling.uni-potsdam.de/clp-chat/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-10 21:41:08,715 - httpx - INFO - HTTP Request: POST https://jarvis.ling.uni-potsdam.de/clp-chat/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-10 21:41:11,613 - httpx - INFO - HTTP Request: POST https://jarvis.ling.uni-potsdam.de/clp-chat/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-10 21:41:14,530 - httpx - INFO - HTTP Request: POST https://jarvis.ling.uni-potsdam.de/clp-chat/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-10 21:41:17,557 - httpx - INFO - HTTP Request: POST https://jarvis.ling.uni-potsdam.de/clp-chat/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-10 21:41:20,498 - httpx - INFO - HTTP Request: POST https://jarvis.ling.uni-potsdam.de/clp-chat/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-10 21:41:23,446 - httpx - INFO - HTTP Request: POST https://jarvis.ling.uni-potsdam.de/clp-chat/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-10 21:41:26,411 - httpx - INFO - HTTP Request: POST https://jarvis.ling.uni-potsdam.de/clp-chat/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-10 21:41:29,450 - httpx - INFO - HTTP Request: POST https://jarvis.ling.uni-potsdam.de/clp-chat/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-10 21:41:32,510 - httpx - INFO - HTTP Request: POST https://jarvis.ling.uni-potsdam.de/clp-chat/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-10 21:41:35,571 - httpx - INFO - HTTP Request: POST https://jarvis.ling.uni-potsdam.de/clp-chat/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-10 21:41:38,644 - httpx - INFO - HTTP Request: POST https://jarvis.ling.uni-potsdam.de/clp-chat/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-01-10 21:41:41,719 - clemcore.cli - INFO - clem run took: 0:01:47.286526
+2026-01-10 21:42:22,069 - clemcore.cli - INFO - Found '1' game matching the game_selector="Functionigma Game"
+2026-01-10 21:42:22,069 - clemcore.cli - INFO - {
+  "game_name": "Functionigma Game",
+  "description": "Functionigma Game",
+  "main_game": "Functionigma Game",
+  "players": 1,
+  "image": "none",
+  "languages": [
+    "en"
+  ],
+  "benchmark": [],
+  "game_path": "E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\clemgame-template\\functionigma"
+}
+2026-01-10 21:42:22,069 - clemcore.backends.model_registry - WARNING - Package lookup failed with exception: 'charmap' codec can't decode byte 0x81 in position 128269: character maps to <undefined>
+2026-01-10 21:42:22,069 - clemcore.cli - INFO - Found registered model spec that unifies with {"model_name":"command-a-03-2025"} -> {'model_name': 'command-a-03-2025', 'backend': 'cohere', 'lookup_source': 'E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\model_registry.json', 'model_id': 'command-a-03-2025'}
+2026-01-10 21:42:22,069 - clemcore.cli - INFO - Found registry entry for backend cohere -> {'backend': 'cohere', 'file_name': 'cohere_api.py', 'file_path': 'C:\\Users\\mohiu\\anaconda3\\envs\\IM_Functionigma\\Lib\\site-packages\\clemcore\\backends\\cohere_api.py', 'lookup_source': 'packaged'}
+2026-01-10 21:42:22,069 - clemcore.cli - INFO - Dynamically import backend cohere
+2026-01-10 21:42:23,593 - clemcore.cli - INFO - Successfully loaded command-a-03-2025 model
+2026-01-10 21:42:23,593 - clemcore.cli - INFO - Loading models took: 0:00:01.524150
+2026-01-10 21:42:23,597 - clemcore.run - INFO - Loading game benchmark for Functionigma Game
+2026-01-10 21:42:23,598 - clemcore.run - INFO - Loading game benchmark for Functionigma Game took: 0:00:00.001625
+2026-01-10 21:42:23,598 - clemcore.cli - INFO - Running Functionigma Game (models=[<CohereModel name='command-a-03-2025' object at 0x1b7ded65810>])
+2026-01-10 21:42:23,598 - clemcore.run - INFO - Prepared instance queue for Functionigma Game using 3 experiments ['python_easy', 'python_medium', 'python_hard'] and 2 instances in total.
+2026-01-10 21:42:23,598 - clemcore.run - INFO - Fallback to sequential because not all models support batching: models=[<CohereModel name='command-a-03-2025' object at 0x1b7ded65810>], support=[False]
+2026-01-10 21:42:23,598 - clemcore.run - INFO - Start sequential runner for Functionigma Game with models=[command-a-03-2025] (batch_size=1)
+2026-01-10 21:42:24,094 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2026-01-10 21:42:24,906 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2026-01-10 21:42:25,397 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2026-01-10 21:42:25,757 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2026-01-10 21:42:28,977 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2026-01-10 21:42:29,490 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2026-01-10 21:42:29,831 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2026-01-10 21:42:30,213 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2026-01-10 21:42:34,821 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2026-01-10 21:42:34,832 - clemcore.cli - INFO - Running Functionigma Game took: 0:00:11.233232
+2026-01-10 21:42:34,832 - clemcore.cli - INFO - Running all benchmarks took: 0:00:11.234857
+2026-01-10 21:42:34,832 - clemcore.cli - INFO - clem run took: 0:00:12.767195
+2026-01-10 21:43:12,021 - clemcore.cli - INFO - Transcribing game interactions that match game_selector=all
+2026-01-10 21:43:12,021 - clemcore.run - INFO - Found 0 interaction files to transcribe. Games: all
+2026-01-10 21:43:12,031 - clemcore.cli - INFO - Building transcripts took: 0:00:00.010433
+2026-01-10 21:57:52,714 - clemcore.cli - INFO - Transcribing game interactions that match game_selector=all
+2026-01-10 21:57:52,714 - clemcore.run - INFO - Found 0 interaction files to transcribe. Games: all
+2026-01-10 21:57:52,724 - clemcore.cli - INFO - Building transcripts took: 0:00:00.010261
+2026-01-10 21:57:59,439 - clemcore.cli - INFO - Found '1' game matching the game_selector="Functionigma Game"
+2026-01-10 21:57:59,439 - clemcore.cli - INFO - {
+  "game_name": "Functionigma Game",
+  "description": "Functionigma Game",
+  "main_game": "Functionigma Game",
+  "players": 1,
+  "image": "none",
+  "languages": [
+    "en"
+  ],
+  "benchmark": [],
+  "game_path": "E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\clemgame-template\\functionigma"
+}
+2026-01-10 21:57:59,439 - clemcore.backends.model_registry - WARNING - Package lookup failed with exception: 'charmap' codec can't decode byte 0x81 in position 128269: character maps to <undefined>
+2026-01-10 21:57:59,439 - clemcore.cli - INFO - Found registered model spec that unifies with {"model_name":"command-a-03-2025"} -> {'model_name': 'command-a-03-2025', 'backend': 'cohere', 'lookup_source': 'E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\model_registry.json', 'model_id': 'command-a-03-2025'}
+2026-01-10 21:57:59,439 - clemcore.cli - INFO - Found registry entry for backend cohere -> {'backend': 'cohere', 'file_name': 'cohere_api.py', 'file_path': 'C:\\Users\\mohiu\\anaconda3\\envs\\IM_Functionigma\\Lib\\site-packages\\clemcore\\backends\\cohere_api.py', 'lookup_source': 'packaged'}
+2026-01-10 21:57:59,439 - clemcore.cli - INFO - Dynamically import backend cohere
+2026-01-10 21:58:00,824 - clemcore.cli - INFO - Successfully loaded command-a-03-2025 model
+2026-01-10 21:58:00,824 - clemcore.cli - INFO - Loading models took: 0:00:01.385776
+2026-01-10 21:58:00,834 - clemcore.run - INFO - Loading game benchmark for Functionigma Game
+2026-01-10 21:58:00,838 - clemcore.run - INFO - Loading game benchmark for Functionigma Game took: 0:00:00.003243
+2026-01-10 21:58:00,838 - clemcore.cli - INFO - Running Functionigma Game (models=[<CohereModel name='command-a-03-2025' object at 0x25d03795d90>])
+2026-01-10 21:58:00,838 - clemcore.run - INFO - Prepared instance queue for Functionigma Game using 3 experiments ['python_easy', 'python_medium', 'python_hard'] and 2 instances in total.
+2026-01-10 21:58:00,838 - clemcore.run - INFO - Fallback to sequential because not all models support batching: models=[<CohereModel name='command-a-03-2025' object at 0x25d03795d90>], support=[False]
+2026-01-10 21:58:00,838 - clemcore.run - INFO - Start sequential runner for Functionigma Game with models=[command-a-03-2025] (batch_size=1)
+2026-01-10 21:58:01,278 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2026-01-10 21:58:01,644 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2026-01-10 21:58:02,001 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2026-01-10 21:58:02,390 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2026-01-10 21:58:06,845 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2026-01-10 21:58:08,397 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2026-01-10 21:58:08,977 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2026-01-10 21:58:09,349 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2026-01-10 21:58:11,104 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2026-01-10 21:58:11,114 - clemcore.cli - INFO - Running Functionigma Game took: 0:00:10.276441
+2026-01-10 21:58:11,114 - clemcore.cli - INFO - Running all benchmarks took: 0:00:10.279684
+2026-01-10 21:58:11,114 - clemcore.cli - INFO - clem run took: 0:00:11.675588
+2026-01-10 22:00:28,742 - clemcore.cli - INFO - Found '1' game matching the game_selector="Functionigma Game"
+2026-01-10 22:00:28,746 - clemcore.cli - INFO - {
+  "game_name": "Functionigma Game",
+  "description": "Functionigma Game",
+  "main_game": "Functionigma Game",
+  "players": 1,
+  "image": "none",
+  "languages": [
+    "en"
+  ],
+  "benchmark": [],
+  "game_path": "E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\clemgame-template\\functionigma"
+}
+2026-01-10 22:00:28,746 - clemcore.backends.model_registry - WARNING - Package lookup failed with exception: 'charmap' codec can't decode byte 0x81 in position 128269: character maps to <undefined>
+2026-01-10 22:00:28,746 - clemcore.cli - INFO - Found registered model spec that unifies with {"model_name":"command-a-03-2025"} -> {'model_name': 'command-a-03-2025', 'backend': 'cohere', 'lookup_source': 'E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\model_registry.json', 'model_id': 'command-a-03-2025'}
+2026-01-10 22:00:28,746 - clemcore.cli - INFO - Found registry entry for backend cohere -> {'backend': 'cohere', 'file_name': 'cohere_api.py', 'file_path': 'C:\\Users\\mohiu\\anaconda3\\envs\\IM_Functionigma\\Lib\\site-packages\\clemcore\\backends\\cohere_api.py', 'lookup_source': 'packaged'}
+2026-01-10 22:00:28,746 - clemcore.cli - INFO - Dynamically import backend cohere
+2026-01-10 22:00:30,058 - clemcore.cli - INFO - Successfully loaded command-a-03-2025 model
+2026-01-10 22:00:30,061 - clemcore.cli - INFO - Loading models took: 0:00:01.314821
+2026-01-10 22:00:30,061 - clemcore.run - INFO - Loading game benchmark for Functionigma Game
+2026-01-10 22:00:30,061 - clemcore.run - INFO - Loading game benchmark for Functionigma Game took: 0:00:00
+2026-01-10 22:00:30,061 - clemcore.cli - INFO - Running Functionigma Game (models=[<CohereModel name='command-a-03-2025' object at 0x22b20947e10>])
+2026-01-10 22:00:30,061 - clemcore.run - INFO - Prepared instance queue for Functionigma Game using 3 experiments ['python_easy', 'python_medium', 'python_hard'] and 2 instances in total.
+2026-01-10 22:00:30,069 - clemcore.run - INFO - Fallback to sequential because not all models support batching: models=[<CohereModel name='command-a-03-2025' object at 0x22b20947e10>], support=[False]
+2026-01-10 22:00:30,069 - clemcore.run - INFO - Start sequential runner for Functionigma Game with models=[command-a-03-2025] (batch_size=1)
+2026-01-10 22:00:30,523 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2026-01-10 22:00:30,864 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2026-01-10 22:00:31,191 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2026-01-10 22:00:31,837 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2026-01-10 22:00:34,920 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2026-01-10 22:00:37,275 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2026-01-10 22:00:37,647 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2026-01-10 22:00:38,657 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2026-01-10 22:00:40,464 - httpx - INFO - HTTP Request: POST https://api.cohere.com/v1/chat "HTTP/1.1 200 OK"
+2026-01-10 22:00:40,478 - clemcore.cli - INFO - Running Functionigma Game took: 0:00:10.417069
+2026-01-10 22:00:40,478 - clemcore.cli - INFO - Running all benchmarks took: 0:00:10.417069
+2026-01-10 22:00:40,478 - clemcore.cli - INFO - clem run took: 0:00:11.736161

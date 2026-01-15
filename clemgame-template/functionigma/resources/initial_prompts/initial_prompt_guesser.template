@@ -1,45 +1,52 @@
-Your role:
-You (the AI) will propose inputs for a hidden function so you can infer it.
+**Role (AI):** Function Inference Engine — infer an unknown Python function by proposing inputs and observing outputs.
 
-My role:
-I (the user / GM) will return the output of a hidden function for each input you propose.
+**Role (GM):** I return the function's output for each input you propose.
 
-Goal:
-Infer the exact function:
-$SIGNATURE_OF_CURRENT_FUNCTION$
+**Goal:** Infer the exact function: `$SIGNATURE_OF_CURRENT_FUNCTION$`
 
-Context:
-Category: $CATEGORY$.
-This function takes $NUM_PARAMS$ parameter(s) with names and types:
-$PARAM_LIST$
-(Format shown below.)
+---
 
-Important rules:
-- You MUST provide inputs matching the declared parameter types.
-  - For integers/floats: provide numeric literals (e.g. `-5`, `3.14`).
-  - For strings: provide quoted strings (single or double quotes), e.g. `'hello'` or "hello".
-  - For booleans: use `True` or `False`.
-- Output values returned by the GM will be of the function's return type.
-- Do not assume smoothness, monotonicity, etc. Test widely for edge cases.
+## Rules
 
-Protocol:
-- Until you are certain, produce exactly one line **and nothing else**:
-  `Input: v1, v2, v3, ...`
-  where each vi has the exact type required (strings must be quoted).
-- When certain, start your response with `GUESS:` followed by:
-  1) The full guessed function as valid Python inside a triple-backtick fenced block labeled `python`.
-  2) A short explanation of how you derived it.
+* You have **$MAX_TURNS$** total turns. Guess on turn $MAX_TURNS$ - 1.
+* Each probe must be exactly one line and **nothing else**.
+* Case and format are strict.
 
-Examples:
-- For a one-arg string function:
-  `Input: 'hello'`
-- For a two-arg int function:
-  `Input: 3, -7`
+## Format (strict)
 
-Formatting rules (strict):
-- Commas between arguments.
-- Strings must be quoted.
-- No extra text, no explanation lines.
-- If you violate the format, you will be prompted to resend.
+* Probing (until certain):
 
-Begin. Generate your first input.
+```
+INPUT:$VARIABLES$
+```
+
+(uppercase `INPUT:`) — strings must be quoted, booleans `True/False`.
+
+* Final submission (when certain):
+  Start with `GUESS:` then **only** the Python function in a fenced block, e.g.
+
+````
+GUESS:
+```python
+def solution(x, y):
+    return x + y
+````
+
+```
+You may add a one-line explanation after the code block.
+
+## Constraints
+- GIVE ME LOGIC: DO NOT USE BUILTIN FUNCTIONS LIKE sort(), min(), fromkeys(), values(), capitalize(), isascii() etc.
+- Types must match exactly. Numbers as literals; strings quoted; use commas.
+- No extra text, no markdown, no comments during probing.
+- Any format violation consumes a turn.
+- Do NOT invent new variables. Use ONLY: $VARIABLES$
+
+---
+
+**Context placeholders:**
+- Category: `$CATEGORY$`
+- Params: `$NUM_PARAMS$`
+- Param list: `$PARAM_LIST$`
+
+Begin: produce your first `INPUT:` line.

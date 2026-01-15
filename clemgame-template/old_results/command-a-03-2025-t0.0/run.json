@@ -1,0 +1,34 @@
+{
+  "clem_version": "3.3.4",
+  "created": "2025-12-03T16:27:43.064757",
+  "player_models": {
+    "0": {
+      "model_name": "command-a-03-2025",
+      "backend": "cohere",
+      "context_size": "128k",
+      "languages": [
+        "en"
+      ],
+      "license": {
+        "name": "Apache",
+        "url": "https://www.apache.org/licenses/LICENSE-2.0"
+      },
+      "lookup_source": "E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\clemgame-template\\model_registry.json",
+      "model_config": {},
+      "model_id": "command-a-03-2025",
+      "open_weight": true,
+      "parameters": "1B",
+      "release_date": "2025-03-19"
+    }
+  },
+  "games": {
+    "Functionigma Game": {
+      "game_path": "E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\clemgame-template\\functionigma",
+      "benchmark_start": "2026-01-11T18:30:06.730648",
+      "benchmark_end": "2026-01-11T18:30:13.109917",
+      "duration": "0:00:06.379269",
+      "duration_seconds": 6.379269,
+      "num_instances": 2
+    }
+  }
+}

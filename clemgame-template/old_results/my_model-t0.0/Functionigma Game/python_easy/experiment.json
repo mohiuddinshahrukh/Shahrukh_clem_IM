@@ -1,0 +1,27 @@
+{
+  "name": "python_easy",
+  "max_turns": 15,
+  "initial_prompt_guesser": "Your role:\nYou (the AI) will generate integer inputs.\n\nMy role:\nI (the user) will return the output of a hidden function for each input.\n\nYour goal:\nInfer the exact function\n$SIGNATURE_OF_CURRENT_FUNCTION$\n\nImportant constraints:\n\nThe function may include thresholds, step changes, integer division behavior, or other non-smooth patterns.\n\nDo not assume the function is smooth, polynomial, monotonic, or elegant.\n\nDo not settle on a final formula until you’ve tested inputs across a wide range (small, large, negative, different boundaries, etc.).\n\nDO NOT PRODUCE ANY OTHER TEXT OTHER THAN YOUR INPUT.\nYOUR INPUT SHOULD BE OF THE FORMAT:\nInput: a, b\n\nYou must request new inputs until you are highly confident.\n\nWhen certain:\nStart your response with\nGUESS:\nState the final function in valid Python.\nThen also state your explanation of getting to this function.\n\nLet’s begin:\nGenerate your first input.",
+  "timestamp": "2025-12-03T16:21:53.994183",
+  "game_name": "Functionigma Game",
+  "player_models": {
+    "0": {
+      "model_name": "my_model",
+      "backend": "openai_compatible",
+      "context_size": "128k",
+      "languages": [
+        "en"
+      ],
+      "license": {
+        "name": "Apache",
+        "url": "https://www.apache.org/licenses/LICENSE-2.0"
+      },
+      "lookup_source": "E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\clemgame-template\\model_registry.json",
+      "model_config": {},
+      "model_id": "my_model",
+      "open_weight": true,
+      "parameters": "1B",
+      "release_date": "2025-03-19"
+    }
+  }
+}

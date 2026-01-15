@@ -6,8 +6,6 @@ from typing import List, Callable, Dict, Any
 class Category(Enum):
     MATH = "math"
     STRING = "string"
-    LIST = 'list'
-    BITWISE = 'bitwise'
 
 
 class Difficulty(Enum):
@@ -49,3 +47,14 @@ def f_add(x: int, y: int) -> int:
 @register(category=Category.STRING, difficulty=Difficulty.EASY)
 def rev_str(x: str) -> str:
     return x[::-1]
+
+
+@register(category=Category.MATH, difficulty=Difficulty.MEDIUM)
+def bubble_sort(xs: List[int]) -> List[int]:
+    n = len(xs)
+    arr = xs.copy()
+    for i in range(n):
+        for j in range(0, n - i - 1):
+            if arr[j] > arr[j + 1]:
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+    return arr

@@ -3,7 +3,7 @@ from dataclasses import dataclass
 import logging
 import numpy as np
 import importlib
-import re
+import inspect
 import sys
 import os
 import json
@@ -64,6 +64,7 @@ class GameState:
     success: bool = False
     failure: bool = False
     aborted: bool = False
+    test_accuracy: float = 0.0
 
 
 class guesser(Player):
@@ -103,19 +104,23 @@ class Functionigma_GameMaster(DialogueGameMaster):
         self.param_names, self.param_types, self.return_type = parse_signature_with_types(self.signature)
         self.num_params = len(self.param_names)
 
-        # category if present (fallback to MATH)
+        # choose given category if present, otherwise -> (fallback to MATH)
         self.category = game_instance.get("category", "MATH")
 
-        # Build parameter list string for prompt
+        # parameter list string for prompt
         param_list_str = ", ".join(
             f"{n}: {t}" for n, t in zip(self.param_names, self.param_types)) if self.param_names else "none"
+        variables = ", ".join(f"<value{i + 1}>" for i in range(self.num_params))
 
         prompt = self.experiments['initial_prompt_guesser']
         prompt = prompt.replace('$SIGNATURE_OF_CURRENT_FUNCTION$', self.signature)
         prompt = prompt.replace('$NUM_PARAMS$', str(self.num_params))
         prompt = prompt.replace('$PARAM_LIST$', param_list_str)
         prompt = prompt.replace('$CATEGORY$', str(self.category))
-        # Register player with initial context
+        prompt = prompt.replace('$MAX_TURNS$', str(self.max_turns))
+        prompt = prompt.replace('$VARIABLES$', variables)
+
+        # add player with initial context
         self.guesser_player = guesser(self.player_models[0])
         self.add_player(self.guesser_player, initial_context=prompt)
         self.state = GameState(max_turns=self.max_turns, function_signature=self.signature,
@@ -126,13 +131,11 @@ class Functionigma_GameMaster(DialogueGameMaster):
     import ast
 
     def check_given_inputs(self, response: str) -> bool:
-        # Accept only responses starting with "Input:"
+        # Accept only responses starting with "INPUT:"
         if not isinstance(response, str):
             return False
         response = response.strip()
-        if not response.startswith("Input:"):
-            return False
-        raw = response[len("Input:"):].strip()
+        raw = response[len("INPUT:"):].strip()
         if self.num_params == 0:
             return raw == ""
         # Split by commas, but allow commas inside strings by using a small parser
@@ -170,7 +173,7 @@ class Functionigma_GameMaster(DialogueGameMaster):
             return False
 
     def extract_given_inputs(self, response: str):
-        raw = response.strip()[len("Input:"):].strip()
+        raw = response.strip()[len("INPUT:"):].strip()
         if self.num_params == 0:
             return []
         # Use ast.literal_eval to safely parse values
@@ -230,54 +233,69 @@ class Functionigma_GameMaster(DialogueGameMaster):
             return "guess", extracted_code
 
         # --- LOGIC TO HANDLE INPUTS ---
-        if self.check_given_inputs(response_str):
-            return "call", response_str
-
-        # --- FAILURE ---
-        raise ParseError("Invalid format. Must be 'Input: x, y' or 'GUESS: ```python ... ```'")
+        if response_str.startswith("INPUT:"):
+            if self.check_given_inputs(response_str):
+                return "call", response_str
+        else:
+            # --- FAILURE ---
+            raise ParseError("Invalid format. Must be 'INPUT: x, y' or 'GUESS: ```python ... ```'")
 
     def _advance_game(self, player: Player, parsed_response: Tuple[str, str]):
         action_type, content = parsed_response
 
-        # LOGIC 1: Player wants to run the function (Test Input)
         if action_type == "call":
             try:
-                # Run the hidden function on the inputs
                 output = self.run_dynamic_function(self.state.function_callable, content)
-                # Send result back to player
                 self.set_context_for(self.guesser_player, f"Function Output: {output}")
             except Exception as e:
-                # Handle cases where the model gives input that crash the function
                 self.set_context_for(self.guesser_player, f"Error executing function: {e}")
 
-        # LOGIC 2: Player wants to solve the puzzle (Make a Guess)
         elif action_type == "guess":
             print(f"Player guessed code:\n{content}")
-
-            # A. Load the Real Function (Ground Truth)
             actual_func = self.load_function("functionigma.functions", self.state.function_callable)
 
-            # B. Validate the Guess (Logic Check)
-            # This runs the random/edge-case tests defined in utils.py
-            is_correct = validate_function_logic(content, actual_func)
+            try:
+                source_lines = inspect.getsource(actual_func).splitlines()
+                clean_lines = [line for line in source_lines if not line.strip().startswith("@")]
+                actual_code = "\n".join(clean_lines).strip()
+            except OSError:
+                actual_code = "# Source code unavailable"
+
+            is_correct, accuracy, feedback = validate_function_logic(content, actual_func)
+
+            # CHANGE: Save accuracy to state so we can log it later
+            self.state.test_accuracy = accuracy
+            self.log_to_self("test_accuracy", accuracy)
 
             if is_correct:
                 print("LOGIC MATCH! Game Won.")
                 self.state.success = True
                 self.log_to_self("outcome", "win")
+                reveal_msg = f"That is correct! \nThe hidden function was:\n\n{actual_code}"
+                self.log_to_self("reveal_function", reveal_msg)
             else:
-                print("LOGIC MISMATCH. Game Lost.")
+                print(f"LOGIC MISMATCH. Accuracy: {accuracy * 100:.1f}%")
                 self.state.success = False
-                self.state.failure = True  # Mark as failure so the game stops
-                self.log_to_self("outcome", "logic_error")
+                self.state.failure = True
+                self.log_to_self("outcome", "loss")
+                reveal_msg = f"That is incorrect. {feedback}\n\nThe hidden function was:\n\n{actual_code}"
+                self.log_to_self("reveal_function", reveal_msg)
 
-            # Log the code they submitted
             self.log_to_self("final_guess_code", content)
 
     def _on_parse_error(self, error: GameError):
         self.success = False
+        print(f"Parse Error: {error}. Consuming a turn.")
+        self.set_context_for(self.guesser_player,
+                             f"Game Violation: {error}\n"
+                             "Please output ONLY 'INPUT: ...' or 'GUESS: ...' without preceding text.")
 
     def _does_game_proceed(self):
+        # 1. Stop if we reached the maximum number of turns
+        if self.current_round >= self.max_turns:
+            return False
+
+        # 2. Stop if the game is already over (Win/Loss/Abort)
         return not (self.state.aborted or self.state.failure or self.state.success)
 
     def compute_turn_score(self):
@@ -289,10 +307,17 @@ class Functionigma_GameMaster(DialogueGameMaster):
         return 0
 
     def _on_after_game(self):
-        if self.success:
-            self.log_key(METRIC_SUCCESS, True)
-        else:
-            self.log_key(METRIC_SUCCESS, False)
+        # Required: Log all three outcome metrics
+        self.log_key(METRIC_ABORTED, self.state.aborted)
+        self.log_key(METRIC_LOSE, self.state.failure)
+        self.log_key(METRIC_SUCCESS, self.state.success)
+
+        # --- FIX 2: MATCH THE SCORER KEY ---
+        # Retrieve from state (defaults to 0.0 if missing)
+        accuracy = getattr(self.state, "test_accuracy", 0.0)
+
+        # Log as "accuracy" because SomeGameScorer looks for: if "accuracy" in interactions:
+        self.log_key("accuracy", accuracy)
 
 
 class SomeGameScorer(GameScorer):
@@ -305,14 +330,23 @@ class SomeGameScorer(GameScorer):
                 self.log_round_score(round_idx, 'response_received', 1)
 
     def compute_episode_scores(self, interactions: Dict):
-        if interactions[METRIC_SUCCESS]:
-            self.log_episode_score(BENCH_SCORE, 100)
-        elif interactions[METRIC_LOSE]:
-            self.log_episode_score(BENCH_SCORE, 0)
-        elif interactions[METRIC_ABORTED]:
+        # 1. Calculate Accuracy (0 to 100) from the log
+        #    If no accuracy logged (e.g. crash), default to 0
+        acc_score = 0.0
+        if "accuracy" in interactions:
+            acc_score = interactions["accuracy"] * 100
+
+        # 2. Log it as a custom metric (visible in raw.csv)
+        self.log_episode_score("accuracy", acc_score)
+
+        # 3. SET MAIN BENCH SCORE TO ACCURACY
+        #    This ensures 'accuracy' appears as the "Quality Score" in results.csv/html
+        #    If the game was aborted (crash), we usually log NaN,
+        #    but if it just failed tests, we log the partial accuracy.
+        if interactions[METRIC_ABORTED]:
             self.log_episode_score(BENCH_SCORE, np.nan)
         else:
-            raise ValueError("Missing outcome value (success, failure, abort) in interactions.json")
+            self.log_episode_score(BENCH_SCORE, acc_score)
 
 
 class SomeGameBenchmark(GameBenchmark):

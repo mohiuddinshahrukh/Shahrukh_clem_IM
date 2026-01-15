@@ -1,8 +1,9 @@
 import re
 import random
 import inspect
-import math
 import string
+from typing import Tuple
+
 from typing import Any, Callable, List, Dict, get_origin, get_args, Optional
 
 
@@ -66,89 +67,122 @@ def generate_random_value(annotation: Any, category: str = None) -> Any:
 
 
 def validate_function_logic(guessed_code: str, actual_callable: Callable, category: str = "general",
-                            num_tests: int = 50) -> bool:
+                            num_tests: int = 50) -> Tuple[bool, float, str]:
     """
-    Dynamically inspects the actual function to generate relevant test inputs,
-    then compiles and tests the guessed code against it.
+    Runs untrusted guessed code inside an ephemeral Docker container.
+    Returns: (success: bool, accuracy: float, feedback: str)
     """
+    import subprocess
+    import json
+    import random
 
-    # --- STEP 1: INSPECT THE TARGET FUNCTION ---
+    random.seed(42)  # deterministic test cases
+
+    # --- STEP 1: Inspect target function ---
     try:
         sig = inspect.signature(actual_callable)
         params = sig.parameters
     except ValueError:
-        print("Error: Could not inspect signature of the actual function.")
-        return False
+        return False, 0.0, "Error: Could not inspect function signature."
 
-    # --- STEP 2: COMPILE THE GUESS ---
-    # We expand the global scope to include common built-ins needed for "Medium" problems
-    local_scope = {}
-    global_scope = {
-        "math": math,
-        "abs": abs, "min": min, "max": max,
-        "len": len, "sum": sum, "sorted": sorted,
-        "range": range, "list": list, "int": int, "str": str, "enumerate": enumerate
+    # --- STEP 2: Generate test cases ---
+    test_cases = []
+    for _ in range(num_tests):
+        args = []
+        for _, param in params.items():
+            val = generate_random_value(param.annotation, category)
+            args.append(val)
+        test_cases.append(args)
+
+    # --- STEP 3: Compute ground truth outputs locally ---
+    expected_outputs = []
+    for args in test_cases:
+        try:
+            expected_outputs.append(actual_callable(*args))
+        except Exception:
+            expected_outputs.append("__SKIP__")
+
+    # --- STEP 4: Prepare container payload ---
+    payload = {
+        "guessed_code": guessed_code,
+        "test_cases": test_cases
     }
+    payload_json = json.dumps(payload)
 
+    # --- STEP 5: Run ephemeral Docker container ---
     try:
-        exec(guessed_code, global_scope, local_scope)
+        result = subprocess.run(
+            [
+                "docker", "run", "--rm",
+                "--network", "none",
+                "-i",
+                "functionigma-sandbox"
+            ],
+            input=payload_json,
+            text=True,
+            capture_output=True,
+            timeout=5
+        )
+    except subprocess.TimeoutExpired:
+        return False, 0.0, "Sandbox execution timed out."
     except Exception as e:
-        print(f"Syntax Error in guess: {e}")
-        return False
+        return False, 0.0, f"Docker execution failed: {e}"
 
-    # Find the callable in the guess
-    guessed_func = None
-    # We prefer a function that has the same name if possible, otherwise take the last one
-    target_name = actual_callable.__name__
-
-    if target_name in local_scope and callable(local_scope[target_name]):
-        guessed_func = local_scope[target_name]
-    else:
-        # Fallback: take the last defined callable
-        for obj in local_scope.values():
-            if callable(obj):
-                guessed_func = obj
-
-    if not guessed_func:
-        print("No callable function found in parsed code.")
-        return False
-
-    # --- STEP 3: RUN DYNAMIC TESTS ---
-    for i in range(num_tests):
+    # --- STEP 6: Parse sandbox JSON response ---
+    try:
+        clean_output = result.stdout.strip()
+        response = json.loads(clean_output)
+    except json.JSONDecodeError:
+        # Fallback: try to find the last valid JSON line if logs polluted stdout
+        lines = result.stdout.strip().split('\n')
         try:
-            # A. Generate args dynamically based on signature AND Category
-            test_args = []
-            for name, param in params.items():
-                val = generate_random_value(param.annotation, category=category)
-                test_args.append(val)
-        except Exception as e:
-            print(f"Error generating test data: {e}")
-            return False
+            response = json.loads(lines[-1])
+        except:
+            return False, 0.0, f"Invalid JSON from sandbox.\nStdout: {result.stdout}\nStderr: {result.stderr}"
 
-        # B. Run Comparison
-        try:
-            # Execute Ground Truth
-            expected = actual_callable(*test_args)
+    if response.get("status") != "ok":
+        error_msg = response.get('error', 'Unknown error')
+        return False, 0.0, f"Runtime Error in guess: {error_msg}"
 
-            # Execute Guess (wrapped to catch crashes)
-            try:
-                actual = guessed_func(*test_args)
-            except Exception as e:
-                print(f"Guessed function CRASHED on inputs {test_args}: {e}")
-                return False
+    sandbox_results = response.get("results", [])
+    if len(sandbox_results) != len(test_cases):
+        return False, 0.0, "Mismatch in number of results returned by sandbox."
 
-            # Check Equality
-            # Note: For floats, you might need math.isclose(), but for now exact match is fine
-            if expected != actual:
-                print(f"MISMATCH on inputs {test_args}. Expected: {expected}, Got: {actual}")
-                return False
+    # --- STEP 7: Compare and Calculate Accuracy ---
+    passed_count = 0
+    total_valid_tests = 0
+    failures = []
 
-        except Exception as e:
-            # If the ACTUAL function crashes (e.g. valid input caused division by zero in ground truth),
-            # we skip this specific random case.
+    for i, (expected, actual) in enumerate(zip(expected_outputs, sandbox_results)):
+        if expected == "__SKIP__":
             continue
 
-    return True
+        total_valid_tests += 1
+
+        # Check equality
+        # Note: Be careful with floats here in production (use math.isclose)
+        if expected == actual:
+            passed_count += 1
+        else:
+            # Capture the failure details
+            failures.append(f"Input: {test_cases[i]}\n   Expected: {expected}\n   Got:      {actual}")
+
+    # Avoid division by zero
+    accuracy = passed_count / total_valid_tests if total_valid_tests > 0 else 0.0
+
+    # Prepare Feedback Message
+    if passed_count == total_valid_tests:
+        return True, 1.0, "All tests passed!"
+    else:
+        # Show up to 3 failures so we don't spam the transcript
+        feedback_msg = f"Passed {passed_count}/{total_valid_tests} tests.\n\nFailed Cases:"
+        for f in failures[:3]:
+            feedback_msg += f"\n- {f}"
+
+        if len(failures) > 3:
+            feedback_msg += f"\n...and {len(failures) - 3} more."
+
+        return False, accuracy, feedback_msg
 
 
 def extract_function_code(text: str) -> Optional[str]:
@@ -166,6 +200,7 @@ def extract_function_code(text: str) -> Optional[str]:
 # utils.py (or in master.py)
 import ast
 from typing import List, Tuple
+
 
 def parse_signature_with_types(signature: str) -> Tuple[List[str], List[str], str]:
     """
