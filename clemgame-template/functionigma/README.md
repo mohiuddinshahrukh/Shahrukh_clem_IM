@@ -1,9 +1,3 @@
-Here is a comprehensive `README.md` file tailored for your **Functionigma** game. It explains the purpose, structure, usage, and the unique validation logic we built.
-
-You can save this as `functionigma/README.md`.
-
----
-
 # Functionigma: The Black Box Function Game
 
 **Functionigma** is a dialogue-based puzzle game benchmark for the [Clembench](https://github.com/clembench/clembench) framework. In this game, an AI Model (the **Guesser**) acts as a scientist trying to infer the logic of a hidden Python function by probing it with inputs and observing the outputs.
@@ -104,7 +98,3 @@ Puzzles are grouped to test specific reasoning capabilities:
 * **STRING:** Manipulation, slicing, concatenation, pattern matching.
 * **LIST:** Aggregation, sorting, filtering, indexing.
 * **BITWISE:** Binary logic (AND, OR, XOR), shifting operations.
-
----
-
-**License:** MIT
