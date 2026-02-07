@@ -36,7 +36,7 @@ def solution(x, y):
 You may add a one-line explanation after the code block.
 
 ## Constraints
-- GIVE ME LOGIC: DO NOT USE BUILTIN FUNCTIONS LIKE sort(), min(), fromkeys(), values(), capitalize(), isascii() etc.
+- KEY: DO USE BUILTIN FUNCTIONS LIKE sort(), min(), fromkeys(), values(), capitalize(), isascii() etc.
 - Types must match exactly. Numbers as literals; strings quoted; use commas.
 - No extra text, no markdown, no comments during probing.
 - Any format violation consumes a turn.

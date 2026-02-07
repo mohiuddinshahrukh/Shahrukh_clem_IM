@@ -2,39 +2,26 @@ import re
 import random
 import inspect
 import string
-from typing import Tuple
-
-from typing import Any, Callable, List, Dict, get_origin, get_args, Optional
+import json
+import subprocess
+from typing import Any, Callable, List, Dict, get_origin, get_args, Optional, Tuple
 
 
 def generate_random_value(annotation: Any, category: str = None) -> Any:
-    """
-    Generates a random value based on the type hint and the problem category.
-    Handles nested types like List[int].
-    """
-
+    # ... (Keep your existing generate_random_value implementation exactly as is) ...
     # --- 1. Handle Lists (Recursion) ---
-    # Check if the annotation is a generic List (e.g., List[int])
     if get_origin(annotation) is list:
-        # Get the inner type (e.g., int from List[int])
         args = get_args(annotation)
         inner_type = args[0] if args else int
-
-        # Generate a list of random length (0 to 10 items)
         return [generate_random_value(inner_type, category) for _ in range(random.randint(0, 10))]
 
     # --- 2. Handle Integers ---
     if annotation is int:
         edge_cases = [0, 1, -1, 10, -10]
-
-        # Category-specific tweaks
         if category == "math":
-            # Add larger numbers for math problems to test overflow/logic
             edge_cases.extend([100, -100, 99, 1000])
         elif category == "bitwise":
-            # Add powers of 2 for bitwise logic
             edge_cases.extend([2, 4, 8, 16, 32, 255])
-
         return random.choice(edge_cases + [random.randint(-50, 50)])
 
     # --- 3. Handle Floats ---
@@ -43,73 +30,75 @@ def generate_random_value(annotation: Any, category: str = None) -> Any:
 
     # --- 4. Handle Strings ---
     elif annotation is str:
-        special_chars = "!@#$%^&*"
-        letters = string.ascii_lowercase
-
-        # Category-specific tweaks
         if category == "string":
-            # Test palindromes, spaces, repetition
-            candidates = [
-                "", " ", "a", "ab", "aba",  # Palindrome
-                "   ",  # Whitespace
-                "hello world",
-                "12345"  # Digits as string
-            ]
+            candidates = ["", " ", "a", "ab", "aba", "   ", "hello world", "12345"]
             return random.choice(candidates)
-
-        # Default random string
+        letters = string.ascii_lowercase
         random_word = ''.join(random.choice(letters) for _ in range(random.randint(1, 8)))
         return random.choice(["", "a", " ", random_word])
 
-    # --- 5. Default Fallback ---
-    # If no type hint provided, assume Int
     return random.randint(-50, 50)
 
 
-def validate_function_logic(guessed_code: str, actual_callable: Callable, category: str = "general",
-                            num_tests: int = 50) -> Tuple[bool, float, str]:
+def create_static_test_cases(actual_callable: Callable, category: str, num_tests: int = 50) -> List[Dict]:
     """
-    Runs untrusted guessed code inside an ephemeral Docker container.
-    Returns: (success: bool, accuracy: float, feedback: str)
+    Generates a list of static test cases with inputs and expected outputs.
+    Used by instance_generator.py.
+    Returns: [{'args': [1, 2], 'expected': 3}, ...]
     """
-    import subprocess
-    import json
-    import random
+    random.seed(42)  # Optional: Makes generation repeatable
 
-    random.seed(42)  # deterministic test cases
-
-    # --- STEP 1: Inspect target function ---
     try:
         sig = inspect.signature(actual_callable)
         params = sig.parameters
     except ValueError:
-        return False, 0.0, "Error: Could not inspect function signature."
+        print(f"Error inspecting signature for {actual_callable}")
+        return []
 
-    # --- STEP 2: Generate test cases ---
     test_cases = []
+
     for _ in range(num_tests):
-        args = []
-        for _, param in params.items():
-            val = generate_random_value(param.annotation, category)
-            args.append(val)
-        test_cases.append(args)
-
-    # --- STEP 3: Compute ground truth outputs locally ---
-    expected_outputs = []
-    for args in test_cases:
         try:
-            expected_outputs.append(actual_callable(*args))
-        except Exception:
-            expected_outputs.append("__SKIP__")
+            # 1. Generate Input Args
+            args = []
+            for _, param in params.items():
+                val = generate_random_value(param.annotation, category)
+                args.append(val)
 
-    # --- STEP 4: Prepare container payload ---
+            # 2. Compute Ground Truth (Execute locally)
+            expected = actual_callable(*args)
+
+            # 3. Store
+            test_cases.append({
+                "args": args,
+                "expected": expected
+            })
+        except Exception:
+            # Skip invalid inputs that crash the ground truth
+            continue
+
+    return test_cases
+
+
+def validate_function_logic(guessed_code: str, test_cases: List[Dict]) -> Tuple[bool, float, str]:
+    """
+    Runs guessed code against PRE-GENERATED static test cases inside Docker.
+    """
+    import subprocess
+    import json
+
+    # 1. Extract just the arguments to send to the container
+    input_args_list = [case["args"] for case in test_cases]
+    expected_outputs = [case["expected"] for case in test_cases]
+
+    # 2. Prepare Payload
     payload = {
         "guessed_code": guessed_code,
-        "test_cases": test_cases
+        "test_cases": input_args_list
     }
     payload_json = json.dumps(payload)
 
-    # --- STEP 5: Run ephemeral Docker container ---
+    # 3. Run Docker
     try:
         result = subprocess.run(
             [
@@ -128,61 +117,46 @@ def validate_function_logic(guessed_code: str, actual_callable: Callable, catego
     except Exception as e:
         return False, 0.0, f"Docker execution failed: {e}"
 
-    # --- STEP 6: Parse sandbox JSON response ---
+    # 4. Parse Results
     try:
         clean_output = result.stdout.strip()
         response = json.loads(clean_output)
     except json.JSONDecodeError:
-        # Fallback: try to find the last valid JSON line if logs polluted stdout
-        lines = result.stdout.strip().split('\n')
-        try:
-            response = json.loads(lines[-1])
-        except:
-            return False, 0.0, f"Invalid JSON from sandbox.\nStdout: {result.stdout}\nStderr: {result.stderr}"
+        # Include STDERR so you can see why it crashed!
+        return False, 0.0, f"Sandbox Failure.\nStdout: '{result.stdout}'\nStderr: '{result.stderr}'"
 
     if response.get("status") != "ok":
-        error_msg = response.get('error', 'Unknown error')
-        return False, 0.0, f"Runtime Error in guess: {error_msg}"
+        return False, 0.0, f"Runtime Error: {response.get('error')}"
 
     sandbox_results = response.get("results", [])
-    if len(sandbox_results) != len(test_cases):
-        return False, 0.0, "Mismatch in number of results returned by sandbox."
 
-    # --- STEP 7: Compare and Calculate Accuracy ---
+    if len(sandbox_results) != len(test_cases):
+        return False, 0.0, "Mismatch in result count."
+
+    # 5. Compare
     passed_count = 0
-    total_valid_tests = 0
     failures = []
 
-    for i, (expected, actual) in enumerate(zip(expected_outputs, sandbox_results)):
-        if expected == "__SKIP__":
-            continue
+    for i, (expected_raw, actual) in enumerate(zip(expected_outputs, sandbox_results)):
+        # --- FIX: Normalize Expected Output to match JSON format ---
+        # This turns tuples (1,2) into lists [1,2] so they match the sandbox output
+        try:
+            expected = json.loads(json.dumps(expected_raw))
+        except TypeError:
+            expected = str(expected_raw)
 
-        total_valid_tests += 1
-
-        # Check equality
-        # Note: Be careful with floats here in production (use math.isclose)
         if expected == actual:
             passed_count += 1
         else:
-            # Capture the failure details
-            failures.append(f"Input: {test_cases[i]}\n   Expected: {expected}\n   Got:      {actual}")
+            failures.append(f"Input: {input_args_list[i]} | Expected: {expected} | Got: {actual}")
 
-    # Avoid division by zero
-    accuracy = passed_count / total_valid_tests if total_valid_tests > 0 else 0.0
+    accuracy = passed_count / len(test_cases) if test_cases else 0.0
 
-    # Prepare Feedback Message
-    if passed_count == total_valid_tests:
+    if passed_count == len(test_cases):
         return True, 1.0, "All tests passed!"
     else:
-        # Show up to 3 failures so we don't spam the transcript
-        feedback_msg = f"Passed {passed_count}/{total_valid_tests} tests.\n\nFailed Cases:"
-        for f in failures[:3]:
-            feedback_msg += f"\n- {f}"
-
-        if len(failures) > 3:
-            feedback_msg += f"\n...and {len(failures) - 3} more."
-
-        return False, accuracy, feedback_msg
+        feedback = "Failed Cases:\n" + "\n".join(failures[:3])
+        return False, accuracy, feedback
 
 
 def extract_function_code(text: str) -> Optional[str]:

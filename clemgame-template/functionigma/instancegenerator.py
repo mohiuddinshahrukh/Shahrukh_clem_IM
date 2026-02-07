@@ -1,15 +1,17 @@
 import os
 import logging
-from clemcore.clemgame import GameInstanceGenerator
 import sys
-from functionigma.functions import FUNCTION_REGISTRY
+from clemcore.clemgame import GameInstanceGenerator
 
-# Initialize logging
-logger = logging.getLogger(__name__)
-# Number of guesses
-N_GUESSES = 5
-
+# Add project root
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
+from functionigma.functions import FUNCTION_REGISTRY
+# Import the new generator function
+from functionigma.utils import create_static_test_cases
+
+logger = logging.getLogger(__name__)
+N_GUESSES = 5
 
 
 class Functionigma(GameInstanceGenerator):
@@ -32,36 +34,36 @@ class Functionigma(GameInstanceGenerator):
         experiments["medium"] = create_experiment("python_medium")
         experiments["hard"] = create_experiment("python_hard")
 
-        # 3. Iterate through the Registry and assign to experiments
         for i, function_data in enumerate(FUNCTION_REGISTRY):
-
-            # Get the difficulty string ('easy', 'medium', 'hard')
             diff_level = function_data["difficulty"]
 
-            # Select the correct experiment
             if diff_level in experiments:
                 target_experiment = experiments[diff_level]
-
-                # Create the instance within that experiment
-                # We use 'i' as a unique ID, or you can maintain separate counters per experiment
                 game_instance = self.add_game_instance(target_experiment, i)
 
-                # 4. Populate the Instance Data
-                # These keys will be available in the GameMaster via 'self.game_instance'
+                # Standard Metadata
                 game_instance["callable"] = function_data["function_name"]
                 game_instance["signature"] = function_data["signature"]
                 game_instance["category"] = function_data["category"]
                 game_instance["difficulty"] = diff_level
-
-                # Optional: Add a logic description if you want it in the instances file for reference
-                # (You might need to add a 'description' field to your registry decorator if you want this)
                 game_instance["docstring"] = function_data["callable"].__doc__
 
-                print(f"Added {function_data['function_name']} to experiment 'python_{diff_level}'")
+                # --- NEW: Generate and Save Test Cases ---
+                print(f"Generating static tests for {function_data['function_name']}...")
+
+                # Generate 20 test cases
+                static_tests = create_static_test_cases(
+                    function_data["callable"],
+                    function_data["category"],
+                    num_tests=20
+                )
+
+                # Save to JSON
+                game_instance["test_cases"] = static_tests
+                print(f"Saved {len(static_tests)} tests.")
 
             else:
-                logger.warning(
-                    f"Function {function_data['function_name']} has unknown difficulty: {diff_level}. Skipping.")
+                logger.warning(f"Unknown difficulty: {diff_level}")
 
 
 if __name__ == '__main__':

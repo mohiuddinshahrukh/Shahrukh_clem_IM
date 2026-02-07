@@ -100,6 +100,7 @@ class Functionigma_GameMaster(DialogueGameMaster):
         self.game_instance = game_instance
         self.signature = game_instance["signature"]
         self.max_turns = self.experiments["max_turns"]
+        self.test_cases = game_instance.get("test_cases", [])
         # parse signature to get param names/types
         self.param_names, self.param_types, self.return_type = parse_signature_with_types(self.signature)
         self.num_params = len(self.param_names)
@@ -244,6 +245,7 @@ class Functionigma_GameMaster(DialogueGameMaster):
         action_type, content = parsed_response
 
         if action_type == "call":
+            # ... (Keep Call Logic) ...
             try:
                 output = self.run_dynamic_function(self.state.function_callable, content)
                 self.set_context_for(self.guesser_player, f"Function Output: {output}")
@@ -252,6 +254,9 @@ class Functionigma_GameMaster(DialogueGameMaster):
 
         elif action_type == "guess":
             print(f"Player guessed code:\n{content}")
+
+            # Note: We no longer need to load actual_func to generate tests,
+            # but we still load it to get the source code for the "reveal" message.
             actual_func = self.load_function("functionigma.functions", self.state.function_callable)
 
             try:
@@ -261,9 +266,10 @@ class Functionigma_GameMaster(DialogueGameMaster):
             except OSError:
                 actual_code = "# Source code unavailable"
 
-            is_correct, accuracy, feedback = validate_function_logic(content, actual_func)
+            # --- UPDATED VALIDATION ---
+            # Pass the static test_cases instead of the function object
+            is_correct, accuracy, feedback = validate_function_logic(content, self.test_cases)
 
-            # CHANGE: Save accuracy to state so we can log it later
             self.state.test_accuracy = accuracy
             self.log_to_self("test_accuracy", accuracy)
 
@@ -291,11 +297,8 @@ class Functionigma_GameMaster(DialogueGameMaster):
                              "Please output ONLY 'INPUT: ...' or 'GUESS: ...' without preceding text.")
 
     def _does_game_proceed(self):
-        # 1. Stop if we reached the maximum number of turns
         if self.current_round >= self.max_turns:
             return False
-
-        # 2. Stop if the game is already over (Win/Loss/Abort)
         return not (self.state.aborted or self.state.failure or self.state.success)
 
     def compute_turn_score(self):
@@ -303,20 +306,16 @@ class Functionigma_GameMaster(DialogueGameMaster):
 
     def compute_episode_score(self):
         if self.success:
-            return 100 / (self.current_round + 1)  # zero-based
+            return 100
         return 0
 
     def _on_after_game(self):
-        # Required: Log all three outcome metrics
         self.log_key(METRIC_ABORTED, self.state.aborted)
         self.log_key(METRIC_LOSE, self.state.failure)
         self.log_key(METRIC_SUCCESS, self.state.success)
 
-        # --- FIX 2: MATCH THE SCORER KEY ---
-        # Retrieve from state (defaults to 0.0 if missing)
+        # Log accuracy for analytics, but it won't be used for the main score
         accuracy = getattr(self.state, "test_accuracy", 0.0)
-
-        # Log as "accuracy" because SomeGameScorer looks for: if "accuracy" in interactions:
         self.log_key("accuracy", accuracy)
 
 
@@ -330,27 +329,31 @@ class SomeGameScorer(GameScorer):
                 self.log_round_score(round_idx, 'response_received', 1)
 
     def compute_episode_scores(self, interactions: Dict):
-        # 1. Calculate Accuracy (0 to 100) from the log
-        #    If no accuracy logged (e.g. crash), default to 0
-        acc_score = 0.0
+        # --- STRICT SCORING LOGIC ---
+
+        # 1. Determine Success (Binary)
+        # METRIC_SUCCESS is only True if validate_function_logic returned True (100% pass)
+        is_success = interactions.get(METRIC_SUCCESS, False)
+
+        # 2. Calculate Bench Score
+        score = 0
+        if is_success:
+            score = 100
+
+        # 3. Handle Aborts (Crashes)
+        if interactions.get(METRIC_ABORTED, False):
+            score = np.nan
+
+        # 4. Log the Main Score
+        self.log_episode_score(BENCH_SCORE, score)
+
+        # 5. Secondary Metric: Log partial accuracy just for visibility in CSVs
+        # (This does not affect the leaderboard ranking)
         if "accuracy" in interactions:
-            acc_score = interactions["accuracy"] * 100
-
-        # 2. Log it as a custom metric (visible in raw.csv)
-        self.log_episode_score("accuracy", acc_score)
-
-        # 3. SET MAIN BENCH SCORE TO ACCURACY
-        #    This ensures 'accuracy' appears as the "Quality Score" in results.csv/html
-        #    If the game was aborted (crash), we usually log NaN,
-        #    but if it just failed tests, we log the partial accuracy.
-        if interactions[METRIC_ABORTED]:
-            self.log_episode_score(BENCH_SCORE, np.nan)
-        else:
-            self.log_episode_score(BENCH_SCORE, acc_score)
+            self.log_episode_score("accuracy", interactions["accuracy"] * 100)
 
 
 class SomeGameBenchmark(GameBenchmark):
-
     def __init__(self, game_spec: GameSpec):
         super().__init__(game_spec)
 

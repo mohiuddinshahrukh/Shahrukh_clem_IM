@@ -9,7 +9,149 @@
           "signature": "(x: int, y: int) -> int",
           "category": "math",
           "difficulty": "easy",
-          "docstring": null
+          "docstring": null,
+          "test_cases": [
+            {
+              "args": [
+                1,
+                -10
+              ],
+              "expected": -9
+            },
+            {
+              "args": [
+                10,
+                1
+              ],
+              "expected": 11
+            },
+            {
+              "args": [
+                1000,
+                -39
+              ],
+              "expected": 961
+            },
+            {
+              "args": [
+                0,
+                1
+              ],
+              "expected": 1
+            },
+            {
+              "args": [
+                10,
+                14
+              ],
+              "expected": 24
+            },
+            {
+              "args": [
+                1000,
+                1000
+              ],
+              "expected": 2000
+            },
+            {
+              "args": [
+                10,
+                7
+              ],
+              "expected": 17
+            },
+            {
+              "args": [
+                0,
+                -1
+              ],
+              "expected": -1
+            },
+            {
+              "args": [
+                -100,
+                -10
+              ],
+              "expected": -110
+            },
+            {
+              "args": [
+                10,
+                100
+              ],
+              "expected": 110
+            },
+            {
+              "args": [
+                1,
+                1
+              ],
+              "expected": 2
+            },
+            {
+              "args": [
+                100,
+                -10
+              ],
+              "expected": 90
+            },
+            {
+              "args": [
+                99,
+                1
+              ],
+              "expected": 100
+            },
+            {
+              "args": [
+                1,
+                -10
+              ],
+              "expected": -9
+            },
+            {
+              "args": [
+                30,
+                -4
+              ],
+              "expected": 26
+            },
+            {
+              "args": [
+                1,
+                10
+              ],
+              "expected": 11
+            },
+            {
+              "args": [
+                -10,
+                10
+              ],
+              "expected": 0
+            },
+            {
+              "args": [
+                -100,
+                99
+              ],
+              "expected": -1
+            },
+            {
+              "args": [
+                100,
+                100
+              ],
+              "expected": 200
+            },
+            {
+              "args": [
+                10,
+                -10
+              ],
+              "expected": 0
+            }
+          ]
         },
         {
           "game_id": 1,
@@ -17,11 +159,133 @@
           "signature": "(x: str) -> str",
           "category": "string",
           "difficulty": "easy",
-          "docstring": null
+          "docstring": null,
+          "test_cases": [
+            {
+              "args": [
+                " "
+              ],
+              "expected": " "
+            },
+            {
+              "args": [
+                ""
+              ],
+              "expected": ""
+            },
+            {
+              "args": [
+                "aba"
+              ],
+              "expected": "aba"
+            },
+            {
+              "args": [
+                "ab"
+              ],
+              "expected": "ba"
+            },
+            {
+              "args": [
+                "ab"
+              ],
+              "expected": "ba"
+            },
+            {
+              "args": [
+                "a"
+              ],
+              "expected": "a"
+            },
+            {
+              "args": [
+                " "
+              ],
+              "expected": " "
+            },
+            {
+              "args": [
+                " "
+              ],
+              "expected": " "
+            },
+            {
+              "args": [
+                "hello world"
+              ],
+              "expected": "dlrow olleh"
+            },
+            {
+              "args": [
+                ""
+              ],
+              "expected": ""
+            },
+            {
+              "args": [
+                ""
+              ],
+              "expected": ""
+            },
+            {
+              "args": [
+                " "
+              ],
+              "expected": " "
+            },
+            {
+              "args": [
+                "ab"
+              ],
+              "expected": "ba"
+            },
+            {
+              "args": [
+                "ab"
+              ],
+              "expected": "ba"
+            },
+            {
+              "args": [
+                ""
+              ],
+              "expected": ""
+            },
+            {
+              "args": [
+                "ab"
+              ],
+              "expected": "ba"
+            },
+            {
+              "args": [
+                "hello world"
+              ],
+              "expected": "dlrow olleh"
+            },
+            {
+              "args": [
+                "ab"
+              ],
+              "expected": "ba"
+            },
+            {
+              "args": [
+                "12345"
+              ],
+              "expected": "54321"
+            },
+            {
+              "args": [
+                "aba"
+              ],
+              "expected": "aba"
+            }
+          ]
         }
       ],
       "max_turns": 5,
-      "initial_prompt_guesser": "**Role (AI):** Function Inference Engine — infer an unknown Python function by proposing inputs and observing outputs.\n\n**Role (GM):** I return the function's output for each input you propose.\n\n**Goal:** Infer the exact function: `$SIGNATURE_OF_CURRENT_FUNCTION$`\n\n---\n\n## Rules\n\n* You have **$MAX_TURNS$** total turns. Guess on turn $MAX_TURNS$ - 1.\n* Each probe must be exactly one line and **nothing else**.\n* Case and format are strict.\n\n## Format (strict)\n\n* Probing (until certain):\n\n```\nINPUT:$VARIABLES$\n```\n\n(uppercase `INPUT:`) — strings must be quoted, booleans `True/False`.\n\n* Final submission (when certain):\n  Start with `GUESS:` then **only** the Python function in a fenced block, e.g.\n\n````\nGUESS:\n```python\ndef solution(x, y):\n    return x + y\n````\n\n```\nYou may add a one-line explanation after the code block.\n\n## Constraints\n- GIVE ME LOGIC: DO NOT USE BUILTIN FUNCTIONS LIKE sort(), min(), fromkeys(), values(), capitalize(), isascii() etc.\n- Types must match exactly. Numbers as literals; strings quoted; use commas.\n- No extra text, no markdown, no comments during probing.\n- Any format violation consumes a turn.\n- Do NOT invent new variables. Use ONLY: $VARIABLES$\n\n---\n\n**Context placeholders:**\n- Category: `$CATEGORY$`\n- Params: `$NUM_PARAMS$`\n- Param list: `$PARAM_LIST$`\n\nBegin: produce your first `INPUT:` line."
+      "initial_prompt_guesser": "**Role (AI):** Function Inference Engine — infer an unknown Python function by proposing inputs and observing outputs.\n\n**Role (GM):** I return the function's output for each input you propose.\n\n**Goal:** Infer the exact function: `$SIGNATURE_OF_CURRENT_FUNCTION$`\n\n---\n\n## Rules\n\n* You have **$MAX_TURNS$** total turns. Guess on turn $MAX_TURNS$ - 1.\n* Each probe must be exactly one line and **nothing else**.\n* Case and format are strict.\n\n## Format (strict)\n\n* Probing (until certain):\n\n```\nINPUT:$VARIABLES$\n```\n\n(uppercase `INPUT:`) — strings must be quoted, booleans `True/False`.\n\n* Final submission (when certain):\n  Start with `GUESS:` then **only** the Python function in a fenced block, e.g.\n\n````\nGUESS:\n```python\ndef solution(x, y):\n    return x + y\n````\n\n```\nYou may add a one-line explanation after the code block.\n\n## Constraints\n- KEY: DO USE BUILTIN FUNCTIONS LIKE sort(), min(), fromkeys(), values(), capitalize(), isascii() etc.\n- Types must match exactly. Numbers as literals; strings quoted; use commas.\n- No extra text, no markdown, no comments during probing.\n- Any format violation consumes a turn.\n- Do NOT invent new variables. Use ONLY: $VARIABLES$\n\n---\n\n**Context placeholders:**\n- Category: `$CATEGORY$`\n- Params: `$NUM_PARAMS$`\n- Param list: `$PARAM_LIST$`\n\nBegin: produce your first `INPUT:` line."
     },
     {
       "name": "python_medium",
@@ -32,17 +296,373 @@
           "signature": "(xs: List[int]) -> List[int]",
           "category": "math",
           "difficulty": "medium",
-          "docstring": null
+          "docstring": null,
+          "test_cases": [
+            {
+              "args": [
+                [
+                  0,
+                  -10,
+                  10,
+                  1,
+                  1000,
+                  -39,
+                  0,
+                  1,
+                  10,
+                  14
+                ]
+              ],
+              "expected": [
+                -39,
+                -10,
+                0,
+                0,
+                1,
+                1,
+                10,
+                10,
+                14,
+                1000
+              ]
+            },
+            {
+              "args": [
+                []
+              ],
+              "expected": []
+            },
+            {
+              "args": [
+                [
+                  1000,
+                  10,
+                  7,
+                  0,
+                  -1,
+                  -100,
+                  -10,
+                  10
+                ]
+              ],
+              "expected": [
+                -100,
+                -10,
+                -1,
+                0,
+                7,
+                10,
+                10,
+                1000
+              ]
+            },
+            {
+              "args": [
+                [
+                  1,
+                  1,
+                  100,
+                  -10,
+                  99
+                ]
+              ],
+              "expected": [
+                -10,
+                1,
+                1,
+                99,
+                100
+              ]
+            },
+            {
+              "args": [
+                [
+                  -100,
+                  1000,
+                  -13,
+                  -4,
+                  1,
+                  10,
+                  -10,
+                  10
+                ]
+              ],
+              "expected": [
+                -100,
+                -13,
+                -10,
+                -4,
+                1,
+                10,
+                10,
+                1000
+              ]
+            },
+            {
+              "args": [
+                [
+                  -10
+                ]
+              ],
+              "expected": [
+                -10
+              ]
+            },
+            {
+              "args": [
+                [
+                  100,
+                  100,
+                  10,
+                  -10,
+                  1,
+                  -1,
+                  10
+                ]
+              ],
+              "expected": [
+                -10,
+                -1,
+                1,
+                10,
+                10,
+                100,
+                100
+              ]
+            },
+            {
+              "args": [
+                [
+                  -100,
+                  1000
+                ]
+              ],
+              "expected": [
+                -100,
+                1000
+              ]
+            },
+            {
+              "args": [
+                [
+                  100,
+                  0,
+                  0
+                ]
+              ],
+              "expected": [
+                0,
+                0,
+                100
+              ]
+            },
+            {
+              "args": [
+                [
+                  -10,
+                  10,
+                  100,
+                  99,
+                  99
+                ]
+              ],
+              "expected": [
+                -10,
+                10,
+                99,
+                99,
+                100
+              ]
+            },
+            {
+              "args": [
+                [
+                  -1,
+                  1000
+                ]
+              ],
+              "expected": [
+                -1,
+                1000
+              ]
+            },
+            {
+              "args": [
+                [
+                  -17,
+                  4,
+                  100,
+                  -1,
+                  99,
+                  0,
+                  -1,
+                  -1
+                ]
+              ],
+              "expected": [
+                -17,
+                -1,
+                -1,
+                -1,
+                0,
+                4,
+                99,
+                100
+              ]
+            },
+            {
+              "args": [
+                [
+                  4,
+                  -100,
+                  -2,
+                  1000,
+                  1000,
+                  1,
+                  1000,
+                  -10,
+                  100,
+                  -10
+                ]
+              ],
+              "expected": [
+                -100,
+                -10,
+                -10,
+                -2,
+                1,
+                4,
+                100,
+                1000,
+                1000,
+                1000
+              ]
+            },
+            {
+              "args": [
+                [
+                  99,
+                  -10,
+                  -1,
+                  1,
+                  -10,
+                  1000
+                ]
+              ],
+              "expected": [
+                -10,
+                -10,
+                -1,
+                1,
+                99,
+                1000
+              ]
+            },
+            {
+              "args": [
+                [
+                  -1,
+                  -1,
+                  1000,
+                  -50,
+                  99,
+                  1,
+                  -10,
+                  0,
+                  -20
+                ]
+              ],
+              "expected": [
+                -50,
+                -20,
+                -10,
+                -1,
+                -1,
+                0,
+                1,
+                99,
+                1000
+              ]
+            },
+            {
+              "args": [
+                [
+                  99
+                ]
+              ],
+              "expected": [
+                99
+              ]
+            },
+            {
+              "args": [
+                [
+                  1000
+                ]
+              ],
+              "expected": [
+                1000
+              ]
+            },
+            {
+              "args": [
+                [
+                  99,
+                  -1
+                ]
+              ],
+              "expected": [
+                -1,
+                99
+              ]
+            },
+            {
+              "args": [
+                [
+                  17,
+                  10,
+                  10,
+                  -10
+                ]
+              ],
+              "expected": [
+                -10,
+                10,
+                10,
+                17
+              ]
+            },
+            {
+              "args": [
+                [
+                  100,
+                  1000,
+                  1,
+                  10,
+                  100,
+                  -48
+                ]
+              ],
+              "expected": [
+                -48,
+                1,
+                10,
+                100,
+                100,
+                1000
+              ]
+            }
+          ]
         }
       ],
       "max_turns": 5,
-      "initial_prompt_guesser": "**Role (AI):** Function Inference Engine — infer an unknown Python function by proposing inputs and observing outputs.\n\n**Role (GM):** I return the function's output for each input you propose.\n\n**Goal:** Infer the exact function: `$SIGNATURE_OF_CURRENT_FUNCTION$`\n\n---\n\n## Rules\n\n* You have **$MAX_TURNS$** total turns. Guess on turn $MAX_TURNS$ - 1.\n* Each probe must be exactly one line and **nothing else**.\n* Case and format are strict.\n\n## Format (strict)\n\n* Probing (until certain):\n\n```\nINPUT:$VARIABLES$\n```\n\n(uppercase `INPUT:`) — strings must be quoted, booleans `True/False`.\n\n* Final submission (when certain):\n  Start with `GUESS:` then **only** the Python function in a fenced block, e.g.\n\n````\nGUESS:\n```python\ndef solution(x, y):\n    return x + y\n````\n\n```\nYou may add a one-line explanation after the code block.\n\n## Constraints\n- GIVE ME LOGIC: DO NOT USE BUILTIN FUNCTIONS LIKE sort(), min(), fromkeys(), values(), capitalize(), isascii() etc.\n- Types must match exactly. Numbers as literals; strings quoted; use commas.\n- No extra text, no markdown, no comments during probing.\n- Any format violation consumes a turn.\n- Do NOT invent new variables. Use ONLY: $VARIABLES$\n\n---\n\n**Context placeholders:**\n- Category: `$CATEGORY$`\n- Params: `$NUM_PARAMS$`\n- Param list: `$PARAM_LIST$`\n\nBegin: produce your first `INPUT:` line."
+      "initial_prompt_guesser": "**Role (AI):** Function Inference Engine — infer an unknown Python function by proposing inputs and observing outputs.\n\n**Role (GM):** I return the function's output for each input you propose.\n\n**Goal:** Infer the exact function: `$SIGNATURE_OF_CURRENT_FUNCTION$`\n\n---\n\n## Rules\n\n* You have **$MAX_TURNS$** total turns. Guess on turn $MAX_TURNS$ - 1.\n* Each probe must be exactly one line and **nothing else**.\n* Case and format are strict.\n\n## Format (strict)\n\n* Probing (until certain):\n\n```\nINPUT:$VARIABLES$\n```\n\n(uppercase `INPUT:`) — strings must be quoted, booleans `True/False`.\n\n* Final submission (when certain):\n  Start with `GUESS:` then **only** the Python function in a fenced block, e.g.\n\n````\nGUESS:\n```python\ndef solution(x, y):\n    return x + y\n````\n\n```\nYou may add a one-line explanation after the code block.\n\n## Constraints\n- KEY: DO USE BUILTIN FUNCTIONS LIKE sort(), min(), fromkeys(), values(), capitalize(), isascii() etc.\n- Types must match exactly. Numbers as literals; strings quoted; use commas.\n- No extra text, no markdown, no comments during probing.\n- Any format violation consumes a turn.\n- Do NOT invent new variables. Use ONLY: $VARIABLES$\n\n---\n\n**Context placeholders:**\n- Category: `$CATEGORY$`\n- Params: `$NUM_PARAMS$`\n- Param list: `$PARAM_LIST$`\n\nBegin: produce your first `INPUT:` line."
     },
     {
       "name": "python_hard",
       "game_instances": [],
       "max_turns": 5,
-      "initial_prompt_guesser": "**Role (AI):** Function Inference Engine — infer an unknown Python function by proposing inputs and observing outputs.\n\n**Role (GM):** I return the function's output for each input you propose.\n\n**Goal:** Infer the exact function: `$SIGNATURE_OF_CURRENT_FUNCTION$`\n\n---\n\n## Rules\n\n* You have **$MAX_TURNS$** total turns. Guess on turn $MAX_TURNS$ - 1.\n* Each probe must be exactly one line and **nothing else**.\n* Case and format are strict.\n\n## Format (strict)\n\n* Probing (until certain):\n\n```\nINPUT:$VARIABLES$\n```\n\n(uppercase `INPUT:`) — strings must be quoted, booleans `True/False`.\n\n* Final submission (when certain):\n  Start with `GUESS:` then **only** the Python function in a fenced block, e.g.\n\n````\nGUESS:\n```python\ndef solution(x, y):\n    return x + y\n````\n\n```\nYou may add a one-line explanation after the code block.\n\n## Constraints\n- GIVE ME LOGIC: DO NOT USE BUILTIN FUNCTIONS LIKE sort(), min(), fromkeys(), values(), capitalize(), isascii() etc.\n- Types must match exactly. Numbers as literals; strings quoted; use commas.\n- No extra text, no markdown, no comments during probing.\n- Any format violation consumes a turn.\n- Do NOT invent new variables. Use ONLY: $VARIABLES$\n\n---\n\n**Context placeholders:**\n- Category: `$CATEGORY$`\n- Params: `$NUM_PARAMS$`\n- Param list: `$PARAM_LIST$`\n\nBegin: produce your first `INPUT:` line."
+      "initial_prompt_guesser": "**Role (AI):** Function Inference Engine — infer an unknown Python function by proposing inputs and observing outputs.\n\n**Role (GM):** I return the function's output for each input you propose.\n\n**Goal:** Infer the exact function: `$SIGNATURE_OF_CURRENT_FUNCTION$`\n\n---\n\n## Rules\n\n* You have **$MAX_TURNS$** total turns. Guess on turn $MAX_TURNS$ - 1.\n* Each probe must be exactly one line and **nothing else**.\n* Case and format are strict.\n\n## Format (strict)\n\n* Probing (until certain):\n\n```\nINPUT:$VARIABLES$\n```\n\n(uppercase `INPUT:`) — strings must be quoted, booleans `True/False`.\n\n* Final submission (when certain):\n  Start with `GUESS:` then **only** the Python function in a fenced block, e.g.\n\n````\nGUESS:\n```python\ndef solution(x, y):\n    return x + y\n````\n\n```\nYou may add a one-line explanation after the code block.\n\n## Constraints\n- KEY: DO USE BUILTIN FUNCTIONS LIKE sort(), min(), fromkeys(), values(), capitalize(), isascii() etc.\n- Types must match exactly. Numbers as literals; strings quoted; use commas.\n- No extra text, no markdown, no comments during probing.\n- Any format violation consumes a turn.\n- Do NOT invent new variables. Use ONLY: $VARIABLES$\n\n---\n\n**Context placeholders:**\n- Category: `$CATEGORY$`\n- Params: `$NUM_PARAMS$`\n- Param list: `$PARAM_LIST$`\n\nBegin: produce your first `INPUT:` line."
     }
   ]
 }
