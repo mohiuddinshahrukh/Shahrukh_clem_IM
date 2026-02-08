@@ -11,9 +11,7 @@
           "difficulty": "easy",
           "candidate_ids": [
             "f_add",
-            "bubble_sort",
-            "abs_diff",
-            "clamp"
+            "abs_diff"
           ],
           "docstring": null,
           "test_cases": [
@@ -166,9 +164,7 @@
           "category": "string",
           "difficulty": "easy",
           "candidate_ids": [
-            "rev_str",
-            "count_vowels",
-            "is_palindrome"
+            "rev_str"
           ],
           "docstring": null,
           "test_cases": [
@@ -247,10 +243,7 @@
           "category": "math",
           "difficulty": "easy",
           "candidate_ids": [
-            "f_add",
-            "bubble_sort",
-            "abs_diff",
-            "clamp"
+            "bubble_sort"
           ],
           "docstring": null,
           "test_cases": [
@@ -594,9 +587,7 @@
           "difficulty": "easy",
           "candidate_ids": [
             "f_add",
-            "bubble_sort",
-            "abs_diff",
-            "clamp"
+            "abs_diff"
           ],
           "docstring": "Absolute difference.",
           "test_cases": [
@@ -749,9 +740,6 @@
           "category": "math",
           "difficulty": "easy",
           "candidate_ids": [
-            "f_add",
-            "bubble_sort",
-            "abs_diff",
             "clamp"
           ],
           "docstring": "Clamp x into [lo, hi]. Assumes lo <= hi.",
@@ -925,9 +913,7 @@
           "category": "string",
           "difficulty": "easy",
           "candidate_ids": [
-            "rev_str",
-            "count_vowels",
-            "is_palindrome"
+            "count_vowels"
           ],
           "docstring": "Count vowels (aeiou) case-insensitive.",
           "test_cases": [
@@ -1006,8 +992,6 @@
           "category": "string",
           "difficulty": "easy",
           "candidate_ids": [
-            "rev_str",
-            "count_vowels",
             "is_palindrome"
           ],
           "docstring": "Palindrome check, case-sensitive.",
@@ -1088,9 +1072,7 @@
           "category": "math",
           "difficulty": "medium",
           "candidate_ids": [
-            "gcd_euclid",
-            "unique_sorted",
-            "rotate_left"
+            "gcd_euclid"
           ],
           "docstring": "Greatest common divisor (non-negative).",
           "test_cases": [
@@ -1313,9 +1295,7 @@
           "category": "math",
           "difficulty": "medium",
           "candidate_ids": [
-            "gcd_euclid",
-            "unique_sorted",
-            "rotate_left"
+            "unique_sorted"
           ],
           "docstring": "Return sorted unique elements.",
           "test_cases": [
@@ -1827,8 +1807,6 @@
           "category": "math",
           "difficulty": "medium",
           "candidate_ids": [
-            "gcd_euclid",
-            "unique_sorted",
             "rotate_left"
           ],
           "docstring": "Rotate list left by k positions.",
@@ -2989,8 +2967,7 @@
           "category": "string",
           "difficulty": "hard",
           "candidate_ids": [
-            "balanced_parentheses",
-            "edit_distance"
+            "balanced_parentheses"
           ],
           "docstring": "\n    Check if (), [], {} are balanced and properly nested.\n    Ignores non-bracket characters.\n    ",
           "test_cases": [
@@ -3117,7 +3094,6 @@
           "category": "string",
           "difficulty": "hard",
           "candidate_ids": [
-            "balanced_parentheses",
             "edit_distance"
           ],
           "docstring": "\n    Levenshtein edit distance (insert/delete/replace), O(len(a)*len(b)).\n    ",

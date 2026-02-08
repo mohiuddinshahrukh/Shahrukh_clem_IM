@@ -58,12 +58,18 @@ class Functionigma(GameInstanceGenerator):
             game_instance["signature"] = function_data["signature"]
             game_instance["category"] = function_data["category"]
             game_instance["difficulty"] = diff_level
-            # Candidate pool for hypotheses: same category + same difficulty
+            # Candidate pool for hypotheses: same signature + same category + same difficulty
             game_instance["candidate_ids"] = [
                 fd["function_name"]
                 for fd in FUNCTION_REGISTRY
-                if fd["category"] == function_data["category"] and fd["difficulty"] == diff_level
+                if fd["signature"] == function_data["signature"]
+                   and fd["category"] == function_data["category"]
+                   and fd["difficulty"] == diff_level
             ]
+            print(
+                f"Candidate pool size for {function_data['function_name']}: "
+                f"{len(game_instance['candidate_ids'])}"
+            )
 
             game_instance["docstring"] = function_data["callable"].__doc__
 

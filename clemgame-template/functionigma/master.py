@@ -67,6 +67,12 @@ class GameState:
     failure: bool = False
     aborted: bool = False
 
+    probe_count: int = 0
+    unique_output_count: int = 0
+    output_novelty_rate: float = 0.0
+    unique_input_count: int = 0
+    unique_input_rate: float = 0.0
+
     probe_args: str = ""
     probe_round: int = 0
     probe_output: str = ""
@@ -78,7 +84,8 @@ class GameState:
     parse_error_count: int = 0
     runtime_error_count: int = 0
 
-    observed_pairs: List[Dict] = None
+    observed_pairs: List[Dict] = field(default_factory=list)
+
     internal_consistency_score: float = 0.0
     internal_consistency_all_observed: bool = False
     internal_consistency_violations: int = 0
@@ -178,7 +185,13 @@ class FunctionigmaGameMaster(DialogueGameMaster):
             function_callable=self.game_instance['callable'],
         )
         self.state.candidate_ids = candidate_ids
-        self.state.observed_pairs = []
+
+    def _stable_key(self, obj: Any) -> str:
+        """Stable string key for args/outputs so we can count uniques robustly."""
+        try:
+            return json.dumps(obj, default=str, sort_keys=True)
+        except Exception:
+            return str(obj)
 
     def _compute_hypothesis_quality_metrics(self):
         hist = self.state.hypothesis_history or []
@@ -388,8 +401,6 @@ class FunctionigmaGameMaster(DialogueGameMaster):
 
         # --- LOGIC TO HANDLE GUESS ---
         if response_str.startswith("GUESS:"):
-            print("User is submitting a function guess!")
-
             # Use the utility function to get clean code
             extracted_code = extract_function_code(response_str)
 
@@ -399,8 +410,6 @@ class FunctionigmaGameMaster(DialogueGameMaster):
                 # or raise a ParseError.
                 # raising ParseError forces the model to retry with correct formatting.
                 raise ParseError("Guess must contain a markdown code block (```python ... ```).")
-
-            print("FUNCTION CODE FOUND:\n", extracted_code)
 
             # Return tuple: (action, content)
             return "guess", extracted_code
@@ -424,7 +433,7 @@ class FunctionigmaGameMaster(DialogueGameMaster):
         # --- FAILURE ---
         raise ParseError("Invalid format. Must be 'INPUT: x, y' or 'GUESS: ```python ... ```'")
 
-    def _advance_game(self, player: Player, parsed_response: Tuple[str, str]):
+    def _advance_game(self, player: Player, parsed_response: Tuple[str, Any]):
         action_type, content = parsed_response
 
         if action_type == "call":
@@ -542,7 +551,7 @@ class FunctionigmaGameMaster(DialogueGameMaster):
             self.log_to_self("parse_error_count", f"Parse error count: {self.state.parse_error_count}")
             self.log_to_self("runtime_error_count", f"Runtime error count: {self.state.runtime_error_count}")
 
-            self.log_to_self("observed_pairs", f"Observed pairs: {self.state.observed_pairs}")
+            # self.log_to_self("observed_pairs", f"Observed pairs: {self.state.observed_pairs}")
 
     def _on_parse_error(self, error: GameError):
         self.state.parse_error_count += 1
@@ -587,18 +596,79 @@ class FunctionigmaGameMaster(DialogueGameMaster):
         self.log_key("max_turns", self.state.max_turns)
 
         self.log_key("observed_pairs", self.state.observed_pairs)
+        pairs = self.state.observed_pairs or []
+        probe_count = len(pairs)
+
+        # unique inputs / outputs
+        unique_input_keys = set()
+        unique_output_keys = set()
+
+        for p in pairs:
+            unique_input_keys.add(self._stable_key(p.get("args")))
+            unique_output_keys.add(self._stable_key(p.get("output")))
+
+        unique_input_count = len(unique_input_keys)
+        unique_output_count = len(unique_output_keys)
+
+        novelty_rate = (unique_output_count / probe_count) if probe_count else 0.0
+        input_diversity = (unique_input_count / probe_count) if probe_count else 0.0
+
+        # Optional: output entropy (bits)
+        # H = -sum p(o) log2 p(o)
+        output_entropy_bits = 0.0
+        if probe_count:
+            from collections import Counter
+            import math
+            out_counts = Counter(self._stable_key(p.get("output")) for p in pairs)
+            for c in out_counts.values():
+                p = c / probe_count
+                output_entropy_bits -= p * math.log2(p)
+
+        # Log keys (these will appear in interactions + get passed through by scorer)
+        self.log_key("probe_count", probe_count)
+        self.log_key("unique_input_count", unique_input_count)
+        self.log_key("unique_output_count", unique_output_count)
+
+        # Names your scorer already expects:
+        self.log_key("novelty_rate", float(novelty_rate))
+        self.log_key("input_diversity", float(input_diversity))
+
+        # Optional (new): useful in analysis, keep numeric so it can go to raw.csv too
+        self.log_key("output_entropy_bits", float(output_entropy_bits))
+
         self.log_key("internal_consistency_score", getattr(self.state, "internal_consistency_score", 0.0))
         self.log_key("internal_consistency_all_observed",
                      getattr(self.state, "internal_consistency_all_observed", False))
         self.log_key("internal_consistency_violations", getattr(self.state, "internal_consistency_violations", 0))
 
         self._compute_hypothesis_quality_metrics()
+        self.log_to_self(
+            "hypothesis_quality_summary",
+            {
+                "format_errors": self.state.hypothesis_format_error_count,
+                "top1_hit_at_stop": self.state.hypothesis_top1_hit_at_stop,
+                "top3_hit_at_stop": self.state.hypothesis_top3_hit_at_stop,
+                "prob_true_at_stop": self.state.hypothesis_prob_true_at_stop,
+                "avg_neg_log_prob_true": self.state.hypothesis_avg_negative_log_prob_true,
+                "top1_switches": self.state.hypothesis_top1_switches,
+            }
+        )
+
         self.log_key("hypothesis_format_error_count", self.state.hypothesis_format_error_count)
         self.log_key("hypothesis_top1_hit_at_stop", self.state.hypothesis_top1_hit_at_stop)
         self.log_key("hypothesis_top3_hit_at_stop", self.state.hypothesis_top3_hit_at_stop)
         self.log_key("hypothesis_prob_true_at_stop", self.state.hypothesis_prob_true_at_stop)
         self.log_key("hypothesis_avg_negative_log_prob_true", self.state.hypothesis_avg_negative_log_prob_true)
         self.log_key("hypothesis_top1_switches", self.state.hypothesis_top1_switches)
+
+        self.log_to_self(
+            "probe_information_summary",
+            (
+                f"Probes: {probe_count} | "
+                f"Unique inputs: {unique_input_count} (diversity={input_diversity:.2f}) | "
+                f"Unique outputs: {unique_output_count} (novelty={novelty_rate:.2f}, entropy={output_entropy_bits:.2f} bits)"
+            )
+        )
 
 
 class SomeGameScorer(GameScorer):
@@ -646,6 +716,8 @@ class SomeGameScorer(GameScorer):
             "internal_consistency_score",
             "internal_consistency_all_observed",
             "internal_consistency_violations",
+            "output_entropy_bits",
+
         ]
         for k in passthrough_keys:
             if k in interactions:
