@@ -9,6 +9,12 @@
           "signature": "(x: int, y: int) -> int",
           "category": "math",
           "difficulty": "easy",
+          "candidate_ids": [
+            "f_add",
+            "bubble_sort",
+            "abs_diff",
+            "clamp"
+          ],
           "docstring": null,
           "test_cases": [
             {
@@ -159,6 +165,11 @@
           "signature": "(x: str) -> str",
           "category": "string",
           "difficulty": "easy",
+          "candidate_ids": [
+            "rev_str",
+            "count_vowels",
+            "is_palindrome"
+          ],
           "docstring": null,
           "test_cases": [
             {
@@ -235,6 +246,12 @@
           "signature": "(xs: List[int]) -> List[int]",
           "category": "math",
           "difficulty": "easy",
+          "candidate_ids": [
+            "f_add",
+            "bubble_sort",
+            "abs_diff",
+            "clamp"
+          ],
           "docstring": null,
           "test_cases": [
             {
@@ -575,6 +592,12 @@
           "signature": "(x: int, y: int) -> int",
           "category": "math",
           "difficulty": "easy",
+          "candidate_ids": [
+            "f_add",
+            "bubble_sort",
+            "abs_diff",
+            "clamp"
+          ],
           "docstring": "Absolute difference.",
           "test_cases": [
             {
@@ -725,6 +748,12 @@
           "signature": "(x: int, lo: int, hi: int) -> int",
           "category": "math",
           "difficulty": "easy",
+          "candidate_ids": [
+            "f_add",
+            "bubble_sort",
+            "abs_diff",
+            "clamp"
+          ],
           "docstring": "Clamp x into [lo, hi]. Assumes lo <= hi.",
           "test_cases": [
             {
@@ -895,6 +924,11 @@
           "signature": "(s: str) -> int",
           "category": "string",
           "difficulty": "easy",
+          "candidate_ids": [
+            "rev_str",
+            "count_vowels",
+            "is_palindrome"
+          ],
           "docstring": "Count vowels (aeiou) case-insensitive.",
           "test_cases": [
             {
@@ -971,6 +1005,11 @@
           "signature": "(s: str) -> bool",
           "category": "string",
           "difficulty": "easy",
+          "candidate_ids": [
+            "rev_str",
+            "count_vowels",
+            "is_palindrome"
+          ],
           "docstring": "Palindrome check, case-sensitive.",
           "test_cases": [
             {
@@ -1048,6 +1087,11 @@
           "signature": "(a: int, b: int) -> int",
           "category": "math",
           "difficulty": "medium",
+          "candidate_ids": [
+            "gcd_euclid",
+            "unique_sorted",
+            "rotate_left"
+          ],
           "docstring": "Greatest common divisor (non-negative).",
           "test_cases": [
             {
@@ -1268,6 +1312,11 @@
           "signature": "(xs: List[int]) -> List[int]",
           "category": "math",
           "difficulty": "medium",
+          "candidate_ids": [
+            "gcd_euclid",
+            "unique_sorted",
+            "rotate_left"
+          ],
           "docstring": "Return sorted unique elements.",
           "test_cases": [
             {
@@ -1777,6 +1826,11 @@
           "signature": "(xs: List[int], k: int) -> List[int]",
           "category": "math",
           "difficulty": "medium",
+          "candidate_ids": [
+            "gcd_euclid",
+            "unique_sorted",
+            "rotate_left"
+          ],
           "docstring": "Rotate list left by k positions.",
           "test_cases": [
             {
@@ -2235,6 +2289,9 @@
           "signature": "(s: str, k: int) -> str",
           "category": "string",
           "difficulty": "medium",
+          "candidate_ids": [
+            "caesar_shift"
+          ],
           "docstring": "\n    Shift letters by k (Caesar cipher).\n    Only shifts A-Z and a-z; other chars unchanged.\n    ",
           "test_cases": [
             {
@@ -2462,6 +2519,9 @@
           "signature": "(xs: List[int]) -> int",
           "category": "math",
           "difficulty": "hard",
+          "candidate_ids": [
+            "first_missing_positive"
+          ],
           "docstring": "\n    Return the smallest missing positive integer.\n    Example: [3,4,-1,1] -> 2 ; [1,2,0] -> 3\n    ",
           "test_cases": [
             {
@@ -2928,6 +2988,10 @@
           "signature": "(s: str) -> bool",
           "category": "string",
           "difficulty": "hard",
+          "candidate_ids": [
+            "balanced_parentheses",
+            "edit_distance"
+          ],
           "docstring": "\n    Check if (), [], {} are balanced and properly nested.\n    Ignores non-bracket characters.\n    ",
           "test_cases": [
             {
@@ -3052,6 +3116,10 @@
           "signature": "(a: str, b: str) -> int",
           "category": "string",
           "difficulty": "hard",
+          "candidate_ids": [
+            "balanced_parentheses",
+            "edit_distance"
+          ],
           "docstring": "\n    Levenshtein edit distance (insert/delete/replace), O(len(a)*len(b)).\n    ",
           "test_cases": [
             {

@@ -1,5 +1,5 @@
-from typing import Dict, Tuple, List
-from dataclasses import dataclass
+from typing import Dict, Tuple, List, Any
+from dataclasses import dataclass, field
 import logging
 import numpy as np
 import importlib
@@ -83,6 +83,18 @@ class GameState:
     internal_consistency_all_observed: bool = False
     internal_consistency_violations: int = 0
 
+    # --- Hypothesis tracking (candidate IDs) ---
+    candidate_ids: List[str] = field(default_factory=list)
+    hypothesis_history: List[Dict] = field(default_factory=list)
+    hypothesis_format_error_count: int = 0
+
+    # Episode-level hypothesis quality metrics
+    hypothesis_top1_hit_at_stop: int = 0
+    hypothesis_top3_hit_at_stop: int = 0
+    hypothesis_prob_true_at_stop: float = 0.0
+    hypothesis_avg_negative_log_prob_true: float = 0.0
+    hypothesis_top1_switches: int = 0
+
 
 class Guesser(Player):
     def __init__(self, model: Model):
@@ -125,6 +137,7 @@ class FunctionigmaGameMaster(DialogueGameMaster):
 
         # choose given category if present, otherwise -> (fallback to MATH)
         self.category = game_instance.get("category", "MATH")
+        candidate_ids = game_instance.get("candidate_ids", [])
 
         # parameter list string for prompt
         param_list_str = ", ".join(
@@ -138,14 +151,145 @@ class FunctionigmaGameMaster(DialogueGameMaster):
         prompt = prompt.replace('$CATEGORY$', str(self.category))
         prompt = prompt.replace('$MAX_TURNS$', str(self.max_turns))
         prompt = prompt.replace('$VARIABLES$', variables)
+        if candidate_ids:
+            prompt += "\n\nCANDIDATE FUNCTION IDS (use only these in hypotheses):\n"
+            prompt += "\n".join(f"- {cid}" for cid in candidate_ids)
+            prompt += (
+                "\n\nOn EVERY turn, output one of the following formats.\n"
+                "Format A (probe):\n"
+                "INPUT: <args>\n"
+                "HYPOTHESES:\n"
+                "- candidate: <candidate_id>\n"
+                "- candidate: <candidate_id>\n"
+                "CONFIDENCE:\n"
+                "- <float>\n"
+                "- <float>\n"
+                "\nConfidences must sum to 1.\n"
+                "\nFormat B (final guess):\n"
+                "GUESS: ```python\n<code>\n```\n"
+            )
 
         # add player with initial context
         self.guesser_player = Guesser(self.player_models[0])
         self.add_player(self.guesser_player, initial_context=prompt)
-        self.state = GameState(max_turns=self.max_turns, function_signature=self.signature,
-                               function_callable=self.game_instance['callable'], observed_pairs=[])
+        self.state = GameState(
+            max_turns=self.max_turns,
+            function_signature=self.signature,
+            function_callable=self.game_instance['callable'],
+        )
+        self.state.candidate_ids = candidate_ids
+        self.state.observed_pairs = []
 
-    ##################
+    def _compute_hypothesis_quality_metrics(self):
+        hist = self.state.hypothesis_history or []
+        true_id = self.state.function_callable
+
+        if not hist:
+            self.state.hypothesis_top1_hit_at_stop = 0
+            self.state.hypothesis_top3_hit_at_stop = 0
+            self.state.hypothesis_prob_true_at_stop = 0.0
+            self.state.hypothesis_avg_negative_log_prob_true = 0.0
+            self.state.hypothesis_top1_switches = 0
+            return
+
+        # top1 switches (churn)
+        top1_list = [h["top1"] for h in hist]
+        self.state.hypothesis_top1_switches = sum(
+            1 for i in range(1, len(top1_list)) if top1_list[i] != top1_list[i - 1]
+        )
+
+        # Metrics "at stop": use last recorded hypotheses (last probe turn)
+        last = hist[-1]
+        self.state.hypothesis_prob_true_at_stop = float(last.get("p_true", 0.0))
+
+        pairs = list(zip(last["candidates"], last["confidences"]))
+        pairs.sort(key=lambda x: x[1], reverse=True)
+
+        top1 = pairs[0][0]
+        top3 = [c for c, _ in pairs[:3]]
+
+        self.state.hypothesis_top1_hit_at_stop = int(top1 == true_id)
+        self.state.hypothesis_top3_hit_at_stop = int(true_id in top3)
+
+        # Avg negative log prob of true across turns (log loss)
+        import math
+        eps = 1e-9
+        nlls = [-math.log(max(eps, float(h.get("p_true", 0.0)))) for h in hist]
+        self.state.hypothesis_avg_negative_log_prob_true = float(sum(nlls) / len(nlls))
+
+    def _parse_hypothesis_block(self, text: str):
+        """
+        Parse:
+          HYPOTHESES:
+          - candidate: <id>
+          CONFIDENCE:
+          - <float>
+
+        Returns (candidate_list, confidence_list) or (None, None) if invalid/missing.
+        """
+        if not text:
+            return None, None
+
+        lines = [ln.strip() for ln in text.splitlines() if ln.strip()]
+        try:
+            h_idx = lines.index("HYPOTHESES:")
+            c_idx = lines.index("CONFIDENCE:")
+        except ValueError:
+            return None, None
+
+        hyp_lines = lines[h_idx + 1: c_idx]
+        conf_lines = lines[c_idx + 1:]
+
+        candidates = []
+        for ln in hyp_lines:
+            if not ln.startswith("-"):
+                continue
+            item = ln.lstrip("-").strip()
+            if item.lower().startswith("candidate:"):
+                candidates.append(item.split(":", 1)[1].strip())
+
+        confidences = []
+        for ln in conf_lines:
+            if not ln.startswith("-"):
+                continue
+            item = ln.lstrip("-").strip()
+            try:
+                confidences.append(float(item))
+            except Exception:
+                return None, None
+
+        if not candidates or len(candidates) != len(confidences):
+            return None, None
+
+        s = sum(confidences)
+        if s <= 0:
+            return None, None
+
+        # Require close-to-1 to avoid arbitrary scaling
+        if abs(s - 1.0) > 0.05:
+            return None, None
+
+        # Normalize tiny numeric drift
+        confidences = [x / s for x in confidences]
+        return candidates, confidences
+
+    def _record_hypotheses(self, candidates, confidences):
+        """
+        Log hypotheses for this round and keep a compact history.
+        """
+        true_id = self.state.function_callable
+        cand_to_p = {c: p for c, p in zip(candidates, confidences)}
+
+        top1 = max(cand_to_p.items(), key=lambda kv: kv[1])[0]
+        p_true = float(cand_to_p.get(true_id, 0.0))
+
+        self.state.hypothesis_history.append({
+            "round": int(self.state.probe_round),
+            "top1": top1,
+            "p_true": p_true,
+            "candidates": list(candidates),
+            "confidences": list(confidences),
+        })
 
     def check_given_inputs(self, response: str) -> bool:
         # Accept only responses starting with "INPUT:"
@@ -238,7 +382,7 @@ class FunctionigmaGameMaster(DialogueGameMaster):
             return result
         return str(result)
 
-    def _parse_response(self, player: Player, response: str) -> Tuple[str, str]:
+    def _parse_response(self, player: Player, response: str) -> Tuple[str, Any]:
         print(f"PROBE: {response}")
         response_str = str(response).strip()
 
@@ -262,26 +406,57 @@ class FunctionigmaGameMaster(DialogueGameMaster):
             return "guess", extracted_code
 
         # --- LOGIC TO HANDLE INPUTS ---
+        # --- LOGIC TO HANDLE INPUTS ---
         if response_str.startswith("INPUT:"):
-            if self.check_given_inputs(response_str):
-                return "call", response_str
-        else:
-            # --- FAILURE ---
-            raise ParseError("Invalid format. Must be 'INPUT: x, y' or 'GUESS: ```python ... ```'")
+            # Allow multi-line: first line is INPUT, remaining lines are hypothesis block
+            lines = response_str.splitlines()
+            input_line = lines[0].strip()
+            rest = "\n".join(lines[1:]) if len(lines) > 1 else ""
+
+            if self.check_given_inputs(input_line):
+                hyp_candidates, hyp_confidences = self._parse_hypothesis_block(rest)
+                return "call", {
+                    "input_line": input_line,
+                    "hyp_candidates": hyp_candidates,
+                    "hyp_confidences": hyp_confidences,
+                }
+
+        # --- FAILURE ---
+        raise ParseError("Invalid format. Must be 'INPUT: x, y' or 'GUESS: ```python ... ```'")
 
     def _advance_game(self, player: Player, parsed_response: Tuple[str, str]):
         action_type, content = parsed_response
 
         if action_type == "call":
             try:
-                output = self.run_dynamic_function(self.state.function_callable, content)
+                input_line = content["input_line"]
+                output = self.run_dynamic_function(self.state.function_callable, input_line)
+
+                # Store hypotheses (do NOT consume turns on hypothesis format issues)
+                candidates = content.get("hyp_candidates")
+                confidences = content.get("hyp_confidences")
+                pool = set(self.state.candidate_ids or [])
+
+                if not pool:
+                    # if no candidate pool (older instances), skip hypothesis tracking
+                    pass
+                elif candidates is None or confidences is None:
+                    self.state.hypothesis_format_error_count += 1
+                elif any(c not in pool for c in candidates):
+                    self.state.hypothesis_format_error_count += 1
+                else:
+                    self._record_hypotheses(candidates, confidences)
+
                 self.set_context_for(self.guesser_player, f"Function Output: {output}")
-                self.log_to_self("probe results",
-                                 {"probe_round": self.state.probe_round, "probe_args": self.state.probe_args,
-                                  "probe_output": self.state.probe_output})
+                self.log_to_self(
+                    "probe results",
+                    {"probe_round": self.state.probe_round, "probe_args": self.state.probe_args,
+                     "probe_output": self.state.probe_output}
+                )
+
             except Exception as e:
-                self.state.runtime_error_count += 1
                 self.set_context_for(self.guesser_player, f"Error executing function: {e}")
+
 
         elif action_type == "guess":
             print(f"Player guessed code:\n{content}")
@@ -336,7 +511,10 @@ class FunctionigmaGameMaster(DialogueGameMaster):
             self.state.test_accuracy = accuracy
             self.log_to_self("test_accuracy", f"Accuracy Score: {accuracy}")
 
-            self.state.test_efficiency = 1 - (self.state.probe_round - 1) / (self.state.max_turns - 1)
+            den = max(1, (self.state.max_turns - 1))
+            efficiency = 1 - (self.state.probe_round - 1) / den
+
+            self.state.test_efficiency = efficiency
             self.log_to_self("test_efficiency", f"Efficiency Score: {self.state.test_efficiency}")
 
             self.state.test_slack = (self.state.max_turns - self.state.probe_round)
@@ -414,6 +592,14 @@ class FunctionigmaGameMaster(DialogueGameMaster):
                      getattr(self.state, "internal_consistency_all_observed", False))
         self.log_key("internal_consistency_violations", getattr(self.state, "internal_consistency_violations", 0))
 
+        self._compute_hypothesis_quality_metrics()
+        self.log_key("hypothesis_format_error_count", self.state.hypothesis_format_error_count)
+        self.log_key("hypothesis_top1_hit_at_stop", self.state.hypothesis_top1_hit_at_stop)
+        self.log_key("hypothesis_top3_hit_at_stop", self.state.hypothesis_top3_hit_at_stop)
+        self.log_key("hypothesis_prob_true_at_stop", self.state.hypothesis_prob_true_at_stop)
+        self.log_key("hypothesis_avg_negative_log_prob_true", self.state.hypothesis_avg_negative_log_prob_true)
+        self.log_key("hypothesis_top1_switches", self.state.hypothesis_top1_switches)
+
 
 class SomeGameScorer(GameScorer):
     def __init__(self, game_name: str, experiment: Dict, game_instance: Dict):
@@ -462,6 +648,18 @@ class SomeGameScorer(GameScorer):
             "internal_consistency_violations",
         ]
         for k in passthrough_keys:
+            if k in interactions:
+                self.log_episode_score(k, interactions[k])
+
+        hypothesis_keys = [
+            "hypothesis_format_error_count",
+            "hypothesis_top1_hit_at_stop",
+            "hypothesis_top3_hit_at_stop",
+            "hypothesis_prob_true_at_stop",
+            "hypothesis_avg_negative_log_prob_true",
+            "hypothesis_top1_switches",
+        ]
+        for k in hypothesis_keys:
             if k in interactions:
                 self.log_episode_score(k, interactions[k])
 

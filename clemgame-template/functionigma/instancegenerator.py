@@ -58,6 +58,13 @@ class Functionigma(GameInstanceGenerator):
             game_instance["signature"] = function_data["signature"]
             game_instance["category"] = function_data["category"]
             game_instance["difficulty"] = diff_level
+            # Candidate pool for hypotheses: same category + same difficulty
+            game_instance["candidate_ids"] = [
+                fd["function_name"]
+                for fd in FUNCTION_REGISTRY
+                if fd["category"] == function_data["category"] and fd["difficulty"] == diff_level
+            ]
+
             game_instance["docstring"] = function_data["callable"].__doc__
 
             # deterministic tests per (seed, function)
