@@ -1,8 +1,4 @@
 {
-  "openai": {
-    "organisation": "",
-    "api_key": ""
-  },
   "anthropic": {
     "api_key": ""
   },

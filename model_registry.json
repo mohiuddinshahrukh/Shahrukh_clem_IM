@@ -1,5 +1,22 @@
 [
   {
+    "model_name": "gpt-3.5-turbo",
+    "model_id": "gpt-3.5-turbo",
+    "backend": "openai",
+    "release_date": "2025-03-19",
+    "open_weight": true,
+    "parameters": "1B",
+    "languages": [
+      "en"
+    ],
+    "context_size": "128k",
+    "license": {
+      "name": "Apache",
+      "url": "https://www.apache.org/licenses/LICENSE-2.0"
+    },
+    "model_config": {}
+  },
+  {
     "model_name": "Qwen3-VL-30B-A3B-Thinking",
     "model_id": "Qwen/Qwen3-VL-30B-A3B-Thinking-FP8",
     "backend": "openai_compatible",

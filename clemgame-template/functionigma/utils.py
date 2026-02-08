@@ -10,7 +10,8 @@ from typing import Any, Callable, List, Dict, get_origin, get_args, Optional, Tu
 def generate_random_value(annotation: Any, category: str = None) -> Any:
     # ... (Keep your existing generate_random_value implementation exactly as is) ...
     # --- 1. Handle Lists (Recursion) ---
-    if get_origin(annotation) is list:
+    origin = get_origin(annotation)
+    if origin in (list, List):
         args = get_args(annotation)
         inner_type = args[0] if args else int
         return [generate_random_value(inner_type, category) for _ in range(random.randint(0, 10))]
@@ -71,9 +72,9 @@ def _edge_values_for_annotation(annotation: Any, category: Optional[str] = None)
     """
     origin = get_origin(annotation)
 
-    if origin is list:
+    # Accept both built-in list and typing.List origins
+    if origin in (list, List):
         inner = get_args(annotation)[0] if get_args(annotation) else int
-        # edge lists: empty, singletons, duplicates, negatives, sorted/reversed
         return [
             [],
             [generate_random_value(inner, category)],
@@ -199,7 +200,10 @@ def create_static_test_cases(
 
     # 2) Add edge-bucket cases until we hit target edge budget
     edge_budget = int(round(num_tests * edge_ratio))
-    while len(test_cases) < min(num_tests, edge_budget):
+    edge_attempts = 0
+    edge_attempt_limit = max(200, num_tests * 20)
+    while len(test_cases) < min(num_tests, edge_budget) and edge_attempts < edge_attempt_limit:
+        edge_attempts += 1
         args = []
         for pool in edge_pools:
             args.append(random.choice(pool))
@@ -306,8 +310,6 @@ def extract_function_code(text: str) -> Optional[str]:
     if match:
         return match.group(1).strip()
     return None
-
-
 
 
 def parse_signature_with_types(signature: str) -> Tuple[List[str], List[str], str]:
