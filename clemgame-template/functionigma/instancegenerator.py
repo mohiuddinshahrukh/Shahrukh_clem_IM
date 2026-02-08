@@ -1,13 +1,13 @@
 import os
 import logging
 import sys
+import random
+import numpy as np
 from clemcore.clemgame import GameInstanceGenerator
 
-# Add project root
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 from functionigma.functions import FUNCTION_REGISTRY
-# Import the new generator function
 from functionigma.utils import create_static_test_cases
 
 logger = logging.getLogger(__name__)
@@ -37,33 +37,39 @@ class Functionigma(GameInstanceGenerator):
         for i, function_data in enumerate(FUNCTION_REGISTRY):
             diff_level = function_data["difficulty"]
 
-            if diff_level in experiments:
-                target_experiment = experiments[diff_level]
-                game_instance = self.add_game_instance(target_experiment, i)
-
-                # Standard Metadata
-                game_instance["callable"] = function_data["function_name"]
-                game_instance["signature"] = function_data["signature"]
-                game_instance["category"] = function_data["category"]
-                game_instance["difficulty"] = diff_level
-                game_instance["docstring"] = function_data["callable"].__doc__
-
-                # --- NEW: Generate and Save Test Cases ---
-                print(f"Generating static tests for {function_data['function_name']}...")
-
-                # Generate 20 test cases
-                static_tests = create_static_test_cases(
-                    function_data["callable"],
-                    function_data["category"],
-                    num_tests=20
-                )
-
-                # Save to JSON
-                game_instance["test_cases"] = static_tests
-                print(f"Saved {len(static_tests)} tests.")
-
-            else:
+            if diff_level not in experiments:
                 logger.warning(f"Unknown difficulty: {diff_level}")
+                continue
+
+            target_experiment = experiments[diff_level]
+            game_instance = self.add_game_instance(target_experiment, i)
+
+            game_instance["callable"] = function_data["function_name"]
+            game_instance["signature"] = function_data["signature"]
+            game_instance["category"] = function_data["category"]
+            game_instance["difficulty"] = diff_level
+            game_instance["docstring"] = function_data["callable"].__doc__
+
+            # deterministic tests per (seed, function)
+            base_seed = seed if seed is not None else 0
+            case_seed = (base_seed * 10_000) + i
+            random.seed(case_seed)
+            np.random.seed(case_seed)
+
+            num_tests = {"easy": 20, "medium": 30, "hard": 40}.get(diff_level, 20)
+
+            print(f"Generating static tests for {function_data['function_name']}...")
+
+            static_tests = create_static_test_cases(
+                function_data["callable"],
+                function_data["category"],
+                signature=function_data["signature"],
+                difficulty=diff_level,
+                num_tests=num_tests,
+            )
+
+            game_instance["test_cases"] = static_tests
+            print(f"Saved {len(static_tests)} tests.")
 
 
 if __name__ == '__main__':
