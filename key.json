@@ -1,22 +1,22 @@
 {
   "anthropic": {
-    "api_key": ""
+    "api_key": "get-your-own-key",
   },
   "google": {
-    "api_key": ""
+    "api_key": "get-your-own-key",
   },
   "cohere": {
-    "api_key": "r0821BA72B86YjfIEK03A0xljZO4DSfH38fKYiOW"
+    "api_key": "get-your-own-key",
   },
   "mistral": {
-    "api_key": ""
+    "api_key": "get-your-own-key",
   },
   "huggingface": {
-    "api_key": "",
+    "api_key": "get-your-own-key",
     "organisation": ""
   },
   "openai_compatible": {
-    "api_key": "asd-asd-asd",
+    "api_key": "get-your-own-key",
     "base_url": "https://jarvis.ling.uni-potsdam.de/clp-chat/api/v1"
   }
 }
