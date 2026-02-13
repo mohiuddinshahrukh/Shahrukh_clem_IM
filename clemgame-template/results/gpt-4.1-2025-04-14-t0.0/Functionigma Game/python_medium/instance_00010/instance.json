@@ -1,0 +1,223 @@
+{
+  "game_id": 10,
+  "callable": "caesar_shift",
+  "signature": "(s: str, k: int) -> str",
+  "category": "string",
+  "difficulty": "medium",
+  "candidate_ids": [
+    "caesar_shift"
+  ],
+  "docstring": "\n    Shift letters by k (Caesar cipher).\n    Only shifts A-Z and a-z; other chars unchanged.\n    ",
+  "test_cases": [
+    {
+      "args": [
+        "123",
+        0
+      ],
+      "expected": "123"
+    },
+    {
+      "args": [
+        "aA",
+        99
+      ],
+      "expected": "vV"
+    },
+    {
+      "args": [
+        "ab",
+        99
+      ],
+      "expected": "vw"
+    },
+    {
+      "args": [
+        "hello",
+        -2
+      ],
+      "expected": "fcjjm"
+    },
+    {
+      "args": [
+        "a-b",
+        -1
+      ],
+      "expected": "z-a"
+    },
+    {
+      "args": [
+        "",
+        -99
+      ],
+      "expected": ""
+    },
+    {
+      "args": [
+        "hello",
+        10
+      ],
+      "expected": "rovvy"
+    },
+    {
+      "args": [
+        " ",
+        2
+      ],
+      "expected": " "
+    },
+    {
+      "args": [
+        "   ",
+        10
+      ],
+      "expected": "   "
+    },
+    {
+      "args": [
+        "",
+        -10
+      ],
+      "expected": ""
+    },
+    {
+      "args": [
+        "a",
+        1000
+      ],
+      "expected": "m"
+    },
+    {
+      "args": [
+        "A",
+        -10
+      ],
+      "expected": "Q"
+    },
+    {
+      "args": [
+        "aA",
+        -2
+      ],
+      "expected": "yY"
+    },
+    {
+      "args": [
+        "a-b",
+        -2
+      ],
+      "expected": "y-z"
+    },
+    {
+      "args": [
+        "12345",
+        -28
+      ],
+      "expected": "12345"
+    },
+    {
+      "args": [
+        "aba",
+        -1
+      ],
+      "expected": "zaz"
+    },
+    {
+      "args": [
+        "a",
+        1
+      ],
+      "expected": "b"
+    },
+    {
+      "args": [
+        "12345",
+        10
+      ],
+      "expected": "12345"
+    },
+    {
+      "args": [
+        "",
+        0
+      ],
+      "expected": ""
+    },
+    {
+      "args": [
+        "ab",
+        1
+      ],
+      "expected": "bc"
+    },
+    {
+      "args": [
+        "ab",
+        -10
+      ],
+      "expected": "qr"
+    },
+    {
+      "args": [
+        " ",
+        -10
+      ],
+      "expected": " "
+    },
+    {
+      "args": [
+        "   ",
+        1
+      ],
+      "expected": "   "
+    },
+    {
+      "args": [
+        "",
+        10
+      ],
+      "expected": ""
+    },
+    {
+      "args": [
+        "aba",
+        27
+      ],
+      "expected": "bcb"
+    },
+    {
+      "args": [
+        " ",
+        0
+      ],
+      "expected": " "
+    },
+    {
+      "args": [
+        "a",
+        -10
+      ],
+      "expected": "q"
+    },
+    {
+      "args": [
+        "12345",
+        1
+      ],
+      "expected": "12345"
+    },
+    {
+      "args": [
+        "12345",
+        -19
+      ],
+      "expected": "12345"
+    },
+    {
+      "args": [
+        "aba",
+        -10
+      ],
+      "expected": "qrq"
+    }
+  ]
+}

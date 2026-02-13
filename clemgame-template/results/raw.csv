@@ -1,0 +1,1110 @@
+,game,model,experiment,episode,metric,value
+0,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00000,Request Count,4.0
+1,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00000,Parsed Request Count,4.0
+2,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00000,Violated Request Count,0.0
+3,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00000,Request Success Ratio,1.0
+4,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00000,Aborted,0.0
+5,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00000,Lose,0.0
+6,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00000,Success,1.0
+7,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00000,Main Score,100.0
+8,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00000,accuracy,100.0
+9,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00000,efficiency,0.5
+10,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00000,slack,2.0
+11,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00000,turns_used,3.0
+12,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00000,max_turns,5.0
+13,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00000,parse_error_count,0.0
+14,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00000,runtime_error_count,0.0
+15,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00000,internal_consistency_score,1.0
+16,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00000,internal_consistency_all_observed,1.0
+17,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00000,internal_consistency_violations,0.0
+18,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00001,Request Count,4.0
+19,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00001,Parsed Request Count,4.0
+20,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00001,Violated Request Count,0.0
+21,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00001,Request Success Ratio,1.0
+22,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00001,Aborted,0.0
+23,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00001,Lose,0.0
+24,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00001,Success,1.0
+25,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00001,Main Score,100.0
+26,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00001,accuracy,100.0
+27,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00001,efficiency,0.5
+28,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00001,slack,2.0
+29,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00001,turns_used,3.0
+30,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00001,max_turns,5.0
+31,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00001,parse_error_count,0.0
+32,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00001,runtime_error_count,0.0
+33,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00001,internal_consistency_score,1.0
+34,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00001,internal_consistency_all_observed,1.0
+35,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00001,internal_consistency_violations,0.0
+36,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00002,Request Count,5.0
+37,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00002,Parsed Request Count,5.0
+38,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00002,Violated Request Count,0.0
+39,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00002,Request Success Ratio,1.0
+40,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00002,Aborted,0.0
+41,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00002,Lose,0.0
+42,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00002,Success,1.0
+43,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00002,Main Score,100.0
+44,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00002,accuracy,100.0
+45,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00002,efficiency,0.25
+46,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00002,slack,1.0
+47,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00002,turns_used,4.0
+48,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00002,max_turns,5.0
+49,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00002,parse_error_count,0.0
+50,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00002,runtime_error_count,0.0
+51,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00002,internal_consistency_score,1.0
+52,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00002,internal_consistency_all_observed,1.0
+53,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00002,internal_consistency_violations,0.0
+54,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00003,Request Count,5.0
+55,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00003,Parsed Request Count,5.0
+56,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00003,Violated Request Count,0.0
+57,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00003,Request Success Ratio,1.0
+58,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00003,Aborted,0.0
+59,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00003,Lose,0.0
+60,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00003,Success,1.0
+61,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00003,Main Score,100.0
+62,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00003,accuracy,100.0
+63,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00003,efficiency,0.25
+64,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00003,slack,1.0
+65,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00003,turns_used,4.0
+66,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00003,max_turns,5.0
+67,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00003,parse_error_count,0.0
+68,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00003,runtime_error_count,0.0
+69,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00003,internal_consistency_score,1.0
+70,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00003,internal_consistency_all_observed,1.0
+71,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00003,internal_consistency_violations,0.0
+72,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00004,Request Count,4.0
+73,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00004,Parsed Request Count,4.0
+74,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00004,Violated Request Count,0.0
+75,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00004,Request Success Ratio,1.0
+76,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00004,Aborted,0.0
+77,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00004,Lose,1.0
+78,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00004,Success,0.0
+79,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00004,Main Score,0.0
+80,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00004,accuracy,85.0
+81,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00004,efficiency,0.5
+82,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00004,slack,2.0
+83,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00004,turns_used,3.0
+84,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00004,max_turns,5.0
+85,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00004,parse_error_count,0.0
+86,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00004,runtime_error_count,0.0
+87,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00004,internal_consistency_score,1.0
+88,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00004,internal_consistency_all_observed,1.0
+89,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00004,internal_consistency_violations,0.0
+90,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00005,Request Count,4.0
+91,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00005,Parsed Request Count,4.0
+92,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00005,Violated Request Count,0.0
+93,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00005,Request Success Ratio,1.0
+94,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00005,Aborted,0.0
+95,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00005,Lose,1.0
+96,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00005,Success,0.0
+97,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00005,Main Score,0.0
+98,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00005,accuracy,36.36363636363637
+99,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00005,efficiency,0.5
+100,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00005,slack,2.0
+101,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00005,turns_used,3.0
+102,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00005,max_turns,5.0
+103,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00005,parse_error_count,0.0
+104,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00005,runtime_error_count,0.0
+105,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00005,internal_consistency_score,0.6666666666666666
+106,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00005,internal_consistency_all_observed,0.0
+107,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00005,internal_consistency_violations,1.0
+108,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00006,Request Count,5.0
+109,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00006,Parsed Request Count,5.0
+110,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00006,Violated Request Count,0.0
+111,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00006,Request Success Ratio,1.0
+112,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00006,Aborted,0.0
+113,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00006,Lose,1.0
+114,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00006,Success,0.0
+115,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00006,Main Score,0.0
+116,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00006,accuracy,60.0
+117,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00006,efficiency,0.25
+118,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00006,slack,1.0
+119,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00006,turns_used,4.0
+120,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00006,max_turns,5.0
+121,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00006,parse_error_count,0.0
+122,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00006,runtime_error_count,0.0
+123,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00006,internal_consistency_score,0.75
+124,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00006,internal_consistency_all_observed,0.0
+125,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00006,internal_consistency_violations,1.0
+126,Functionigma Game,command-a-03-2025-t0.0,python_medium,instance_00002,Request Count,5.0
+127,Functionigma Game,command-a-03-2025-t0.0,python_medium,instance_00002,Parsed Request Count,5.0
+128,Functionigma Game,command-a-03-2025-t0.0,python_medium,instance_00002,Violated Request Count,0.0
+129,Functionigma Game,command-a-03-2025-t0.0,python_medium,instance_00002,Request Success Ratio,1.0
+130,Functionigma Game,command-a-03-2025-t0.0,python_medium,instance_00002,Aborted,0.0
+131,Functionigma Game,command-a-03-2025-t0.0,python_medium,instance_00002,Lose,0.0
+132,Functionigma Game,command-a-03-2025-t0.0,python_medium,instance_00002,Success,1.0
+133,Functionigma Game,command-a-03-2025-t0.0,python_medium,instance_00002,Main Score,100.0
+134,Functionigma Game,command-a-03-2025-t0.0,python_medium,instance_00002,accuracy,100.0
+135,Functionigma Game,command-a-03-2025-t0.0,python_medium,instance_00002,efficiency,0.25
+136,Functionigma Game,command-a-03-2025-t0.0,python_medium,instance_00002,slack,1.0
+137,Functionigma Game,command-a-03-2025-t0.0,python_medium,instance_00002,turns_used,4.0
+138,Functionigma Game,command-a-03-2025-t0.0,python_medium,instance_00002,max_turns,5.0
+139,Functionigma Game,command-a-03-2025-t0.0,python_medium,instance_00002,parse_error_count,0.0
+140,Functionigma Game,command-a-03-2025-t0.0,python_medium,instance_00002,runtime_error_count,0.0
+141,Functionigma Game,command-a-03-2025-t0.0,python_medium,instance_00002,internal_consistency_score,1.0
+142,Functionigma Game,command-a-03-2025-t0.0,python_medium,instance_00002,internal_consistency_all_observed,1.0
+143,Functionigma Game,command-a-03-2025-t0.0,python_medium,instance_00002,internal_consistency_violations,0.0
+144,Functionigma Game,command-a-03-2025-t0.0,python_medium,instance_00007,Request Count,5.0
+145,Functionigma Game,command-a-03-2025-t0.0,python_medium,instance_00007,Parsed Request Count,5.0
+146,Functionigma Game,command-a-03-2025-t0.0,python_medium,instance_00007,Violated Request Count,0.0
+147,Functionigma Game,command-a-03-2025-t0.0,python_medium,instance_00007,Request Success Ratio,1.0
+148,Functionigma Game,command-a-03-2025-t0.0,python_medium,instance_00007,Aborted,0.0
+149,Functionigma Game,command-a-03-2025-t0.0,python_medium,instance_00007,Lose,1.0
+150,Functionigma Game,command-a-03-2025-t0.0,python_medium,instance_00007,Success,0.0
+151,Functionigma Game,command-a-03-2025-t0.0,python_medium,instance_00007,Main Score,0.0
+152,Functionigma Game,command-a-03-2025-t0.0,python_medium,instance_00007,accuracy,36.666666666666664
+153,Functionigma Game,command-a-03-2025-t0.0,python_medium,instance_00007,efficiency,0.25
+154,Functionigma Game,command-a-03-2025-t0.0,python_medium,instance_00007,slack,1.0
+155,Functionigma Game,command-a-03-2025-t0.0,python_medium,instance_00007,turns_used,4.0
+156,Functionigma Game,command-a-03-2025-t0.0,python_medium,instance_00007,max_turns,5.0
+157,Functionigma Game,command-a-03-2025-t0.0,python_medium,instance_00007,parse_error_count,0.0
+158,Functionigma Game,command-a-03-2025-t0.0,python_medium,instance_00007,runtime_error_count,0.0
+159,Functionigma Game,command-a-03-2025-t0.0,python_medium,instance_00007,internal_consistency_score,0.5
+160,Functionigma Game,command-a-03-2025-t0.0,python_medium,instance_00007,internal_consistency_all_observed,0.0
+161,Functionigma Game,command-a-03-2025-t0.0,python_medium,instance_00007,internal_consistency_violations,2.0
+162,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00000,Request Count,5.0
+163,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00000,Parsed Request Count,0.0
+164,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00000,Violated Request Count,5.0
+165,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00000,Request Success Ratio,0.0
+166,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00000,Aborted,0.0
+167,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00000,Lose,0.0
+168,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00000,Success,0.0
+169,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00000,Main Score,0.0
+170,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00000,accuracy,0.0
+171,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00000,efficiency,0.0
+172,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00000,slack,0.0
+173,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00000,turns_used,0.0
+174,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00000,max_turns,5.0
+175,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00000,parse_error_count,5.0
+176,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00000,runtime_error_count,0.0
+177,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00000,internal_consistency_score,0.0
+178,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00000,internal_consistency_all_observed,0.0
+179,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00000,internal_consistency_violations,0.0
+180,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00001,Request Count,5.0
+181,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00001,Parsed Request Count,0.0
+182,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00001,Violated Request Count,5.0
+183,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00001,Request Success Ratio,0.0
+184,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00001,Aborted,0.0
+185,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00001,Lose,0.0
+186,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00001,Success,0.0
+187,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00001,Main Score,0.0
+188,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00001,accuracy,0.0
+189,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00001,efficiency,0.0
+190,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00001,slack,0.0
+191,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00001,turns_used,0.0
+192,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00001,max_turns,5.0
+193,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00001,parse_error_count,5.0
+194,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00001,runtime_error_count,0.0
+195,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00001,internal_consistency_score,0.0
+196,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00001,internal_consistency_all_observed,0.0
+197,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00001,internal_consistency_violations,0.0
+198,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00002,Request Count,5.0
+199,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00002,Parsed Request Count,0.0
+200,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00002,Violated Request Count,5.0
+201,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00002,Request Success Ratio,0.0
+202,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00002,Aborted,0.0
+203,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00002,Lose,0.0
+204,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00002,Success,0.0
+205,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00002,Main Score,0.0
+206,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00002,accuracy,0.0
+207,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00002,efficiency,0.0
+208,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00002,slack,0.0
+209,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00002,turns_used,0.0
+210,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00002,max_turns,5.0
+211,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00002,parse_error_count,5.0
+212,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00002,runtime_error_count,0.0
+213,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00002,internal_consistency_score,0.0
+214,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00002,internal_consistency_all_observed,0.0
+215,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00002,internal_consistency_violations,0.0
+216,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00003,Request Count,5.0
+217,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00003,Parsed Request Count,0.0
+218,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00003,Violated Request Count,5.0
+219,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00003,Request Success Ratio,0.0
+220,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00003,Aborted,0.0
+221,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00003,Lose,0.0
+222,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00003,Success,0.0
+223,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00003,Main Score,0.0
+224,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00003,accuracy,0.0
+225,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00003,efficiency,0.0
+226,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00003,slack,0.0
+227,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00003,turns_used,0.0
+228,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00003,max_turns,5.0
+229,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00003,parse_error_count,5.0
+230,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00003,runtime_error_count,0.0
+231,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00003,internal_consistency_score,0.0
+232,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00003,internal_consistency_all_observed,0.0
+233,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00003,internal_consistency_violations,0.0
+234,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00004,Request Count,5.0
+235,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00004,Parsed Request Count,0.0
+236,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00004,Violated Request Count,5.0
+237,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00004,Request Success Ratio,0.0
+238,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00004,Aborted,0.0
+239,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00004,Lose,0.0
+240,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00004,Success,0.0
+241,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00004,Main Score,0.0
+242,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00004,accuracy,0.0
+243,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00004,efficiency,0.0
+244,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00004,slack,0.0
+245,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00004,turns_used,0.0
+246,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00004,max_turns,5.0
+247,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00004,parse_error_count,5.0
+248,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00004,runtime_error_count,0.0
+249,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00004,internal_consistency_score,0.0
+250,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00004,internal_consistency_all_observed,0.0
+251,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00004,internal_consistency_violations,0.0
+252,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00005,Request Count,5.0
+253,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00005,Parsed Request Count,0.0
+254,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00005,Violated Request Count,5.0
+255,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00005,Request Success Ratio,0.0
+256,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00005,Aborted,0.0
+257,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00005,Lose,0.0
+258,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00005,Success,0.0
+259,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00005,Main Score,0.0
+260,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00005,accuracy,0.0
+261,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00005,efficiency,0.0
+262,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00005,slack,0.0
+263,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00005,turns_used,0.0
+264,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00005,max_turns,5.0
+265,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00005,parse_error_count,5.0
+266,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00005,runtime_error_count,0.0
+267,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00005,internal_consistency_score,0.0
+268,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00005,internal_consistency_all_observed,0.0
+269,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00005,internal_consistency_violations,0.0
+270,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00006,Request Count,5.0
+271,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00006,Parsed Request Count,0.0
+272,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00006,Violated Request Count,5.0
+273,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00006,Request Success Ratio,0.0
+274,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00006,Aborted,0.0
+275,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00006,Lose,0.0
+276,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00006,Success,0.0
+277,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00006,Main Score,0.0
+278,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00006,accuracy,0.0
+279,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00006,efficiency,0.0
+280,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00006,slack,0.0
+281,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00006,turns_used,0.0
+282,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00006,max_turns,5.0
+283,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00006,parse_error_count,5.0
+284,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00006,runtime_error_count,0.0
+285,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00006,internal_consistency_score,0.0
+286,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00006,internal_consistency_all_observed,0.0
+287,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00006,internal_consistency_violations,0.0
+288,Functionigma Game,gpt-3.5-turbo-t0.0,python_hard,instance_00011,Request Count,5.0
+289,Functionigma Game,gpt-3.5-turbo-t0.0,python_hard,instance_00011,Parsed Request Count,0.0
+290,Functionigma Game,gpt-3.5-turbo-t0.0,python_hard,instance_00011,Violated Request Count,5.0
+291,Functionigma Game,gpt-3.5-turbo-t0.0,python_hard,instance_00011,Request Success Ratio,0.0
+292,Functionigma Game,gpt-3.5-turbo-t0.0,python_hard,instance_00011,Aborted,0.0
+293,Functionigma Game,gpt-3.5-turbo-t0.0,python_hard,instance_00011,Lose,0.0
+294,Functionigma Game,gpt-3.5-turbo-t0.0,python_hard,instance_00011,Success,0.0
+295,Functionigma Game,gpt-3.5-turbo-t0.0,python_hard,instance_00011,Main Score,0.0
+296,Functionigma Game,gpt-3.5-turbo-t0.0,python_hard,instance_00011,accuracy,0.0
+297,Functionigma Game,gpt-3.5-turbo-t0.0,python_hard,instance_00011,efficiency,0.0
+298,Functionigma Game,gpt-3.5-turbo-t0.0,python_hard,instance_00011,slack,0.0
+299,Functionigma Game,gpt-3.5-turbo-t0.0,python_hard,instance_00011,turns_used,0.0
+300,Functionigma Game,gpt-3.5-turbo-t0.0,python_hard,instance_00011,max_turns,5.0
+301,Functionigma Game,gpt-3.5-turbo-t0.0,python_hard,instance_00011,parse_error_count,5.0
+302,Functionigma Game,gpt-3.5-turbo-t0.0,python_hard,instance_00011,runtime_error_count,0.0
+303,Functionigma Game,gpt-3.5-turbo-t0.0,python_hard,instance_00011,internal_consistency_score,0.0
+304,Functionigma Game,gpt-3.5-turbo-t0.0,python_hard,instance_00011,internal_consistency_all_observed,0.0
+305,Functionigma Game,gpt-3.5-turbo-t0.0,python_hard,instance_00011,internal_consistency_violations,0.0
+306,Functionigma Game,gpt-3.5-turbo-t0.0,python_hard,instance_00012,Request Count,5.0
+307,Functionigma Game,gpt-3.5-turbo-t0.0,python_hard,instance_00012,Parsed Request Count,0.0
+308,Functionigma Game,gpt-3.5-turbo-t0.0,python_hard,instance_00012,Violated Request Count,5.0
+309,Functionigma Game,gpt-3.5-turbo-t0.0,python_hard,instance_00012,Request Success Ratio,0.0
+310,Functionigma Game,gpt-3.5-turbo-t0.0,python_hard,instance_00012,Aborted,0.0
+311,Functionigma Game,gpt-3.5-turbo-t0.0,python_hard,instance_00012,Lose,0.0
+312,Functionigma Game,gpt-3.5-turbo-t0.0,python_hard,instance_00012,Success,0.0
+313,Functionigma Game,gpt-3.5-turbo-t0.0,python_hard,instance_00012,Main Score,0.0
+314,Functionigma Game,gpt-3.5-turbo-t0.0,python_hard,instance_00012,accuracy,0.0
+315,Functionigma Game,gpt-3.5-turbo-t0.0,python_hard,instance_00012,efficiency,0.0
+316,Functionigma Game,gpt-3.5-turbo-t0.0,python_hard,instance_00012,slack,0.0
+317,Functionigma Game,gpt-3.5-turbo-t0.0,python_hard,instance_00012,turns_used,0.0
+318,Functionigma Game,gpt-3.5-turbo-t0.0,python_hard,instance_00012,max_turns,5.0
+319,Functionigma Game,gpt-3.5-turbo-t0.0,python_hard,instance_00012,parse_error_count,5.0
+320,Functionigma Game,gpt-3.5-turbo-t0.0,python_hard,instance_00012,runtime_error_count,0.0
+321,Functionigma Game,gpt-3.5-turbo-t0.0,python_hard,instance_00012,internal_consistency_score,0.0
+322,Functionigma Game,gpt-3.5-turbo-t0.0,python_hard,instance_00012,internal_consistency_all_observed,0.0
+323,Functionigma Game,gpt-3.5-turbo-t0.0,python_hard,instance_00012,internal_consistency_violations,0.0
+324,Functionigma Game,gpt-3.5-turbo-t0.0,python_hard,instance_00013,Request Count,5.0
+325,Functionigma Game,gpt-3.5-turbo-t0.0,python_hard,instance_00013,Parsed Request Count,0.0
+326,Functionigma Game,gpt-3.5-turbo-t0.0,python_hard,instance_00013,Violated Request Count,5.0
+327,Functionigma Game,gpt-3.5-turbo-t0.0,python_hard,instance_00013,Request Success Ratio,0.0
+328,Functionigma Game,gpt-3.5-turbo-t0.0,python_hard,instance_00013,Aborted,0.0
+329,Functionigma Game,gpt-3.5-turbo-t0.0,python_hard,instance_00013,Lose,0.0
+330,Functionigma Game,gpt-3.5-turbo-t0.0,python_hard,instance_00013,Success,0.0
+331,Functionigma Game,gpt-3.5-turbo-t0.0,python_hard,instance_00013,Main Score,0.0
+332,Functionigma Game,gpt-3.5-turbo-t0.0,python_hard,instance_00013,accuracy,0.0
+333,Functionigma Game,gpt-3.5-turbo-t0.0,python_hard,instance_00013,efficiency,0.0
+334,Functionigma Game,gpt-3.5-turbo-t0.0,python_hard,instance_00013,slack,0.0
+335,Functionigma Game,gpt-3.5-turbo-t0.0,python_hard,instance_00013,turns_used,0.0
+336,Functionigma Game,gpt-3.5-turbo-t0.0,python_hard,instance_00013,max_turns,5.0
+337,Functionigma Game,gpt-3.5-turbo-t0.0,python_hard,instance_00013,parse_error_count,5.0
+338,Functionigma Game,gpt-3.5-turbo-t0.0,python_hard,instance_00013,runtime_error_count,0.0
+339,Functionigma Game,gpt-3.5-turbo-t0.0,python_hard,instance_00013,internal_consistency_score,0.0
+340,Functionigma Game,gpt-3.5-turbo-t0.0,python_hard,instance_00013,internal_consistency_all_observed,0.0
+341,Functionigma Game,gpt-3.5-turbo-t0.0,python_hard,instance_00013,internal_consistency_violations,0.0
+342,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00007,Request Count,5.0
+343,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00007,Parsed Request Count,0.0
+344,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00007,Violated Request Count,5.0
+345,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00007,Request Success Ratio,0.0
+346,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00007,Aborted,0.0
+347,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00007,Lose,0.0
+348,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00007,Success,0.0
+349,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00007,Main Score,0.0
+350,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00007,accuracy,0.0
+351,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00007,efficiency,0.0
+352,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00007,slack,0.0
+353,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00007,turns_used,0.0
+354,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00007,max_turns,5.0
+355,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00007,parse_error_count,5.0
+356,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00007,runtime_error_count,0.0
+357,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00007,internal_consistency_score,0.0
+358,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00007,internal_consistency_all_observed,0.0
+359,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00007,internal_consistency_violations,0.0
+360,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00008,Request Count,5.0
+361,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00008,Parsed Request Count,0.0
+362,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00008,Violated Request Count,5.0
+363,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00008,Request Success Ratio,0.0
+364,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00008,Aborted,0.0
+365,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00008,Lose,0.0
+366,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00008,Success,0.0
+367,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00008,Main Score,0.0
+368,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00008,accuracy,0.0
+369,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00008,efficiency,0.0
+370,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00008,slack,0.0
+371,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00008,turns_used,0.0
+372,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00008,max_turns,5.0
+373,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00008,parse_error_count,5.0
+374,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00008,runtime_error_count,0.0
+375,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00008,internal_consistency_score,0.0
+376,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00008,internal_consistency_all_observed,0.0
+377,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00008,internal_consistency_violations,0.0
+378,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00009,Request Count,5.0
+379,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00009,Parsed Request Count,0.0
+380,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00009,Violated Request Count,5.0
+381,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00009,Request Success Ratio,0.0
+382,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00009,Aborted,0.0
+383,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00009,Lose,0.0
+384,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00009,Success,0.0
+385,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00009,Main Score,0.0
+386,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00009,accuracy,0.0
+387,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00009,efficiency,0.0
+388,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00009,slack,0.0
+389,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00009,turns_used,0.0
+390,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00009,max_turns,5.0
+391,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00009,parse_error_count,5.0
+392,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00009,runtime_error_count,0.0
+393,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00009,internal_consistency_score,0.0
+394,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00009,internal_consistency_all_observed,0.0
+395,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00009,internal_consistency_violations,0.0
+396,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00010,Request Count,5.0
+397,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00010,Parsed Request Count,0.0
+398,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00010,Violated Request Count,5.0
+399,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00010,Request Success Ratio,0.0
+400,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00010,Aborted,0.0
+401,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00010,Lose,0.0
+402,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00010,Success,0.0
+403,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00010,Main Score,0.0
+404,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00010,accuracy,0.0
+405,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00010,efficiency,0.0
+406,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00010,slack,0.0
+407,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00010,turns_used,0.0
+408,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00010,max_turns,5.0
+409,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00010,parse_error_count,5.0
+410,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00010,runtime_error_count,0.0
+411,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00010,internal_consistency_score,0.0
+412,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00010,internal_consistency_all_observed,0.0
+413,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00010,internal_consistency_violations,0.0
+414,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00000,Request Count,5.0
+415,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00000,Parsed Request Count,5.0
+416,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00000,Violated Request Count,0.0
+417,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00000,Request Success Ratio,1.0
+418,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00000,Aborted,0.0
+419,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00000,Lose,0.0
+420,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00000,Success,1.0
+421,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00000,Main Score,100.0
+422,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00000,accuracy,100.0
+423,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00000,efficiency,0.25
+424,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00000,slack,1.0
+425,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00000,turns_used,4.0
+426,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00000,max_turns,5.0
+427,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00000,parse_error_count,0.0
+428,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00000,runtime_error_count,0.0
+429,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00000,probe_count,4.0
+430,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00000,novelty_rate,1.0
+431,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00000,input_diversity,1.0
+432,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00000,internal_consistency_score,1.0
+433,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00000,internal_consistency_all_observed,1.0
+434,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00000,internal_consistency_violations,0.0
+435,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00000,output_entropy_bits,2.0
+436,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00000,hypothesis_format_error_count,0.0
+437,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00000,hypothesis_top1_hit_at_stop,1.0
+438,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00000,hypothesis_top3_hit_at_stop,1.0
+439,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00000,hypothesis_prob_true_at_stop,0.99
+440,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00000,hypothesis_avg_negative_log_prob_true,0.27779143868493245
+441,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00000,hypothesis_top1_switches,0.0
+442,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00001,Request Count,5.0
+443,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00001,Parsed Request Count,5.0
+444,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00001,Violated Request Count,0.0
+445,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00001,Request Success Ratio,1.0
+446,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00001,Aborted,0.0
+447,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00001,Lose,0.0
+448,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00001,Success,1.0
+449,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00001,Main Score,100.0
+450,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00001,accuracy,100.0
+451,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00001,efficiency,0.25
+452,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00001,slack,1.0
+453,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00001,turns_used,4.0
+454,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00001,max_turns,5.0
+455,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00001,parse_error_count,0.0
+456,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00001,runtime_error_count,0.0
+457,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00001,probe_count,4.0
+458,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00001,novelty_rate,1.0
+459,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00001,input_diversity,1.0
+460,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00001,internal_consistency_score,1.0
+461,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00001,internal_consistency_all_observed,1.0
+462,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00001,internal_consistency_violations,0.0
+463,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00001,output_entropy_bits,2.0
+464,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00001,hypothesis_format_error_count,0.0
+465,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00001,hypothesis_top1_hit_at_stop,1.0
+466,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00001,hypothesis_top3_hit_at_stop,1.0
+467,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00001,hypothesis_prob_true_at_stop,0.5
+468,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00001,hypothesis_avg_negative_log_prob_true,0.6931471805599453
+469,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00001,hypothesis_top1_switches,0.0
+470,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00002,Request Count,5.0
+471,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00002,Parsed Request Count,5.0
+472,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00002,Violated Request Count,0.0
+473,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00002,Request Success Ratio,1.0
+474,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00002,Aborted,0.0
+475,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00002,Lose,0.0
+476,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00002,Success,1.0
+477,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00002,Main Score,100.0
+478,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00002,accuracy,100.0
+479,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00002,efficiency,0.25
+480,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00002,slack,1.0
+481,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00002,turns_used,4.0
+482,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00002,max_turns,5.0
+483,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00002,parse_error_count,0.0
+484,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00002,runtime_error_count,0.0
+485,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00002,probe_count,4.0
+486,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00002,novelty_rate,0.75
+487,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00002,input_diversity,1.0
+488,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00002,internal_consistency_score,1.0
+489,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00002,internal_consistency_all_observed,1.0
+490,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00002,internal_consistency_violations,0.0
+491,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00002,output_entropy_bits,1.5
+492,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00002,hypothesis_format_error_count,0.0
+493,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00002,hypothesis_top1_hit_at_stop,1.0
+494,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00002,hypothesis_top3_hit_at_stop,1.0
+495,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00002,hypothesis_prob_true_at_stop,0.5
+496,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00002,hypothesis_avg_negative_log_prob_true,0.6931471805599453
+497,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00002,hypothesis_top1_switches,0.0
+498,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00003,Request Count,5.0
+499,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00003,Parsed Request Count,5.0
+500,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00003,Violated Request Count,0.0
+501,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00003,Request Success Ratio,1.0
+502,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00003,Aborted,0.0
+503,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00003,Lose,0.0
+504,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00003,Success,1.0
+505,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00003,Main Score,100.0
+506,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00003,accuracy,100.0
+507,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00003,efficiency,0.25
+508,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00003,slack,1.0
+509,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00003,turns_used,4.0
+510,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00003,max_turns,5.0
+511,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00003,parse_error_count,0.0
+512,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00003,runtime_error_count,0.0
+513,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00003,probe_count,4.0
+514,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00003,novelty_rate,0.75
+515,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00003,input_diversity,1.0
+516,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00003,internal_consistency_score,1.0
+517,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00003,internal_consistency_all_observed,1.0
+518,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00003,internal_consistency_violations,0.0
+519,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00003,output_entropy_bits,1.5
+520,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00003,hypothesis_format_error_count,0.0
+521,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00003,hypothesis_top1_hit_at_stop,1.0
+522,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00003,hypothesis_top3_hit_at_stop,1.0
+523,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00003,hypothesis_prob_true_at_stop,0.95
+524,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00003,hypothesis_avg_negative_log_prob_true,0.26823613547988295
+525,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00003,hypothesis_top1_switches,1.0
+526,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00004,Request Count,5.0
+527,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00004,Parsed Request Count,5.0
+528,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00004,Violated Request Count,0.0
+529,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00004,Request Success Ratio,1.0
+530,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00004,Aborted,0.0
+531,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00004,Lose,1.0
+532,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00004,Success,0.0
+533,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00004,Main Score,0.0
+534,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00004,accuracy,85.0
+535,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00004,efficiency,0.25
+536,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00004,slack,1.0
+537,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00004,turns_used,4.0
+538,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00004,max_turns,5.0
+539,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00004,parse_error_count,0.0
+540,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00004,runtime_error_count,0.0
+541,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00004,probe_count,4.0
+542,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00004,novelty_rate,1.0
+543,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00004,input_diversity,1.0
+544,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00004,internal_consistency_score,1.0
+545,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00004,internal_consistency_all_observed,1.0
+546,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00004,internal_consistency_violations,0.0
+547,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00004,output_entropy_bits,2.0
+548,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00004,hypothesis_format_error_count,0.0
+549,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00004,hypothesis_top1_hit_at_stop,1.0
+550,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00004,hypothesis_top3_hit_at_stop,1.0
+551,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00004,hypothesis_prob_true_at_stop,1.0
+552,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00004,hypothesis_avg_negative_log_prob_true,0.0
+553,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00004,hypothesis_top1_switches,0.0
+554,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00005,Request Count,5.0
+555,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00005,Parsed Request Count,5.0
+556,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00005,Violated Request Count,0.0
+557,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00005,Request Success Ratio,1.0
+558,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00005,Aborted,0.0
+559,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00005,Lose,0.0
+560,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00005,Success,1.0
+561,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00005,Main Score,100.0
+562,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00005,accuracy,100.0
+563,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00005,efficiency,0.25
+564,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00005,slack,1.0
+565,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00005,turns_used,4.0
+566,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00005,max_turns,5.0
+567,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00005,parse_error_count,0.0
+568,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00005,runtime_error_count,0.0
+569,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00005,probe_count,4.0
+570,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00005,novelty_rate,0.75
+571,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00005,input_diversity,1.0
+572,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00005,internal_consistency_score,1.0
+573,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00005,internal_consistency_all_observed,1.0
+574,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00005,internal_consistency_violations,0.0
+575,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00005,output_entropy_bits,1.5
+576,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00005,hypothesis_format_error_count,0.0
+577,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00005,hypothesis_top1_hit_at_stop,1.0
+578,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00005,hypothesis_top3_hit_at_stop,1.0
+579,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00005,hypothesis_prob_true_at_stop,1.0
+580,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00005,hypothesis_avg_negative_log_prob_true,0.0
+581,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00005,hypothesis_top1_switches,0.0
+582,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00006,Request Count,5.0
+583,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00006,Parsed Request Count,5.0
+584,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00006,Violated Request Count,0.0
+585,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00006,Request Success Ratio,1.0
+586,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00006,Aborted,0.0
+587,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00006,Lose,0.0
+588,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00006,Success,1.0
+589,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00006,Main Score,100.0
+590,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00006,accuracy,100.0
+591,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00006,efficiency,0.25
+592,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00006,slack,1.0
+593,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00006,turns_used,4.0
+594,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00006,max_turns,5.0
+595,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00006,parse_error_count,0.0
+596,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00006,runtime_error_count,0.0
+597,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00006,probe_count,4.0
+598,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00006,novelty_rate,0.5
+599,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00006,input_diversity,1.0
+600,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00006,internal_consistency_score,1.0
+601,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00006,internal_consistency_all_observed,1.0
+602,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00006,internal_consistency_violations,0.0
+603,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00006,output_entropy_bits,0.8112781244591328
+604,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00006,hypothesis_format_error_count,0.0
+605,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00006,hypothesis_top1_hit_at_stop,1.0
+606,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00006,hypothesis_top3_hit_at_stop,1.0
+607,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00006,hypothesis_prob_true_at_stop,1.0
+608,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00006,hypothesis_avg_negative_log_prob_true,0.0
+609,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00006,hypothesis_top1_switches,0.0
+610,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00011,Request Count,14.0
+611,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00011,Parsed Request Count,14.0
+612,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00011,Violated Request Count,0.0
+613,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00011,Request Success Ratio,1.0
+614,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00011,Aborted,0.0
+615,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00011,Lose,0.0
+616,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00011,Success,1.0
+617,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00011,Main Score,100.0
+618,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00011,accuracy,100.0
+619,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00011,efficiency,0.1428571428571429
+620,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00011,slack,2.0
+621,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00011,turns_used,13.0
+622,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00011,max_turns,15.0
+623,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00011,parse_error_count,0.0
+624,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00011,runtime_error_count,0.0
+625,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00011,probe_count,13.0
+626,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00011,novelty_rate,0.5384615384615384
+627,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00011,input_diversity,1.0
+628,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00011,internal_consistency_score,1.0
+629,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00011,internal_consistency_all_observed,1.0
+630,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00011,internal_consistency_violations,0.0
+631,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00011,output_entropy_bits,2.4416298737872246
+632,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00011,hypothesis_format_error_count,0.0
+633,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00011,hypothesis_top1_hit_at_stop,1.0
+634,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00011,hypothesis_top3_hit_at_stop,1.0
+635,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00011,hypothesis_prob_true_at_stop,1.0
+636,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00011,hypothesis_avg_negative_log_prob_true,0.0
+637,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00011,hypothesis_top1_switches,0.0
+638,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00012,Request Count,14.0
+639,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00012,Parsed Request Count,14.0
+640,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00012,Violated Request Count,0.0
+641,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00012,Request Success Ratio,1.0
+642,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00012,Aborted,0.0
+643,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00012,Lose,1.0
+644,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00012,Success,0.0
+645,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00012,Main Score,0.0
+646,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00012,accuracy,94.73684210526315
+647,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00012,efficiency,0.1428571428571429
+648,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00012,slack,2.0
+649,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00012,turns_used,13.0
+650,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00012,max_turns,15.0
+651,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00012,parse_error_count,0.0
+652,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00012,runtime_error_count,0.0
+653,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00012,probe_count,13.0
+654,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00012,novelty_rate,0.15384615384615385
+655,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00012,input_diversity,1.0
+656,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00012,internal_consistency_score,1.0
+657,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00012,internal_consistency_all_observed,1.0
+658,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00012,internal_consistency_violations,0.0
+659,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00012,output_entropy_bits,0.961236604722876
+660,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00012,hypothesis_format_error_count,0.0
+661,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00012,hypothesis_top1_hit_at_stop,1.0
+662,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00012,hypothesis_top3_hit_at_stop,1.0
+663,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00012,hypothesis_prob_true_at_stop,1.0
+664,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00012,hypothesis_avg_negative_log_prob_true,0.0
+665,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00012,hypothesis_top1_switches,0.0
+666,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00013,Request Count,14.0
+667,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00013,Parsed Request Count,14.0
+668,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00013,Violated Request Count,0.0
+669,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00013,Request Success Ratio,1.0
+670,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00013,Aborted,0.0
+671,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00013,Lose,0.0
+672,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00013,Success,1.0
+673,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00013,Main Score,100.0
+674,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00013,accuracy,100.0
+675,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00013,efficiency,0.1428571428571429
+676,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00013,slack,2.0
+677,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00013,turns_used,13.0
+678,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00013,max_turns,15.0
+679,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00013,parse_error_count,0.0
+680,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00013,runtime_error_count,0.0
+681,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00013,probe_count,13.0
+682,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00013,novelty_rate,0.38461538461538464
+683,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00013,input_diversity,1.0
+684,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00013,internal_consistency_score,1.0
+685,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00013,internal_consistency_all_observed,1.0
+686,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00013,internal_consistency_violations,0.0
+687,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00013,output_entropy_bits,2.133937566094917
+688,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00013,hypothesis_format_error_count,0.0
+689,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00013,hypothesis_top1_hit_at_stop,1.0
+690,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00013,hypothesis_top3_hit_at_stop,1.0
+691,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00013,hypothesis_prob_true_at_stop,1.0
+692,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00013,hypothesis_avg_negative_log_prob_true,0.0
+693,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00013,hypothesis_top1_switches,0.0
+694,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00007,Request Count,9.0
+695,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00007,Parsed Request Count,9.0
+696,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00007,Violated Request Count,0.0
+697,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00007,Request Success Ratio,1.0
+698,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00007,Aborted,0.0
+699,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00007,Lose,1.0
+700,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00007,Success,0.0
+701,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00007,Main Score,0.0
+702,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00007,accuracy,70.0
+703,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00007,efficiency,0.2222222222222222
+704,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00007,slack,2.0
+705,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00007,turns_used,8.0
+706,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00007,max_turns,10.0
+707,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00007,parse_error_count,0.0
+708,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00007,runtime_error_count,0.0
+709,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00007,probe_count,8.0
+710,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00007,novelty_rate,0.875
+711,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00007,input_diversity,1.0
+712,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00007,internal_consistency_score,1.0
+713,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00007,internal_consistency_all_observed,1.0
+714,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00007,internal_consistency_violations,0.0
+715,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00007,output_entropy_bits,2.75
+716,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00007,hypothesis_format_error_count,8.0
+717,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00007,hypothesis_top1_hit_at_stop,0.0
+718,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00007,hypothesis_top3_hit_at_stop,0.0
+719,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00007,hypothesis_prob_true_at_stop,0.0
+720,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00007,hypothesis_avg_negative_log_prob_true,0.0
+721,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00007,hypothesis_top1_switches,0.0
+722,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00008,Request Count,9.0
+723,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00008,Parsed Request Count,9.0
+724,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00008,Violated Request Count,0.0
+725,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00008,Request Success Ratio,1.0
+726,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00008,Aborted,0.0
+727,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00008,Lose,0.0
+728,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00008,Success,1.0
+729,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00008,Main Score,100.0
+730,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00008,accuracy,100.0
+731,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00008,efficiency,0.2222222222222222
+732,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00008,slack,2.0
+733,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00008,turns_used,8.0
+734,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00008,max_turns,10.0
+735,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00008,parse_error_count,0.0
+736,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00008,runtime_error_count,0.0
+737,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00008,probe_count,8.0
+738,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00008,novelty_rate,1.0
+739,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00008,input_diversity,1.0
+740,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00008,internal_consistency_score,1.0
+741,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00008,internal_consistency_all_observed,1.0
+742,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00008,internal_consistency_violations,0.0
+743,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00008,output_entropy_bits,3.0
+744,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00008,hypothesis_format_error_count,0.0
+745,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00008,hypothesis_top1_hit_at_stop,1.0
+746,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00008,hypothesis_top3_hit_at_stop,1.0
+747,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00008,hypothesis_prob_true_at_stop,1.0
+748,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00008,hypothesis_avg_negative_log_prob_true,0.0
+749,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00008,hypothesis_top1_switches,0.0
+750,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00009,Request Count,8.0
+751,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00009,Parsed Request Count,8.0
+752,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00009,Violated Request Count,0.0
+753,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00009,Request Success Ratio,1.0
+754,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00009,Aborted,0.0
+755,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00009,Lose,0.0
+756,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00009,Success,1.0
+757,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00009,Main Score,100.0
+758,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00009,accuracy,100.0
+759,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00009,efficiency,0.33333333333333337
+760,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00009,slack,3.0
+761,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00009,turns_used,7.0
+762,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00009,max_turns,10.0
+763,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00009,parse_error_count,0.0
+764,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00009,runtime_error_count,0.0
+765,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00009,probe_count,7.0
+766,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00009,novelty_rate,0.8571428571428571
+767,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00009,input_diversity,1.0
+768,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00009,internal_consistency_score,1.0
+769,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00009,internal_consistency_all_observed,1.0
+770,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00009,internal_consistency_violations,0.0
+771,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00009,output_entropy_bits,2.5216406363433186
+772,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00009,hypothesis_format_error_count,0.0
+773,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00009,hypothesis_top1_hit_at_stop,1.0
+774,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00009,hypothesis_top3_hit_at_stop,1.0
+775,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00009,hypothesis_prob_true_at_stop,1.0
+776,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00009,hypothesis_avg_negative_log_prob_true,0.0
+777,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00009,hypothesis_top1_switches,0.0
+778,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00010,Request Count,9.0
+779,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00010,Parsed Request Count,9.0
+780,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00010,Violated Request Count,0.0
+781,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00010,Request Success Ratio,1.0
+782,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00010,Aborted,0.0
+783,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00010,Lose,0.0
+784,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00010,Success,1.0
+785,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00010,Main Score,100.0
+786,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00010,accuracy,100.0
+787,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00010,efficiency,0.2222222222222222
+788,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00010,slack,2.0
+789,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00010,turns_used,8.0
+790,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00010,max_turns,10.0
+791,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00010,parse_error_count,0.0
+792,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00010,runtime_error_count,0.0
+793,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00010,probe_count,8.0
+794,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00010,novelty_rate,1.0
+795,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00010,input_diversity,1.0
+796,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00010,internal_consistency_score,1.0
+797,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00010,internal_consistency_all_observed,1.0
+798,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00010,internal_consistency_violations,0.0
+799,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00010,output_entropy_bits,3.0
+800,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00010,hypothesis_format_error_count,0.0
+801,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00010,hypothesis_top1_hit_at_stop,1.0
+802,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00010,hypothesis_top3_hit_at_stop,1.0
+803,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00010,hypothesis_prob_true_at_stop,1.0
+804,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00010,hypothesis_avg_negative_log_prob_true,0.0
+805,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00010,hypothesis_top1_switches,0.0
+806,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00000,Request Count,5.0
+807,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00000,Parsed Request Count,4.0
+808,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00000,Violated Request Count,1.0
+809,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00000,Request Success Ratio,0.8
+810,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00000,Aborted,0.0
+811,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00000,Lose,0.0
+812,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00000,Success,0.0
+813,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00000,Main Score,0.0
+814,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00000,accuracy,0.0
+815,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00000,efficiency,0.0
+816,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00000,slack,0.0
+817,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00000,turns_used,4.0
+818,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00000,max_turns,5.0
+819,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00000,parse_error_count,1.0
+820,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00000,runtime_error_count,0.0
+821,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00000,internal_consistency_score,0.0
+822,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00000,internal_consistency_all_observed,0.0
+823,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00000,internal_consistency_violations,0.0
+824,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00001,Request Count,5.0
+825,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00001,Parsed Request Count,4.0
+826,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00001,Violated Request Count,1.0
+827,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00001,Request Success Ratio,0.8
+828,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00001,Aborted,0.0
+829,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00001,Lose,0.0
+830,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00001,Success,0.0
+831,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00001,Main Score,0.0
+832,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00001,accuracy,0.0
+833,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00001,efficiency,0.0
+834,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00001,slack,0.0
+835,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00001,turns_used,4.0
+836,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00001,max_turns,5.0
+837,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00001,parse_error_count,1.0
+838,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00001,runtime_error_count,0.0
+839,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00001,internal_consistency_score,0.0
+840,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00001,internal_consistency_all_observed,0.0
+841,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00001,internal_consistency_violations,0.0
+842,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00002,Request Count,5.0
+843,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00002,Parsed Request Count,4.0
+844,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00002,Violated Request Count,1.0
+845,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00002,Request Success Ratio,0.8
+846,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00002,Aborted,0.0
+847,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00002,Lose,0.0
+848,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00002,Success,0.0
+849,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00002,Main Score,0.0
+850,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00002,accuracy,0.0
+851,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00002,efficiency,0.0
+852,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00002,slack,0.0
+853,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00002,turns_used,4.0
+854,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00002,max_turns,5.0
+855,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00002,parse_error_count,1.0
+856,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00002,runtime_error_count,0.0
+857,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00002,internal_consistency_score,0.0
+858,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00002,internal_consistency_all_observed,0.0
+859,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00002,internal_consistency_violations,0.0
+860,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00003,Request Count,5.0
+861,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00003,Parsed Request Count,4.0
+862,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00003,Violated Request Count,1.0
+863,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00003,Request Success Ratio,0.8
+864,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00003,Aborted,0.0
+865,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00003,Lose,0.0
+866,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00003,Success,0.0
+867,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00003,Main Score,0.0
+868,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00003,accuracy,0.0
+869,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00003,efficiency,0.0
+870,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00003,slack,0.0
+871,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00003,turns_used,4.0
+872,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00003,max_turns,5.0
+873,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00003,parse_error_count,1.0
+874,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00003,runtime_error_count,0.0
+875,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00003,internal_consistency_score,0.0
+876,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00003,internal_consistency_all_observed,0.0
+877,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00003,internal_consistency_violations,0.0
+878,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00004,Request Count,5.0
+879,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00004,Parsed Request Count,3.0
+880,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00004,Violated Request Count,2.0
+881,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00004,Request Success Ratio,0.6
+882,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00004,Aborted,0.0
+883,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00004,Lose,0.0
+884,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00004,Success,0.0
+885,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00004,Main Score,0.0
+886,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00004,accuracy,0.0
+887,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00004,efficiency,0.0
+888,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00004,slack,0.0
+889,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00004,turns_used,3.0
+890,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00004,max_turns,5.0
+891,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00004,parse_error_count,2.0
+892,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00004,runtime_error_count,0.0
+893,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00004,internal_consistency_score,0.0
+894,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00004,internal_consistency_all_observed,0.0
+895,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00004,internal_consistency_violations,0.0
+896,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00005,Request Count,5.0
+897,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00005,Parsed Request Count,4.0
+898,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00005,Violated Request Count,1.0
+899,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00005,Request Success Ratio,0.8
+900,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00005,Aborted,0.0
+901,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00005,Lose,0.0
+902,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00005,Success,0.0
+903,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00005,Main Score,0.0
+904,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00005,accuracy,0.0
+905,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00005,efficiency,0.0
+906,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00005,slack,0.0
+907,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00005,turns_used,4.0
+908,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00005,max_turns,5.0
+909,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00005,parse_error_count,1.0
+910,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00005,runtime_error_count,0.0
+911,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00005,internal_consistency_score,0.0
+912,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00005,internal_consistency_all_observed,0.0
+913,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00005,internal_consistency_violations,0.0
+914,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00006,Request Count,5.0
+915,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00006,Parsed Request Count,4.0
+916,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00006,Violated Request Count,1.0
+917,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00006,Request Success Ratio,0.8
+918,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00006,Aborted,0.0
+919,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00006,Lose,0.0
+920,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00006,Success,0.0
+921,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00006,Main Score,0.0
+922,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00006,accuracy,0.0
+923,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00006,efficiency,0.0
+924,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00006,slack,0.0
+925,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00006,turns_used,4.0
+926,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00006,max_turns,5.0
+927,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00006,parse_error_count,1.0
+928,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00006,runtime_error_count,0.0
+929,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00006,internal_consistency_score,0.0
+930,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00006,internal_consistency_all_observed,0.0
+931,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00006,internal_consistency_violations,0.0
+932,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_hard,instance_00011,Request Count,5.0
+933,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_hard,instance_00011,Parsed Request Count,5.0
+934,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_hard,instance_00011,Violated Request Count,0.0
+935,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_hard,instance_00011,Request Success Ratio,1.0
+936,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_hard,instance_00011,Aborted,0.0
+937,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_hard,instance_00011,Lose,0.0
+938,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_hard,instance_00011,Success,0.0
+939,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_hard,instance_00011,Main Score,0.0
+940,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_hard,instance_00011,accuracy,0.0
+941,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_hard,instance_00011,efficiency,0.0
+942,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_hard,instance_00011,slack,0.0
+943,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_hard,instance_00011,turns_used,5.0
+944,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_hard,instance_00011,max_turns,5.0
+945,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_hard,instance_00011,parse_error_count,0.0
+946,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_hard,instance_00011,runtime_error_count,0.0
+947,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_hard,instance_00011,internal_consistency_score,0.0
+948,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_hard,instance_00011,internal_consistency_all_observed,0.0
+949,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_hard,instance_00011,internal_consistency_violations,0.0
+950,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_hard,instance_00012,Request Count,5.0
+951,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_hard,instance_00012,Parsed Request Count,4.0
+952,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_hard,instance_00012,Violated Request Count,1.0
+953,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_hard,instance_00012,Request Success Ratio,0.8
+954,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_hard,instance_00012,Aborted,0.0
+955,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_hard,instance_00012,Lose,0.0
+956,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_hard,instance_00012,Success,0.0
+957,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_hard,instance_00012,Main Score,0.0
+958,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_hard,instance_00012,accuracy,0.0
+959,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_hard,instance_00012,efficiency,0.0
+960,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_hard,instance_00012,slack,0.0
+961,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_hard,instance_00012,turns_used,4.0
+962,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_hard,instance_00012,max_turns,5.0
+963,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_hard,instance_00012,parse_error_count,1.0
+964,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_hard,instance_00012,runtime_error_count,0.0
+965,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_hard,instance_00012,internal_consistency_score,0.0
+966,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_hard,instance_00012,internal_consistency_all_observed,0.0
+967,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_hard,instance_00012,internal_consistency_violations,0.0
+968,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_hard,instance_00013,Request Count,5.0
+969,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_hard,instance_00013,Parsed Request Count,4.0
+970,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_hard,instance_00013,Violated Request Count,1.0
+971,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_hard,instance_00013,Request Success Ratio,0.8
+972,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_hard,instance_00013,Aborted,0.0
+973,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_hard,instance_00013,Lose,0.0
+974,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_hard,instance_00013,Success,0.0
+975,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_hard,instance_00013,Main Score,0.0
+976,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_hard,instance_00013,accuracy,0.0
+977,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_hard,instance_00013,efficiency,0.0
+978,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_hard,instance_00013,slack,0.0
+979,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_hard,instance_00013,turns_used,4.0
+980,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_hard,instance_00013,max_turns,5.0
+981,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_hard,instance_00013,parse_error_count,1.0
+982,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_hard,instance_00013,runtime_error_count,0.0
+983,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_hard,instance_00013,internal_consistency_score,0.0
+984,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_hard,instance_00013,internal_consistency_all_observed,0.0
+985,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_hard,instance_00013,internal_consistency_violations,0.0
+986,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00007,Request Count,5.0
+987,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00007,Parsed Request Count,4.0
+988,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00007,Violated Request Count,1.0
+989,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00007,Request Success Ratio,0.8
+990,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00007,Aborted,0.0
+991,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00007,Lose,0.0
+992,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00007,Success,0.0
+993,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00007,Main Score,0.0
+994,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00007,accuracy,0.0
+995,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00007,efficiency,0.0
+996,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00007,slack,0.0
+997,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00007,turns_used,4.0
+998,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00007,max_turns,5.0
+999,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00007,parse_error_count,1.0
+1000,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00007,runtime_error_count,0.0
+1001,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00007,internal_consistency_score,0.0
+1002,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00007,internal_consistency_all_observed,0.0
+1003,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00007,internal_consistency_violations,0.0
+1004,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00008,Request Count,5.0
+1005,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00008,Parsed Request Count,5.0
+1006,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00008,Violated Request Count,0.0
+1007,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00008,Request Success Ratio,1.0
+1008,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00008,Aborted,0.0
+1009,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00008,Lose,0.0
+1010,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00008,Success,0.0
+1011,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00008,Main Score,0.0
+1012,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00008,accuracy,0.0
+1013,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00008,efficiency,0.0
+1014,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00008,slack,0.0
+1015,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00008,turns_used,5.0
+1016,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00008,max_turns,5.0
+1017,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00008,parse_error_count,0.0
+1018,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00008,runtime_error_count,0.0
+1019,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00008,internal_consistency_score,0.0
+1020,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00008,internal_consistency_all_observed,0.0
+1021,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00008,internal_consistency_violations,0.0
+1022,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00009,Request Count,5.0
+1023,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00009,Parsed Request Count,3.0
+1024,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00009,Violated Request Count,2.0
+1025,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00009,Request Success Ratio,0.6
+1026,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00009,Aborted,0.0
+1027,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00009,Lose,0.0
+1028,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00009,Success,0.0
+1029,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00009,Main Score,0.0
+1030,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00009,accuracy,0.0
+1031,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00009,efficiency,0.0
+1032,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00009,slack,0.0
+1033,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00009,turns_used,3.0
+1034,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00009,max_turns,5.0
+1035,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00009,parse_error_count,2.0
+1036,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00009,runtime_error_count,0.0
+1037,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00009,internal_consistency_score,0.0
+1038,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00009,internal_consistency_all_observed,0.0
+1039,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00009,internal_consistency_violations,0.0
+1040,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00010,Request Count,5.0
+1041,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00010,Parsed Request Count,3.0
+1042,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00010,Violated Request Count,2.0
+1043,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00010,Request Success Ratio,0.6
+1044,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00010,Aborted,0.0
+1045,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00010,Lose,0.0
+1046,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00010,Success,0.0
+1047,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00010,Main Score,0.0
+1048,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00010,accuracy,0.0
+1049,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00010,efficiency,0.0
+1050,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00010,slack,0.0
+1051,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00010,turns_used,3.0
+1052,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00010,max_turns,5.0
+1053,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00010,parse_error_count,2.0
+1054,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00010,runtime_error_count,0.0
+1055,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00010,internal_consistency_score,0.0
+1056,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00010,internal_consistency_all_observed,0.0
+1057,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00010,internal_consistency_violations,0.0
+1058,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00000,Played,1.0
+1059,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00001,Played,1.0
+1060,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00002,Played,1.0
+1061,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00003,Played,1.0
+1062,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00004,Played,1.0
+1063,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00005,Played,1.0
+1064,Functionigma Game,command-a-03-2025-t0.0,python_easy,instance_00006,Played,1.0
+1065,Functionigma Game,command-a-03-2025-t0.0,python_medium,instance_00002,Played,1.0
+1066,Functionigma Game,command-a-03-2025-t0.0,python_medium,instance_00007,Played,1.0
+1067,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00000,Played,1.0
+1068,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00001,Played,1.0
+1069,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00002,Played,1.0
+1070,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00003,Played,1.0
+1071,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00004,Played,1.0
+1072,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00005,Played,1.0
+1073,Functionigma Game,gpt-3.5-turbo-t0.0,python_easy,instance_00006,Played,1.0
+1074,Functionigma Game,gpt-3.5-turbo-t0.0,python_hard,instance_00011,Played,1.0
+1075,Functionigma Game,gpt-3.5-turbo-t0.0,python_hard,instance_00012,Played,1.0
+1076,Functionigma Game,gpt-3.5-turbo-t0.0,python_hard,instance_00013,Played,1.0
+1077,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00007,Played,1.0
+1078,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00008,Played,1.0
+1079,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00009,Played,1.0
+1080,Functionigma Game,gpt-3.5-turbo-t0.0,python_medium,instance_00010,Played,1.0
+1081,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00000,Played,1.0
+1082,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00001,Played,1.0
+1083,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00002,Played,1.0
+1084,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00003,Played,1.0
+1085,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00004,Played,1.0
+1086,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00005,Played,1.0
+1087,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_easy,instance_00006,Played,1.0
+1088,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00011,Played,1.0
+1089,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00012,Played,1.0
+1090,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_hard,instance_00013,Played,1.0
+1091,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00007,Played,1.0
+1092,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00008,Played,1.0
+1093,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00009,Played,1.0
+1094,Functionigma Game,gpt-4.1-2025-04-14-t0.0,python_medium,instance_00010,Played,1.0
+1095,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00000,Played,1.0
+1096,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00001,Played,1.0
+1097,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00002,Played,1.0
+1098,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00003,Played,1.0
+1099,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00004,Played,1.0
+1100,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00005,Played,1.0
+1101,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_easy,instance_00006,Played,1.0
+1102,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_hard,instance_00011,Played,1.0
+1103,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_hard,instance_00012,Played,1.0
+1104,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_hard,instance_00013,Played,1.0
+1105,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00007,Played,1.0
+1106,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00008,Played,1.0
+1107,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00009,Played,1.0
+1108,Functionigma Game,gpt-4o-2024-08-06-t0.0,python_medium,instance_00010,Played,1.0

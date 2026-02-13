@@ -1,0 +1,88 @@
+{
+  "clem_version": "3.3.4",
+  "created": "2026-02-08T14:43:43.689637",
+  "player_models": {
+    "0": {
+      "model_name": "gpt-4o-2024-08-06",
+      "backend": "openai",
+      "context_size": "128k",
+      "languages": [
+        "en",
+        "es",
+        "fr",
+        "de",
+        "it",
+        "pt",
+        "ru",
+        "zh",
+        "ja",
+        "ko",
+        "ar",
+        "hi",
+        "bn",
+        "te",
+        "ta",
+        "ml",
+        "kn",
+        "gu",
+        "mr",
+        "pa",
+        "ur",
+        "vi",
+        "th",
+        "id",
+        "ms",
+        "tl",
+        "sw",
+        "yo",
+        "zu",
+        "tr",
+        "he",
+        "fa",
+        "uk",
+        "pl",
+        "cs",
+        "hu",
+        "ro",
+        "nl",
+        "sv",
+        "no",
+        "da",
+        "fi",
+        "el",
+        "bg",
+        "sr",
+        "hr",
+        "sk",
+        "is"
+      ],
+      "license": {
+        "name": "OpenAI",
+        "url": "https://openai.com/policies/row-terms-of-use/"
+      },
+      "lookup_source": "E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\clemgame-template\\model_registry.json",
+      "model_config": {
+        "multimodality": {
+          "single_image": true,
+          "multiple_images": true,
+          "audio": false,
+          "video": false
+        }
+      },
+      "model_id": "gpt-4o-2024-08-06",
+      "open_weight": false,
+      "parameters": "",
+      "release_date": "2024-08-06"
+    }
+  },
+  "games": {
+    "Functionigma Game": {
+      "game_path": "E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\clemgame-template\\functionigma",
+      "benchmark_start": "2026-02-08T14:43:43.700034",
+      "benchmark_end": "2026-02-08T14:44:26.500740",
+      "duration": "0:00:42.800706",
+      "duration_seconds": 42.800706,
+      "num_instances": 14
+    }
+  }
+}

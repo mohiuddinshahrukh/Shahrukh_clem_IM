@@ -1,0 +1,603 @@
+{
+  "meta": {
+    "game_name": "Functionigma Game",
+    "experiment_name": "python_medium",
+    "game_id": 10,
+    "results_folder": "gpt-4.1-2025-04-14-t0.0",
+    "clem_version": "3.3.4"
+  },
+  "player_models": {
+    "0": {
+      "model_name": "gpt-4.1-2025-04-14",
+      "backend": "openai",
+      "lookup_source": "E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\clemgame-template\\model_registry.json",
+      "model_id": "gpt-4.1-2025-04-14"
+    }
+  },
+  "players": {
+    "GM": {
+      "game_role": "Game Master",
+      "model_name": "programmatic"
+    },
+    "Player 1": {
+      "game_role": "Guesser",
+      "model_name": "gpt-4.1-2025-04-14"
+    }
+  },
+  "turns": [
+    [
+      {
+        "from": "GM",
+        "to": "Player 1",
+        "timestamp": "2026-02-09T00:18:49.395297",
+        "action": {
+          "type": "send message",
+          "content": "**Role (AI):** Function Inference Engine — infer an unknown Python function by proposing inputs and observing outputs.\n\n**Role (GM):** I return the function's output for each input you propose.\n\n**Goal:** Infer the exact function: `(s: str, k: int) -> str`\n\n---\n\n## Rules\n\n* You have **10** total turns. Guess on turn 10 - 1.\n* Each probe must be exactly one line and **nothing else**.\n* Case and format are strict.\n\n## Format (strict)\n\n* Probing (until certain):\n\n```\nINPUT:<value1>, <value2>\n```\n\n(uppercase `INPUT:`) — strings must be quoted, booleans `True/False`.\n\n* Final submission (when certain):\n  Start with `GUESS:` then **only** the Python function in a fenced block, e.g.\n\n````\nGUESS:\n```python\ndef solution(x, y):\n    return x + y\n````\n\n```\nYou may add a one-line explanation after the code block.\n\n## Constraints\n- KEY: DO USE BUILTIN FUNCTIONS LIKE sort(), min(), fromkeys(), values(), capitalize(), isascii() etc.\n- Types must match exactly. Numbers as literals; strings quoted; use commas.\n- No extra text, no markdown, no comments during probing.\n- Any format violation consumes a turn.\n- Do NOT invent new variables. Use ONLY: <value1>, <value2>\n\n---\n\n**Context placeholders:**\n- Category: `string`\n- Params: `2`\n- Param list: `s: str, k: int`\n\nBegin: produce your first `INPUT:` line.\n\nCANDIDATE FUNCTION IDS (use only these in hypotheses):\n- caesar_shift\n\nOn EVERY turn, output one of the following formats.\nFormat A (probe):\nINPUT: <args>\nHYPOTHESES:\n- candidate: <candidate_id>\n- candidate: <candidate_id>\nCONFIDENCE:\n- <float>\n- <float>\n\nConfidences must sum to 1.\n\nFormat B (final guess):\nGUESS: ```python\n<code>\n```\n",
+          "label": "context"
+        }
+      },
+      {
+        "from": "Player 1",
+        "to": "GM",
+        "timestamp": "2026-02-09T00:18:50.127354",
+        "action": {
+          "type": "get message",
+          "content": "INPUT:\"abc\", 1\nHYPOTHESES:\n- candidate: caesar_shift\nCONFIDENCE:\n- 1.0",
+          "label": "response"
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-09T00:18:50.127354",
+        "action": {
+          "type": "probe results",
+          "content": {
+            "probe_round": 1,
+            "probe_args": [
+              "abc",
+              1
+            ],
+            "probe_output": "bcd"
+          }
+        }
+      }
+    ],
+    [
+      {
+        "from": "GM",
+        "to": "Player 1",
+        "timestamp": "2026-02-09T00:18:50.127354",
+        "action": {
+          "type": "send message",
+          "content": "Function Output: bcd",
+          "label": "context"
+        }
+      },
+      {
+        "from": "Player 1",
+        "to": "GM",
+        "timestamp": "2026-02-09T00:18:50.750642",
+        "action": {
+          "type": "get message",
+          "content": "INPUT:\"xyz\", 2\nHYPOTHESES:\n- candidate: caesar_shift\nCONFIDENCE:\n- 1.0",
+          "label": "response"
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-09T00:18:50.750642",
+        "action": {
+          "type": "probe results",
+          "content": {
+            "probe_round": 2,
+            "probe_args": [
+              "xyz",
+              2
+            ],
+            "probe_output": "zab"
+          }
+        }
+      }
+    ],
+    [
+      {
+        "from": "GM",
+        "to": "Player 1",
+        "timestamp": "2026-02-09T00:18:50.750642",
+        "action": {
+          "type": "send message",
+          "content": "Function Output: zab",
+          "label": "context"
+        }
+      },
+      {
+        "from": "Player 1",
+        "to": "GM",
+        "timestamp": "2026-02-09T00:18:51.409372",
+        "action": {
+          "type": "get message",
+          "content": "INPUT:\"Hello, World!\", 3\nHYPOTHESES:\n- candidate: caesar_shift\nCONFIDENCE:\n- 1.0",
+          "label": "response"
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-09T00:18:51.409372",
+        "action": {
+          "type": "probe results",
+          "content": {
+            "probe_round": 3,
+            "probe_args": [
+              "Hello, World!",
+              3
+            ],
+            "probe_output": "Khoor, Zruog!"
+          }
+        }
+      }
+    ],
+    [
+      {
+        "from": "GM",
+        "to": "Player 1",
+        "timestamp": "2026-02-09T00:18:51.409372",
+        "action": {
+          "type": "send message",
+          "content": "Function Output: Khoor, Zruog!",
+          "label": "context"
+        }
+      },
+      {
+        "from": "Player 1",
+        "to": "GM",
+        "timestamp": "2026-02-09T00:18:52.272167",
+        "action": {
+          "type": "get message",
+          "content": "INPUT:\"ABC\", 5\nHYPOTHESES:\n- candidate: caesar_shift\nCONFIDENCE:\n- 1.0",
+          "label": "response"
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-09T00:18:52.277660",
+        "action": {
+          "type": "probe results",
+          "content": {
+            "probe_round": 4,
+            "probe_args": [
+              "ABC",
+              5
+            ],
+            "probe_output": "FGH"
+          }
+        }
+      }
+    ],
+    [
+      {
+        "from": "GM",
+        "to": "Player 1",
+        "timestamp": "2026-02-09T00:18:52.277660",
+        "action": {
+          "type": "send message",
+          "content": "Function Output: FGH",
+          "label": "context"
+        }
+      },
+      {
+        "from": "Player 1",
+        "to": "GM",
+        "timestamp": "2026-02-09T00:18:53.060615",
+        "action": {
+          "type": "get message",
+          "content": "INPUT:\"Python3.6\", 10\nHYPOTHESES:\n- candidate: caesar_shift\nCONFIDENCE:\n- 1.0",
+          "label": "response"
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-09T00:18:53.060615",
+        "action": {
+          "type": "probe results",
+          "content": {
+            "probe_round": 5,
+            "probe_args": [
+              "Python3.6",
+              10
+            ],
+            "probe_output": "Zidryx3.6"
+          }
+        }
+      }
+    ],
+    [
+      {
+        "from": "GM",
+        "to": "Player 1",
+        "timestamp": "2026-02-09T00:18:53.060615",
+        "action": {
+          "type": "send message",
+          "content": "Function Output: Zidryx3.6",
+          "label": "context"
+        }
+      },
+      {
+        "from": "Player 1",
+        "to": "GM",
+        "timestamp": "2026-02-09T00:18:53.969510",
+        "action": {
+          "type": "get message",
+          "content": "INPUT:\"\", 4\nHYPOTHESES:\n- candidate: caesar_shift\nCONFIDENCE:\n- 1.0",
+          "label": "response"
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-09T00:18:53.970464",
+        "action": {
+          "type": "probe results",
+          "content": {
+            "probe_round": 6,
+            "probe_args": [
+              "",
+              4
+            ],
+            "probe_output": ""
+          }
+        }
+      }
+    ],
+    [
+      {
+        "from": "GM",
+        "to": "Player 1",
+        "timestamp": "2026-02-09T00:18:53.970464",
+        "action": {
+          "type": "send message",
+          "content": "Function Output: ",
+          "label": "context"
+        }
+      },
+      {
+        "from": "Player 1",
+        "to": "GM",
+        "timestamp": "2026-02-09T00:18:54.734154",
+        "action": {
+          "type": "get message",
+          "content": "INPUT:\"aBcXyZ\", 1\nHYPOTHESES:\n- candidate: caesar_shift\nCONFIDENCE:\n- 1.0",
+          "label": "response"
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-09T00:18:54.735205",
+        "action": {
+          "type": "probe results",
+          "content": {
+            "probe_round": 7,
+            "probe_args": [
+              "aBcXyZ",
+              1
+            ],
+            "probe_output": "bCdYzA"
+          }
+        }
+      }
+    ],
+    [
+      {
+        "from": "GM",
+        "to": "Player 1",
+        "timestamp": "2026-02-09T00:18:54.735205",
+        "action": {
+          "type": "send message",
+          "content": "Function Output: bCdYzA",
+          "label": "context"
+        }
+      },
+      {
+        "from": "Player 1",
+        "to": "GM",
+        "timestamp": "2026-02-09T00:18:55.693937",
+        "action": {
+          "type": "get message",
+          "content": "INPUT:\"zzz\", 1\nHYPOTHESES:\n- candidate: caesar_shift\nCONFIDENCE:\n- 1.0",
+          "label": "response"
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-09T00:18:55.693937",
+        "action": {
+          "type": "probe results",
+          "content": {
+            "probe_round": 8,
+            "probe_args": [
+              "zzz",
+              1
+            ],
+            "probe_output": "aaa"
+          }
+        }
+      }
+    ],
+    [
+      {
+        "from": "GM",
+        "to": "Player 1",
+        "timestamp": "2026-02-09T00:18:55.693937",
+        "action": {
+          "type": "send message",
+          "content": "Function Output: aaa",
+          "label": "context"
+        }
+      },
+      {
+        "from": "Player 1",
+        "to": "GM",
+        "timestamp": "2026-02-09T00:18:58.214476",
+        "action": {
+          "type": "get message",
+          "content": "GUESS:\n```python\ndef solution(s: str, k: int) -> str:\n    res = []\n    for c in s:\n        if 'a' <= c <= 'z':\n            res.append(chr((ord(c) - ord('a') + k) % 26 + ord('a')))\n        elif 'A' <= c <= 'Z':\n            res.append(chr((ord(c) - ord('A') + k) % 26 + ord('A')))\n        else:\n            res.append(c)\n    return ''.join(res)\n```\nCaesar shift: shifts each letter by k, preserves case and non-letters.",
+          "label": "response"
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-09T00:18:59.359727",
+        "action": {
+          "type": "internal_consistency",
+          "content": {
+            "internal_consistency_score": 1.0,
+            "internal_consistency_all_observed": true,
+            "internal_consistency_violations": 0,
+            "observed_pair_count": 8
+          }
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-09T00:18:59.359727",
+        "action": {
+          "type": "test_accuracy",
+          "content": "Accuracy Score: 1.0"
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-09T00:18:59.359727",
+        "action": {
+          "type": "test_efficiency",
+          "content": "Efficiency Score: 0.2222222222222222"
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-09T00:18:59.359727",
+        "action": {
+          "type": "test_slack",
+          "content": "Slack Score: 2"
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-09T00:18:59.360306",
+        "action": {
+          "type": "outcome",
+          "content": "Game Verdict: WIN"
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-09T00:18:59.360306",
+        "action": {
+          "type": "reveal_function",
+          "content": "That is correct! \nThe hidden function was:\n\ndef caesar_shift(s: str, k: int) -> str:\n    \"\"\"\n    Shift letters by k (Caesar cipher).\n    Only shifts A-Z and a-z; other chars unchanged.\n    \"\"\"\n    out = []\n    k = k % 26\n    for ch in s:\n        if \"a\" <= ch <= \"z\":\n            out.append(chr((ord(ch) - ord(\"a\") + k) % 26 + ord(\"a\")))\n        elif \"A\" <= ch <= \"Z\":\n            out.append(chr((ord(ch) - ord(\"A\") + k) % 26 + ord(\"A\")))\n        else:\n            out.append(ch)\n    return \"\".join(out)"
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-09T00:18:59.360306",
+        "action": {
+          "type": "final_guess_code",
+          "content": "Your guess: \n\ndef solution(s: str, k: int) -> str:\n    res = []\n    for c in s:\n        if 'a' <= c <= 'z':\n            res.append(chr((ord(c) - ord('a') + k) % 26 + ord('a')))\n        elif 'A' <= c <= 'Z':\n            res.append(chr((ord(c) - ord('A') + k) % 26 + ord('A')))\n        else:\n            res.append(c)\n    return ''.join(res)"
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-09T00:18:59.360306",
+        "action": {
+          "type": "total_turns_used_and_remaining",
+          "content": {
+            "max_allowed_turns": 10,
+            "total_turns_used": 8,
+            "total_turns_remaining": 2
+          }
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-09T00:18:59.360306",
+        "action": {
+          "type": "parse_error_count",
+          "content": "Parse error count: 0"
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-09T00:18:59.360306",
+        "action": {
+          "type": "runtime_error_count",
+          "content": "Runtime error count: 0"
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-09T00:18:59.360860",
+        "action": {
+          "type": "hypothesis_quality_summary",
+          "content": {
+            "format_errors": 0,
+            "top1_hit_at_stop": 1,
+            "top3_hit_at_stop": 1,
+            "prob_true_at_stop": 1.0,
+            "avg_neg_log_prob_true": 0.0,
+            "top1_switches": 0
+          }
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-09T00:18:59.360860",
+        "action": {
+          "type": "probe_information_summary",
+          "content": "Probes: 8 | Unique inputs: 8 (diversity=1.00) | Unique outputs: 8 (novelty=1.00, entropy=3.00 bits)"
+        }
+      }
+    ]
+  ],
+  "Aborted": false,
+  "Lose": false,
+  "Success": true,
+  "efficiency": 0.2222222222222222,
+  "slack": 2,
+  "accuracy": 1.0,
+  "parse_error_count": 0,
+  "runtime_error_count": 0,
+  "turns_used": 8,
+  "max_turns": 10,
+  "observed_pairs": [
+    {
+      "round": 1,
+      "args": [
+        "abc",
+        1
+      ],
+      "output": "bcd"
+    },
+    {
+      "round": 2,
+      "args": [
+        "xyz",
+        2
+      ],
+      "output": "zab"
+    },
+    {
+      "round": 3,
+      "args": [
+        "Hello, World!",
+        3
+      ],
+      "output": "Khoor, Zruog!"
+    },
+    {
+      "round": 4,
+      "args": [
+        "ABC",
+        5
+      ],
+      "output": "FGH"
+    },
+    {
+      "round": 5,
+      "args": [
+        "Python3.6",
+        10
+      ],
+      "output": "Zidryx3.6"
+    },
+    {
+      "round": 6,
+      "args": [
+        "",
+        4
+      ],
+      "output": ""
+    },
+    {
+      "round": 7,
+      "args": [
+        "aBcXyZ",
+        1
+      ],
+      "output": "bCdYzA"
+    },
+    {
+      "round": 8,
+      "args": [
+        "zzz",
+        1
+      ],
+      "output": "aaa"
+    }
+  ],
+  "probe_count": 8,
+  "unique_input_count": 8,
+  "unique_output_count": 8,
+  "novelty_rate": 1.0,
+  "input_diversity": 1.0,
+  "output_entropy_bits": 3.0,
+  "internal_consistency_score": 1.0,
+  "internal_consistency_all_observed": true,
+  "internal_consistency_violations": 0,
+  "hypothesis_format_error_count": 0,
+  "hypothesis_top1_hit_at_stop": 1,
+  "hypothesis_top3_hit_at_stop": 1,
+  "hypothesis_prob_true_at_stop": 1.0,
+  "hypothesis_avg_negative_log_prob_true": 0.0,
+  "hypothesis_top1_switches": 0,
+  "Request Count": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "Violated Request Count": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "Parsed Request Count": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ]
+}
