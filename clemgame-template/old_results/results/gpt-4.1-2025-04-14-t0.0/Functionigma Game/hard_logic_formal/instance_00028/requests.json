@@ -1,0 +1,1486 @@
+[
+  {
+    "timestamp": "2026-02-26T17:27:32.185929",
+    "manipulated_prompt_obj": [
+      {
+        "role": "user",
+        "content": "**Role (AI):** Function Inference Engine — infer an unknown Python function by proposing inputs and observing outputs.\n\n**Role (GM):** I return the function's output for each input you propose.\n\n**Goal:** Infer the exact function: `(s: str) -> bool`\n\n---\n\n## Rules\n\n* You have **15** total turns. Guess on turn 15 - 1.\n* Each probe must be exactly one line and **nothing else**.\n* Case and format are strict.\n\n## Format (strict)\n\n* Probing (until certain):\n\n```\nINPUT:<value1>\n```\n\n(uppercase `INPUT:`) — strings must be quoted, booleans `True/False`.\n\n* Final submission (when certain):\n  Start with `GUESS:` then **only** the Python function in a fenced block, e.g.\n\n````\nGUESS:\n```python\ndef solution(x, y):\n    return x + y\n````\n\n```\nYou may add a one-line explanation after the code block.\n\n## Constraints\n- KEY: DO USE BUILTIN FUNCTIONS LIKE sort(), min(), fromkeys(), values(), capitalize(), isascii() etc.\n- Types must match exactly. Numbers as literals; strings quoted; use commas.\n- No extra text, no markdown, no comments during probing.\n- Any format violation consumes a turn.\n- Do NOT invent new variables. Use ONLY: <value1>\n\n---\n\n**Context placeholders:**\n- Category: `LOGIC_FORMAL`\n- Params: `1`\n- Param list: `s: str`\n\nBegin: produce your first `INPUT:` line.\n\nCANDIDATE FUNCTION IDS (use only these in hypotheses):\n- balanced_brackets_all\n- balanced_parentheses_only\n\nOn EVERY turn, output one of the following formats.\nFormat A (probe):\nINPUT: <args>\nHYPOTHESES:\n- candidate: <candidate_id>\n- candidate: <candidate_id>\nCONFIDENCE:\n- <float>\n- <float>\n\nConfidences must sum to 1.\n\nFormat B (final guess):\nGUESS: ```python\n<code>\n```\n"
+      }
+    ],
+    "raw_response_obj": {
+      "id": "chatcmpl-DDYV0pD9aFK9vnsK7OgcdTDtJgJ9t",
+      "choices": [
+        {
+          "finish_reason": "stop",
+          "index": 0,
+          "logprobs": null,
+          "message": {
+            "content": "INPUT:\"()\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5",
+            "refusal": null,
+            "role": "assistant",
+            "annotations": [],
+            "audio": null,
+            "function_call": null,
+            "tool_calls": null
+          }
+        }
+      ],
+      "created": 1772123250,
+      "model": "gpt-4.1-2025-04-14",
+      "object": "chat.completion",
+      "service_tier": "default",
+      "system_fingerprint": "fp_415555a583",
+      "usage": {
+        "completion_tokens": 41,
+        "prompt_tokens": 437,
+        "total_tokens": 478,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": 0,
+          "cached_tokens": 0
+        }
+      },
+      "clem_player": {
+        "call_start": "2026-02-26 17:27:30.575234",
+        "call_duration": "0:00:01.610695",
+        "response": "INPUT:\"()\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5",
+        "model_name": "gpt-4.1-2025-04-14"
+      }
+    }
+  },
+  {
+    "timestamp": "2026-02-26T17:27:33.517734",
+    "manipulated_prompt_obj": [
+      {
+        "role": "user",
+        "content": "**Role (AI):** Function Inference Engine — infer an unknown Python function by proposing inputs and observing outputs.\n\n**Role (GM):** I return the function's output for each input you propose.\n\n**Goal:** Infer the exact function: `(s: str) -> bool`\n\n---\n\n## Rules\n\n* You have **15** total turns. Guess on turn 15 - 1.\n* Each probe must be exactly one line and **nothing else**.\n* Case and format are strict.\n\n## Format (strict)\n\n* Probing (until certain):\n\n```\nINPUT:<value1>\n```\n\n(uppercase `INPUT:`) — strings must be quoted, booleans `True/False`.\n\n* Final submission (when certain):\n  Start with `GUESS:` then **only** the Python function in a fenced block, e.g.\n\n````\nGUESS:\n```python\ndef solution(x, y):\n    return x + y\n````\n\n```\nYou may add a one-line explanation after the code block.\n\n## Constraints\n- KEY: DO USE BUILTIN FUNCTIONS LIKE sort(), min(), fromkeys(), values(), capitalize(), isascii() etc.\n- Types must match exactly. Numbers as literals; strings quoted; use commas.\n- No extra text, no markdown, no comments during probing.\n- Any format violation consumes a turn.\n- Do NOT invent new variables. Use ONLY: <value1>\n\n---\n\n**Context placeholders:**\n- Category: `LOGIC_FORMAL`\n- Params: `1`\n- Param list: `s: str`\n\nBegin: produce your first `INPUT:` line.\n\nCANDIDATE FUNCTION IDS (use only these in hypotheses):\n- balanced_brackets_all\n- balanced_parentheses_only\n\nOn EVERY turn, output one of the following formats.\nFormat A (probe):\nINPUT: <args>\nHYPOTHESES:\n- candidate: <candidate_id>\n- candidate: <candidate_id>\nCONFIDENCE:\n- <float>\n- <float>\n\nConfidences must sum to 1.\n\nFormat B (final guess):\nGUESS: ```python\n<code>\n```\n"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"()\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: True"
+      }
+    ],
+    "raw_response_obj": {
+      "id": "chatcmpl-DDYV2Ah8T6RH7NeEpChjtcJtfLKTX",
+      "choices": [
+        {
+          "finish_reason": "stop",
+          "index": 0,
+          "logprobs": null,
+          "message": {
+            "content": "INPUT:\"([])\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5",
+            "refusal": null,
+            "role": "assistant",
+            "annotations": [],
+            "audio": null,
+            "function_call": null,
+            "tool_calls": null
+          }
+        }
+      ],
+      "created": 1772123252,
+      "model": "gpt-4.1-2025-04-14",
+      "object": "chat.completion",
+      "service_tier": "default",
+      "system_fingerprint": "fp_415555a583",
+      "usage": {
+        "completion_tokens": 41,
+        "prompt_tokens": 490,
+        "total_tokens": 531,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": 0,
+          "cached_tokens": 0
+        }
+      },
+      "clem_player": {
+        "call_start": "2026-02-26 17:27:32.185929",
+        "call_duration": "0:00:01.331805",
+        "response": "INPUT:\"([])\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5",
+        "model_name": "gpt-4.1-2025-04-14"
+      }
+    }
+  },
+  {
+    "timestamp": "2026-02-26T17:27:34.650077",
+    "manipulated_prompt_obj": [
+      {
+        "role": "user",
+        "content": "**Role (AI):** Function Inference Engine — infer an unknown Python function by proposing inputs and observing outputs.\n\n**Role (GM):** I return the function's output for each input you propose.\n\n**Goal:** Infer the exact function: `(s: str) -> bool`\n\n---\n\n## Rules\n\n* You have **15** total turns. Guess on turn 15 - 1.\n* Each probe must be exactly one line and **nothing else**.\n* Case and format are strict.\n\n## Format (strict)\n\n* Probing (until certain):\n\n```\nINPUT:<value1>\n```\n\n(uppercase `INPUT:`) — strings must be quoted, booleans `True/False`.\n\n* Final submission (when certain):\n  Start with `GUESS:` then **only** the Python function in a fenced block, e.g.\n\n````\nGUESS:\n```python\ndef solution(x, y):\n    return x + y\n````\n\n```\nYou may add a one-line explanation after the code block.\n\n## Constraints\n- KEY: DO USE BUILTIN FUNCTIONS LIKE sort(), min(), fromkeys(), values(), capitalize(), isascii() etc.\n- Types must match exactly. Numbers as literals; strings quoted; use commas.\n- No extra text, no markdown, no comments during probing.\n- Any format violation consumes a turn.\n- Do NOT invent new variables. Use ONLY: <value1>\n\n---\n\n**Context placeholders:**\n- Category: `LOGIC_FORMAL`\n- Params: `1`\n- Param list: `s: str`\n\nBegin: produce your first `INPUT:` line.\n\nCANDIDATE FUNCTION IDS (use only these in hypotheses):\n- balanced_brackets_all\n- balanced_parentheses_only\n\nOn EVERY turn, output one of the following formats.\nFormat A (probe):\nINPUT: <args>\nHYPOTHESES:\n- candidate: <candidate_id>\n- candidate: <candidate_id>\nCONFIDENCE:\n- <float>\n- <float>\n\nConfidences must sum to 1.\n\nFormat B (final guess):\nGUESS: ```python\n<code>\n```\n"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"()\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: True"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"([])\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: True"
+      }
+    ],
+    "raw_response_obj": {
+      "id": "chatcmpl-DDYV37wEod13BilBuNSHBw0GEtjOM",
+      "choices": [
+        {
+          "finish_reason": "stop",
+          "index": 0,
+          "logprobs": null,
+          "message": {
+            "content": "INPUT:\"([)]\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5",
+            "refusal": null,
+            "role": "assistant",
+            "annotations": [],
+            "audio": null,
+            "function_call": null,
+            "tool_calls": null
+          }
+        }
+      ],
+      "created": 1772123253,
+      "model": "gpt-4.1-2025-04-14",
+      "object": "chat.completion",
+      "service_tier": "default",
+      "system_fingerprint": "fp_415555a583",
+      "usage": {
+        "completion_tokens": 42,
+        "prompt_tokens": 543,
+        "total_tokens": 585,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": 0,
+          "cached_tokens": 0
+        }
+      },
+      "clem_player": {
+        "call_start": "2026-02-26 17:27:33.517734",
+        "call_duration": "0:00:01.132343",
+        "response": "INPUT:\"([)]\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5",
+        "model_name": "gpt-4.1-2025-04-14"
+      }
+    }
+  },
+  {
+    "timestamp": "2026-02-26T17:27:35.990300",
+    "manipulated_prompt_obj": [
+      {
+        "role": "user",
+        "content": "**Role (AI):** Function Inference Engine — infer an unknown Python function by proposing inputs and observing outputs.\n\n**Role (GM):** I return the function's output for each input you propose.\n\n**Goal:** Infer the exact function: `(s: str) -> bool`\n\n---\n\n## Rules\n\n* You have **15** total turns. Guess on turn 15 - 1.\n* Each probe must be exactly one line and **nothing else**.\n* Case and format are strict.\n\n## Format (strict)\n\n* Probing (until certain):\n\n```\nINPUT:<value1>\n```\n\n(uppercase `INPUT:`) — strings must be quoted, booleans `True/False`.\n\n* Final submission (when certain):\n  Start with `GUESS:` then **only** the Python function in a fenced block, e.g.\n\n````\nGUESS:\n```python\ndef solution(x, y):\n    return x + y\n````\n\n```\nYou may add a one-line explanation after the code block.\n\n## Constraints\n- KEY: DO USE BUILTIN FUNCTIONS LIKE sort(), min(), fromkeys(), values(), capitalize(), isascii() etc.\n- Types must match exactly. Numbers as literals; strings quoted; use commas.\n- No extra text, no markdown, no comments during probing.\n- Any format violation consumes a turn.\n- Do NOT invent new variables. Use ONLY: <value1>\n\n---\n\n**Context placeholders:**\n- Category: `LOGIC_FORMAL`\n- Params: `1`\n- Param list: `s: str`\n\nBegin: produce your first `INPUT:` line.\n\nCANDIDATE FUNCTION IDS (use only these in hypotheses):\n- balanced_brackets_all\n- balanced_parentheses_only\n\nOn EVERY turn, output one of the following formats.\nFormat A (probe):\nINPUT: <args>\nHYPOTHESES:\n- candidate: <candidate_id>\n- candidate: <candidate_id>\nCONFIDENCE:\n- <float>\n- <float>\n\nConfidences must sum to 1.\n\nFormat B (final guess):\nGUESS: ```python\n<code>\n```\n"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"()\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: True"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"([])\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: True"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"([)]\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: False"
+      }
+    ],
+    "raw_response_obj": {
+      "id": "chatcmpl-DDYV5473dUxQToTrQ2dmfP2B2ws1Q",
+      "choices": [
+        {
+          "finish_reason": "stop",
+          "index": 0,
+          "logprobs": null,
+          "message": {
+            "content": "INPUT:\"([)\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5",
+            "refusal": null,
+            "role": "assistant",
+            "annotations": [],
+            "audio": null,
+            "function_call": null,
+            "tool_calls": null
+          }
+        }
+      ],
+      "created": 1772123255,
+      "model": "gpt-4.1-2025-04-14",
+      "object": "chat.completion",
+      "service_tier": "default",
+      "system_fingerprint": "fp_415555a583",
+      "usage": {
+        "completion_tokens": 41,
+        "prompt_tokens": 597,
+        "total_tokens": 638,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": 0,
+          "cached_tokens": 0
+        }
+      },
+      "clem_player": {
+        "call_start": "2026-02-26 17:27:34.650077",
+        "call_duration": "0:00:01.340223",
+        "response": "INPUT:\"([)\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5",
+        "model_name": "gpt-4.1-2025-04-14"
+      }
+    }
+  },
+  {
+    "timestamp": "2026-02-26T17:27:37.210069",
+    "manipulated_prompt_obj": [
+      {
+        "role": "user",
+        "content": "**Role (AI):** Function Inference Engine — infer an unknown Python function by proposing inputs and observing outputs.\n\n**Role (GM):** I return the function's output for each input you propose.\n\n**Goal:** Infer the exact function: `(s: str) -> bool`\n\n---\n\n## Rules\n\n* You have **15** total turns. Guess on turn 15 - 1.\n* Each probe must be exactly one line and **nothing else**.\n* Case and format are strict.\n\n## Format (strict)\n\n* Probing (until certain):\n\n```\nINPUT:<value1>\n```\n\n(uppercase `INPUT:`) — strings must be quoted, booleans `True/False`.\n\n* Final submission (when certain):\n  Start with `GUESS:` then **only** the Python function in a fenced block, e.g.\n\n````\nGUESS:\n```python\ndef solution(x, y):\n    return x + y\n````\n\n```\nYou may add a one-line explanation after the code block.\n\n## Constraints\n- KEY: DO USE BUILTIN FUNCTIONS LIKE sort(), min(), fromkeys(), values(), capitalize(), isascii() etc.\n- Types must match exactly. Numbers as literals; strings quoted; use commas.\n- No extra text, no markdown, no comments during probing.\n- Any format violation consumes a turn.\n- Do NOT invent new variables. Use ONLY: <value1>\n\n---\n\n**Context placeholders:**\n- Category: `LOGIC_FORMAL`\n- Params: `1`\n- Param list: `s: str`\n\nBegin: produce your first `INPUT:` line.\n\nCANDIDATE FUNCTION IDS (use only these in hypotheses):\n- balanced_brackets_all\n- balanced_parentheses_only\n\nOn EVERY turn, output one of the following formats.\nFormat A (probe):\nINPUT: <args>\nHYPOTHESES:\n- candidate: <candidate_id>\n- candidate: <candidate_id>\nCONFIDENCE:\n- <float>\n- <float>\n\nConfidences must sum to 1.\n\nFormat B (final guess):\nGUESS: ```python\n<code>\n```\n"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"()\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: True"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"([])\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: True"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"([)]\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: False"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"([)\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: False"
+      }
+    ],
+    "raw_response_obj": {
+      "id": "chatcmpl-DDYV6FJjexIMNq1xllGyzaEGqGGKi",
+      "choices": [
+        {
+          "finish_reason": "stop",
+          "index": 0,
+          "logprobs": null,
+          "message": {
+            "content": "INPUT:\"[]\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5",
+            "refusal": null,
+            "role": "assistant",
+            "annotations": [],
+            "audio": null,
+            "function_call": null,
+            "tool_calls": null
+          }
+        }
+      ],
+      "created": 1772123256,
+      "model": "gpt-4.1-2025-04-14",
+      "object": "chat.completion",
+      "service_tier": "default",
+      "system_fingerprint": "fp_415555a583",
+      "usage": {
+        "completion_tokens": 41,
+        "prompt_tokens": 650,
+        "total_tokens": 691,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": 0,
+          "cached_tokens": 0
+        }
+      },
+      "clem_player": {
+        "call_start": "2026-02-26 17:27:35.990300",
+        "call_duration": "0:00:01.219453",
+        "response": "INPUT:\"[]\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5",
+        "model_name": "gpt-4.1-2025-04-14"
+      }
+    }
+  },
+  {
+    "timestamp": "2026-02-26T17:27:39.142564",
+    "manipulated_prompt_obj": [
+      {
+        "role": "user",
+        "content": "**Role (AI):** Function Inference Engine — infer an unknown Python function by proposing inputs and observing outputs.\n\n**Role (GM):** I return the function's output for each input you propose.\n\n**Goal:** Infer the exact function: `(s: str) -> bool`\n\n---\n\n## Rules\n\n* You have **15** total turns. Guess on turn 15 - 1.\n* Each probe must be exactly one line and **nothing else**.\n* Case and format are strict.\n\n## Format (strict)\n\n* Probing (until certain):\n\n```\nINPUT:<value1>\n```\n\n(uppercase `INPUT:`) — strings must be quoted, booleans `True/False`.\n\n* Final submission (when certain):\n  Start with `GUESS:` then **only** the Python function in a fenced block, e.g.\n\n````\nGUESS:\n```python\ndef solution(x, y):\n    return x + y\n````\n\n```\nYou may add a one-line explanation after the code block.\n\n## Constraints\n- KEY: DO USE BUILTIN FUNCTIONS LIKE sort(), min(), fromkeys(), values(), capitalize(), isascii() etc.\n- Types must match exactly. Numbers as literals; strings quoted; use commas.\n- No extra text, no markdown, no comments during probing.\n- Any format violation consumes a turn.\n- Do NOT invent new variables. Use ONLY: <value1>\n\n---\n\n**Context placeholders:**\n- Category: `LOGIC_FORMAL`\n- Params: `1`\n- Param list: `s: str`\n\nBegin: produce your first `INPUT:` line.\n\nCANDIDATE FUNCTION IDS (use only these in hypotheses):\n- balanced_brackets_all\n- balanced_parentheses_only\n\nOn EVERY turn, output one of the following formats.\nFormat A (probe):\nINPUT: <args>\nHYPOTHESES:\n- candidate: <candidate_id>\n- candidate: <candidate_id>\nCONFIDENCE:\n- <float>\n- <float>\n\nConfidences must sum to 1.\n\nFormat B (final guess):\nGUESS: ```python\n<code>\n```\n"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"()\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: True"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"([])\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: True"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"([)]\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: False"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"([)\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: False"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"[]\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: True"
+      }
+    ],
+    "raw_response_obj": {
+      "id": "chatcmpl-DDYV7WclKCqXDBj4kPqaG0AueqmVW",
+      "choices": [
+        {
+          "finish_reason": "stop",
+          "index": 0,
+          "logprobs": null,
+          "message": {
+            "content": "INPUT:\"[()]\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5",
+            "refusal": null,
+            "role": "assistant",
+            "annotations": [],
+            "audio": null,
+            "function_call": null,
+            "tool_calls": null
+          }
+        }
+      ],
+      "created": 1772123257,
+      "model": "gpt-4.1-2025-04-14",
+      "object": "chat.completion",
+      "service_tier": "default",
+      "system_fingerprint": "fp_415555a583",
+      "usage": {
+        "completion_tokens": 42,
+        "prompt_tokens": 703,
+        "total_tokens": 745,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": 0,
+          "cached_tokens": 0
+        }
+      },
+      "clem_player": {
+        "call_start": "2026-02-26 17:27:37.210069",
+        "call_duration": "0:00:01.923955",
+        "response": "INPUT:\"[()]\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5",
+        "model_name": "gpt-4.1-2025-04-14"
+      }
+    }
+  },
+  {
+    "timestamp": "2026-02-26T17:27:40.171403",
+    "manipulated_prompt_obj": [
+      {
+        "role": "user",
+        "content": "**Role (AI):** Function Inference Engine — infer an unknown Python function by proposing inputs and observing outputs.\n\n**Role (GM):** I return the function's output for each input you propose.\n\n**Goal:** Infer the exact function: `(s: str) -> bool`\n\n---\n\n## Rules\n\n* You have **15** total turns. Guess on turn 15 - 1.\n* Each probe must be exactly one line and **nothing else**.\n* Case and format are strict.\n\n## Format (strict)\n\n* Probing (until certain):\n\n```\nINPUT:<value1>\n```\n\n(uppercase `INPUT:`) — strings must be quoted, booleans `True/False`.\n\n* Final submission (when certain):\n  Start with `GUESS:` then **only** the Python function in a fenced block, e.g.\n\n````\nGUESS:\n```python\ndef solution(x, y):\n    return x + y\n````\n\n```\nYou may add a one-line explanation after the code block.\n\n## Constraints\n- KEY: DO USE BUILTIN FUNCTIONS LIKE sort(), min(), fromkeys(), values(), capitalize(), isascii() etc.\n- Types must match exactly. Numbers as literals; strings quoted; use commas.\n- No extra text, no markdown, no comments during probing.\n- Any format violation consumes a turn.\n- Do NOT invent new variables. Use ONLY: <value1>\n\n---\n\n**Context placeholders:**\n- Category: `LOGIC_FORMAL`\n- Params: `1`\n- Param list: `s: str`\n\nBegin: produce your first `INPUT:` line.\n\nCANDIDATE FUNCTION IDS (use only these in hypotheses):\n- balanced_brackets_all\n- balanced_parentheses_only\n\nOn EVERY turn, output one of the following formats.\nFormat A (probe):\nINPUT: <args>\nHYPOTHESES:\n- candidate: <candidate_id>\n- candidate: <candidate_id>\nCONFIDENCE:\n- <float>\n- <float>\n\nConfidences must sum to 1.\n\nFormat B (final guess):\nGUESS: ```python\n<code>\n```\n"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"()\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: True"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"([])\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: True"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"([)]\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: False"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"([)\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: False"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"[]\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: True"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"[()]\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: True"
+      }
+    ],
+    "raw_response_obj": {
+      "id": "chatcmpl-DDYV9cybu4AjGMrZzj0yMxVJayn4f",
+      "choices": [
+        {
+          "finish_reason": "stop",
+          "index": 0,
+          "logprobs": null,
+          "message": {
+            "content": "INPUT:\"[\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5",
+            "refusal": null,
+            "role": "assistant",
+            "annotations": [],
+            "audio": null,
+            "function_call": null,
+            "tool_calls": null
+          }
+        }
+      ],
+      "created": 1772123259,
+      "model": "gpt-4.1-2025-04-14",
+      "object": "chat.completion",
+      "service_tier": "default",
+      "system_fingerprint": "fp_415555a583",
+      "usage": {
+        "completion_tokens": 41,
+        "prompt_tokens": 757,
+        "total_tokens": 798,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": 0,
+          "cached_tokens": 0
+        }
+      },
+      "clem_player": {
+        "call_start": "2026-02-26 17:27:39.142564",
+        "call_duration": "0:00:01.028839",
+        "response": "INPUT:\"[\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5",
+        "model_name": "gpt-4.1-2025-04-14"
+      }
+    }
+  },
+  {
+    "timestamp": "2026-02-26T17:27:45.089129",
+    "manipulated_prompt_obj": [
+      {
+        "role": "user",
+        "content": "**Role (AI):** Function Inference Engine — infer an unknown Python function by proposing inputs and observing outputs.\n\n**Role (GM):** I return the function's output for each input you propose.\n\n**Goal:** Infer the exact function: `(s: str) -> bool`\n\n---\n\n## Rules\n\n* You have **15** total turns. Guess on turn 15 - 1.\n* Each probe must be exactly one line and **nothing else**.\n* Case and format are strict.\n\n## Format (strict)\n\n* Probing (until certain):\n\n```\nINPUT:<value1>\n```\n\n(uppercase `INPUT:`) — strings must be quoted, booleans `True/False`.\n\n* Final submission (when certain):\n  Start with `GUESS:` then **only** the Python function in a fenced block, e.g.\n\n````\nGUESS:\n```python\ndef solution(x, y):\n    return x + y\n````\n\n```\nYou may add a one-line explanation after the code block.\n\n## Constraints\n- KEY: DO USE BUILTIN FUNCTIONS LIKE sort(), min(), fromkeys(), values(), capitalize(), isascii() etc.\n- Types must match exactly. Numbers as literals; strings quoted; use commas.\n- No extra text, no markdown, no comments during probing.\n- Any format violation consumes a turn.\n- Do NOT invent new variables. Use ONLY: <value1>\n\n---\n\n**Context placeholders:**\n- Category: `LOGIC_FORMAL`\n- Params: `1`\n- Param list: `s: str`\n\nBegin: produce your first `INPUT:` line.\n\nCANDIDATE FUNCTION IDS (use only these in hypotheses):\n- balanced_brackets_all\n- balanced_parentheses_only\n\nOn EVERY turn, output one of the following formats.\nFormat A (probe):\nINPUT: <args>\nHYPOTHESES:\n- candidate: <candidate_id>\n- candidate: <candidate_id>\nCONFIDENCE:\n- <float>\n- <float>\n\nConfidences must sum to 1.\n\nFormat B (final guess):\nGUESS: ```python\n<code>\n```\n"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"()\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: True"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"([])\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: True"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"([)]\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: False"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"([)\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: False"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"[]\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: True"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"[()]\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: True"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"[\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: False"
+      }
+    ],
+    "raw_response_obj": {
+      "id": "chatcmpl-DDYVA9zU2XqS8ZTeCGtr7ZaJUxEJq",
+      "choices": [
+        {
+          "finish_reason": "stop",
+          "index": 0,
+          "logprobs": null,
+          "message": {
+            "content": "INPUT:\"(\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5",
+            "refusal": null,
+            "role": "assistant",
+            "annotations": [],
+            "audio": null,
+            "function_call": null,
+            "tool_calls": null
+          }
+        }
+      ],
+      "created": 1772123260,
+      "model": "gpt-4.1-2025-04-14",
+      "object": "chat.completion",
+      "service_tier": "default",
+      "system_fingerprint": "fp_415555a583",
+      "usage": {
+        "completion_tokens": 40,
+        "prompt_tokens": 810,
+        "total_tokens": 850,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": 0,
+          "cached_tokens": 0
+        }
+      },
+      "clem_player": {
+        "call_start": "2026-02-26 17:27:40.179730",
+        "call_duration": "0:00:04.909399",
+        "response": "INPUT:\"(\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5",
+        "model_name": "gpt-4.1-2025-04-14"
+      }
+    }
+  },
+  {
+    "timestamp": "2026-02-26T17:27:46.114199",
+    "manipulated_prompt_obj": [
+      {
+        "role": "user",
+        "content": "**Role (AI):** Function Inference Engine — infer an unknown Python function by proposing inputs and observing outputs.\n\n**Role (GM):** I return the function's output for each input you propose.\n\n**Goal:** Infer the exact function: `(s: str) -> bool`\n\n---\n\n## Rules\n\n* You have **15** total turns. Guess on turn 15 - 1.\n* Each probe must be exactly one line and **nothing else**.\n* Case and format are strict.\n\n## Format (strict)\n\n* Probing (until certain):\n\n```\nINPUT:<value1>\n```\n\n(uppercase `INPUT:`) — strings must be quoted, booleans `True/False`.\n\n* Final submission (when certain):\n  Start with `GUESS:` then **only** the Python function in a fenced block, e.g.\n\n````\nGUESS:\n```python\ndef solution(x, y):\n    return x + y\n````\n\n```\nYou may add a one-line explanation after the code block.\n\n## Constraints\n- KEY: DO USE BUILTIN FUNCTIONS LIKE sort(), min(), fromkeys(), values(), capitalize(), isascii() etc.\n- Types must match exactly. Numbers as literals; strings quoted; use commas.\n- No extra text, no markdown, no comments during probing.\n- Any format violation consumes a turn.\n- Do NOT invent new variables. Use ONLY: <value1>\n\n---\n\n**Context placeholders:**\n- Category: `LOGIC_FORMAL`\n- Params: `1`\n- Param list: `s: str`\n\nBegin: produce your first `INPUT:` line.\n\nCANDIDATE FUNCTION IDS (use only these in hypotheses):\n- balanced_brackets_all\n- balanced_parentheses_only\n\nOn EVERY turn, output one of the following formats.\nFormat A (probe):\nINPUT: <args>\nHYPOTHESES:\n- candidate: <candidate_id>\n- candidate: <candidate_id>\nCONFIDENCE:\n- <float>\n- <float>\n\nConfidences must sum to 1.\n\nFormat B (final guess):\nGUESS: ```python\n<code>\n```\n"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"()\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: True"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"([])\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: True"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"([)]\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: False"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"([)\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: False"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"[]\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: True"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"[()]\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: True"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"[\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: False"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"(\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: False"
+      }
+    ],
+    "raw_response_obj": {
+      "id": "chatcmpl-DDYVFq6NycWqzGiFmEa03rWsy1Cxa",
+      "choices": [
+        {
+          "finish_reason": "stop",
+          "index": 0,
+          "logprobs": null,
+          "message": {
+            "content": "INPUT:\"{[()]}\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5",
+            "refusal": null,
+            "role": "assistant",
+            "annotations": [],
+            "audio": null,
+            "function_call": null,
+            "tool_calls": null
+          }
+        }
+      ],
+      "created": 1772123265,
+      "model": "gpt-4.1-2025-04-14",
+      "object": "chat.completion",
+      "service_tier": "default",
+      "system_fingerprint": "fp_415555a583",
+      "usage": {
+        "completion_tokens": 43,
+        "prompt_tokens": 862,
+        "total_tokens": 905,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": 0,
+          "cached_tokens": 0
+        }
+      },
+      "clem_player": {
+        "call_start": "2026-02-26 17:27:45.095139",
+        "call_duration": "0:00:01.019060",
+        "response": "INPUT:\"{[()]}\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5",
+        "model_name": "gpt-4.1-2025-04-14"
+      }
+    }
+  },
+  {
+    "timestamp": "2026-02-26T17:27:47.236420",
+    "manipulated_prompt_obj": [
+      {
+        "role": "user",
+        "content": "**Role (AI):** Function Inference Engine — infer an unknown Python function by proposing inputs and observing outputs.\n\n**Role (GM):** I return the function's output for each input you propose.\n\n**Goal:** Infer the exact function: `(s: str) -> bool`\n\n---\n\n## Rules\n\n* You have **15** total turns. Guess on turn 15 - 1.\n* Each probe must be exactly one line and **nothing else**.\n* Case and format are strict.\n\n## Format (strict)\n\n* Probing (until certain):\n\n```\nINPUT:<value1>\n```\n\n(uppercase `INPUT:`) — strings must be quoted, booleans `True/False`.\n\n* Final submission (when certain):\n  Start with `GUESS:` then **only** the Python function in a fenced block, e.g.\n\n````\nGUESS:\n```python\ndef solution(x, y):\n    return x + y\n````\n\n```\nYou may add a one-line explanation after the code block.\n\n## Constraints\n- KEY: DO USE BUILTIN FUNCTIONS LIKE sort(), min(), fromkeys(), values(), capitalize(), isascii() etc.\n- Types must match exactly. Numbers as literals; strings quoted; use commas.\n- No extra text, no markdown, no comments during probing.\n- Any format violation consumes a turn.\n- Do NOT invent new variables. Use ONLY: <value1>\n\n---\n\n**Context placeholders:**\n- Category: `LOGIC_FORMAL`\n- Params: `1`\n- Param list: `s: str`\n\nBegin: produce your first `INPUT:` line.\n\nCANDIDATE FUNCTION IDS (use only these in hypotheses):\n- balanced_brackets_all\n- balanced_parentheses_only\n\nOn EVERY turn, output one of the following formats.\nFormat A (probe):\nINPUT: <args>\nHYPOTHESES:\n- candidate: <candidate_id>\n- candidate: <candidate_id>\nCONFIDENCE:\n- <float>\n- <float>\n\nConfidences must sum to 1.\n\nFormat B (final guess):\nGUESS: ```python\n<code>\n```\n"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"()\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: True"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"([])\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: True"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"([)]\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: False"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"([)\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: False"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"[]\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: True"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"[()]\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: True"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"[\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: False"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"(\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: False"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"{[()]}\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: True"
+      }
+    ],
+    "raw_response_obj": {
+      "id": "chatcmpl-DDYVGr23mgEQI6p1RCb9J0iJM1ISP",
+      "choices": [
+        {
+          "finish_reason": "stop",
+          "index": 0,
+          "logprobs": null,
+          "message": {
+            "content": "INPUT:\"{[()()]}\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5",
+            "refusal": null,
+            "role": "assistant",
+            "annotations": [],
+            "audio": null,
+            "function_call": null,
+            "tool_calls": null
+          }
+        }
+      ],
+      "created": 1772123266,
+      "model": "gpt-4.1-2025-04-14",
+      "object": "chat.completion",
+      "service_tier": "default",
+      "system_fingerprint": "fp_415555a583",
+      "usage": {
+        "completion_tokens": 44,
+        "prompt_tokens": 917,
+        "total_tokens": 961,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": 0,
+          "cached_tokens": 0
+        }
+      },
+      "clem_player": {
+        "call_start": "2026-02-26 17:27:46.120489",
+        "call_duration": "0:00:01.115931",
+        "response": "INPUT:\"{[()()]}\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5",
+        "model_name": "gpt-4.1-2025-04-14"
+      }
+    }
+  },
+  {
+    "timestamp": "2026-02-26T17:27:48.463925",
+    "manipulated_prompt_obj": [
+      {
+        "role": "user",
+        "content": "**Role (AI):** Function Inference Engine — infer an unknown Python function by proposing inputs and observing outputs.\n\n**Role (GM):** I return the function's output for each input you propose.\n\n**Goal:** Infer the exact function: `(s: str) -> bool`\n\n---\n\n## Rules\n\n* You have **15** total turns. Guess on turn 15 - 1.\n* Each probe must be exactly one line and **nothing else**.\n* Case and format are strict.\n\n## Format (strict)\n\n* Probing (until certain):\n\n```\nINPUT:<value1>\n```\n\n(uppercase `INPUT:`) — strings must be quoted, booleans `True/False`.\n\n* Final submission (when certain):\n  Start with `GUESS:` then **only** the Python function in a fenced block, e.g.\n\n````\nGUESS:\n```python\ndef solution(x, y):\n    return x + y\n````\n\n```\nYou may add a one-line explanation after the code block.\n\n## Constraints\n- KEY: DO USE BUILTIN FUNCTIONS LIKE sort(), min(), fromkeys(), values(), capitalize(), isascii() etc.\n- Types must match exactly. Numbers as literals; strings quoted; use commas.\n- No extra text, no markdown, no comments during probing.\n- Any format violation consumes a turn.\n- Do NOT invent new variables. Use ONLY: <value1>\n\n---\n\n**Context placeholders:**\n- Category: `LOGIC_FORMAL`\n- Params: `1`\n- Param list: `s: str`\n\nBegin: produce your first `INPUT:` line.\n\nCANDIDATE FUNCTION IDS (use only these in hypotheses):\n- balanced_brackets_all\n- balanced_parentheses_only\n\nOn EVERY turn, output one of the following formats.\nFormat A (probe):\nINPUT: <args>\nHYPOTHESES:\n- candidate: <candidate_id>\n- candidate: <candidate_id>\nCONFIDENCE:\n- <float>\n- <float>\n\nConfidences must sum to 1.\n\nFormat B (final guess):\nGUESS: ```python\n<code>\n```\n"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"()\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: True"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"([])\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: True"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"([)]\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: False"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"([)\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: False"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"[]\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: True"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"[()]\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: True"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"[\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: False"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"(\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: False"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"{[()]}\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: True"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"{[()()]}\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: True"
+      }
+    ],
+    "raw_response_obj": {
+      "id": "chatcmpl-DDYVHlZXiwiu9myDwfJNDgjlfrLro",
+      "choices": [
+        {
+          "finish_reason": "stop",
+          "index": 0,
+          "logprobs": null,
+          "message": {
+            "content": "INPUT:\"{[()()]\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5",
+            "refusal": null,
+            "role": "assistant",
+            "annotations": [],
+            "audio": null,
+            "function_call": null,
+            "tool_calls": null
+          }
+        }
+      ],
+      "created": 1772123267,
+      "model": "gpt-4.1-2025-04-14",
+      "object": "chat.completion",
+      "service_tier": "default",
+      "system_fingerprint": "fp_415555a583",
+      "usage": {
+        "completion_tokens": 44,
+        "prompt_tokens": 973,
+        "total_tokens": 1017,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": 0,
+          "cached_tokens": 0
+        }
+      },
+      "clem_player": {
+        "call_start": "2026-02-26 17:27:47.238177",
+        "call_duration": "0:00:01.225748",
+        "response": "INPUT:\"{[()()]\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5",
+        "model_name": "gpt-4.1-2025-04-14"
+      }
+    }
+  },
+  {
+    "timestamp": "2026-02-26T17:27:49.484886",
+    "manipulated_prompt_obj": [
+      {
+        "role": "user",
+        "content": "**Role (AI):** Function Inference Engine — infer an unknown Python function by proposing inputs and observing outputs.\n\n**Role (GM):** I return the function's output for each input you propose.\n\n**Goal:** Infer the exact function: `(s: str) -> bool`\n\n---\n\n## Rules\n\n* You have **15** total turns. Guess on turn 15 - 1.\n* Each probe must be exactly one line and **nothing else**.\n* Case and format are strict.\n\n## Format (strict)\n\n* Probing (until certain):\n\n```\nINPUT:<value1>\n```\n\n(uppercase `INPUT:`) — strings must be quoted, booleans `True/False`.\n\n* Final submission (when certain):\n  Start with `GUESS:` then **only** the Python function in a fenced block, e.g.\n\n````\nGUESS:\n```python\ndef solution(x, y):\n    return x + y\n````\n\n```\nYou may add a one-line explanation after the code block.\n\n## Constraints\n- KEY: DO USE BUILTIN FUNCTIONS LIKE sort(), min(), fromkeys(), values(), capitalize(), isascii() etc.\n- Types must match exactly. Numbers as literals; strings quoted; use commas.\n- No extra text, no markdown, no comments during probing.\n- Any format violation consumes a turn.\n- Do NOT invent new variables. Use ONLY: <value1>\n\n---\n\n**Context placeholders:**\n- Category: `LOGIC_FORMAL`\n- Params: `1`\n- Param list: `s: str`\n\nBegin: produce your first `INPUT:` line.\n\nCANDIDATE FUNCTION IDS (use only these in hypotheses):\n- balanced_brackets_all\n- balanced_parentheses_only\n\nOn EVERY turn, output one of the following formats.\nFormat A (probe):\nINPUT: <args>\nHYPOTHESES:\n- candidate: <candidate_id>\n- candidate: <candidate_id>\nCONFIDENCE:\n- <float>\n- <float>\n\nConfidences must sum to 1.\n\nFormat B (final guess):\nGUESS: ```python\n<code>\n```\n"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"()\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: True"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"([])\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: True"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"([)]\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: False"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"([)\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: False"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"[]\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: True"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"[()]\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: True"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"[\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: False"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"(\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: False"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"{[()]}\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: True"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"{[()()]}\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: True"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"{[()()]\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: False"
+      }
+    ],
+    "raw_response_obj": {
+      "id": "chatcmpl-DDYVI7vBHQ87pePtzbQ4srWfMonHO",
+      "choices": [
+        {
+          "finish_reason": "stop",
+          "index": 0,
+          "logprobs": null,
+          "message": {
+            "content": "INPUT:\"(())\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5",
+            "refusal": null,
+            "role": "assistant",
+            "annotations": [],
+            "audio": null,
+            "function_call": null,
+            "tool_calls": null
+          }
+        }
+      ],
+      "created": 1772123268,
+      "model": "gpt-4.1-2025-04-14",
+      "object": "chat.completion",
+      "service_tier": "default",
+      "system_fingerprint": "fp_415555a583",
+      "usage": {
+        "completion_tokens": 42,
+        "prompt_tokens": 1029,
+        "total_tokens": 1071,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": 0,
+          "cached_tokens": 0
+        }
+      },
+      "clem_player": {
+        "call_start": "2026-02-26 17:27:48.463925",
+        "call_duration": "0:00:01.020961",
+        "response": "INPUT:\"(())\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5",
+        "model_name": "gpt-4.1-2025-04-14"
+      }
+    }
+  },
+  {
+    "timestamp": "2026-02-26T17:27:50.543394",
+    "manipulated_prompt_obj": [
+      {
+        "role": "user",
+        "content": "**Role (AI):** Function Inference Engine — infer an unknown Python function by proposing inputs and observing outputs.\n\n**Role (GM):** I return the function's output for each input you propose.\n\n**Goal:** Infer the exact function: `(s: str) -> bool`\n\n---\n\n## Rules\n\n* You have **15** total turns. Guess on turn 15 - 1.\n* Each probe must be exactly one line and **nothing else**.\n* Case and format are strict.\n\n## Format (strict)\n\n* Probing (until certain):\n\n```\nINPUT:<value1>\n```\n\n(uppercase `INPUT:`) — strings must be quoted, booleans `True/False`.\n\n* Final submission (when certain):\n  Start with `GUESS:` then **only** the Python function in a fenced block, e.g.\n\n````\nGUESS:\n```python\ndef solution(x, y):\n    return x + y\n````\n\n```\nYou may add a one-line explanation after the code block.\n\n## Constraints\n- KEY: DO USE BUILTIN FUNCTIONS LIKE sort(), min(), fromkeys(), values(), capitalize(), isascii() etc.\n- Types must match exactly. Numbers as literals; strings quoted; use commas.\n- No extra text, no markdown, no comments during probing.\n- Any format violation consumes a turn.\n- Do NOT invent new variables. Use ONLY: <value1>\n\n---\n\n**Context placeholders:**\n- Category: `LOGIC_FORMAL`\n- Params: `1`\n- Param list: `s: str`\n\nBegin: produce your first `INPUT:` line.\n\nCANDIDATE FUNCTION IDS (use only these in hypotheses):\n- balanced_brackets_all\n- balanced_parentheses_only\n\nOn EVERY turn, output one of the following formats.\nFormat A (probe):\nINPUT: <args>\nHYPOTHESES:\n- candidate: <candidate_id>\n- candidate: <candidate_id>\nCONFIDENCE:\n- <float>\n- <float>\n\nConfidences must sum to 1.\n\nFormat B (final guess):\nGUESS: ```python\n<code>\n```\n"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"()\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: True"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"([])\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: True"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"([)]\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: False"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"([)\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: False"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"[]\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: True"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"[()]\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: True"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"[\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: False"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"(\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: False"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"{[()]}\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: True"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"{[()()]}\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: True"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"{[()()]\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: False"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"(())\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: True"
+      }
+    ],
+    "raw_response_obj": {
+      "id": "chatcmpl-DDYVJPIWqDeVztUluTUZdnUhRtPZH",
+      "choices": [
+        {
+          "finish_reason": "stop",
+          "index": 0,
+          "logprobs": null,
+          "message": {
+            "content": "INPUT:\"{\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 1.0\n- 0.0",
+            "refusal": null,
+            "role": "assistant",
+            "annotations": [],
+            "audio": null,
+            "function_call": null,
+            "tool_calls": null
+          }
+        }
+      ],
+      "created": 1772123269,
+      "model": "gpt-4.1-2025-04-14",
+      "object": "chat.completion",
+      "service_tier": "default",
+      "system_fingerprint": "fp_415555a583",
+      "usage": {
+        "completion_tokens": 41,
+        "prompt_tokens": 1083,
+        "total_tokens": 1124,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": 0,
+          "cached_tokens": 1024
+        }
+      },
+      "clem_player": {
+        "call_start": "2026-02-26 17:27:49.484886",
+        "call_duration": "0:00:01.058508",
+        "response": "INPUT:\"{\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 1.0\n- 0.0",
+        "model_name": "gpt-4.1-2025-04-14"
+      }
+    }
+  },
+  {
+    "timestamp": "2026-02-26T17:27:52.203464",
+    "manipulated_prompt_obj": [
+      {
+        "role": "user",
+        "content": "**Role (AI):** Function Inference Engine — infer an unknown Python function by proposing inputs and observing outputs.\n\n**Role (GM):** I return the function's output for each input you propose.\n\n**Goal:** Infer the exact function: `(s: str) -> bool`\n\n---\n\n## Rules\n\n* You have **15** total turns. Guess on turn 15 - 1.\n* Each probe must be exactly one line and **nothing else**.\n* Case and format are strict.\n\n## Format (strict)\n\n* Probing (until certain):\n\n```\nINPUT:<value1>\n```\n\n(uppercase `INPUT:`) — strings must be quoted, booleans `True/False`.\n\n* Final submission (when certain):\n  Start with `GUESS:` then **only** the Python function in a fenced block, e.g.\n\n````\nGUESS:\n```python\ndef solution(x, y):\n    return x + y\n````\n\n```\nYou may add a one-line explanation after the code block.\n\n## Constraints\n- KEY: DO USE BUILTIN FUNCTIONS LIKE sort(), min(), fromkeys(), values(), capitalize(), isascii() etc.\n- Types must match exactly. Numbers as literals; strings quoted; use commas.\n- No extra text, no markdown, no comments during probing.\n- Any format violation consumes a turn.\n- Do NOT invent new variables. Use ONLY: <value1>\n\n---\n\n**Context placeholders:**\n- Category: `LOGIC_FORMAL`\n- Params: `1`\n- Param list: `s: str`\n\nBegin: produce your first `INPUT:` line.\n\nCANDIDATE FUNCTION IDS (use only these in hypotheses):\n- balanced_brackets_all\n- balanced_parentheses_only\n\nOn EVERY turn, output one of the following formats.\nFormat A (probe):\nINPUT: <args>\nHYPOTHESES:\n- candidate: <candidate_id>\n- candidate: <candidate_id>\nCONFIDENCE:\n- <float>\n- <float>\n\nConfidences must sum to 1.\n\nFormat B (final guess):\nGUESS: ```python\n<code>\n```\n"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"()\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: True"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"([])\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: True"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"([)]\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: False"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"([)\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: False"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"[]\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: True"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"[()]\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: True"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"[\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: False"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"(\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: False"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"{[()]}\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: True"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"{[()()]}\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: True"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"{[()()]\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: False"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"(())\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: True"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:\"{\"\nHYPOTHESES:\n- candidate: balanced_brackets_all\n- candidate: balanced_parentheses_only\nCONFIDENCE:\n- 1.0\n- 0.0"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: False"
+      }
+    ],
+    "raw_response_obj": {
+      "id": "chatcmpl-DDYVKSZffM5n6qc93EOSoIxB3KEe0",
+      "choices": [
+        {
+          "finish_reason": "stop",
+          "index": 0,
+          "logprobs": null,
+          "message": {
+            "content": "GUESS:\n```python\ndef solution(s: str) -> bool:\n    stack = []\n    pairs = {')': '(', ']': '[', '}': '{'}\n    for c in s:\n        if c in '([{':\n            stack.append(c)\n        elif c in ')]}':\n            if not stack or stack[-1] != pairs[c]:\n                return False\n            stack.pop()\n    return not stack\n```\nThe function checks if all types of brackets are balanced and properly nested.",
+            "refusal": null,
+            "role": "assistant",
+            "annotations": [],
+            "audio": null,
+            "function_call": null,
+            "tool_calls": null
+          }
+        }
+      ],
+      "created": 1772123270,
+      "model": "gpt-4.1-2025-04-14",
+      "object": "chat.completion",
+      "service_tier": "default",
+      "system_fingerprint": "fp_415555a583",
+      "usage": {
+        "completion_tokens": 103,
+        "prompt_tokens": 1136,
+        "total_tokens": 1239,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": 0,
+          "cached_tokens": 0
+        }
+      },
+      "clem_player": {
+        "call_start": "2026-02-26 17:27:50.543394",
+        "call_duration": "0:00:01.660070",
+        "response": "GUESS:\n```python\ndef solution(s: str) -> bool:\n    stack = []\n    pairs = {')': '(', ']': '[', '}': '{'}\n    for c in s:\n        if c in '([{':\n            stack.append(c)\n        elif c in ')]}':\n            if not stack or stack[-1] != pairs[c]:\n                return False\n            stack.pop()\n    return not stack\n```\nThe function checks if all types of brackets are balanced and properly nested.",
+        "model_name": "gpt-4.1-2025-04-14"
+      }
+    }
+  }
+]

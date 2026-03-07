@@ -1,0 +1,15 @@
+{
+  "name": "easy_pair_math",
+  "max_turns": 5,
+  "initial_prompt_guesser": "**Role (AI):** Function Inference Engine — infer an unknown Python function by proposing inputs and observing outputs.\n\n**Role (GM):** I return the function's output for each input you propose.\n\n**Goal:** Infer the exact function: `$SIGNATURE_OF_CURRENT_FUNCTION$`\n\n---\n\n## Rules\n\n* You have **$MAX_TURNS$** total turns. Guess on turn $MAX_TURNS$ - 1.\n* Each probe must be exactly one line and **nothing else**.\n* Case and format are strict.\n\n## Format (strict)\n\n* Probing (until certain):\n\n```\nINPUT:$VARIABLES$\n```\n\n(uppercase `INPUT:`) — strings must be quoted, booleans `True/False`.\n\n* Final submission (when certain):\n  Start with `GUESS:` then **only** the Python function in a fenced block, e.g.\n\n````\nGUESS:\n```python\ndef solution(x, y):\n    return x + y\n````\n\n```\nYou may add a one-line explanation after the code block.\n\n## Constraints\n- KEY: DO USE BUILTIN FUNCTIONS LIKE sort(), min(), fromkeys(), values(), capitalize(), isascii() etc.\n- Types must match exactly. Numbers as literals; strings quoted; use commas.\n- No extra text, no markdown, no comments during probing.\n- Any format violation consumes a turn.\n- Do NOT invent new variables. Use ONLY: $VARIABLES$\n\n---\n\n**Context placeholders:**\n- Category: `$CATEGORY$`\n- Params: `$NUM_PARAMS$`\n- Param list: `$PARAM_LIST$`\n\nBegin: produce your first `INPUT:` line.",
+  "timestamp": "2026-02-26T17:21:22.177727",
+  "game_name": "Functionigma Game",
+  "player_models": {
+    "0": {
+      "model_name": "gpt-4.1-2025-04-14",
+      "backend": "openai",
+      "lookup_source": "E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\clemgame-template\\model_registry.json",
+      "model_id": "gpt-4.1-2025-04-14"
+    }
+  }
+}

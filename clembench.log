@@ -334,3 +334,81 @@
 2026-01-10 22:00:40,478 - clemcore.cli - INFO - Running Functionigma Game took: 0:00:10.417069
 2026-01-10 22:00:40,478 - clemcore.cli - INFO - Running all benchmarks took: 0:00:10.417069
 2026-01-10 22:00:40,478 - clemcore.cli - INFO - clem run took: 0:00:11.736161
+2026-02-26 17:17:07,619 - clemcore.cli - INFO - Found '1' game matching the game_selector="Functionigma Game"
+2026-02-26 17:17:07,620 - clemcore.cli - INFO - {
+  "game_name": "Functionigma Game",
+  "description": "Functionigma Game",
+  "main_game": "Functionigma Game",
+  "players": 1,
+  "image": "none",
+  "languages": [
+    "en"
+  ],
+  "benchmark": [],
+  "game_path": "E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\clemgame-template\\functionigma"
+}
+2026-02-26 17:17:07,623 - clemcore.backends.model_registry - WARNING - Package lookup failed with exception: 'charmap' codec can't decode byte 0x81 in position 128269: character maps to <undefined>
+2026-02-26 17:17:07,626 - clemcore.cli - INFO - clem run took: 0:00:00.028019
+2026-02-26 17:17:34,534 - clemcore.cli - INFO - Found '1' game matching the game_selector="Functionigma Game"
+2026-02-26 17:17:34,535 - clemcore.cli - INFO - {
+  "game_name": "Functionigma Game",
+  "description": "Functionigma Game",
+  "main_game": "Functionigma Game",
+  "players": 1,
+  "image": "none",
+  "languages": [
+    "en"
+  ],
+  "benchmark": [],
+  "game_path": "E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\clemgame-template\\functionigma"
+}
+2026-02-26 17:17:34,535 - clemcore.backends.model_registry - WARNING - Package lookup failed with exception: 'charmap' codec can't decode byte 0x81 in position 128269: character maps to <undefined>
+2026-02-26 17:17:34,535 - clemcore.cli - INFO - clem run took: 0:00:00.009953
+2026-02-26 17:18:17,095 - clemcore.cli - INFO - Found '1' game matching the game_selector="Functionigma Game"
+2026-02-26 17:18:17,095 - clemcore.cli - INFO - {
+  "game_name": "Functionigma Game",
+  "description": "Functionigma Game",
+  "main_game": "Functionigma Game",
+  "players": 1,
+  "image": "none",
+  "languages": [
+    "en"
+  ],
+  "benchmark": [],
+  "game_path": "E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\clemgame-template\\functionigma"
+}
+2026-02-26 17:18:17,095 - clemcore.backends.model_registry - WARNING - Package lookup failed with exception: 'charmap' codec can't decode byte 0x81 in position 128269: character maps to <undefined>
+2026-02-26 17:18:17,103 - clemcore.cli - INFO - clem run took: 0:00:00.008251
+2026-02-26 17:19:20,053 - clemcore.cli - INFO - Found '1' game matching the game_selector="Functionigma Game"
+2026-02-26 17:19:20,053 - clemcore.cli - INFO - {
+  "game_name": "Functionigma Game",
+  "description": "Functionigma Game",
+  "main_game": "Functionigma Game",
+  "players": 1,
+  "image": "none",
+  "languages": [
+    "en"
+  ],
+  "benchmark": [],
+  "game_path": "E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\clemgame-template\\functionigma"
+}
+2026-02-26 17:19:20,053 - clemcore.backends.model_registry - WARNING - Package lookup failed with exception: 'charmap' codec can't decode byte 0x81 in position 128269: character maps to <undefined>
+2026-02-26 17:19:20,056 - clemcore.cli - INFO - clem run took: 0:00:00.011959
+2026-02-26 17:19:41,305 - clemcore.cli - INFO - Found '1' game matching the game_selector="Functionigma Game"
+2026-02-26 17:19:41,305 - clemcore.cli - INFO - {
+  "game_name": "Functionigma Game",
+  "description": "Functionigma Game",
+  "main_game": "Functionigma Game",
+  "players": 1,
+  "image": "none",
+  "languages": [
+    "en"
+  ],
+  "benchmark": [],
+  "game_path": "E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\clemgame-template\\functionigma"
+}
+2026-02-26 17:19:41,305 - clemcore.backends.model_registry - WARNING - Package lookup failed with exception: 'charmap' codec can't decode byte 0x81 in position 128269: character maps to <undefined>
+2026-02-26 17:19:41,305 - clemcore.cli - INFO - Found registered model spec that unifies with {"model_name":"gpt-3.5-turbo"} -> {'model_name': 'gpt-3.5-turbo', 'backend': 'openai', 'context_size': '128k', 'languages': ['en'], 'license': {'name': 'Apache', 'url': 'https://www.apache.org/licenses/LICENSE-2.0'}, 'lookup_source': 'E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\model_registry.json', 'model_config': {}, 'model_id': 'gpt-3.5-turbo', 'open_weight': True, 'parameters': '1B', 'release_date': '2025-03-19'}
+2026-02-26 17:19:41,305 - clemcore.cli - INFO - Found registry entry for backend openai -> {'backend': 'openai', 'file_name': 'openai_api.py', 'file_path': 'C:\\Users\\mohiu\\anaconda3\\envs\\IM_Functionigma\\Lib\\site-packages\\clemcore\\backends\\openai_api.py', 'lookup_source': 'packaged'}
+2026-02-26 17:19:41,305 - clemcore.cli - INFO - Dynamically import backend openai
+2026-02-26 17:19:42,825 - clemcore.cli - INFO - clem run took: 0:00:01.528659

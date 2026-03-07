@@ -1,0 +1,154 @@
+{
+  "game_id": 7,
+  "callable": "max_of_two",
+  "signature": "(x: int, y: int) -> int",
+  "category": "PAIR_MATH",
+  "difficulty": "easy",
+  "candidate_ids": [
+    "max_of_two",
+    "min_of_two"
+  ],
+  "docstring": "Return max(x, y).",
+  "test_cases": [
+    {
+      "args": [
+        10,
+        -1
+      ],
+      "expected": 10
+    },
+    {
+      "args": [
+        -10,
+        -1000
+      ],
+      "expected": -10
+    },
+    {
+      "args": [
+        0,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "args": [
+        -99,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "args": [
+        10,
+        1000
+      ],
+      "expected": 1000
+    },
+    {
+      "args": [
+        0,
+        -99
+      ],
+      "expected": 0
+    },
+    {
+      "args": [
+        0,
+        -10
+      ],
+      "expected": 0
+    },
+    {
+      "args": [
+        1,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "args": [
+        -10,
+        -43
+      ],
+      "expected": -10
+    },
+    {
+      "args": [
+        1,
+        100
+      ],
+      "expected": 100
+    },
+    {
+      "args": [
+        99,
+        99
+      ],
+      "expected": 99
+    },
+    {
+      "args": [
+        -10,
+        2
+      ],
+      "expected": 2
+    },
+    {
+      "args": [
+        11,
+        -2
+      ],
+      "expected": 11
+    },
+    {
+      "args": [
+        -1,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "args": [
+        -2,
+        21
+      ],
+      "expected": 21
+    },
+    {
+      "args": [
+        -1,
+        99
+      ],
+      "expected": 99
+    },
+    {
+      "args": [
+        100,
+        10
+      ],
+      "expected": 100
+    },
+    {
+      "args": [
+        11,
+        1
+      ],
+      "expected": 11
+    },
+    {
+      "args": [
+        0,
+        2
+      ],
+      "expected": 2
+    },
+    {
+      "args": [
+        100,
+        -10
+      ],
+      "expected": 100
+    }
+  ]
+}

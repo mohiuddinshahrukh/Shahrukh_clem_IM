@@ -5,7 +5,7 @@
 !*/
 
 # Do not ignore the results directory
-!results/
+!old_results/results/
 
 # Do not ignore files inside results
-!results/**
+!old_results/results/**

@@ -1,0 +1,92 @@
+{
+  "game_id": 23,
+  "callable": "is_palindrome_alnum",
+  "signature": "(s: str) -> bool",
+  "category": "STRING",
+  "difficulty": "hard",
+  "candidate_ids": [
+    "is_palindrome_alnum",
+    "is_palindrome_exact"
+  ],
+  "docstring": "Return True if alnum-only, lowercased s is a palindrome.",
+  "test_cases": [
+    {
+      "args": [
+        "aba"
+      ],
+      "expected": true
+    },
+    {
+      "args": [
+        " "
+      ],
+      "expected": true
+    },
+    {
+      "args": [
+        ""
+      ],
+      "expected": true
+    },
+    {
+      "args": [
+        "123"
+      ],
+      "expected": false
+    },
+    {
+      "args": [
+        "aA"
+      ],
+      "expected": true
+    },
+    {
+      "args": [
+        "hello world"
+      ],
+      "expected": false
+    },
+    {
+      "args": [
+        "A"
+      ],
+      "expected": true
+    },
+    {
+      "args": [
+        "a"
+      ],
+      "expected": true
+    },
+    {
+      "args": [
+        "   "
+      ],
+      "expected": true
+    },
+    {
+      "args": [
+        "ab"
+      ],
+      "expected": false
+    },
+    {
+      "args": [
+        "hello"
+      ],
+      "expected": false
+    },
+    {
+      "args": [
+        "a-b"
+      ],
+      "expected": false
+    },
+    {
+      "args": [
+        "12345"
+      ],
+      "expected": false
+    }
+  ]
+}

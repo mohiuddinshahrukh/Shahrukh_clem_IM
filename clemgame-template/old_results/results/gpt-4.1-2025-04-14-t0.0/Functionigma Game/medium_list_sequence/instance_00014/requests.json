@@ -1,0 +1,776 @@
+[
+  {
+    "timestamp": "2026-02-26T17:23:11.057679",
+    "manipulated_prompt_obj": [
+      {
+        "role": "user",
+        "content": "**Role (AI):** Function Inference Engine — infer an unknown Python function by proposing inputs and observing outputs.\n\n**Role (GM):** I return the function's output for each input you propose.\n\n**Goal:** Infer the exact function: `(xs: List[int]) -> List[int]`\n\n---\n\n## Rules\n\n* You have **10** total turns. Guess on turn 10 - 1.\n* Each probe must be exactly one line and **nothing else**.\n* Case and format are strict.\n\n## Format (strict)\n\n* Probing (until certain):\n\n```\nINPUT:<value1>\n```\n\n(uppercase `INPUT:`) — strings must be quoted, booleans `True/False`.\n\n* Final submission (when certain):\n  Start with `GUESS:` then **only** the Python function in a fenced block, e.g.\n\n````\nGUESS:\n```python\ndef solution(x, y):\n    return x + y\n````\n\n```\nYou may add a one-line explanation after the code block.\n\n## Constraints\n- KEY: DO USE BUILTIN FUNCTIONS LIKE sort(), min(), fromkeys(), values(), capitalize(), isascii() etc.\n- Types must match exactly. Numbers as literals; strings quoted; use commas.\n- No extra text, no markdown, no comments during probing.\n- Any format violation consumes a turn.\n- Do NOT invent new variables. Use ONLY: <value1>\n\n---\n\n**Context placeholders:**\n- Category: `LIST_SEQUENCE`\n- Params: `1`\n- Param list: `xs: List[int]`\n\nBegin: produce your first `INPUT:` line.\n\nCANDIDATE FUNCTION IDS (use only these in hypotheses):\n- unique_preserve_order\n- unique_sorted\n\nOn EVERY turn, output one of the following formats.\nFormat A (probe):\nINPUT: <args>\nHYPOTHESES:\n- candidate: <candidate_id>\n- candidate: <candidate_id>\nCONFIDENCE:\n- <float>\n- <float>\n\nConfidences must sum to 1.\n\nFormat B (final guess):\nGUESS: ```python\n<code>\n```\n"
+      }
+    ],
+    "raw_response_obj": {
+      "id": "chatcmpl-DDYQoE47scb6fD2s4r2q7WNSXab1G",
+      "choices": [
+        {
+          "finish_reason": "stop",
+          "index": 0,
+          "logprobs": null,
+          "message": {
+            "content": "INPUT:[1,2,3,2,1]\nHYPOTHESES:\n- candidate: unique_preserve_order\n- candidate: unique_sorted\nCONFIDENCE:\n- 0.5\n- 0.5",
+            "refusal": null,
+            "role": "assistant",
+            "annotations": [],
+            "audio": null,
+            "function_call": null,
+            "tool_calls": null
+          }
+        }
+      ],
+      "created": 1772122990,
+      "model": "gpt-4.1-2025-04-14",
+      "object": "chat.completion",
+      "service_tier": "default",
+      "system_fingerprint": "fp_6725d2cc23",
+      "usage": {
+        "completion_tokens": 47,
+        "prompt_tokens": 438,
+        "total_tokens": 485,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": 0,
+          "cached_tokens": 0
+        }
+      },
+      "clem_player": {
+        "call_start": "2026-02-26 17:23:09.569999",
+        "call_duration": "0:00:01.487680",
+        "response": "INPUT:[1,2,3,2,1]\nHYPOTHESES:\n- candidate: unique_preserve_order\n- candidate: unique_sorted\nCONFIDENCE:\n- 0.5\n- 0.5",
+        "model_name": "gpt-4.1-2025-04-14"
+      }
+    }
+  },
+  {
+    "timestamp": "2026-02-26T17:23:12.137816",
+    "manipulated_prompt_obj": [
+      {
+        "role": "user",
+        "content": "**Role (AI):** Function Inference Engine — infer an unknown Python function by proposing inputs and observing outputs.\n\n**Role (GM):** I return the function's output for each input you propose.\n\n**Goal:** Infer the exact function: `(xs: List[int]) -> List[int]`\n\n---\n\n## Rules\n\n* You have **10** total turns. Guess on turn 10 - 1.\n* Each probe must be exactly one line and **nothing else**.\n* Case and format are strict.\n\n## Format (strict)\n\n* Probing (until certain):\n\n```\nINPUT:<value1>\n```\n\n(uppercase `INPUT:`) — strings must be quoted, booleans `True/False`.\n\n* Final submission (when certain):\n  Start with `GUESS:` then **only** the Python function in a fenced block, e.g.\n\n````\nGUESS:\n```python\ndef solution(x, y):\n    return x + y\n````\n\n```\nYou may add a one-line explanation after the code block.\n\n## Constraints\n- KEY: DO USE BUILTIN FUNCTIONS LIKE sort(), min(), fromkeys(), values(), capitalize(), isascii() etc.\n- Types must match exactly. Numbers as literals; strings quoted; use commas.\n- No extra text, no markdown, no comments during probing.\n- Any format violation consumes a turn.\n- Do NOT invent new variables. Use ONLY: <value1>\n\n---\n\n**Context placeholders:**\n- Category: `LIST_SEQUENCE`\n- Params: `1`\n- Param list: `xs: List[int]`\n\nBegin: produce your first `INPUT:` line.\n\nCANDIDATE FUNCTION IDS (use only these in hypotheses):\n- unique_preserve_order\n- unique_sorted\n\nOn EVERY turn, output one of the following formats.\nFormat A (probe):\nINPUT: <args>\nHYPOTHESES:\n- candidate: <candidate_id>\n- candidate: <candidate_id>\nCONFIDENCE:\n- <float>\n- <float>\n\nConfidences must sum to 1.\n\nFormat B (final guess):\nGUESS: ```python\n<code>\n```\n"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:[1,2,3,2,1]\nHYPOTHESES:\n- candidate: unique_preserve_order\n- candidate: unique_sorted\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: [1, 2, 3]"
+      }
+    ],
+    "raw_response_obj": {
+      "id": "chatcmpl-DDYQpmwcb1N2uLuAodac2hH0r9q04",
+      "choices": [
+        {
+          "finish_reason": "stop",
+          "index": 0,
+          "logprobs": null,
+          "message": {
+            "content": "INPUT:[3,2,1,2,3]\nHYPOTHESES:\n- candidate: unique_preserve_order\n- candidate: unique_sorted\nCONFIDENCE:\n- 0.5\n- 0.5",
+            "refusal": null,
+            "role": "assistant",
+            "annotations": [],
+            "audio": null,
+            "function_call": null,
+            "tool_calls": null
+          }
+        }
+      ],
+      "created": 1772122991,
+      "model": "gpt-4.1-2025-04-14",
+      "object": "chat.completion",
+      "service_tier": "default",
+      "system_fingerprint": "fp_552c53b59f",
+      "usage": {
+        "completion_tokens": 47,
+        "prompt_tokens": 505,
+        "total_tokens": 552,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": 0,
+          "cached_tokens": 0
+        }
+      },
+      "clem_player": {
+        "call_start": "2026-02-26 17:23:11.057679",
+        "call_duration": "0:00:01.080137",
+        "response": "INPUT:[3,2,1,2,3]\nHYPOTHESES:\n- candidate: unique_preserve_order\n- candidate: unique_sorted\nCONFIDENCE:\n- 0.5\n- 0.5",
+        "model_name": "gpt-4.1-2025-04-14"
+      }
+    }
+  },
+  {
+    "timestamp": "2026-02-26T17:23:13.419446",
+    "manipulated_prompt_obj": [
+      {
+        "role": "user",
+        "content": "**Role (AI):** Function Inference Engine — infer an unknown Python function by proposing inputs and observing outputs.\n\n**Role (GM):** I return the function's output for each input you propose.\n\n**Goal:** Infer the exact function: `(xs: List[int]) -> List[int]`\n\n---\n\n## Rules\n\n* You have **10** total turns. Guess on turn 10 - 1.\n* Each probe must be exactly one line and **nothing else**.\n* Case and format are strict.\n\n## Format (strict)\n\n* Probing (until certain):\n\n```\nINPUT:<value1>\n```\n\n(uppercase `INPUT:`) — strings must be quoted, booleans `True/False`.\n\n* Final submission (when certain):\n  Start with `GUESS:` then **only** the Python function in a fenced block, e.g.\n\n````\nGUESS:\n```python\ndef solution(x, y):\n    return x + y\n````\n\n```\nYou may add a one-line explanation after the code block.\n\n## Constraints\n- KEY: DO USE BUILTIN FUNCTIONS LIKE sort(), min(), fromkeys(), values(), capitalize(), isascii() etc.\n- Types must match exactly. Numbers as literals; strings quoted; use commas.\n- No extra text, no markdown, no comments during probing.\n- Any format violation consumes a turn.\n- Do NOT invent new variables. Use ONLY: <value1>\n\n---\n\n**Context placeholders:**\n- Category: `LIST_SEQUENCE`\n- Params: `1`\n- Param list: `xs: List[int]`\n\nBegin: produce your first `INPUT:` line.\n\nCANDIDATE FUNCTION IDS (use only these in hypotheses):\n- unique_preserve_order\n- unique_sorted\n\nOn EVERY turn, output one of the following formats.\nFormat A (probe):\nINPUT: <args>\nHYPOTHESES:\n- candidate: <candidate_id>\n- candidate: <candidate_id>\nCONFIDENCE:\n- <float>\n- <float>\n\nConfidences must sum to 1.\n\nFormat B (final guess):\nGUESS: ```python\n<code>\n```\n"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:[1,2,3,2,1]\nHYPOTHESES:\n- candidate: unique_preserve_order\n- candidate: unique_sorted\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: [1, 2, 3]"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:[3,2,1,2,3]\nHYPOTHESES:\n- candidate: unique_preserve_order\n- candidate: unique_sorted\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: [1, 2, 3]"
+      }
+    ],
+    "raw_response_obj": {
+      "id": "chatcmpl-DDYQq53uJtJJqykMUvMUSW8frmWZi",
+      "choices": [
+        {
+          "finish_reason": "stop",
+          "index": 0,
+          "logprobs": null,
+          "message": {
+            "content": "INPUT:[5,4,3,2,1,2,3,4,5]\nHYPOTHESES:\n- candidate: unique_preserve_order\n- candidate: unique_sorted\nCONFIDENCE:\n- 0.4\n- 0.6",
+            "refusal": null,
+            "role": "assistant",
+            "annotations": [],
+            "audio": null,
+            "function_call": null,
+            "tool_calls": null
+          }
+        }
+      ],
+      "created": 1772122992,
+      "model": "gpt-4.1-2025-04-14",
+      "object": "chat.completion",
+      "service_tier": "default",
+      "system_fingerprint": "fp_6725d2cc23",
+      "usage": {
+        "completion_tokens": 55,
+        "prompt_tokens": 572,
+        "total_tokens": 627,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": 0,
+          "cached_tokens": 0
+        }
+      },
+      "clem_player": {
+        "call_start": "2026-02-26 17:23:12.139825",
+        "call_duration": "0:00:01.279621",
+        "response": "INPUT:[5,4,3,2,1,2,3,4,5]\nHYPOTHESES:\n- candidate: unique_preserve_order\n- candidate: unique_sorted\nCONFIDENCE:\n- 0.4\n- 0.6",
+        "model_name": "gpt-4.1-2025-04-14"
+      }
+    }
+  },
+  {
+    "timestamp": "2026-02-26T17:23:14.653332",
+    "manipulated_prompt_obj": [
+      {
+        "role": "user",
+        "content": "**Role (AI):** Function Inference Engine — infer an unknown Python function by proposing inputs and observing outputs.\n\n**Role (GM):** I return the function's output for each input you propose.\n\n**Goal:** Infer the exact function: `(xs: List[int]) -> List[int]`\n\n---\n\n## Rules\n\n* You have **10** total turns. Guess on turn 10 - 1.\n* Each probe must be exactly one line and **nothing else**.\n* Case and format are strict.\n\n## Format (strict)\n\n* Probing (until certain):\n\n```\nINPUT:<value1>\n```\n\n(uppercase `INPUT:`) — strings must be quoted, booleans `True/False`.\n\n* Final submission (when certain):\n  Start with `GUESS:` then **only** the Python function in a fenced block, e.g.\n\n````\nGUESS:\n```python\ndef solution(x, y):\n    return x + y\n````\n\n```\nYou may add a one-line explanation after the code block.\n\n## Constraints\n- KEY: DO USE BUILTIN FUNCTIONS LIKE sort(), min(), fromkeys(), values(), capitalize(), isascii() etc.\n- Types must match exactly. Numbers as literals; strings quoted; use commas.\n- No extra text, no markdown, no comments during probing.\n- Any format violation consumes a turn.\n- Do NOT invent new variables. Use ONLY: <value1>\n\n---\n\n**Context placeholders:**\n- Category: `LIST_SEQUENCE`\n- Params: `1`\n- Param list: `xs: List[int]`\n\nBegin: produce your first `INPUT:` line.\n\nCANDIDATE FUNCTION IDS (use only these in hypotheses):\n- unique_preserve_order\n- unique_sorted\n\nOn EVERY turn, output one of the following formats.\nFormat A (probe):\nINPUT: <args>\nHYPOTHESES:\n- candidate: <candidate_id>\n- candidate: <candidate_id>\nCONFIDENCE:\n- <float>\n- <float>\n\nConfidences must sum to 1.\n\nFormat B (final guess):\nGUESS: ```python\n<code>\n```\n"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:[1,2,3,2,1]\nHYPOTHESES:\n- candidate: unique_preserve_order\n- candidate: unique_sorted\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: [1, 2, 3]"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:[3,2,1,2,3]\nHYPOTHESES:\n- candidate: unique_preserve_order\n- candidate: unique_sorted\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: [1, 2, 3]"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:[5,4,3,2,1,2,3,4,5]\nHYPOTHESES:\n- candidate: unique_preserve_order\n- candidate: unique_sorted\nCONFIDENCE:\n- 0.4\n- 0.6"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: [1, 2, 3, 4, 5]"
+      }
+    ],
+    "raw_response_obj": {
+      "id": "chatcmpl-DDYQrNMXOGirtVwqieD1wKID4bZSo",
+      "choices": [
+        {
+          "finish_reason": "stop",
+          "index": 0,
+          "logprobs": null,
+          "message": {
+            "content": "INPUT:[7,7,7,7]\nHYPOTHESES:\n- candidate: unique_preserve_order\n- candidate: unique_sorted\nCONFIDENCE:\n- 0.3\n- 0.7",
+            "refusal": null,
+            "role": "assistant",
+            "annotations": [],
+            "audio": null,
+            "function_call": null,
+            "tool_calls": null
+          }
+        }
+      ],
+      "created": 1772122993,
+      "model": "gpt-4.1-2025-04-14",
+      "object": "chat.completion",
+      "service_tier": "default",
+      "system_fingerprint": "fp_37b9691560",
+      "usage": {
+        "completion_tokens": 45,
+        "prompt_tokens": 653,
+        "total_tokens": 698,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": 0,
+          "cached_tokens": 0
+        }
+      },
+      "clem_player": {
+        "call_start": "2026-02-26 17:23:13.420575",
+        "call_duration": "0:00:01.232757",
+        "response": "INPUT:[7,7,7,7]\nHYPOTHESES:\n- candidate: unique_preserve_order\n- candidate: unique_sorted\nCONFIDENCE:\n- 0.3\n- 0.7",
+        "model_name": "gpt-4.1-2025-04-14"
+      }
+    }
+  },
+  {
+    "timestamp": "2026-02-26T17:23:17.006272",
+    "manipulated_prompt_obj": [
+      {
+        "role": "user",
+        "content": "**Role (AI):** Function Inference Engine — infer an unknown Python function by proposing inputs and observing outputs.\n\n**Role (GM):** I return the function's output for each input you propose.\n\n**Goal:** Infer the exact function: `(xs: List[int]) -> List[int]`\n\n---\n\n## Rules\n\n* You have **10** total turns. Guess on turn 10 - 1.\n* Each probe must be exactly one line and **nothing else**.\n* Case and format are strict.\n\n## Format (strict)\n\n* Probing (until certain):\n\n```\nINPUT:<value1>\n```\n\n(uppercase `INPUT:`) — strings must be quoted, booleans `True/False`.\n\n* Final submission (when certain):\n  Start with `GUESS:` then **only** the Python function in a fenced block, e.g.\n\n````\nGUESS:\n```python\ndef solution(x, y):\n    return x + y\n````\n\n```\nYou may add a one-line explanation after the code block.\n\n## Constraints\n- KEY: DO USE BUILTIN FUNCTIONS LIKE sort(), min(), fromkeys(), values(), capitalize(), isascii() etc.\n- Types must match exactly. Numbers as literals; strings quoted; use commas.\n- No extra text, no markdown, no comments during probing.\n- Any format violation consumes a turn.\n- Do NOT invent new variables. Use ONLY: <value1>\n\n---\n\n**Context placeholders:**\n- Category: `LIST_SEQUENCE`\n- Params: `1`\n- Param list: `xs: List[int]`\n\nBegin: produce your first `INPUT:` line.\n\nCANDIDATE FUNCTION IDS (use only these in hypotheses):\n- unique_preserve_order\n- unique_sorted\n\nOn EVERY turn, output one of the following formats.\nFormat A (probe):\nINPUT: <args>\nHYPOTHESES:\n- candidate: <candidate_id>\n- candidate: <candidate_id>\nCONFIDENCE:\n- <float>\n- <float>\n\nConfidences must sum to 1.\n\nFormat B (final guess):\nGUESS: ```python\n<code>\n```\n"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:[1,2,3,2,1]\nHYPOTHESES:\n- candidate: unique_preserve_order\n- candidate: unique_sorted\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: [1, 2, 3]"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:[3,2,1,2,3]\nHYPOTHESES:\n- candidate: unique_preserve_order\n- candidate: unique_sorted\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: [1, 2, 3]"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:[5,4,3,2,1,2,3,4,5]\nHYPOTHESES:\n- candidate: unique_preserve_order\n- candidate: unique_sorted\nCONFIDENCE:\n- 0.4\n- 0.6"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: [1, 2, 3, 4, 5]"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:[7,7,7,7]\nHYPOTHESES:\n- candidate: unique_preserve_order\n- candidate: unique_sorted\nCONFIDENCE:\n- 0.3\n- 0.7"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: [7]"
+      }
+    ],
+    "raw_response_obj": {
+      "id": "chatcmpl-DDYQtBsIgI8UeNjQAWOLPuuC0K9My",
+      "choices": [
+        {
+          "finish_reason": "stop",
+          "index": 0,
+          "logprobs": null,
+          "message": {
+            "content": "INPUT:[10,9,8,7,6,5,4,3,2,1]\nHYPOTHESES:\n- candidate: unique_preserve_order\n- candidate: unique_sorted\nCONFIDENCE:\n- 0.2\n- 0.8",
+            "refusal": null,
+            "role": "assistant",
+            "annotations": [],
+            "audio": null,
+            "function_call": null,
+            "tool_calls": null
+          }
+        }
+      ],
+      "created": 1772122995,
+      "model": "gpt-4.1-2025-04-14",
+      "object": "chat.completion",
+      "service_tier": "default",
+      "system_fingerprint": "fp_552c53b59f",
+      "usage": {
+        "completion_tokens": 57,
+        "prompt_tokens": 712,
+        "total_tokens": 769,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": 0,
+          "cached_tokens": 0
+        }
+      },
+      "clem_player": {
+        "call_start": "2026-02-26 17:23:14.653332",
+        "call_duration": "0:00:02.352940",
+        "response": "INPUT:[10,9,8,7,6,5,4,3,2,1]\nHYPOTHESES:\n- candidate: unique_preserve_order\n- candidate: unique_sorted\nCONFIDENCE:\n- 0.2\n- 0.8",
+        "model_name": "gpt-4.1-2025-04-14"
+      }
+    }
+  },
+  {
+    "timestamp": "2026-02-26T17:23:18.940039",
+    "manipulated_prompt_obj": [
+      {
+        "role": "user",
+        "content": "**Role (AI):** Function Inference Engine — infer an unknown Python function by proposing inputs and observing outputs.\n\n**Role (GM):** I return the function's output for each input you propose.\n\n**Goal:** Infer the exact function: `(xs: List[int]) -> List[int]`\n\n---\n\n## Rules\n\n* You have **10** total turns. Guess on turn 10 - 1.\n* Each probe must be exactly one line and **nothing else**.\n* Case and format are strict.\n\n## Format (strict)\n\n* Probing (until certain):\n\n```\nINPUT:<value1>\n```\n\n(uppercase `INPUT:`) — strings must be quoted, booleans `True/False`.\n\n* Final submission (when certain):\n  Start with `GUESS:` then **only** the Python function in a fenced block, e.g.\n\n````\nGUESS:\n```python\ndef solution(x, y):\n    return x + y\n````\n\n```\nYou may add a one-line explanation after the code block.\n\n## Constraints\n- KEY: DO USE BUILTIN FUNCTIONS LIKE sort(), min(), fromkeys(), values(), capitalize(), isascii() etc.\n- Types must match exactly. Numbers as literals; strings quoted; use commas.\n- No extra text, no markdown, no comments during probing.\n- Any format violation consumes a turn.\n- Do NOT invent new variables. Use ONLY: <value1>\n\n---\n\n**Context placeholders:**\n- Category: `LIST_SEQUENCE`\n- Params: `1`\n- Param list: `xs: List[int]`\n\nBegin: produce your first `INPUT:` line.\n\nCANDIDATE FUNCTION IDS (use only these in hypotheses):\n- unique_preserve_order\n- unique_sorted\n\nOn EVERY turn, output one of the following formats.\nFormat A (probe):\nINPUT: <args>\nHYPOTHESES:\n- candidate: <candidate_id>\n- candidate: <candidate_id>\nCONFIDENCE:\n- <float>\n- <float>\n\nConfidences must sum to 1.\n\nFormat B (final guess):\nGUESS: ```python\n<code>\n```\n"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:[1,2,3,2,1]\nHYPOTHESES:\n- candidate: unique_preserve_order\n- candidate: unique_sorted\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: [1, 2, 3]"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:[3,2,1,2,3]\nHYPOTHESES:\n- candidate: unique_preserve_order\n- candidate: unique_sorted\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: [1, 2, 3]"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:[5,4,3,2,1,2,3,4,5]\nHYPOTHESES:\n- candidate: unique_preserve_order\n- candidate: unique_sorted\nCONFIDENCE:\n- 0.4\n- 0.6"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: [1, 2, 3, 4, 5]"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:[7,7,7,7]\nHYPOTHESES:\n- candidate: unique_preserve_order\n- candidate: unique_sorted\nCONFIDENCE:\n- 0.3\n- 0.7"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: [7]"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:[10,9,8,7,6,5,4,3,2,1]\nHYPOTHESES:\n- candidate: unique_preserve_order\n- candidate: unique_sorted\nCONFIDENCE:\n- 0.2\n- 0.8"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
+      }
+    ],
+    "raw_response_obj": {
+      "id": "chatcmpl-DDYQv4dLoKzMWN648IqYSupzQcqzm",
+      "choices": [
+        {
+          "finish_reason": "stop",
+          "index": 0,
+          "logprobs": null,
+          "message": {
+            "content": "INPUT:[2,4,6,8,2,4,6,8]\nHYPOTHESES:\n- candidate: unique_preserve_order\n- candidate: unique_sorted\nCONFIDENCE:\n- 0.1\n- 0.9",
+            "refusal": null,
+            "role": "assistant",
+            "annotations": [],
+            "audio": null,
+            "function_call": null,
+            "tool_calls": null
+          }
+        }
+      ],
+      "created": 1772122997,
+      "model": "gpt-4.1-2025-04-14",
+      "object": "chat.completion",
+      "service_tier": "default",
+      "system_fingerprint": "fp_552c53b59f",
+      "usage": {
+        "completion_tokens": 53,
+        "prompt_tokens": 810,
+        "total_tokens": 863,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": 0,
+          "cached_tokens": 0
+        }
+      },
+      "clem_player": {
+        "call_start": "2026-02-26 17:23:17.007373",
+        "call_duration": "0:00:01.932666",
+        "response": "INPUT:[2,4,6,8,2,4,6,8]\nHYPOTHESES:\n- candidate: unique_preserve_order\n- candidate: unique_sorted\nCONFIDENCE:\n- 0.1\n- 0.9",
+        "model_name": "gpt-4.1-2025-04-14"
+      }
+    }
+  },
+  {
+    "timestamp": "2026-02-26T17:23:20.733423",
+    "manipulated_prompt_obj": [
+      {
+        "role": "user",
+        "content": "**Role (AI):** Function Inference Engine — infer an unknown Python function by proposing inputs and observing outputs.\n\n**Role (GM):** I return the function's output for each input you propose.\n\n**Goal:** Infer the exact function: `(xs: List[int]) -> List[int]`\n\n---\n\n## Rules\n\n* You have **10** total turns. Guess on turn 10 - 1.\n* Each probe must be exactly one line and **nothing else**.\n* Case and format are strict.\n\n## Format (strict)\n\n* Probing (until certain):\n\n```\nINPUT:<value1>\n```\n\n(uppercase `INPUT:`) — strings must be quoted, booleans `True/False`.\n\n* Final submission (when certain):\n  Start with `GUESS:` then **only** the Python function in a fenced block, e.g.\n\n````\nGUESS:\n```python\ndef solution(x, y):\n    return x + y\n````\n\n```\nYou may add a one-line explanation after the code block.\n\n## Constraints\n- KEY: DO USE BUILTIN FUNCTIONS LIKE sort(), min(), fromkeys(), values(), capitalize(), isascii() etc.\n- Types must match exactly. Numbers as literals; strings quoted; use commas.\n- No extra text, no markdown, no comments during probing.\n- Any format violation consumes a turn.\n- Do NOT invent new variables. Use ONLY: <value1>\n\n---\n\n**Context placeholders:**\n- Category: `LIST_SEQUENCE`\n- Params: `1`\n- Param list: `xs: List[int]`\n\nBegin: produce your first `INPUT:` line.\n\nCANDIDATE FUNCTION IDS (use only these in hypotheses):\n- unique_preserve_order\n- unique_sorted\n\nOn EVERY turn, output one of the following formats.\nFormat A (probe):\nINPUT: <args>\nHYPOTHESES:\n- candidate: <candidate_id>\n- candidate: <candidate_id>\nCONFIDENCE:\n- <float>\n- <float>\n\nConfidences must sum to 1.\n\nFormat B (final guess):\nGUESS: ```python\n<code>\n```\n"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:[1,2,3,2,1]\nHYPOTHESES:\n- candidate: unique_preserve_order\n- candidate: unique_sorted\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: [1, 2, 3]"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:[3,2,1,2,3]\nHYPOTHESES:\n- candidate: unique_preserve_order\n- candidate: unique_sorted\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: [1, 2, 3]"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:[5,4,3,2,1,2,3,4,5]\nHYPOTHESES:\n- candidate: unique_preserve_order\n- candidate: unique_sorted\nCONFIDENCE:\n- 0.4\n- 0.6"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: [1, 2, 3, 4, 5]"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:[7,7,7,7]\nHYPOTHESES:\n- candidate: unique_preserve_order\n- candidate: unique_sorted\nCONFIDENCE:\n- 0.3\n- 0.7"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: [7]"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:[10,9,8,7,6,5,4,3,2,1]\nHYPOTHESES:\n- candidate: unique_preserve_order\n- candidate: unique_sorted\nCONFIDENCE:\n- 0.2\n- 0.8"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:[2,4,6,8,2,4,6,8]\nHYPOTHESES:\n- candidate: unique_preserve_order\n- candidate: unique_sorted\nCONFIDENCE:\n- 0.1\n- 0.9"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: [2, 4, 6, 8]"
+      }
+    ],
+    "raw_response_obj": {
+      "id": "chatcmpl-DDYQxFZaSJe2DR04SzAIc8SHLm8TJ",
+      "choices": [
+        {
+          "finish_reason": "stop",
+          "index": 0,
+          "logprobs": null,
+          "message": {
+            "content": "INPUT:[8,6,4,2,8,6,4,2]\nHYPOTHESES:\n- candidate: unique_preserve_order\n- candidate: unique_sorted\nCONFIDENCE:\n- 0.05\n- 0.95",
+            "refusal": null,
+            "role": "assistant",
+            "annotations": [],
+            "audio": null,
+            "function_call": null,
+            "tool_calls": null
+          }
+        }
+      ],
+      "created": 1772122999,
+      "model": "gpt-4.1-2025-04-14",
+      "object": "chat.completion",
+      "service_tier": "default",
+      "system_fingerprint": "fp_552c53b59f",
+      "usage": {
+        "completion_tokens": 53,
+        "prompt_tokens": 886,
+        "total_tokens": 939,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": 0,
+          "cached_tokens": 0
+        }
+      },
+      "clem_player": {
+        "call_start": "2026-02-26 17:23:18.940039",
+        "call_duration": "0:00:01.793384",
+        "response": "INPUT:[8,6,4,2,8,6,4,2]\nHYPOTHESES:\n- candidate: unique_preserve_order\n- candidate: unique_sorted\nCONFIDENCE:\n- 0.05\n- 0.95",
+        "model_name": "gpt-4.1-2025-04-14"
+      }
+    }
+  },
+  {
+    "timestamp": "2026-02-26T17:23:22.074047",
+    "manipulated_prompt_obj": [
+      {
+        "role": "user",
+        "content": "**Role (AI):** Function Inference Engine — infer an unknown Python function by proposing inputs and observing outputs.\n\n**Role (GM):** I return the function's output for each input you propose.\n\n**Goal:** Infer the exact function: `(xs: List[int]) -> List[int]`\n\n---\n\n## Rules\n\n* You have **10** total turns. Guess on turn 10 - 1.\n* Each probe must be exactly one line and **nothing else**.\n* Case and format are strict.\n\n## Format (strict)\n\n* Probing (until certain):\n\n```\nINPUT:<value1>\n```\n\n(uppercase `INPUT:`) — strings must be quoted, booleans `True/False`.\n\n* Final submission (when certain):\n  Start with `GUESS:` then **only** the Python function in a fenced block, e.g.\n\n````\nGUESS:\n```python\ndef solution(x, y):\n    return x + y\n````\n\n```\nYou may add a one-line explanation after the code block.\n\n## Constraints\n- KEY: DO USE BUILTIN FUNCTIONS LIKE sort(), min(), fromkeys(), values(), capitalize(), isascii() etc.\n- Types must match exactly. Numbers as literals; strings quoted; use commas.\n- No extra text, no markdown, no comments during probing.\n- Any format violation consumes a turn.\n- Do NOT invent new variables. Use ONLY: <value1>\n\n---\n\n**Context placeholders:**\n- Category: `LIST_SEQUENCE`\n- Params: `1`\n- Param list: `xs: List[int]`\n\nBegin: produce your first `INPUT:` line.\n\nCANDIDATE FUNCTION IDS (use only these in hypotheses):\n- unique_preserve_order\n- unique_sorted\n\nOn EVERY turn, output one of the following formats.\nFormat A (probe):\nINPUT: <args>\nHYPOTHESES:\n- candidate: <candidate_id>\n- candidate: <candidate_id>\nCONFIDENCE:\n- <float>\n- <float>\n\nConfidences must sum to 1.\n\nFormat B (final guess):\nGUESS: ```python\n<code>\n```\n"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:[1,2,3,2,1]\nHYPOTHESES:\n- candidate: unique_preserve_order\n- candidate: unique_sorted\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: [1, 2, 3]"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:[3,2,1,2,3]\nHYPOTHESES:\n- candidate: unique_preserve_order\n- candidate: unique_sorted\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: [1, 2, 3]"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:[5,4,3,2,1,2,3,4,5]\nHYPOTHESES:\n- candidate: unique_preserve_order\n- candidate: unique_sorted\nCONFIDENCE:\n- 0.4\n- 0.6"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: [1, 2, 3, 4, 5]"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:[7,7,7,7]\nHYPOTHESES:\n- candidate: unique_preserve_order\n- candidate: unique_sorted\nCONFIDENCE:\n- 0.3\n- 0.7"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: [7]"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:[10,9,8,7,6,5,4,3,2,1]\nHYPOTHESES:\n- candidate: unique_preserve_order\n- candidate: unique_sorted\nCONFIDENCE:\n- 0.2\n- 0.8"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:[2,4,6,8,2,4,6,8]\nHYPOTHESES:\n- candidate: unique_preserve_order\n- candidate: unique_sorted\nCONFIDENCE:\n- 0.1\n- 0.9"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: [2, 4, 6, 8]"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:[8,6,4,2,8,6,4,2]\nHYPOTHESES:\n- candidate: unique_preserve_order\n- candidate: unique_sorted\nCONFIDENCE:\n- 0.05\n- 0.95"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: [2, 4, 6, 8]"
+      }
+    ],
+    "raw_response_obj": {
+      "id": "chatcmpl-DDYQzNIbigcYWwuWqEkgCBUwTJs0o",
+      "choices": [
+        {
+          "finish_reason": "stop",
+          "index": 0,
+          "logprobs": null,
+          "message": {
+            "content": "INPUT:[1,3,5,7,9,1,3,5,7,9]\nHYPOTHESES:\n- candidate: unique_preserve_order\n- candidate: unique_sorted\nCONFIDENCE:\n- 0.01\n- 0.99",
+            "refusal": null,
+            "role": "assistant",
+            "annotations": [],
+            "audio": null,
+            "function_call": null,
+            "tool_calls": null
+          }
+        }
+      ],
+      "created": 1772123001,
+      "model": "gpt-4.1-2025-04-14",
+      "object": "chat.completion",
+      "service_tier": "default",
+      "system_fingerprint": "fp_552c53b59f",
+      "usage": {
+        "completion_tokens": 57,
+        "prompt_tokens": 962,
+        "total_tokens": 1019,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": 0,
+          "cached_tokens": 0
+        }
+      },
+      "clem_player": {
+        "call_start": "2026-02-26 17:23:20.735432",
+        "call_duration": "0:00:01.338615",
+        "response": "INPUT:[1,3,5,7,9,1,3,5,7,9]\nHYPOTHESES:\n- candidate: unique_preserve_order\n- candidate: unique_sorted\nCONFIDENCE:\n- 0.01\n- 0.99",
+        "model_name": "gpt-4.1-2025-04-14"
+      }
+    }
+  },
+  {
+    "timestamp": "2026-02-26T17:23:23.586101",
+    "manipulated_prompt_obj": [
+      {
+        "role": "user",
+        "content": "**Role (AI):** Function Inference Engine — infer an unknown Python function by proposing inputs and observing outputs.\n\n**Role (GM):** I return the function's output for each input you propose.\n\n**Goal:** Infer the exact function: `(xs: List[int]) -> List[int]`\n\n---\n\n## Rules\n\n* You have **10** total turns. Guess on turn 10 - 1.\n* Each probe must be exactly one line and **nothing else**.\n* Case and format are strict.\n\n## Format (strict)\n\n* Probing (until certain):\n\n```\nINPUT:<value1>\n```\n\n(uppercase `INPUT:`) — strings must be quoted, booleans `True/False`.\n\n* Final submission (when certain):\n  Start with `GUESS:` then **only** the Python function in a fenced block, e.g.\n\n````\nGUESS:\n```python\ndef solution(x, y):\n    return x + y\n````\n\n```\nYou may add a one-line explanation after the code block.\n\n## Constraints\n- KEY: DO USE BUILTIN FUNCTIONS LIKE sort(), min(), fromkeys(), values(), capitalize(), isascii() etc.\n- Types must match exactly. Numbers as literals; strings quoted; use commas.\n- No extra text, no markdown, no comments during probing.\n- Any format violation consumes a turn.\n- Do NOT invent new variables. Use ONLY: <value1>\n\n---\n\n**Context placeholders:**\n- Category: `LIST_SEQUENCE`\n- Params: `1`\n- Param list: `xs: List[int]`\n\nBegin: produce your first `INPUT:` line.\n\nCANDIDATE FUNCTION IDS (use only these in hypotheses):\n- unique_preserve_order\n- unique_sorted\n\nOn EVERY turn, output one of the following formats.\nFormat A (probe):\nINPUT: <args>\nHYPOTHESES:\n- candidate: <candidate_id>\n- candidate: <candidate_id>\nCONFIDENCE:\n- <float>\n- <float>\n\nConfidences must sum to 1.\n\nFormat B (final guess):\nGUESS: ```python\n<code>\n```\n"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:[1,2,3,2,1]\nHYPOTHESES:\n- candidate: unique_preserve_order\n- candidate: unique_sorted\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: [1, 2, 3]"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:[3,2,1,2,3]\nHYPOTHESES:\n- candidate: unique_preserve_order\n- candidate: unique_sorted\nCONFIDENCE:\n- 0.5\n- 0.5"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: [1, 2, 3]"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:[5,4,3,2,1,2,3,4,5]\nHYPOTHESES:\n- candidate: unique_preserve_order\n- candidate: unique_sorted\nCONFIDENCE:\n- 0.4\n- 0.6"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: [1, 2, 3, 4, 5]"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:[7,7,7,7]\nHYPOTHESES:\n- candidate: unique_preserve_order\n- candidate: unique_sorted\nCONFIDENCE:\n- 0.3\n- 0.7"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: [7]"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:[10,9,8,7,6,5,4,3,2,1]\nHYPOTHESES:\n- candidate: unique_preserve_order\n- candidate: unique_sorted\nCONFIDENCE:\n- 0.2\n- 0.8"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:[2,4,6,8,2,4,6,8]\nHYPOTHESES:\n- candidate: unique_preserve_order\n- candidate: unique_sorted\nCONFIDENCE:\n- 0.1\n- 0.9"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: [2, 4, 6, 8]"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:[8,6,4,2,8,6,4,2]\nHYPOTHESES:\n- candidate: unique_preserve_order\n- candidate: unique_sorted\nCONFIDENCE:\n- 0.05\n- 0.95"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: [2, 4, 6, 8]"
+      },
+      {
+        "role": "assistant",
+        "content": "INPUT:[1,3,5,7,9,1,3,5,7,9]\nHYPOTHESES:\n- candidate: unique_preserve_order\n- candidate: unique_sorted\nCONFIDENCE:\n- 0.01\n- 0.99"
+      },
+      {
+        "role": "user",
+        "content": "Function Output: [1, 3, 5, 7, 9]"
+      }
+    ],
+    "raw_response_obj": {
+      "id": "chatcmpl-DDYR0LaAAxTBsA8LSLqRospp54fK5",
+      "choices": [
+        {
+          "finish_reason": "stop",
+          "index": 0,
+          "logprobs": null,
+          "message": {
+            "content": "GUESS:\n```python\ndef solution(xs):\n    return sorted(list(dict.fromkeys(xs)))\n```\nThe function returns the unique elements of the input list, sorted in ascending order.",
+            "refusal": null,
+            "role": "assistant",
+            "annotations": [],
+            "audio": null,
+            "function_call": null,
+            "tool_calls": null
+          }
+        }
+      ],
+      "created": 1772123002,
+      "model": "gpt-4.1-2025-04-14",
+      "object": "chat.completion",
+      "service_tier": "default",
+      "system_fingerprint": "fp_6725d2cc23",
+      "usage": {
+        "completion_tokens": 37,
+        "prompt_tokens": 1045,
+        "total_tokens": 1082,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": 0,
+          "cached_tokens": 0
+        }
+      },
+      "clem_player": {
+        "call_start": "2026-02-26 17:23:22.078080",
+        "call_duration": "0:00:01.507602",
+        "response": "GUESS:\n```python\ndef solution(xs):\n    return sorted(list(dict.fromkeys(xs)))\n```\nThe function returns the unique elements of the input list, sorted in ascending order.",
+        "model_name": "gpt-4.1-2025-04-14"
+      }
+    }
+  }
+]

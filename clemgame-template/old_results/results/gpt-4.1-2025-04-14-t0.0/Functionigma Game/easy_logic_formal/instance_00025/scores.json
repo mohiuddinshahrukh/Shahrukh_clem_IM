@@ -1,0 +1,89 @@
+{
+  "meta": {
+    "game_name": "Functionigma Game",
+    "experiment_name": "easy_logic_formal",
+    "game_id": 25,
+    "results_folder": "gpt-4.1-2025-04-14-t0.0",
+    "clem_version": "3.3.4"
+  },
+  "players": {
+    "GM": {
+      "game_role": "Game Master",
+      "model_name": "programmatic"
+    },
+    "Player 1": {
+      "game_role": "Guesser",
+      "model_name": "gpt-4.1-2025-04-14"
+    }
+  },
+  "round scores": {
+    "0": {
+      "Request Count": 1,
+      "Violated Request Count": 0,
+      "Parsed Request Count": 1,
+      "Request Success Ratio": 1.0
+    },
+    "1": {
+      "Request Count": 1,
+      "Violated Request Count": 0,
+      "Parsed Request Count": 1,
+      "Request Success Ratio": 1.0
+    },
+    "2": {
+      "Request Count": 1,
+      "Violated Request Count": 0,
+      "Parsed Request Count": 1,
+      "Request Success Ratio": 1.0
+    },
+    "3": {
+      "Request Count": 1,
+      "Violated Request Count": 0,
+      "Parsed Request Count": 1,
+      "Request Success Ratio": 1.0
+    },
+    "4": {
+      "Request Count": 1,
+      "Violated Request Count": 0,
+      "Parsed Request Count": 1,
+      "Request Success Ratio": 1.0
+    }
+  },
+  "episode scores": {
+    "Request Count": 5,
+    "Parsed Request Count": 5,
+    "Violated Request Count": 0,
+    "Request Success Ratio": 1.0,
+    "Aborted": false,
+    "Lose": true,
+    "Success": false,
+    "Main Score": 0,
+    "accuracy": 0.0,
+    "efficiency": 0.25,
+    "slack": 1,
+    "turns_used": 4,
+    "max_turns": 5,
+    "parse_error_count": 0,
+    "runtime_error_count": 0,
+    "probe_count": 4,
+    "novelty_rate": 0.5,
+    "input_diversity": 1.0,
+    "internal_consistency_score": 0.0,
+    "internal_consistency_all_observed": false,
+    "internal_consistency_violations": 4,
+    "output_entropy_bits": 1.0,
+    "hypothesis_format_error_count": 0,
+    "hypothesis_top1_hit_at_stop": 1,
+    "hypothesis_top3_hit_at_stop": 1,
+    "hypothesis_prob_true_at_stop": 0.95,
+    "hypothesis_avg_negative_log_prob_true": 0.3857370427913169,
+    "hypothesis_top1_switches": 1
+  },
+  "player_models": {
+    "0": {
+      "model_name": "gpt-4.1-2025-04-14",
+      "backend": "openai",
+      "lookup_source": "E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\clemgame-template\\model_registry.json",
+      "model_id": "gpt-4.1-2025-04-14"
+    }
+  }
+}

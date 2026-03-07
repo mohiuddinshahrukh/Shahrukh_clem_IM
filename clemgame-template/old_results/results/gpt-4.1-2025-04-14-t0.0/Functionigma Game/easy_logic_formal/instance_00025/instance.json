@@ -1,0 +1,110 @@
+{
+  "game_id": 25,
+  "callable": "is_valid_identifier_no_leading_underscore",
+  "signature": "(s: str) -> bool",
+  "category": "LOGIC_FORMAL",
+  "difficulty": "easy",
+  "candidate_ids": [
+    "is_valid_identifier",
+    "is_valid_identifier_no_leading_underscore"
+  ],
+  "docstring": "\n    Identifier but first character cannot be underscore: [A-Za-z][A-Za-z0-9_]*\n    ",
+  "test_cases": [
+    {
+      "args": [
+        "aA"
+      ],
+      "expected": true
+    },
+    {
+      "args": [
+        ""
+      ],
+      "expected": false
+    },
+    {
+      "args": [
+        "ab"
+      ],
+      "expected": true
+    },
+    {
+      "args": [
+        "aba"
+      ],
+      "expected": true
+    },
+    {
+      "args": [
+        "a-b"
+      ],
+      "expected": false
+    },
+    {
+      "args": [
+        "hello"
+      ],
+      "expected": true
+    },
+    {
+      "args": [
+        "([)]"
+      ],
+      "expected": false
+    },
+    {
+      "args": [
+        "1x"
+      ],
+      "expected": false
+    },
+    {
+      "args": [
+        ")("
+      ],
+      "expected": false
+    },
+    {
+      "args": [
+        "()"
+      ],
+      "expected": false
+    },
+    {
+      "args": [
+        "x-1"
+      ],
+      "expected": false
+    },
+    {
+      "args": [
+        "([{}])"
+      ],
+      "expected": false
+    },
+    {
+      "args": [
+        "x1"
+      ],
+      "expected": true
+    },
+    {
+      "args": [
+        "(())"
+      ],
+      "expected": false
+    },
+    {
+      "args": [
+        "(]"
+      ],
+      "expected": false
+    },
+    {
+      "args": [
+        "_x"
+      ],
+      "expected": false
+    }
+  ]
+}

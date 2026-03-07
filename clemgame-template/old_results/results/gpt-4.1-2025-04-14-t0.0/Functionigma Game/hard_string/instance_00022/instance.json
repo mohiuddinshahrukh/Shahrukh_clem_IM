@@ -1,0 +1,92 @@
+{
+  "game_id": 22,
+  "callable": "is_palindrome_exact",
+  "signature": "(s: str) -> bool",
+  "category": "STRING",
+  "difficulty": "hard",
+  "candidate_ids": [
+    "is_palindrome_alnum",
+    "is_palindrome_exact"
+  ],
+  "docstring": "Return True if s is exactly equal to its reverse (case/punct matter).",
+  "test_cases": [
+    {
+      "args": [
+        "a"
+      ],
+      "expected": true
+    },
+    {
+      "args": [
+        "ab"
+      ],
+      "expected": false
+    },
+    {
+      "args": [
+        ""
+      ],
+      "expected": true
+    },
+    {
+      "args": [
+        "123"
+      ],
+      "expected": false
+    },
+    {
+      "args": [
+        "hello"
+      ],
+      "expected": false
+    },
+    {
+      "args": [
+        "   "
+      ],
+      "expected": true
+    },
+    {
+      "args": [
+        " "
+      ],
+      "expected": true
+    },
+    {
+      "args": [
+        "a-b"
+      ],
+      "expected": false
+    },
+    {
+      "args": [
+        "A"
+      ],
+      "expected": true
+    },
+    {
+      "args": [
+        "aba"
+      ],
+      "expected": true
+    },
+    {
+      "args": [
+        "hello world"
+      ],
+      "expected": false
+    },
+    {
+      "args": [
+        "aA"
+      ],
+      "expected": false
+    },
+    {
+      "args": [
+        "12345"
+      ],
+      "expected": false
+    }
+  ]
+}

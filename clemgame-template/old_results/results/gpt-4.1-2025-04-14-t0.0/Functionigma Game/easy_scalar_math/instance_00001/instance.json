@@ -1,0 +1,134 @@
+{
+  "game_id": 1,
+  "callable": "square",
+  "signature": "(x: int) -> int",
+  "category": "SCALAR_MATH",
+  "difficulty": "easy",
+  "candidate_ids": [
+    "abs_value",
+    "square"
+  ],
+  "docstring": "Return x squared.",
+  "test_cases": [
+    {
+      "args": [
+        -1
+      ],
+      "expected": 1
+    },
+    {
+      "args": [
+        1000
+      ],
+      "expected": 1000000
+    },
+    {
+      "args": [
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "args": [
+        -2
+      ],
+      "expected": 4
+    },
+    {
+      "args": [
+        99
+      ],
+      "expected": 9801
+    },
+    {
+      "args": [
+        -1000
+      ],
+      "expected": 1000000
+    },
+    {
+      "args": [
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "args": [
+        -10
+      ],
+      "expected": 100
+    },
+    {
+      "args": [
+        9
+      ],
+      "expected": 81
+    },
+    {
+      "args": [
+        -100
+      ],
+      "expected": 10000
+    },
+    {
+      "args": [
+        10
+      ],
+      "expected": 100
+    },
+    {
+      "args": [
+        100
+      ],
+      "expected": 10000
+    },
+    {
+      "args": [
+        2
+      ],
+      "expected": 4
+    },
+    {
+      "args": [
+        11
+      ],
+      "expected": 121
+    },
+    {
+      "args": [
+        14
+      ],
+      "expected": 196
+    },
+    {
+      "args": [
+        25
+      ],
+      "expected": 625
+    },
+    {
+      "args": [
+        16
+      ],
+      "expected": 256
+    },
+    {
+      "args": [
+        40
+      ],
+      "expected": 1600
+    },
+    {
+      "args": [
+        19
+      ],
+      "expected": 361
+    },
+    {
+      "args": [
+        -6
+      ],
+      "expected": 36
+    }
+  ]
+}

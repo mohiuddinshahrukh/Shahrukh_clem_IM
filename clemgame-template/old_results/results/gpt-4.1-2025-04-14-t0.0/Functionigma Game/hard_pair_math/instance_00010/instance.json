@@ -1,0 +1,294 @@
+{
+  "game_id": 10,
+  "callable": "clamp_absdiff_0_10",
+  "signature": "(x: int, y: int) -> int",
+  "category": "PAIR_MATH",
+  "difficulty": "hard",
+  "candidate_ids": [
+    "clamp_absdiff_0_10",
+    "clamp_x_0_10_ignore_y"
+  ],
+  "docstring": "Return clamp(abs(x-y), 0, 10).",
+  "test_cases": [
+    {
+      "args": [
+        1000,
+        0
+      ],
+      "expected": 10
+    },
+    {
+      "args": [
+        -10,
+        99
+      ],
+      "expected": 10
+    },
+    {
+      "args": [
+        2,
+        99
+      ],
+      "expected": 10
+    },
+    {
+      "args": [
+        99,
+        -2
+      ],
+      "expected": 10
+    },
+    {
+      "args": [
+        -1000,
+        -1
+      ],
+      "expected": 10
+    },
+    {
+      "args": [
+        0,
+        -99
+      ],
+      "expected": 10
+    },
+    {
+      "args": [
+        99,
+        10
+      ],
+      "expected": 10
+    },
+    {
+      "args": [
+        1,
+        2
+      ],
+      "expected": 1
+    },
+    {
+      "args": [
+        10,
+        0
+      ],
+      "expected": 10
+    },
+    {
+      "args": [
+        -10,
+        -1
+      ],
+      "expected": 9
+    },
+    {
+      "args": [
+        1000,
+        10
+      ],
+      "expected": 10
+    },
+    {
+      "args": [
+        -10,
+        -10
+      ],
+      "expected": 0
+    },
+    {
+      "args": [
+        -2,
+        -1000
+      ],
+      "expected": 10
+    },
+    {
+      "args": [
+        -2,
+        99
+      ],
+      "expected": 10
+    },
+    {
+      "args": [
+        -1,
+        -1000
+      ],
+      "expected": 10
+    },
+    {
+      "args": [
+        10,
+        -1
+      ],
+      "expected": 10
+    },
+    {
+      "args": [
+        99,
+        2
+      ],
+      "expected": 10
+    },
+    {
+      "args": [
+        99,
+        1000
+      ],
+      "expected": 10
+    },
+    {
+      "args": [
+        -10,
+        0
+      ],
+      "expected": 10
+    },
+    {
+      "args": [
+        2,
+        -1
+      ],
+      "expected": 3
+    },
+    {
+      "args": [
+        2,
+        -2
+      ],
+      "expected": 4
+    },
+    {
+      "args": [
+        -99,
+        10
+      ],
+      "expected": 10
+    },
+    {
+      "args": [
+        2,
+        10
+      ],
+      "expected": 8
+    },
+    {
+      "args": [
+        -1000,
+        -99
+      ],
+      "expected": 10
+    },
+    {
+      "args": [
+        -10,
+        1
+      ],
+      "expected": 10
+    },
+    {
+      "args": [
+        99,
+        -9
+      ],
+      "expected": 10
+    },
+    {
+      "args": [
+        -1,
+        -10
+      ],
+      "expected": 9
+    },
+    {
+      "args": [
+        0,
+        9
+      ],
+      "expected": 9
+    },
+    {
+      "args": [
+        -12,
+        100
+      ],
+      "expected": 10
+    },
+    {
+      "args": [
+        11,
+        -1
+      ],
+      "expected": 10
+    },
+    {
+      "args": [
+        99,
+        99
+      ],
+      "expected": 0
+    },
+    {
+      "args": [
+        1,
+        1000
+      ],
+      "expected": 10
+    },
+    {
+      "args": [
+        9,
+        1000
+      ],
+      "expected": 10
+    },
+    {
+      "args": [
+        10,
+        -10
+      ],
+      "expected": 10
+    },
+    {
+      "args": [
+        99,
+        -1
+      ],
+      "expected": 10
+    },
+    {
+      "args": [
+        -2,
+        -2
+      ],
+      "expected": 0
+    },
+    {
+      "args": [
+        100,
+        33
+      ],
+      "expected": 10
+    },
+    {
+      "args": [
+        1000,
+        9
+      ],
+      "expected": 10
+    },
+    {
+      "args": [
+        0,
+        -100
+      ],
+      "expected": 10
+    },
+    {
+      "args": [
+        10,
+        2
+      ],
+      "expected": 8
+    }
+  ]
+}

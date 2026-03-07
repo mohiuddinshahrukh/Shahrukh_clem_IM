@@ -1,0 +1,587 @@
+{
+  "meta": {
+    "game_name": "Functionigma Game",
+    "experiment_name": "medium_string",
+    "game_id": 20,
+    "results_folder": "gpt-4.1-2025-04-14-t0.0",
+    "clem_version": "3.3.4"
+  },
+  "player_models": {
+    "0": {
+      "model_name": "gpt-4.1-2025-04-14",
+      "backend": "openai",
+      "lookup_source": "E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\clemgame-template\\model_registry.json",
+      "model_id": "gpt-4.1-2025-04-14"
+    }
+  },
+  "players": {
+    "GM": {
+      "game_role": "Game Master",
+      "model_name": "programmatic"
+    },
+    "Player 1": {
+      "game_role": "Guesser",
+      "model_name": "gpt-4.1-2025-04-14"
+    }
+  },
+  "turns": [
+    [
+      {
+        "from": "GM",
+        "to": "Player 1",
+        "timestamp": "2026-02-26T17:23:46.756423",
+        "action": {
+          "type": "send message",
+          "content": "**Role (AI):** Function Inference Engine — infer an unknown Python function by proposing inputs and observing outputs.\n\n**Role (GM):** I return the function's output for each input you propose.\n\n**Goal:** Infer the exact function: `(s: str) -> int`\n\n---\n\n## Rules\n\n* You have **10** total turns. Guess on turn 10 - 1.\n* Each probe must be exactly one line and **nothing else**.\n* Case and format are strict.\n\n## Format (strict)\n\n* Probing (until certain):\n\n```\nINPUT:<value1>\n```\n\n(uppercase `INPUT:`) — strings must be quoted, booleans `True/False`.\n\n* Final submission (when certain):\n  Start with `GUESS:` then **only** the Python function in a fenced block, e.g.\n\n````\nGUESS:\n```python\ndef solution(x, y):\n    return x + y\n````\n\n```\nYou may add a one-line explanation after the code block.\n\n## Constraints\n- KEY: DO USE BUILTIN FUNCTIONS LIKE sort(), min(), fromkeys(), values(), capitalize(), isascii() etc.\n- Types must match exactly. Numbers as literals; strings quoted; use commas.\n- No extra text, no markdown, no comments during probing.\n- Any format violation consumes a turn.\n- Do NOT invent new variables. Use ONLY: <value1>\n\n---\n\n**Context placeholders:**\n- Category: `STRING`\n- Params: `1`\n- Param list: `s: str`\n\nBegin: produce your first `INPUT:` line.\n\nCANDIDATE FUNCTION IDS (use only these in hypotheses):\n- count_vowels\n- count_vowels_plus_y\n\nOn EVERY turn, output one of the following formats.\nFormat A (probe):\nINPUT: <args>\nHYPOTHESES:\n- candidate: <candidate_id>\n- candidate: <candidate_id>\nCONFIDENCE:\n- <float>\n- <float>\n\nConfidences must sum to 1.\n\nFormat B (final guess):\nGUESS: ```python\n<code>\n```\n",
+          "label": "context"
+        }
+      },
+      {
+        "from": "Player 1",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:23:47.801943",
+        "action": {
+          "type": "get message",
+          "content": "INPUT:\"hello\"\nHYPOTHESES:\n- candidate: count_vowels\n- candidate: count_vowels_plus_y\nCONFIDENCE:\n- 0.5\n- 0.5",
+          "label": "response"
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:23:47.801943",
+        "action": {
+          "type": "probe results",
+          "content": {
+            "probe_round": 1,
+            "probe_args": [
+              "hello"
+            ],
+            "probe_output": 2
+          }
+        }
+      }
+    ],
+    [
+      {
+        "from": "GM",
+        "to": "Player 1",
+        "timestamp": "2026-02-26T17:23:47.801943",
+        "action": {
+          "type": "send message",
+          "content": "Function Output: 2",
+          "label": "context"
+        }
+      },
+      {
+        "from": "Player 1",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:23:49.259696",
+        "action": {
+          "type": "get message",
+          "content": "INPUT:\"hey\"\nHYPOTHESES:\n- candidate: count_vowels\n- candidate: count_vowels_plus_y\nCONFIDENCE:\n- 0.5\n- 0.5",
+          "label": "response"
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:23:49.266222",
+        "action": {
+          "type": "probe results",
+          "content": {
+            "probe_round": 2,
+            "probe_args": [
+              "hey"
+            ],
+            "probe_output": 1
+          }
+        }
+      }
+    ],
+    [
+      {
+        "from": "GM",
+        "to": "Player 1",
+        "timestamp": "2026-02-26T17:23:49.266222",
+        "action": {
+          "type": "send message",
+          "content": "Function Output: 1",
+          "label": "context"
+        }
+      },
+      {
+        "from": "Player 1",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:23:52.532365",
+        "action": {
+          "type": "get message",
+          "content": "INPUT:\"sky\"\nHYPOTHESES:\n- candidate: count_vowels\n- candidate: count_vowels_plus_y\nCONFIDENCE:\n- 0.4\n- 0.6",
+          "label": "response"
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:23:52.532365",
+        "action": {
+          "type": "probe results",
+          "content": {
+            "probe_round": 3,
+            "probe_args": [
+              "sky"
+            ],
+            "probe_output": 0
+          }
+        }
+      }
+    ],
+    [
+      {
+        "from": "GM",
+        "to": "Player 1",
+        "timestamp": "2026-02-26T17:23:52.532365",
+        "action": {
+          "type": "send message",
+          "content": "Function Output: 0",
+          "label": "context"
+        }
+      },
+      {
+        "from": "Player 1",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:23:53.972834",
+        "action": {
+          "type": "get message",
+          "content": "INPUT:\"yoyo\"\nHYPOTHESES:\n- candidate: count_vowels\n- candidate: count_vowels_plus_y\nCONFIDENCE:\n- 0.7\n- 0.3",
+          "label": "response"
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:23:53.972834",
+        "action": {
+          "type": "probe results",
+          "content": {
+            "probe_round": 4,
+            "probe_args": [
+              "yoyo"
+            ],
+            "probe_output": 2
+          }
+        }
+      }
+    ],
+    [
+      {
+        "from": "GM",
+        "to": "Player 1",
+        "timestamp": "2026-02-26T17:23:53.972834",
+        "action": {
+          "type": "send message",
+          "content": "Function Output: 2",
+          "label": "context"
+        }
+      },
+      {
+        "from": "Player 1",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:23:55.200294",
+        "action": {
+          "type": "get message",
+          "content": "INPUT:\"aeiouy\"\nHYPOTHESES:\n- candidate: count_vowels\n- candidate: count_vowels_plus_y\nCONFIDENCE:\n- 0.7\n- 0.3",
+          "label": "response"
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:23:55.200294",
+        "action": {
+          "type": "probe results",
+          "content": {
+            "probe_round": 5,
+            "probe_args": [
+              "aeiouy"
+            ],
+            "probe_output": 5
+          }
+        }
+      }
+    ],
+    [
+      {
+        "from": "GM",
+        "to": "Player 1",
+        "timestamp": "2026-02-26T17:23:55.200294",
+        "action": {
+          "type": "send message",
+          "content": "Function Output: 5",
+          "label": "context"
+        }
+      },
+      {
+        "from": "Player 1",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:23:56.064241",
+        "action": {
+          "type": "get message",
+          "content": "INPUT:\"AEIOU\"\nHYPOTHESES:\n- candidate: count_vowels\n- candidate: count_vowels_plus_y\nCONFIDENCE:\n- 0.8\n- 0.2",
+          "label": "response"
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:23:56.064241",
+        "action": {
+          "type": "probe results",
+          "content": {
+            "probe_round": 6,
+            "probe_args": [
+              "AEIOU"
+            ],
+            "probe_output": 5
+          }
+        }
+      }
+    ],
+    [
+      {
+        "from": "GM",
+        "to": "Player 1",
+        "timestamp": "2026-02-26T17:23:56.064241",
+        "action": {
+          "type": "send message",
+          "content": "Function Output: 5",
+          "label": "context"
+        }
+      },
+      {
+        "from": "Player 1",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:23:57.456605",
+        "action": {
+          "type": "get message",
+          "content": "INPUT:\"Y\"\nHYPOTHESES:\n- candidate: count_vowels\n- candidate: count_vowels_plus_y\nCONFIDENCE:\n- 0.85\n- 0.15",
+          "label": "response"
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:23:57.456605",
+        "action": {
+          "type": "probe results",
+          "content": {
+            "probe_round": 7,
+            "probe_args": [
+              "Y"
+            ],
+            "probe_output": 0
+          }
+        }
+      }
+    ],
+    [
+      {
+        "from": "GM",
+        "to": "Player 1",
+        "timestamp": "2026-02-26T17:23:57.456605",
+        "action": {
+          "type": "send message",
+          "content": "Function Output: 0",
+          "label": "context"
+        }
+      },
+      {
+        "from": "Player 1",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:23:58.625077",
+        "action": {
+          "type": "get message",
+          "content": "INPUT:\"\"\nHYPOTHESES:\n- candidate: count_vowels\n- candidate: count_vowels_plus_y\nCONFIDENCE:\n- 0.9\n- 0.1",
+          "label": "response"
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:23:58.625077",
+        "action": {
+          "type": "probe results",
+          "content": {
+            "probe_round": 8,
+            "probe_args": [
+              ""
+            ],
+            "probe_output": 0
+          }
+        }
+      }
+    ],
+    [
+      {
+        "from": "GM",
+        "to": "Player 1",
+        "timestamp": "2026-02-26T17:23:58.625077",
+        "action": {
+          "type": "send message",
+          "content": "Function Output: 0",
+          "label": "context"
+        }
+      },
+      {
+        "from": "Player 1",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:23:59.975059",
+        "action": {
+          "type": "get message",
+          "content": "GUESS:\n```python\ndef solution(s: str) -> int:\n    return sum(1 for c in s if c.lower() in \"aeiou\")\n```\nThe function counts the number of vowels (a, e, i, o, u) in the string, case-insensitive.",
+          "label": "response"
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:24:01.364868",
+        "action": {
+          "type": "internal_consistency",
+          "content": {
+            "internal_consistency_score": 1.0,
+            "internal_consistency_all_observed": true,
+            "internal_consistency_violations": 0,
+            "observed_pair_count": 8
+          }
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:24:01.364868",
+        "action": {
+          "type": "test_accuracy",
+          "content": "Accuracy Score: 1.0"
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:24:01.364868",
+        "action": {
+          "type": "test_efficiency",
+          "content": "Efficiency Score: 0.2222222222222222"
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:24:01.364868",
+        "action": {
+          "type": "test_slack",
+          "content": "Slack Score: 2"
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:24:01.365431",
+        "action": {
+          "type": "outcome",
+          "content": "Game Verdict: WIN"
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:24:01.365431",
+        "action": {
+          "type": "reveal_function",
+          "content": "That is correct! \nThe hidden function was:\n\ncategory=Category.STRING,\n    difficulty=Difficulty.MEDIUM,\n    confusers=[\"count_vowels_plus_y\", \"count_letters\", \"string_length\"],\n    family_id=\"string_vowels\"\n)\ndef count_vowels(s: str) -> int:\n    \"\"\"Count vowels (aeiou) case-insensitive.\"\"\"\n    vowels = set(\"aeiou\")\n    return sum(1 for ch in s.lower() if ch in vowels)"
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:24:01.365431",
+        "action": {
+          "type": "final_guess_code",
+          "content": "Your guess: \n\ndef solution(s: str) -> int:\n    return sum(1 for c in s if c.lower() in \"aeiou\")"
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:24:01.365431",
+        "action": {
+          "type": "total_turns_used_and_remaining",
+          "content": {
+            "max_allowed_turns": 10,
+            "total_turns_used": 8,
+            "total_turns_remaining": 2
+          }
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:24:01.365431",
+        "action": {
+          "type": "parse_error_count",
+          "content": "Parse error count: 0"
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:24:01.365431",
+        "action": {
+          "type": "runtime_error_count",
+          "content": "Runtime error count: 0"
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:24:01.366521",
+        "action": {
+          "type": "hypothesis_quality_summary",
+          "content": {
+            "format_errors": 0,
+            "top1_hit_at_stop": 1,
+            "top3_hit_at_stop": 1,
+            "prob_true_at_stop": 0.9,
+            "avg_neg_log_prob_true": 0.4383697471676652,
+            "top1_switches": 2
+          }
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:24:01.366521",
+        "action": {
+          "type": "probe_information_summary",
+          "content": "Probes: 8 | Unique inputs: 8 (diversity=1.00) | Unique outputs: 4 (novelty=0.50, entropy=1.91 bits)"
+        }
+      }
+    ]
+  ],
+  "Aborted": false,
+  "Lose": false,
+  "Success": true,
+  "efficiency": 0.2222222222222222,
+  "slack": 2,
+  "accuracy": 1.0,
+  "parse_error_count": 0,
+  "runtime_error_count": 0,
+  "turns_used": 8,
+  "max_turns": 10,
+  "observed_pairs": [
+    {
+      "round": 1,
+      "args": [
+        "hello"
+      ],
+      "output": 2
+    },
+    {
+      "round": 2,
+      "args": [
+        "hey"
+      ],
+      "output": 1
+    },
+    {
+      "round": 3,
+      "args": [
+        "sky"
+      ],
+      "output": 0
+    },
+    {
+      "round": 4,
+      "args": [
+        "yoyo"
+      ],
+      "output": 2
+    },
+    {
+      "round": 5,
+      "args": [
+        "aeiouy"
+      ],
+      "output": 5
+    },
+    {
+      "round": 6,
+      "args": [
+        "AEIOU"
+      ],
+      "output": 5
+    },
+    {
+      "round": 7,
+      "args": [
+        "Y"
+      ],
+      "output": 0
+    },
+    {
+      "round": 8,
+      "args": [
+        ""
+      ],
+      "output": 0
+    }
+  ],
+  "probe_count": 8,
+  "unique_input_count": 8,
+  "unique_output_count": 4,
+  "novelty_rate": 0.5,
+  "input_diversity": 1.0,
+  "output_entropy_bits": 1.9056390622295665,
+  "internal_consistency_score": 1.0,
+  "internal_consistency_all_observed": true,
+  "internal_consistency_violations": 0,
+  "hypothesis_format_error_count": 0,
+  "hypothesis_top1_hit_at_stop": 1,
+  "hypothesis_top3_hit_at_stop": 1,
+  "hypothesis_prob_true_at_stop": 0.9,
+  "hypothesis_avg_negative_log_prob_true": 0.4383697471676652,
+  "hypothesis_top1_switches": 2,
+  "Request Count": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "Violated Request Count": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "Parsed Request Count": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ]
+}

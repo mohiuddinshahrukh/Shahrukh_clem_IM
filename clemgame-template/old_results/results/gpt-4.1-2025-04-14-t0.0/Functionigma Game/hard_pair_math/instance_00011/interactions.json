@@ -1,0 +1,848 @@
+{
+  "meta": {
+    "game_name": "Functionigma Game",
+    "experiment_name": "hard_pair_math",
+    "game_id": 11,
+    "results_folder": "gpt-4.1-2025-04-14-t0.0",
+    "clem_version": "3.3.4"
+  },
+  "player_models": {
+    "0": {
+      "model_name": "gpt-4.1-2025-04-14",
+      "backend": "openai",
+      "lookup_source": "E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\clemgame-template\\model_registry.json",
+      "model_id": "gpt-4.1-2025-04-14"
+    }
+  },
+  "players": {
+    "GM": {
+      "game_role": "Game Master",
+      "model_name": "programmatic"
+    },
+    "Player 1": {
+      "game_role": "Guesser",
+      "model_name": "gpt-4.1-2025-04-14"
+    }
+  },
+  "turns": [
+    [
+      {
+        "from": "GM",
+        "to": "Player 1",
+        "timestamp": "2026-02-26T17:25:36.412230",
+        "action": {
+          "type": "send message",
+          "content": "**Role (AI):** Function Inference Engine — infer an unknown Python function by proposing inputs and observing outputs.\n\n**Role (GM):** I return the function's output for each input you propose.\n\n**Goal:** Infer the exact function: `(x: int, y: int) -> int`\n\n---\n\n## Rules\n\n* You have **15** total turns. Guess on turn 15 - 1.\n* Each probe must be exactly one line and **nothing else**.\n* Case and format are strict.\n\n## Format (strict)\n\n* Probing (until certain):\n\n```\nINPUT:<value1>, <value2>\n```\n\n(uppercase `INPUT:`) — strings must be quoted, booleans `True/False`.\n\n* Final submission (when certain):\n  Start with `GUESS:` then **only** the Python function in a fenced block, e.g.\n\n````\nGUESS:\n```python\ndef solution(x, y):\n    return x + y\n````\n\n```\nYou may add a one-line explanation after the code block.\n\n## Constraints\n- KEY: DO USE BUILTIN FUNCTIONS LIKE sort(), min(), fromkeys(), values(), capitalize(), isascii() etc.\n- Types must match exactly. Numbers as literals; strings quoted; use commas.\n- No extra text, no markdown, no comments during probing.\n- Any format violation consumes a turn.\n- Do NOT invent new variables. Use ONLY: <value1>, <value2>\n\n---\n\n**Context placeholders:**\n- Category: `PAIR_MATH`\n- Params: `2`\n- Param list: `x: int, y: int`\n\nBegin: produce your first `INPUT:` line.\n\nCANDIDATE FUNCTION IDS (use only these in hypotheses):\n- clamp_absdiff_0_10\n- clamp_x_0_10_ignore_y\n\nOn EVERY turn, output one of the following formats.\nFormat A (probe):\nINPUT: <args>\nHYPOTHESES:\n- candidate: <candidate_id>\n- candidate: <candidate_id>\nCONFIDENCE:\n- <float>\n- <float>\n\nConfidences must sum to 1.\n\nFormat B (final guess):\nGUESS: ```python\n<code>\n```\n",
+          "label": "context"
+        }
+      },
+      {
+        "from": "Player 1",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:25:37.800512",
+        "action": {
+          "type": "get message",
+          "content": "INPUT:0, 0\nHYPOTHESES:\n- candidate: clamp_absdiff_0_10\n- candidate: clamp_x_0_10_ignore_y\nCONFIDENCE:\n- 0.5\n- 0.5",
+          "label": "response"
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:25:37.800512",
+        "action": {
+          "type": "probe results",
+          "content": {
+            "probe_round": 1,
+            "probe_args": [
+              0,
+              0
+            ],
+            "probe_output": 0
+          }
+        }
+      }
+    ],
+    [
+      {
+        "from": "GM",
+        "to": "Player 1",
+        "timestamp": "2026-02-26T17:25:37.800512",
+        "action": {
+          "type": "send message",
+          "content": "Function Output: 0",
+          "label": "context"
+        }
+      },
+      {
+        "from": "Player 1",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:25:39.024223",
+        "action": {
+          "type": "get message",
+          "content": "INPUT:10, 0\nHYPOTHESES:\n- candidate: clamp_absdiff_0_10\n- candidate: clamp_x_0_10_ignore_y\nCONFIDENCE:\n- 0.5\n- 0.5",
+          "label": "response"
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:25:39.029457",
+        "action": {
+          "type": "probe results",
+          "content": {
+            "probe_round": 2,
+            "probe_args": [
+              10,
+              0
+            ],
+            "probe_output": 10
+          }
+        }
+      }
+    ],
+    [
+      {
+        "from": "GM",
+        "to": "Player 1",
+        "timestamp": "2026-02-26T17:25:39.029457",
+        "action": {
+          "type": "send message",
+          "content": "Function Output: 10",
+          "label": "context"
+        }
+      },
+      {
+        "from": "Player 1",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:25:40.285088",
+        "action": {
+          "type": "get message",
+          "content": "INPUT:0, 10\nHYPOTHESES:\n- candidate: clamp_absdiff_0_10\n- candidate: clamp_x_0_10_ignore_y\nCONFIDENCE:\n- 0.5\n- 0.5",
+          "label": "response"
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:25:40.285088",
+        "action": {
+          "type": "probe results",
+          "content": {
+            "probe_round": 3,
+            "probe_args": [
+              0,
+              10
+            ],
+            "probe_output": 0
+          }
+        }
+      }
+    ],
+    [
+      {
+        "from": "GM",
+        "to": "Player 1",
+        "timestamp": "2026-02-26T17:25:40.285088",
+        "action": {
+          "type": "send message",
+          "content": "Function Output: 0",
+          "label": "context"
+        }
+      },
+      {
+        "from": "Player 1",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:25:41.887782",
+        "action": {
+          "type": "get message",
+          "content": "INPUT:15, 0\nHYPOTHESES:\n- candidate: clamp_absdiff_0_10\n- candidate: clamp_x_0_10_ignore_y\nCONFIDENCE:\n- 0.5\n- 0.5",
+          "label": "response"
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:25:41.892618",
+        "action": {
+          "type": "probe results",
+          "content": {
+            "probe_round": 4,
+            "probe_args": [
+              15,
+              0
+            ],
+            "probe_output": 10
+          }
+        }
+      }
+    ],
+    [
+      {
+        "from": "GM",
+        "to": "Player 1",
+        "timestamp": "2026-02-26T17:25:41.892618",
+        "action": {
+          "type": "send message",
+          "content": "Function Output: 10",
+          "label": "context"
+        }
+      },
+      {
+        "from": "Player 1",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:25:42.928031",
+        "action": {
+          "type": "get message",
+          "content": "INPUT:0, 15\nHYPOTHESES:\n- candidate: clamp_absdiff_0_10\n- candidate: clamp_x_0_10_ignore_y\nCONFIDENCE:\n- 0.5\n- 0.5",
+          "label": "response"
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:25:42.928031",
+        "action": {
+          "type": "probe results",
+          "content": {
+            "probe_round": 5,
+            "probe_args": [
+              0,
+              15
+            ],
+            "probe_output": 0
+          }
+        }
+      }
+    ],
+    [
+      {
+        "from": "GM",
+        "to": "Player 1",
+        "timestamp": "2026-02-26T17:25:42.928031",
+        "action": {
+          "type": "send message",
+          "content": "Function Output: 0",
+          "label": "context"
+        }
+      },
+      {
+        "from": "Player 1",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:25:43.952203",
+        "action": {
+          "type": "get message",
+          "content": "INPUT:5, 3\nHYPOTHESES:\n- candidate: clamp_absdiff_0_10\n- candidate: clamp_x_0_10_ignore_y\nCONFIDENCE:\n- 0.5\n- 0.5",
+          "label": "response"
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:25:43.952203",
+        "action": {
+          "type": "probe results",
+          "content": {
+            "probe_round": 6,
+            "probe_args": [
+              5,
+              3
+            ],
+            "probe_output": 5
+          }
+        }
+      }
+    ],
+    [
+      {
+        "from": "GM",
+        "to": "Player 1",
+        "timestamp": "2026-02-26T17:25:43.955349",
+        "action": {
+          "type": "send message",
+          "content": "Function Output: 5",
+          "label": "context"
+        }
+      },
+      {
+        "from": "Player 1",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:25:45.493206",
+        "action": {
+          "type": "get message",
+          "content": "INPUT:3, 5\nHYPOTHESES:\n- candidate: clamp_absdiff_0_10\n- candidate: clamp_x_0_10_ignore_y\nCONFIDENCE:\n- 0.5\n- 0.5",
+          "label": "response"
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:25:45.493206",
+        "action": {
+          "type": "probe results",
+          "content": {
+            "probe_round": 7,
+            "probe_args": [
+              3,
+              5
+            ],
+            "probe_output": 3
+          }
+        }
+      }
+    ],
+    [
+      {
+        "from": "GM",
+        "to": "Player 1",
+        "timestamp": "2026-02-26T17:25:45.493206",
+        "action": {
+          "type": "send message",
+          "content": "Function Output: 3",
+          "label": "context"
+        }
+      },
+      {
+        "from": "Player 1",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:25:46.809715",
+        "action": {
+          "type": "get message",
+          "content": "INPUT:7, 20\nHYPOTHESES:\n- candidate: clamp_absdiff_0_10\n- candidate: clamp_x_0_10_ignore_y\nCONFIDENCE:\n- 0.5\n- 0.5",
+          "label": "response"
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:25:46.809715",
+        "action": {
+          "type": "probe results",
+          "content": {
+            "probe_round": 8,
+            "probe_args": [
+              7,
+              20
+            ],
+            "probe_output": 7
+          }
+        }
+      }
+    ],
+    [
+      {
+        "from": "GM",
+        "to": "Player 1",
+        "timestamp": "2026-02-26T17:25:46.809715",
+        "action": {
+          "type": "send message",
+          "content": "Function Output: 7",
+          "label": "context"
+        }
+      },
+      {
+        "from": "Player 1",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:25:48.442594",
+        "action": {
+          "type": "get message",
+          "content": "INPUT:20, 7\nHYPOTHESES:\n- candidate: clamp_absdiff_0_10\n- candidate: clamp_x_0_10_ignore_y\nCONFIDENCE:\n- 0.5\n- 0.5",
+          "label": "response"
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:25:48.444605",
+        "action": {
+          "type": "probe results",
+          "content": {
+            "probe_round": 9,
+            "probe_args": [
+              20,
+              7
+            ],
+            "probe_output": 10
+          }
+        }
+      }
+    ],
+    [
+      {
+        "from": "GM",
+        "to": "Player 1",
+        "timestamp": "2026-02-26T17:25:48.444605",
+        "action": {
+          "type": "send message",
+          "content": "Function Output: 10",
+          "label": "context"
+        }
+      },
+      {
+        "from": "Player 1",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:25:49.980816",
+        "action": {
+          "type": "get message",
+          "content": "INPUT:-5, 0\nHYPOTHESES:\n- candidate: clamp_absdiff_0_10\n- candidate: clamp_x_0_10_ignore_y\nCONFIDENCE:\n- 0.5\n- 0.5",
+          "label": "response"
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:25:49.985324",
+        "action": {
+          "type": "probe results",
+          "content": {
+            "probe_round": 10,
+            "probe_args": [
+              -5,
+              0
+            ],
+            "probe_output": 0
+          }
+        }
+      }
+    ],
+    [
+      {
+        "from": "GM",
+        "to": "Player 1",
+        "timestamp": "2026-02-26T17:25:49.985324",
+        "action": {
+          "type": "send message",
+          "content": "Function Output: 0",
+          "label": "context"
+        }
+      },
+      {
+        "from": "Player 1",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:25:51.298884",
+        "action": {
+          "type": "get message",
+          "content": "INPUT:0, -5\nHYPOTHESES:\n- candidate: clamp_absdiff_0_10\n- candidate: clamp_x_0_10_ignore_y\nCONFIDENCE:\n- 0.5\n- 0.5",
+          "label": "response"
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:25:51.300788",
+        "action": {
+          "type": "probe results",
+          "content": {
+            "probe_round": 11,
+            "probe_args": [
+              0,
+              -5
+            ],
+            "probe_output": 0
+          }
+        }
+      }
+    ],
+    [
+      {
+        "from": "GM",
+        "to": "Player 1",
+        "timestamp": "2026-02-26T17:25:51.300788",
+        "action": {
+          "type": "send message",
+          "content": "Function Output: 0",
+          "label": "context"
+        }
+      },
+      {
+        "from": "Player 1",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:25:52.340881",
+        "action": {
+          "type": "get message",
+          "content": "INPUT:8, 8\nHYPOTHESES:\n- candidate: clamp_absdiff_0_10\n- candidate: clamp_x_0_10_ignore_y\nCONFIDENCE:\n- 0.5\n- 0.5",
+          "label": "response"
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:25:52.340881",
+        "action": {
+          "type": "probe results",
+          "content": {
+            "probe_round": 12,
+            "probe_args": [
+              8,
+              8
+            ],
+            "probe_output": 8
+          }
+        }
+      }
+    ],
+    [
+      {
+        "from": "GM",
+        "to": "Player 1",
+        "timestamp": "2026-02-26T17:25:52.340881",
+        "action": {
+          "type": "send message",
+          "content": "Function Output: 8",
+          "label": "context"
+        }
+      },
+      {
+        "from": "Player 1",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:25:53.568365",
+        "action": {
+          "type": "get message",
+          "content": "INPUT:12, 12\nHYPOTHESES:\n- candidate: clamp_absdiff_0_10\n- candidate: clamp_x_0_10_ignore_y\nCONFIDENCE:\n- 0.0\n- 1.0",
+          "label": "response"
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:25:53.568365",
+        "action": {
+          "type": "probe results",
+          "content": {
+            "probe_round": 13,
+            "probe_args": [
+              12,
+              12
+            ],
+            "probe_output": 10
+          }
+        }
+      }
+    ],
+    [
+      {
+        "from": "GM",
+        "to": "Player 1",
+        "timestamp": "2026-02-26T17:25:53.568365",
+        "action": {
+          "type": "send message",
+          "content": "Function Output: 10",
+          "label": "context"
+        }
+      },
+      {
+        "from": "Player 1",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:25:54.808542",
+        "action": {
+          "type": "get message",
+          "content": "GUESS:\n```python\ndef solution(x, y):\n    return min(10, max(0, x))\n```\nThis function clamps `x` to the range [0, 10], ignoring `y`.",
+          "label": "response"
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:25:56.074186",
+        "action": {
+          "type": "internal_consistency",
+          "content": {
+            "internal_consistency_score": 1.0,
+            "internal_consistency_all_observed": true,
+            "internal_consistency_violations": 0,
+            "observed_pair_count": 13
+          }
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:25:56.074186",
+        "action": {
+          "type": "test_accuracy",
+          "content": "Accuracy Score: 1.0"
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:25:56.074186",
+        "action": {
+          "type": "test_efficiency",
+          "content": "Efficiency Score: 0.1428571428571429"
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:25:56.074186",
+        "action": {
+          "type": "test_slack",
+          "content": "Slack Score: 2"
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:25:56.074795",
+        "action": {
+          "type": "outcome",
+          "content": "Game Verdict: WIN"
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:25:56.074795",
+        "action": {
+          "type": "reveal_function",
+          "content": "That is correct! \nThe hidden function was:\n\ncategory=Category.PAIR_MATH,\n    difficulty=Difficulty.HARD,\n    confusers=[\"clamp_absdiff_0_10\", \"min_of_two\", \"max_of_two\"],\n    family_id=\"pair_composition\"\n)\ndef clamp_x_0_10_ignore_y(x: int, y: int) -> int:\n    \"\"\"Return clamp(x, 0, 10). Ignores y.\"\"\"\n    if x < 0:\n        return 0\n    if x > 10:\n        return 10\n    return x"
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:25:56.074795",
+        "action": {
+          "type": "final_guess_code",
+          "content": "Your guess: \n\ndef solution(x, y):\n    return min(10, max(0, x))"
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:25:56.074795",
+        "action": {
+          "type": "total_turns_used_and_remaining",
+          "content": {
+            "max_allowed_turns": 15,
+            "total_turns_used": 13,
+            "total_turns_remaining": 2
+          }
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:25:56.074795",
+        "action": {
+          "type": "parse_error_count",
+          "content": "Parse error count: 0"
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:25:56.074795",
+        "action": {
+          "type": "runtime_error_count",
+          "content": "Runtime error count: 0"
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:25:56.075329",
+        "action": {
+          "type": "hypothesis_quality_summary",
+          "content": {
+            "format_errors": 0,
+            "top1_hit_at_stop": 1,
+            "top3_hit_at_stop": 1,
+            "prob_true_at_stop": 1.0,
+            "avg_neg_log_prob_true": 0.6398281666707187,
+            "top1_switches": 1
+          }
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:25:56.075329",
+        "action": {
+          "type": "probe_information_summary",
+          "content": "Probes: 13 | Unique inputs: 13 (diversity=1.00) | Unique outputs: 6 (novelty=0.46, entropy=2.19 bits)"
+        }
+      }
+    ]
+  ],
+  "Aborted": false,
+  "Lose": false,
+  "Success": true,
+  "efficiency": 0.1428571428571429,
+  "slack": 2,
+  "accuracy": 1.0,
+  "parse_error_count": 0,
+  "runtime_error_count": 0,
+  "turns_used": 13,
+  "max_turns": 15,
+  "observed_pairs": [
+    {
+      "round": 1,
+      "args": [
+        0,
+        0
+      ],
+      "output": 0
+    },
+    {
+      "round": 2,
+      "args": [
+        10,
+        0
+      ],
+      "output": 10
+    },
+    {
+      "round": 3,
+      "args": [
+        0,
+        10
+      ],
+      "output": 0
+    },
+    {
+      "round": 4,
+      "args": [
+        15,
+        0
+      ],
+      "output": 10
+    },
+    {
+      "round": 5,
+      "args": [
+        0,
+        15
+      ],
+      "output": 0
+    },
+    {
+      "round": 6,
+      "args": [
+        5,
+        3
+      ],
+      "output": 5
+    },
+    {
+      "round": 7,
+      "args": [
+        3,
+        5
+      ],
+      "output": 3
+    },
+    {
+      "round": 8,
+      "args": [
+        7,
+        20
+      ],
+      "output": 7
+    },
+    {
+      "round": 9,
+      "args": [
+        20,
+        7
+      ],
+      "output": 10
+    },
+    {
+      "round": 10,
+      "args": [
+        -5,
+        0
+      ],
+      "output": 0
+    },
+    {
+      "round": 11,
+      "args": [
+        0,
+        -5
+      ],
+      "output": 0
+    },
+    {
+      "round": 12,
+      "args": [
+        8,
+        8
+      ],
+      "output": 8
+    },
+    {
+      "round": 13,
+      "args": [
+        12,
+        12
+      ],
+      "output": 10
+    }
+  ],
+  "probe_count": 13,
+  "unique_input_count": 13,
+  "unique_output_count": 6,
+  "novelty_rate": 0.46153846153846156,
+  "input_diversity": 1.0,
+  "output_entropy_bits": 2.1920058354921066,
+  "internal_consistency_score": 1.0,
+  "internal_consistency_all_observed": true,
+  "internal_consistency_violations": 0,
+  "hypothesis_format_error_count": 0,
+  "hypothesis_top1_hit_at_stop": 1,
+  "hypothesis_top3_hit_at_stop": 1,
+  "hypothesis_prob_true_at_stop": 1.0,
+  "hypothesis_avg_negative_log_prob_true": 0.6398281666707187,
+  "hypothesis_top1_switches": 1,
+  "Request Count": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "Violated Request Count": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "Parsed Request Count": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ]
+}

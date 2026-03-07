@@ -1,0 +1,696 @@
+{
+  "meta": {
+    "game_name": "Functionigma Game",
+    "experiment_name": "medium_list_sequence",
+    "game_id": 15,
+    "results_folder": "gpt-4.1-2025-04-14-t0.0",
+    "clem_version": "3.3.4"
+  },
+  "player_models": {
+    "0": {
+      "model_name": "gpt-4.1-2025-04-14",
+      "backend": "openai",
+      "lookup_source": "E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\clemgame-template\\model_registry.json",
+      "model_id": "gpt-4.1-2025-04-14"
+    }
+  },
+  "players": {
+    "GM": {
+      "game_role": "Game Master",
+      "model_name": "programmatic"
+    },
+    "Player 1": {
+      "game_role": "Guesser",
+      "model_name": "gpt-4.1-2025-04-14"
+    }
+  },
+  "turns": [
+    [
+      {
+        "from": "GM",
+        "to": "Player 1",
+        "timestamp": "2026-02-26T17:23:33.698142",
+        "action": {
+          "type": "send message",
+          "content": "**Role (AI):** Function Inference Engine — infer an unknown Python function by proposing inputs and observing outputs.\n\n**Role (GM):** I return the function's output for each input you propose.\n\n**Goal:** Infer the exact function: `(xs: List[int]) -> List[int]`\n\n---\n\n## Rules\n\n* You have **10** total turns. Guess on turn 10 - 1.\n* Each probe must be exactly one line and **nothing else**.\n* Case and format are strict.\n\n## Format (strict)\n\n* Probing (until certain):\n\n```\nINPUT:<value1>\n```\n\n(uppercase `INPUT:`) — strings must be quoted, booleans `True/False`.\n\n* Final submission (when certain):\n  Start with `GUESS:` then **only** the Python function in a fenced block, e.g.\n\n````\nGUESS:\n```python\ndef solution(x, y):\n    return x + y\n````\n\n```\nYou may add a one-line explanation after the code block.\n\n## Constraints\n- KEY: DO USE BUILTIN FUNCTIONS LIKE sort(), min(), fromkeys(), values(), capitalize(), isascii() etc.\n- Types must match exactly. Numbers as literals; strings quoted; use commas.\n- No extra text, no markdown, no comments during probing.\n- Any format violation consumes a turn.\n- Do NOT invent new variables. Use ONLY: <value1>\n\n---\n\n**Context placeholders:**\n- Category: `LIST_SEQUENCE`\n- Params: `1`\n- Param list: `xs: List[int]`\n\nBegin: produce your first `INPUT:` line.\n\nCANDIDATE FUNCTION IDS (use only these in hypotheses):\n- unique_preserve_order\n- unique_sorted\n\nOn EVERY turn, output one of the following formats.\nFormat A (probe):\nINPUT: <args>\nHYPOTHESES:\n- candidate: <candidate_id>\n- candidate: <candidate_id>\nCONFIDENCE:\n- <float>\n- <float>\n\nConfidences must sum to 1.\n\nFormat B (final guess):\nGUESS: ```python\n<code>\n```\n",
+          "label": "context"
+        }
+      },
+      {
+        "from": "Player 1",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:23:35.126092",
+        "action": {
+          "type": "get message",
+          "content": "INPUT:[1,2,3,2,1]\nHYPOTHESES:\n- candidate: unique_preserve_order\n- candidate: unique_sorted\nCONFIDENCE:\n- 0.5\n- 0.5",
+          "label": "response"
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:23:35.126092",
+        "action": {
+          "type": "probe results",
+          "content": {
+            "probe_round": 1,
+            "probe_args": [
+              [
+                1,
+                2,
+                3,
+                2,
+                1
+              ]
+            ],
+            "probe_output": [
+              1,
+              2,
+              3
+            ]
+          }
+        }
+      }
+    ],
+    [
+      {
+        "from": "GM",
+        "to": "Player 1",
+        "timestamp": "2026-02-26T17:23:35.126092",
+        "action": {
+          "type": "send message",
+          "content": "Function Output: [1, 2, 3]",
+          "label": "context"
+        }
+      },
+      {
+        "from": "Player 1",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:23:36.354990",
+        "action": {
+          "type": "get message",
+          "content": "INPUT:[3,2,1,2,3]\nHYPOTHESES:\n- candidate: unique_preserve_order\n- candidate: unique_sorted\nCONFIDENCE:\n- 0.6\n- 0.4",
+          "label": "response"
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:23:36.354990",
+        "action": {
+          "type": "probe results",
+          "content": {
+            "probe_round": 2,
+            "probe_args": [
+              [
+                3,
+                2,
+                1,
+                2,
+                3
+              ]
+            ],
+            "probe_output": [
+              3,
+              2,
+              1
+            ]
+          }
+        }
+      }
+    ],
+    [
+      {
+        "from": "GM",
+        "to": "Player 1",
+        "timestamp": "2026-02-26T17:23:36.354990",
+        "action": {
+          "type": "send message",
+          "content": "Function Output: [3, 2, 1]",
+          "label": "context"
+        }
+      },
+      {
+        "from": "Player 1",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:23:37.796035",
+        "action": {
+          "type": "get message",
+          "content": "INPUT:[5,4,3,2,1,1,2,3,4,5]\nHYPOTHESES:\n- candidate: unique_preserve_order\n- candidate: unique_sorted\nCONFIDENCE:\n- 0.7\n- 0.3",
+          "label": "response"
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:23:37.796035",
+        "action": {
+          "type": "probe results",
+          "content": {
+            "probe_round": 3,
+            "probe_args": [
+              [
+                5,
+                4,
+                3,
+                2,
+                1,
+                1,
+                2,
+                3,
+                4,
+                5
+              ]
+            ],
+            "probe_output": [
+              5,
+              4,
+              3,
+              2,
+              1
+            ]
+          }
+        }
+      }
+    ],
+    [
+      {
+        "from": "GM",
+        "to": "Player 1",
+        "timestamp": "2026-02-26T17:23:37.796035",
+        "action": {
+          "type": "send message",
+          "content": "Function Output: [5, 4, 3, 2, 1]",
+          "label": "context"
+        }
+      },
+      {
+        "from": "Player 1",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:23:38.917084",
+        "action": {
+          "type": "get message",
+          "content": "INPUT:[2,2,2,2]\nHYPOTHESES:\n- candidate: unique_preserve_order\n- candidate: unique_sorted\nCONFIDENCE:\n- 0.8\n- 0.2",
+          "label": "response"
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:23:38.919890",
+        "action": {
+          "type": "probe results",
+          "content": {
+            "probe_round": 4,
+            "probe_args": [
+              [
+                2,
+                2,
+                2,
+                2
+              ]
+            ],
+            "probe_output": [
+              2
+            ]
+          }
+        }
+      }
+    ],
+    [
+      {
+        "from": "GM",
+        "to": "Player 1",
+        "timestamp": "2026-02-26T17:23:38.919890",
+        "action": {
+          "type": "send message",
+          "content": "Function Output: [2]",
+          "label": "context"
+        }
+      },
+      {
+        "from": "Player 1",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:23:40.385741",
+        "action": {
+          "type": "get message",
+          "content": "INPUT:[7,8,9]\nHYPOTHESES:\n- candidate: unique_preserve_order\n- candidate: unique_sorted\nCONFIDENCE:\n- 0.85\n- 0.15",
+          "label": "response"
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:23:40.393852",
+        "action": {
+          "type": "probe results",
+          "content": {
+            "probe_round": 5,
+            "probe_args": [
+              [
+                7,
+                8,
+                9
+              ]
+            ],
+            "probe_output": [
+              7,
+              8,
+              9
+            ]
+          }
+        }
+      }
+    ],
+    [
+      {
+        "from": "GM",
+        "to": "Player 1",
+        "timestamp": "2026-02-26T17:23:40.393852",
+        "action": {
+          "type": "send message",
+          "content": "Function Output: [7, 8, 9]",
+          "label": "context"
+        }
+      },
+      {
+        "from": "Player 1",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:23:41.586695",
+        "action": {
+          "type": "get message",
+          "content": "INPUT:[9,8,7]\nHYPOTHESES:\n- candidate: unique_preserve_order\n- candidate: unique_sorted\nCONFIDENCE:\n- 0.9\n- 0.1",
+          "label": "response"
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:23:41.589927",
+        "action": {
+          "type": "probe results",
+          "content": {
+            "probe_round": 6,
+            "probe_args": [
+              [
+                9,
+                8,
+                7
+              ]
+            ],
+            "probe_output": [
+              9,
+              8,
+              7
+            ]
+          }
+        }
+      }
+    ],
+    [
+      {
+        "from": "GM",
+        "to": "Player 1",
+        "timestamp": "2026-02-26T17:23:41.589927",
+        "action": {
+          "type": "send message",
+          "content": "Function Output: [9, 8, 7]",
+          "label": "context"
+        }
+      },
+      {
+        "from": "Player 1",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:23:43.535211",
+        "action": {
+          "type": "get message",
+          "content": "INPUT:[3,1,4,1,5,9,2,6,5]\nHYPOTHESES:\n- candidate: unique_preserve_order\n- candidate: unique_sorted\nCONFIDENCE:\n- 0.95\n- 0.05",
+          "label": "response"
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:23:43.535211",
+        "action": {
+          "type": "probe results",
+          "content": {
+            "probe_round": 7,
+            "probe_args": [
+              [
+                3,
+                1,
+                4,
+                1,
+                5,
+                9,
+                2,
+                6,
+                5
+              ]
+            ],
+            "probe_output": [
+              3,
+              1,
+              4,
+              5,
+              9,
+              2,
+              6
+            ]
+          }
+        }
+      }
+    ],
+    [
+      {
+        "from": "GM",
+        "to": "Player 1",
+        "timestamp": "2026-02-26T17:23:43.535211",
+        "action": {
+          "type": "send message",
+          "content": "Function Output: [3, 1, 4, 5, 9, 2, 6]",
+          "label": "context"
+        }
+      },
+      {
+        "from": "Player 1",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:23:44.552993",
+        "action": {
+          "type": "get message",
+          "content": "GUESS:\n```python\ndef solution(xs):\n    return list(dict.fromkeys(xs))\n```\nThis is unique_preserve_order: removes duplicates, keeps first occurrence order.",
+          "label": "response"
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:23:46.741137",
+        "action": {
+          "type": "internal_consistency",
+          "content": {
+            "internal_consistency_score": 1.0,
+            "internal_consistency_all_observed": true,
+            "internal_consistency_violations": 0,
+            "observed_pair_count": 7
+          }
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:23:46.741137",
+        "action": {
+          "type": "test_accuracy",
+          "content": "Accuracy Score: 1.0"
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:23:46.741137",
+        "action": {
+          "type": "test_efficiency",
+          "content": "Efficiency Score: 0.33333333333333337"
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:23:46.741137",
+        "action": {
+          "type": "test_slack",
+          "content": "Slack Score: 3"
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:23:46.741680",
+        "action": {
+          "type": "outcome",
+          "content": "Game Verdict: WIN"
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:23:46.741680",
+        "action": {
+          "type": "reveal_function",
+          "content": "That is correct! \nThe hidden function was:\n\ncategory=Category.LIST_SEQUENCE,\n    difficulty=Difficulty.MEDIUM,\n    confusers=[\"unique_sorted\", \"sort_ascending\", \"sort_descending\"],\n    family_id=\"list_uniques\"\n)\ndef unique_preserve_order(xs: List[int]) -> List[int]:\n    \"\"\"Remove duplicates while preserving first-seen order.\"\"\"\n    seen = set()\n    out: List[int] = []\n    for v in xs:\n        if v not in seen:\n            seen.add(v)\n            out.append(v)\n    return out"
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:23:46.741680",
+        "action": {
+          "type": "final_guess_code",
+          "content": "Your guess: \n\ndef solution(xs):\n    return list(dict.fromkeys(xs))"
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:23:46.741680",
+        "action": {
+          "type": "total_turns_used_and_remaining",
+          "content": {
+            "max_allowed_turns": 10,
+            "total_turns_used": 7,
+            "total_turns_remaining": 3
+          }
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:23:46.741680",
+        "action": {
+          "type": "parse_error_count",
+          "content": "Parse error count: 0"
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:23:46.741680",
+        "action": {
+          "type": "runtime_error_count",
+          "content": "Runtime error count: 0"
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:23:46.742282",
+        "action": {
+          "type": "hypothesis_quality_summary",
+          "content": {
+            "format_errors": 0,
+            "top1_hit_at_stop": 1,
+            "top3_hit_at_stop": 1,
+            "prob_true_at_stop": 0.95,
+            "avg_neg_log_prob_true": 0.30042343416028994,
+            "top1_switches": 0
+          }
+        }
+      },
+      {
+        "from": "GM",
+        "to": "GM",
+        "timestamp": "2026-02-26T17:23:46.742282",
+        "action": {
+          "type": "probe_information_summary",
+          "content": "Probes: 7 | Unique inputs: 7 (diversity=1.00) | Unique outputs: 7 (novelty=1.00, entropy=2.81 bits)"
+        }
+      }
+    ]
+  ],
+  "Aborted": false,
+  "Lose": false,
+  "Success": true,
+  "efficiency": 0.33333333333333337,
+  "slack": 3,
+  "accuracy": 1.0,
+  "parse_error_count": 0,
+  "runtime_error_count": 0,
+  "turns_used": 7,
+  "max_turns": 10,
+  "observed_pairs": [
+    {
+      "round": 1,
+      "args": [
+        [
+          1,
+          2,
+          3,
+          2,
+          1
+        ]
+      ],
+      "output": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "round": 2,
+      "args": [
+        [
+          3,
+          2,
+          1,
+          2,
+          3
+        ]
+      ],
+      "output": [
+        3,
+        2,
+        1
+      ]
+    },
+    {
+      "round": 3,
+      "args": [
+        [
+          5,
+          4,
+          3,
+          2,
+          1,
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      ],
+      "output": [
+        5,
+        4,
+        3,
+        2,
+        1
+      ]
+    },
+    {
+      "round": 4,
+      "args": [
+        [
+          2,
+          2,
+          2,
+          2
+        ]
+      ],
+      "output": [
+        2
+      ]
+    },
+    {
+      "round": 5,
+      "args": [
+        [
+          7,
+          8,
+          9
+        ]
+      ],
+      "output": [
+        7,
+        8,
+        9
+      ]
+    },
+    {
+      "round": 6,
+      "args": [
+        [
+          9,
+          8,
+          7
+        ]
+      ],
+      "output": [
+        9,
+        8,
+        7
+      ]
+    },
+    {
+      "round": 7,
+      "args": [
+        [
+          3,
+          1,
+          4,
+          1,
+          5,
+          9,
+          2,
+          6,
+          5
+        ]
+      ],
+      "output": [
+        3,
+        1,
+        4,
+        5,
+        9,
+        2,
+        6
+      ]
+    }
+  ],
+  "probe_count": 7,
+  "unique_input_count": 7,
+  "unique_output_count": 7,
+  "novelty_rate": 1.0,
+  "input_diversity": 1.0,
+  "output_entropy_bits": 2.807354922057604,
+  "internal_consistency_score": 1.0,
+  "internal_consistency_all_observed": true,
+  "internal_consistency_violations": 0,
+  "hypothesis_format_error_count": 0,
+  "hypothesis_top1_hit_at_stop": 1,
+  "hypothesis_top3_hit_at_stop": 1,
+  "hypothesis_prob_true_at_stop": 0.95,
+  "hypothesis_avg_negative_log_prob_true": 0.30042343416028994,
+  "hypothesis_top1_switches": 0,
+  "Request Count": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "Violated Request Count": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "Parsed Request Count": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ]
+}

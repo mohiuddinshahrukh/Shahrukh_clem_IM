@@ -1,0 +1,22 @@
+{
+  "clem_version": "3.3.4",
+  "created": "2026-02-08T14:53:50.497082",
+  "player_models": {
+    "0": {
+      "model_name": "gpt-4.1-2025-04-14",
+      "backend": "openai",
+      "lookup_source": "E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\clemgame-template\\model_registry.json",
+      "model_id": "gpt-4.1-2025-04-14"
+    }
+  },
+  "games": {
+    "Functionigma Game": {
+      "game_path": "E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\clemgame-template\\functionigma",
+      "benchmark_start": "2026-02-26T17:21:07.368266",
+      "benchmark_end": "2026-02-26T17:28:10.842233",
+      "duration": "0:07:03.473967",
+      "duration_seconds": 423.473967,
+      "num_instances": 30
+    }
+  }
+}

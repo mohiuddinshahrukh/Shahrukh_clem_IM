@@ -1,0 +1,254 @@
+{
+  "game_id": 5,
+  "callable": "piecewise_linear_break1",
+  "signature": "(x: int) -> int",
+  "category": "SCALAR_MATH",
+  "difficulty": "hard",
+  "candidate_ids": [
+    "piecewise_linear_break0",
+    "piecewise_linear_break1"
+  ],
+  "docstring": "2*x if x < 1 else x + 3.",
+  "test_cases": [
+    {
+      "args": [
+        1000
+      ],
+      "expected": 1003
+    },
+    {
+      "args": [
+        -2
+      ],
+      "expected": -4
+    },
+    {
+      "args": [
+        10
+      ],
+      "expected": 13
+    },
+    {
+      "args": [
+        -1000
+      ],
+      "expected": -2000
+    },
+    {
+      "args": [
+        -99
+      ],
+      "expected": -198
+    },
+    {
+      "args": [
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "args": [
+        99
+      ],
+      "expected": 102
+    },
+    {
+      "args": [
+        2
+      ],
+      "expected": 5
+    },
+    {
+      "args": [
+        -1
+      ],
+      "expected": -2
+    },
+    {
+      "args": [
+        1
+      ],
+      "expected": 4
+    },
+    {
+      "args": [
+        -10
+      ],
+      "expected": -20
+    },
+    {
+      "args": [
+        11
+      ],
+      "expected": 14
+    },
+    {
+      "args": [
+        9
+      ],
+      "expected": 12
+    },
+    {
+      "args": [
+        -100
+      ],
+      "expected": -200
+    },
+    {
+      "args": [
+        29
+      ],
+      "expected": 32
+    },
+    {
+      "args": [
+        100
+      ],
+      "expected": 103
+    },
+    {
+      "args": [
+        -19
+      ],
+      "expected": -38
+    },
+    {
+      "args": [
+        34
+      ],
+      "expected": 37
+    },
+    {
+      "args": [
+        -32
+      ],
+      "expected": -64
+    },
+    {
+      "args": [
+        50
+      ],
+      "expected": 53
+    },
+    {
+      "args": [
+        24
+      ],
+      "expected": 27
+    },
+    {
+      "args": [
+        30
+      ],
+      "expected": 33
+    },
+    {
+      "args": [
+        -37
+      ],
+      "expected": -74
+    },
+    {
+      "args": [
+        19
+      ],
+      "expected": 22
+    },
+    {
+      "args": [
+        26
+      ],
+      "expected": 29
+    },
+    {
+      "args": [
+        5
+      ],
+      "expected": 8
+    },
+    {
+      "args": [
+        -49
+      ],
+      "expected": -98
+    },
+    {
+      "args": [
+        -12
+      ],
+      "expected": -24
+    },
+    {
+      "args": [
+        6
+      ],
+      "expected": 9
+    },
+    {
+      "args": [
+        38
+      ],
+      "expected": 41
+    },
+    {
+      "args": [
+        36
+      ],
+      "expected": 39
+    },
+    {
+      "args": [
+        37
+      ],
+      "expected": 40
+    },
+    {
+      "args": [
+        -18
+      ],
+      "expected": -36
+    },
+    {
+      "args": [
+        -39
+      ],
+      "expected": -78
+    },
+    {
+      "args": [
+        8
+      ],
+      "expected": 11
+    },
+    {
+      "args": [
+        12
+      ],
+      "expected": 15
+    },
+    {
+      "args": [
+        -11
+      ],
+      "expected": -22
+    },
+    {
+      "args": [
+        -29
+      ],
+      "expected": -58
+    },
+    {
+      "args": [
+        35
+      ],
+      "expected": 38
+    },
+    {
+      "args": [
+        17
+      ],
+      "expected": 20
+    }
+  ]
+}

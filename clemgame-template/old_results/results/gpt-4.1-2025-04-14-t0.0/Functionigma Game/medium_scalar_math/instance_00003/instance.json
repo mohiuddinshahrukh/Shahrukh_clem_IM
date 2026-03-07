@@ -1,0 +1,194 @@
+{
+  "game_id": 3,
+  "callable": "clamp_0_9",
+  "signature": "(x: int) -> int",
+  "category": "SCALAR_MATH",
+  "difficulty": "medium",
+  "candidate_ids": [
+    "clamp_0_10",
+    "clamp_0_9"
+  ],
+  "docstring": "Clamp x into [0, 9].",
+  "test_cases": [
+    {
+      "args": [
+        2
+      ],
+      "expected": 2
+    },
+    {
+      "args": [
+        1000
+      ],
+      "expected": 9
+    },
+    {
+      "args": [
+        -99
+      ],
+      "expected": 0
+    },
+    {
+      "args": [
+        -1
+      ],
+      "expected": 0
+    },
+    {
+      "args": [
+        10
+      ],
+      "expected": 9
+    },
+    {
+      "args": [
+        99
+      ],
+      "expected": 9
+    },
+    {
+      "args": [
+        -1000
+      ],
+      "expected": 0
+    },
+    {
+      "args": [
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "args": [
+        0
+      ],
+      "expected": 0
+    },
+    {
+      "args": [
+        -2
+      ],
+      "expected": 0
+    },
+    {
+      "args": [
+        -10
+      ],
+      "expected": 0
+    },
+    {
+      "args": [
+        100
+      ],
+      "expected": 9
+    },
+    {
+      "args": [
+        11
+      ],
+      "expected": 9
+    },
+    {
+      "args": [
+        -100
+      ],
+      "expected": 0
+    },
+    {
+      "args": [
+        9
+      ],
+      "expected": 9
+    },
+    {
+      "args": [
+        -32
+      ],
+      "expected": 0
+    },
+    {
+      "args": [
+        -25
+      ],
+      "expected": 0
+    },
+    {
+      "args": [
+        -47
+      ],
+      "expected": 0
+    },
+    {
+      "args": [
+        -12
+      ],
+      "expected": 0
+    },
+    {
+      "args": [
+        -8
+      ],
+      "expected": 0
+    },
+    {
+      "args": [
+        -40
+      ],
+      "expected": 0
+    },
+    {
+      "args": [
+        18
+      ],
+      "expected": 9
+    },
+    {
+      "args": [
+        -43
+      ],
+      "expected": 0
+    },
+    {
+      "args": [
+        -27
+      ],
+      "expected": 0
+    },
+    {
+      "args": [
+        -28
+      ],
+      "expected": 0
+    },
+    {
+      "args": [
+        44
+      ],
+      "expected": 9
+    },
+    {
+      "args": [
+        -16
+      ],
+      "expected": 0
+    },
+    {
+      "args": [
+        -48
+      ],
+      "expected": 0
+    },
+    {
+      "args": [
+        28
+      ],
+      "expected": 9
+    },
+    {
+      "args": [
+        -22
+      ],
+      "expected": 0
+    }
+  ]
+}

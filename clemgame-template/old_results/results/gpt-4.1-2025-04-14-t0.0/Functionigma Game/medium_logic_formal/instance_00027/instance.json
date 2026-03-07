@@ -1,0 +1,146 @@
+{
+  "game_id": 27,
+  "callable": "has_equal_counts_all_brackets",
+  "signature": "(s: str) -> bool",
+  "category": "LOGIC_FORMAL",
+  "difficulty": "medium",
+  "candidate_ids": [
+    "has_equal_counts_all_brackets",
+    "has_equal_paren_counts"
+  ],
+  "docstring": "\n    True iff counts match independently for (), [], {}.\n    Ignores nesting/order, only counts.\n    ",
+  "test_cases": [
+    {
+      "args": [
+        "a-b"
+      ],
+      "expected": true
+    },
+    {
+      "args": [
+        "hello"
+      ],
+      "expected": true
+    },
+    {
+      "args": [
+        "   "
+      ],
+      "expected": true
+    },
+    {
+      "args": [
+        "aba"
+      ],
+      "expected": true
+    },
+    {
+      "args": [
+        "ab"
+      ],
+      "expected": true
+    },
+    {
+      "args": [
+        " "
+      ],
+      "expected": true
+    },
+    {
+      "args": [
+        "hello world"
+      ],
+      "expected": true
+    },
+    {
+      "args": [
+        "A"
+      ],
+      "expected": true
+    },
+    {
+      "args": [
+        "aA"
+      ],
+      "expected": true
+    },
+    {
+      "args": [
+        "a"
+      ],
+      "expected": true
+    },
+    {
+      "args": [
+        "123"
+      ],
+      "expected": true
+    },
+    {
+      "args": [
+        ""
+      ],
+      "expected": true
+    },
+    {
+      "args": [
+        "_x"
+      ],
+      "expected": true
+    },
+    {
+      "args": [
+        ")("
+      ],
+      "expected": true
+    },
+    {
+      "args": [
+        "([{}])"
+      ],
+      "expected": true
+    },
+    {
+      "args": [
+        "1x"
+      ],
+      "expected": true
+    },
+    {
+      "args": [
+        "x1"
+      ],
+      "expected": true
+    },
+    {
+      "args": [
+        "(())"
+      ],
+      "expected": true
+    },
+    {
+      "args": [
+        "()"
+      ],
+      "expected": true
+    },
+    {
+      "args": [
+        "([)]"
+      ],
+      "expected": true
+    },
+    {
+      "args": [
+        "x-1"
+      ],
+      "expected": true
+    },
+    {
+      "args": [
+        "(]"
+      ],
+      "expected": false
+    }
+  ]
+}

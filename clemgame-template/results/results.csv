@@ -1,5 +1,2 @@
-,"-, clemscore","Functionigma Game, % Played","Functionigma Game, Quality Score","Functionigma Game, Quality Score (std)","all, Average % Played","all, Average Quality Score"
-command-a-03-2025-t0.0,55.56,100.0,55.56,52.7,100.0,55.56
-gpt-3.5-turbo-t0.0,0.0,100.0,0.0,0.0,100.0,0.0
-gpt-4.1-2025-04-14-t0.0,78.57,100.0,78.57,42.58,100.0,78.57
-gpt-4o-2024-08-06-t0.0,0.0,100.0,0.0,0.0,100.0,0.0
+,"-, clemscore","Functionigma Game, % Played","Functionigma Game, Quality Score","Functionigma Game, Quality Score (std)","all, Average % Played","all, Average Quality Score","function_detective, % Played","function_detective, Quality Score","function_detective, Quality Score (std)"
+Qwen3-VL-30B-A3B-Instruct-FP8-t0.0,28.57,100.0,57.14,53.45,100.0,28.57,100.0,0.0,0.0

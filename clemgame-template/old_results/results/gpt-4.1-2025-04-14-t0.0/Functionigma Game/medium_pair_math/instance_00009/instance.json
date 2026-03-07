@@ -1,0 +1,224 @@
+{
+  "game_id": 9,
+  "callable": "abs_difference",
+  "signature": "(x: int, y: int) -> int",
+  "category": "PAIR_MATH",
+  "difficulty": "medium",
+  "candidate_ids": [
+    "abs_difference",
+    "signed_difference"
+  ],
+  "docstring": "Return abs(x - y).",
+  "test_cases": [
+    {
+      "args": [
+        99,
+        1000
+      ],
+      "expected": 901
+    },
+    {
+      "args": [
+        10,
+        -2
+      ],
+      "expected": 12
+    },
+    {
+      "args": [
+        -1,
+        -1
+      ],
+      "expected": 0
+    },
+    {
+      "args": [
+        -1000,
+        0
+      ],
+      "expected": 1000
+    },
+    {
+      "args": [
+        10,
+        -99
+      ],
+      "expected": 109
+    },
+    {
+      "args": [
+        1,
+        10
+      ],
+      "expected": 9
+    },
+    {
+      "args": [
+        -99,
+        1000
+      ],
+      "expected": 1099
+    },
+    {
+      "args": [
+        0,
+        -10
+      ],
+      "expected": 10
+    },
+    {
+      "args": [
+        -1,
+        99
+      ],
+      "expected": 100
+    },
+    {
+      "args": [
+        -10,
+        -1
+      ],
+      "expected": 9
+    },
+    {
+      "args": [
+        -1,
+        2
+      ],
+      "expected": 3
+    },
+    {
+      "args": [
+        0,
+        1
+      ],
+      "expected": 1
+    },
+    {
+      "args": [
+        -1,
+        -99
+      ],
+      "expected": 98
+    },
+    {
+      "args": [
+        1000,
+        1
+      ],
+      "expected": 999
+    },
+    {
+      "args": [
+        -100,
+        1000
+      ],
+      "expected": 1100
+    },
+    {
+      "args": [
+        1,
+        2
+      ],
+      "expected": 1
+    },
+    {
+      "args": [
+        2,
+        1000
+      ],
+      "expected": 998
+    },
+    {
+      "args": [
+        1,
+        -2
+      ],
+      "expected": 3
+    },
+    {
+      "args": [
+        -10,
+        10
+      ],
+      "expected": 20
+    },
+    {
+      "args": [
+        2,
+        0
+      ],
+      "expected": 2
+    },
+    {
+      "args": [
+        0,
+        -2
+      ],
+      "expected": 2
+    },
+    {
+      "args": [
+        -100,
+        99
+      ],
+      "expected": 199
+    },
+    {
+      "args": [
+        1,
+        99
+      ],
+      "expected": 98
+    },
+    {
+      "args": [
+        -25,
+        10
+      ],
+      "expected": 35
+    },
+    {
+      "args": [
+        1,
+        11
+      ],
+      "expected": 10
+    },
+    {
+      "args": [
+        11,
+        99
+      ],
+      "expected": 88
+    },
+    {
+      "args": [
+        11,
+        -10
+      ],
+      "expected": 21
+    },
+    {
+      "args": [
+        -10,
+        100
+      ],
+      "expected": 110
+    },
+    {
+      "args": [
+        -1,
+        -100
+      ],
+      "expected": 99
+    },
+    {
+      "args": [
+        0,
+        11
+      ],
+      "expected": 11
+    }
+  ]
+}
