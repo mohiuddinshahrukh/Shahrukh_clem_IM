@@ -1,84 +1,48 @@
-I want to play a game with you.
-This is a turn taking game, so once it will be your turn, then mine.
+Hey — let’s play a little guessing game.
 
-In this game, I give you a function signature (How many input parameters, what their types are, what the return value is expected to be).
+I’m thinking of a hidden Python function. I’ll tell you its function signature (what the inputs and output look like), and you try to figure out what the function is.
 
-Other than this, you can "probe" the hidden function, which effectively means you can give me inputs that I will send to the function and return the outputs to you.
+You can learn about it by asking me to run it on inputs you choose. I’ll reply with the output. After you’ve seen enough examples, you’ll write the function in Python.
 
-This exchange of inputs and outputs is called induction - which is exactly your task in this game: To perform function induction.
+SETUP
+- Function signature: $SIGNATURE_OF_CURRENT_FUNCTION$
+- You have $MAX_TURNS$ turns total.
+- Your best strategy is to make a guess at $MAX_TURNS$ turns - 1.
 
-On every turn that you get, you can do one of the following TWO things: 
-	1. $TEST_TAG$
-		or
-	2. $SOLVE_TAG$
-	
-but be careful, you cannot do both things at the same time!
-If both things are done at the same time, it leads to a penalty and a turn is lost.
+WHAT YOU CAN DO EACH TURN (pick exactly ONE)
+1) TEST — ask for the output on one input
+2) SOLVE — guess the whole function by sending Python code
 
-If turns are lost like this, you lose points and score less in the end.
-Speaking of score, the score depends on two things:
-    1. How fast you guess the function - less turns is good.
-    2. If the function you guessed is correct or not - incorrect function = 0 Score
+IMPORTANT RULES (so we don’t get mixed up)
+- One turn = one action. Don’t TEST and SOLVE in the same message.
+- Don’t write OUTPUT:. Only I will write OUTPUT: after your TEST.
+- You only get points if your SOLVE is correct.
+- Solving earlier is better than solving late, so don’t keep testing forever.
+- If you still haven’t solved by the second-to-last turn, you MUST send your best SOLVE then.
 
-So in effect, its better to take more turns that guess wrong.
+HOW TO WRITE YOUR MESSAGES (strict format)
+- To test:
+TEST: <inputs>
 
-When you make a guess of what the function might be, you must use the following output format very strictly also - To solve, write:
-$SOLVE_TAG$ ```python
-def solution($VARIABLES$):
-    ...
-```
-When you make a probe/ try to get more outputs from the function the following output format must be followed also - To test the function, write exactly one line:
-$TEST_TAG$ <inputs>
-
-The output you get from me will be followed by the tag $OUTPUT_TAG$.
-IMPORTANT: You must NEVER write $OUTPUT_TAG$. Only I will write $OUTPUT_TAG$.
-From you, nothing else other than a $TEST_TAG$ <inputs> or $SOLVE_TAG$ ```python
-def solution($VARIABLES$):
-    ...
-```
-is expected.
-
-Ready? Here is the setup:
-	The function signature is:
-	$SIGNATURE_OF_CURRENT_FUNCTION$
-
-	You have $MAX_TURNS$ turns total.
-
-
-	Your score depends on:
-		- correctness (you must identify the function by providing correct Python code)
-		- speed (fewer tests before solving gives a higher score)
-
-
-A good strategy is to solve by the second-to-last turn if you are still unsure. This effectively means that on the $MAX_TURNS$ - 1 turn, you have to make an attempt with all the information you have gathered and make a guess.
-
-Make a guess once you're confident - confident what the function is, but not earlier.
-
-If you never send $SOLVE_TAG$, you will lose when turns run out.
-
-## Input formatting
-- Strings must be quoted (e.g. "hello").
-- Booleans must be True/False.
-- Use commas between multiple inputs.
-- Do not write any extra text outside the required format.
-
-Try to choose tests that could change the output (counterexamples).
-Do not only test “normal” inputs. If you only see the same output every time, you have not learned much yet.
-
-To help digest all of this, lets do an example
-Here is one example:
-
-Example (format only):
-You give the $INPUT_TAG$ $EXAMPLE_TEST_LINE$
-I provide you with $OUTPUT_TAG$ $EXAMPLE_OUTPUT_LINE$
-IMPORTANT: In your real turns, write ONLY $TEST_TAG$ ... OR $SOLVE_TAG$ ... (never write $OUTPUT_TAG$).
-
-if you do anything other than the following, it will be a game violation and you will lose a turn e.g:
-Output ONLY:
-$TEST_TAG$ <inputs>
-OR
-$SOLVE_TAG$ ```python
+- To solve:
+SOLVE: ```python
 def solution($VARIABLES$):
     ...
 ```
 
+INPUT NOTES
+
+Strings must be quoted (e.g., "hello")
+Booleans must be True/False
+Use commas between multiple inputs
+Use only literal values in TEST inputs (no .replace(), no .lower(), etc.)
+
+A TIP
+Try “counterexample” tests — inputs that might make the output change. If you keep getting the same output, you probably haven’t learned much yet.
+
+EXAMPLE (format only)
+TEST: 2, 1000
+OUTPUT: 2
+(Remember: you must never write OUTPUT.)
+
+Alright — your turn.

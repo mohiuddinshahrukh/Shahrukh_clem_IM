@@ -1,0 +1,25 @@
+{
+  "openai": {
+    "api_key": "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"
+  },
+  "anthropic": {
+    "api_key": ""
+  },
+  "google": {
+    "api_key": ""
+  },
+  "cohere": {
+    "api_key": "r0821BA72B86YjfIEK03A0xljZO4DSfH38fKYiOW"
+  },
+  "mistral": {
+    "api_key": ""
+  },
+  "huggingface": {
+    "api_key": "",
+    "organisation": ""
+  },
+  "generic_openai_compatible": {
+    "api_key": "asd-asd-asd",
+    "base_url": "https://jarvis.ling.uni-potsdam.de/clp-chat/api/v1/"
+  }
+}

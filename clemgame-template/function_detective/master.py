@@ -219,29 +219,29 @@ class FunctionDetectiveGameMaster(DialogueGameMaster):
         prompt = prompt.replace("$EXAMPLE_TEST_LINE$", example_test_line)
         prompt = prompt.replace("$EXAMPLE_OUTPUT_LINE$", example_output_line)
         # Flags
-        use_hints = _env_flag("FUNCTION_DETECTIVE_USE_HINTS", default=False)
-        iterative = _env_flag("FUNCTION_DETECTIVE_ITERATIVE_GUESSES", default=False)
-
-        # Optional hint (only if enabled and present in instance)
-        if use_hints:
-            hint = game_instance.get("hint", "")
-            if hint:
-                prompt += f"\n\nHINT: {hint}\n"
-
-        # Mode instructions (keep short, no candidates, no hypotheses)
-        if iterative:
-            prompt += (
-                f"\n\nMODE: Iterative {TRY_TAG} mode is ENABLED.\n"
-                "On EVERY turn you MUST output:\n"
-                f"{TRY_TAG} ```python ... ```\n"
-                f"{NEXT_TEST_TAG} <inputs>\n"
-                f"Do NOT use {TEST_TAG} or {SOLVE_TAG} in this mode.\n"
-            )
-        else:
-            prompt += (
-                f"\n\nMODE: Iterative {TRY_TAG} mode is DISABLED (strict mode).\n"
-                f"Use {TEST_TAG} to probe. When you output {SOLVE_TAG}, the game ends immediately (WIN or LOSS).\n"
-            )
+        # use_hints = _env_flag("FUNCTION_DETECTIVE_USE_HINTS", default=False)
+        # iterative = _env_flag("FUNCTION_DETECTIVE_ITERATIVE_GUESSES", default=False)
+        #
+        # # Optional hint (only if enabled and present in instance)
+        # if use_hints:
+        #     hint = game_instance.get("hint", "")
+        #     if hint:
+        #         prompt += f"\n\nHINT: {hint}\n"
+        #
+        # # Mode instructions (keep short, no candidates, no hypotheses)
+        # if iterative:
+        #     prompt += (
+        #         f"\n\nMODE: Iterative {TRY_TAG} mode is ENABLED.\n"
+        #         "On EVERY turn you MUST output:\n"
+        #         f"{TRY_TAG} ```python ... ```\n"
+        #         f"{NEXT_TEST_TAG} <inputs>\n"
+        #         f"Do NOT use {TEST_TAG} or {SOLVE_TAG} in this mode.\n"
+        #     )
+        # else:
+        #     prompt += (
+        #         f"\n\nMODE: Iterative {TRY_TAG} mode is DISABLED (strict mode).\n"
+        #         f"Use {TEST_TAG} to probe. When you output {SOLVE_TAG}, the game ends immediately (WIN or LOSS).\n"
+        #     )
 
         # Add player with initial context
         self.guesser_player = Guesser(self.player_models[0])
@@ -253,7 +253,7 @@ class FunctionDetectiveGameMaster(DialogueGameMaster):
             function_signature=self.signature,
             function_callable=self.game_instance["callable"],
         )
-        self.state.iterative_guesses_enabled = iterative
+        # self.state.iterative_guesses_enabled = iterative
 
     def _format_value(self, v):
         """Human-readable, stable formatting for transcript + context."""

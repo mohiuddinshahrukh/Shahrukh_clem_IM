@@ -1,0 +1,73 @@
+{
+  "meta": {
+    "game_name": "function_detective",
+    "experiment_name": "hard_scalar_math",
+    "game_id": 2,
+    "results_folder": "gpt-4-0125-preview-t0.0",
+    "clem_version": "3.6.2",
+    "round_count": 5,
+    "completed": true
+  },
+  "players": {
+    "GM": {
+      "game_role": "Game Master",
+      "model_name": "programmatic"
+    },
+    "Player 1": {
+      "game_role": "Guesser",
+      "model_name": "gpt-4-0125-preview"
+    }
+  },
+  "round scores": {
+    "0": {
+      "Request Count": 1,
+      "Violated Request Count": 0,
+      "Parsed Request Count": 1,
+      "Request Success Ratio": 1.0
+    },
+    "1": {
+      "Request Count": 1,
+      "Violated Request Count": 0,
+      "Parsed Request Count": 1,
+      "Request Success Ratio": 1.0
+    },
+    "2": {
+      "Request Count": 1,
+      "Violated Request Count": 0,
+      "Parsed Request Count": 1,
+      "Request Success Ratio": 1.0
+    },
+    "3": {
+      "Request Count": 1,
+      "Violated Request Count": 0,
+      "Parsed Request Count": 1,
+      "Request Success Ratio": 1.0
+    },
+    "4": {
+      "Request Count": 1,
+      "Violated Request Count": 0,
+      "Parsed Request Count": 1,
+      "Request Success Ratio": 1.0
+    }
+  },
+  "episode scores": {
+    "Request Count": 5,
+    "Parsed Request Count": 5,
+    "Violated Request Count": 0,
+    "Request Success Ratio": 1.0,
+    "Aborted": false,
+    "Lose": true,
+    "Success": false,
+    "Main Score": 0.0,
+    "binary_success": 0,
+    "efficiency": 0.0
+  },
+  "player_models": {
+    "0": {
+      "model_name": "gpt-4-0125-preview",
+      "backend": "openai",
+      "lookup_source": "D:\\Uni\\Semester 5\\IM - Clembench\\Shahrukh_clem_IM\\clemgame-template\\function_detective\\model_registry.json",
+      "model_id": "gpt-4-0125-preview"
+    }
+  }
+}
