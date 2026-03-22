@@ -1,0 +1,67 @@
+2025-12-03 19:44:05,223 - __main__ - WARNING - Function f_add has unknown difficulty: easy. Skipping.
+2025-12-03 19:44:05,223 - __main__ - WARNING - Function rev_str has unknown difficulty: easy. Skipping.
+2025-12-03 19:45:38,239 - __main__ - WARNING - Function f_add has unknown difficulty: easy. Skipping.
+2025-12-03 19:45:38,239 - __main__ - WARNING - Function rev_str has unknown difficulty: easy. Skipping.
+2026-01-10 21:28:12,190 - clemcore.cli - INFO - clem run took: 0:00:00
+2026-01-10 21:31:04,948 - clemcore.cli - INFO - clem run took: 0:00:00
+2026-01-10 21:31:21,490 - clemcore.cli - INFO - clem run took: 0:00:00
+2026-01-10 21:32:19,665 - clemcore.cli - INFO - Found '1' game matching the game_selector="Functionigma Game"
+2026-01-10 21:32:19,684 - clemcore.cli - INFO - {
+  "game_name": "Functionigma Game",
+  "description": "Functionigma Game",
+  "main_game": "Functionigma Game",
+  "players": 1,
+  "image": "none",
+  "languages": [
+    "en"
+  ],
+  "benchmark": [],
+  "game_path": "E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\clemgame-template\\functionigma"
+}
+2026-01-10 21:32:19,684 - clemcore.backends.model_registry - WARNING - Package lookup failed with exception: 'charmap' codec can't decode byte 0x81 in position 128269: character maps to <undefined>
+2026-01-10 21:32:19,684 - clemcore.cli - INFO - clem run took: 0:00:00.019094
+2026-01-10 21:32:45,867 - clemcore.cli - INFO - Found '1' game matching the game_selector="Functionigma Game"
+2026-01-10 21:32:45,867 - clemcore.cli - INFO - {
+  "game_name": "Functionigma Game",
+  "description": "Functionigma Game",
+  "main_game": "Functionigma Game",
+  "players": 1,
+  "image": "none",
+  "languages": [
+    "en"
+  ],
+  "benchmark": [],
+  "game_path": "E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\clemgame-template\\functionigma"
+}
+2026-01-10 21:32:45,869 - clemcore.backends.model_registry - WARNING - Package lookup failed with exception: 'charmap' codec can't decode byte 0x81 in position 128269: character maps to <undefined>
+2026-01-10 21:32:45,870 - clemcore.cli - INFO - clem run took: 0:00:00.003160
+2026-01-10 21:33:26,055 - clemcore.cli - INFO - Found '1' game matching the game_selector="Functionigma Game"
+2026-01-10 21:33:26,055 - clemcore.cli - INFO - {
+  "game_name": "Functionigma Game",
+  "description": "Functionigma Game",
+  "main_game": "Functionigma Game",
+  "players": 1,
+  "image": "none",
+  "languages": [
+    "en"
+  ],
+  "benchmark": [],
+  "game_path": "E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\clemgame-template\\functionigma"
+}
+2026-01-10 21:33:26,065 - clemcore.backends.model_registry - WARNING - Package lookup failed with exception: 'charmap' codec can't decode byte 0x81 in position 128269: character maps to <undefined>
+2026-01-10 21:33:26,065 - clemcore.cli - INFO - clem run took: 0:00:00.010243
+2026-02-26 17:15:48,330 - clemcore.cli - INFO - Found '1' game matching the game_selector="Functionigma Game"
+2026-02-26 17:15:48,333 - clemcore.cli - INFO - {
+  "game_name": "Functionigma Game",
+  "description": "Functionigma Game",
+  "main_game": "Functionigma Game",
+  "players": 1,
+  "image": "none",
+  "languages": [
+    "en"
+  ],
+  "benchmark": [],
+  "game_path": "E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\clemgame-template\\functionigma"
+}
+2026-02-26 17:15:48,334 - clemcore.backends.model_registry - WARNING - Package lookup failed with exception: 'charmap' codec can't decode byte 0x81 in position 128269: character maps to <undefined>
+2026-02-26 17:15:48,334 - clemcore.cli - INFO - clem run took: 0:00:00.012552

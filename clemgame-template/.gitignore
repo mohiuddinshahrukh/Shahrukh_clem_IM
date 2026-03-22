@@ -7,3 +7,10 @@
 # Track the top-level results folder
 !results/
 !results/**
+
+# Track function_detective
+!function_detective/
+!function_detective/**
+
+
+function_detective/.idea/

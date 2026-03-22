@@ -1,0 +1,1772 @@
+{
+  "experiments": [
+    {
+      "name": "easy_scalar_math",
+      "game_instances": [
+        {
+          "game_id": 0,
+          "callable": "abs_value",
+          "signature": "(x: int) -> int",
+          "category": "SCALAR_MATH",
+          "difficulty": "easy",
+          "hint": "We are looking for a simple one-variable numeric rule (single input → single output). Consider sign-sensitive behavior.",
+          "candidate_ids": [
+            "abs_value",
+            "clamp_0_9",
+            "piecewise_linear_break0",
+            "piecewise_linear_break1",
+            "square"
+          ],
+          "docstring": "Return absolute value of x.",
+          "test_cases": [
+            {
+              "args": [
+                -10
+              ],
+              "expected": 10
+            },
+            {
+              "args": [
+                0
+              ],
+              "expected": 0
+            },
+            {
+              "args": [
+                -2
+              ],
+              "expected": 2
+            },
+            {
+              "args": [
+                -99
+              ],
+              "expected": 99
+            },
+            {
+              "args": [
+                99
+              ],
+              "expected": 99
+            },
+            {
+              "args": [
+                10
+              ],
+              "expected": 10
+            },
+            {
+              "args": [
+                2
+              ],
+              "expected": 2
+            },
+            {
+              "args": [
+                -1
+              ],
+              "expected": 1
+            },
+            {
+              "args": [
+                1
+              ],
+              "expected": 1
+            },
+            {
+              "args": [
+                1000
+              ],
+              "expected": 1000
+            },
+            {
+              "args": [
+                11
+              ],
+              "expected": 11
+            },
+            {
+              "args": [
+                100
+              ],
+              "expected": 100
+            },
+            {
+              "args": [
+                9
+              ],
+              "expected": 9
+            },
+            {
+              "args": [
+                -100
+              ],
+              "expected": 100
+            },
+            {
+              "args": [
+                40
+              ],
+              "expected": 40
+            },
+            {
+              "args": [
+                -8
+              ],
+              "expected": 8
+            },
+            {
+              "args": [
+                -26
+              ],
+              "expected": 26
+            },
+            {
+              "args": [
+                -46
+              ],
+              "expected": 46
+            },
+            {
+              "args": [
+                -20
+              ],
+              "expected": 20
+            },
+            {
+              "args": [
+                25
+              ],
+              "expected": 25
+            }
+          ]
+        }
+      ],
+      "max_turns": 5,
+      "initial_prompt_guesser": "I want to play a game with you.\nThis is a turn taking game, so once it will be your turn, then mine.\n\nIn this game, I give you a function signature (How many input parameters, what their types are, what the return value is expected to be).\n\nOther than this, you can \"probe\" the hidden function, which effectively means you can give me inputs that I will send to the function and return the outputs to you.\n\nThis exchange of inputs and outputs is called induction - which is exactly your task in this game: To perform function induction.\n\nOn every turn that you get, you can do one of the following TWO things: \n\t1. $TEST_TAG$\n\t\tor\n\t2. $SOLVE_TAG$\n\t\nbut be careful, you cannot do both things at the same time!\nIf both things are done at the same time, it leads to a penalty and a turn is lost.\n\nIf turns are lost like this, you lose points and score less in the end.\nSpeaking of score, the score depends on two things:\n    1. How fast you guess the function - less turns is good.\n    2. If the function you guessed is correct or not - incorrect function = 0 Score\n\nSo in effect, its better to take more turns that guess wrong.\n\nWhen you make a guess of what the function might be, you must use the following output format very strictly also - To solve, write:\n$SOLVE_TAG$ ```python\ndef solution($VARIABLES$):\n    ...\n```\nWhen you make a probe/ try to get more outputs from the function the following output format must be followed also - To test the function, write exactly one line:\n$TEST_TAG$ <inputs>\n\nThe output you get from me will be followed by the tag $OUTPUT_TAG$.\nIMPORTANT: You must NEVER write $OUTPUT_TAG$. Only I will write $OUTPUT_TAG$.\nFrom you, nothing else other than a $TEST_TAG$ <inputs> or $SOLVE_TAG$ ```python\ndef solution($VARIABLES$):\n    ...\n```\nis expected.\n\nReady? Here is the setup:\n\tThe function signature is:\n\t$SIGNATURE_OF_CURRENT_FUNCTION$\n\n\tYou have $MAX_TURNS$ turns total.\n\n\n\tYour score depends on:\n\t\t- correctness (you must identify the function by providing correct Python code)\n\t\t- speed (fewer tests before solving gives a higher score)\n\n\nA good strategy is to solve by the second-to-last turn if you are still unsure. This effectively means that on the $MAX_TURNS$ - 1 turn, you have to make an attempt with all the information you have gathered and make a guess.\n\nMake a guess once you're confident - confident what the function is, but not earlier.\n\nIf you never send $SOLVE_TAG$, you will lose when turns run out.\n\n## Input formatting\n- Strings must be quoted (e.g. \"hello\").\n- Booleans must be True/False.\n- Use commas between multiple inputs.\n- Do not write any extra text outside the required format.\n\nTry to choose tests that could change the output (counterexamples).\nDo not only test “normal” inputs. If you only see the same output every time, you have not learned much yet.\n\nTo help digest all of this, lets do an example\nHere is one example:\n\nExample (format only):\nYou give the $INPUT_TAG$ $EXAMPLE_TEST_LINE$\nI provide you with $OUTPUT_TAG$ $EXAMPLE_OUTPUT_LINE$\nIMPORTANT: In your real turns, write ONLY $TEST_TAG$ ... OR $SOLVE_TAG$ ... (never write $OUTPUT_TAG$).\n\nif you do anything other than the following, it will be a game violation and you will lose a turn e.g:\nOutput ONLY:\n$TEST_TAG$ <inputs>\nOR\n$SOLVE_TAG$ ```python\ndef solution($VARIABLES$):\n    ...\n```\n\n"
+    },
+    {
+      "name": "easy_pair_math",
+      "game_instances": [
+        {
+          "game_id": 3,
+          "callable": "min_of_two",
+          "signature": "(x: int, y: int) -> int",
+          "category": "PAIR_MATH",
+          "difficulty": "easy",
+          "hint": "",
+          "candidate_ids": [
+            "abs_difference",
+            "clamp_x_0_10_ignore_y",
+            "max_of_two",
+            "min_of_two",
+            "signed_difference"
+          ],
+          "docstring": "Return min(x, y).",
+          "test_cases": [
+            {
+              "args": [
+                2,
+                1000
+              ],
+              "expected": 2
+            },
+            {
+              "args": [
+                -99,
+                -1
+              ],
+              "expected": -99
+            },
+            {
+              "args": [
+                10,
+                1000
+              ],
+              "expected": 10
+            },
+            {
+              "args": [
+                99,
+                -1000
+              ],
+              "expected": -1000
+            },
+            {
+              "args": [
+                1000,
+                1
+              ],
+              "expected": 1
+            },
+            {
+              "args": [
+                1000,
+                0
+              ],
+              "expected": 0
+            },
+            {
+              "args": [
+                -2,
+                2
+              ],
+              "expected": -2
+            },
+            {
+              "args": [
+                -100,
+                11
+              ],
+              "expected": -100
+            },
+            {
+              "args": [
+                9,
+                100
+              ],
+              "expected": 9
+            },
+            {
+              "args": [
+                2,
+                -1
+              ],
+              "expected": -1
+            },
+            {
+              "args": [
+                -10,
+                0
+              ],
+              "expected": -10
+            },
+            {
+              "args": [
+                1000,
+                -1
+              ],
+              "expected": -1
+            },
+            {
+              "args": [
+                99,
+                -2
+              ],
+              "expected": -2
+            },
+            {
+              "args": [
+                0,
+                9
+              ],
+              "expected": 0
+            },
+            {
+              "args": [
+                -100,
+                -100
+              ],
+              "expected": -100
+            },
+            {
+              "args": [
+                -10,
+                -100
+              ],
+              "expected": -100
+            },
+            {
+              "args": [
+                9,
+                10
+              ],
+              "expected": 9
+            },
+            {
+              "args": [
+                -2,
+                -10
+              ],
+              "expected": -10
+            },
+            {
+              "args": [
+                100,
+                -10
+              ],
+              "expected": -10
+            },
+            {
+              "args": [
+                14,
+                99
+              ],
+              "expected": 14
+            }
+          ]
+        }
+      ],
+      "max_turns": 5,
+      "initial_prompt_guesser": "I want to play a game with you.\nThis is a turn taking game, so once it will be your turn, then mine.\n\nIn this game, I give you a function signature (How many input parameters, what their types are, what the return value is expected to be).\n\nOther than this, you can \"probe\" the hidden function, which effectively means you can give me inputs that I will send to the function and return the outputs to you.\n\nThis exchange of inputs and outputs is called induction - which is exactly your task in this game: To perform function induction.\n\nOn every turn that you get, you can do one of the following TWO things: \n\t1. $TEST_TAG$\n\t\tor\n\t2. $SOLVE_TAG$\n\t\nbut be careful, you cannot do both things at the same time!\nIf both things are done at the same time, it leads to a penalty and a turn is lost.\n\nIf turns are lost like this, you lose points and score less in the end.\nSpeaking of score, the score depends on two things:\n    1. How fast you guess the function - less turns is good.\n    2. If the function you guessed is correct or not - incorrect function = 0 Score\n\nSo in effect, its better to take more turns that guess wrong.\n\nWhen you make a guess of what the function might be, you must use the following output format very strictly also - To solve, write:\n$SOLVE_TAG$ ```python\ndef solution($VARIABLES$):\n    ...\n```\nWhen you make a probe/ try to get more outputs from the function the following output format must be followed also - To test the function, write exactly one line:\n$TEST_TAG$ <inputs>\n\nThe output you get from me will be followed by the tag $OUTPUT_TAG$.\nIMPORTANT: You must NEVER write $OUTPUT_TAG$. Only I will write $OUTPUT_TAG$.\nFrom you, nothing else other than a $TEST_TAG$ <inputs> or $SOLVE_TAG$ ```python\ndef solution($VARIABLES$):\n    ...\n```\nis expected.\n\nReady? Here is the setup:\n\tThe function signature is:\n\t$SIGNATURE_OF_CURRENT_FUNCTION$\n\n\tYou have $MAX_TURNS$ turns total.\n\n\n\tYour score depends on:\n\t\t- correctness (you must identify the function by providing correct Python code)\n\t\t- speed (fewer tests before solving gives a higher score)\n\n\nA good strategy is to solve by the second-to-last turn if you are still unsure. This effectively means that on the $MAX_TURNS$ - 1 turn, you have to make an attempt with all the information you have gathered and make a guess.\n\nMake a guess once you're confident - confident what the function is, but not earlier.\n\nIf you never send $SOLVE_TAG$, you will lose when turns run out.\n\n## Input formatting\n- Strings must be quoted (e.g. \"hello\").\n- Booleans must be True/False.\n- Use commas between multiple inputs.\n- Do not write any extra text outside the required format.\n\nTry to choose tests that could change the output (counterexamples).\nDo not only test “normal” inputs. If you only see the same output every time, you have not learned much yet.\n\nTo help digest all of this, lets do an example\nHere is one example:\n\nExample (format only):\nYou give the $INPUT_TAG$ $EXAMPLE_TEST_LINE$\nI provide you with $OUTPUT_TAG$ $EXAMPLE_OUTPUT_LINE$\nIMPORTANT: In your real turns, write ONLY $TEST_TAG$ ... OR $SOLVE_TAG$ ... (never write $OUTPUT_TAG$).\n\nif you do anything other than the following, it will be a game violation and you will lose a turn e.g:\nOutput ONLY:\n$TEST_TAG$ <inputs>\nOR\n$SOLVE_TAG$ ```python\ndef solution($VARIABLES$):\n    ...\n```\n\n"
+    },
+    {
+      "name": "easy_list_sequence",
+      "game_instances": [],
+      "max_turns": 5,
+      "initial_prompt_guesser": "I want to play a game with you.\nThis is a turn taking game, so once it will be your turn, then mine.\n\nIn this game, I give you a function signature (How many input parameters, what their types are, what the return value is expected to be).\n\nOther than this, you can \"probe\" the hidden function, which effectively means you can give me inputs that I will send to the function and return the outputs to you.\n\nThis exchange of inputs and outputs is called induction - which is exactly your task in this game: To perform function induction.\n\nOn every turn that you get, you can do one of the following TWO things: \n\t1. $TEST_TAG$\n\t\tor\n\t2. $SOLVE_TAG$\n\t\nbut be careful, you cannot do both things at the same time!\nIf both things are done at the same time, it leads to a penalty and a turn is lost.\n\nIf turns are lost like this, you lose points and score less in the end.\nSpeaking of score, the score depends on two things:\n    1. How fast you guess the function - less turns is good.\n    2. If the function you guessed is correct or not - incorrect function = 0 Score\n\nSo in effect, its better to take more turns that guess wrong.\n\nWhen you make a guess of what the function might be, you must use the following output format very strictly also - To solve, write:\n$SOLVE_TAG$ ```python\ndef solution($VARIABLES$):\n    ...\n```\nWhen you make a probe/ try to get more outputs from the function the following output format must be followed also - To test the function, write exactly one line:\n$TEST_TAG$ <inputs>\n\nThe output you get from me will be followed by the tag $OUTPUT_TAG$.\nIMPORTANT: You must NEVER write $OUTPUT_TAG$. Only I will write $OUTPUT_TAG$.\nFrom you, nothing else other than a $TEST_TAG$ <inputs> or $SOLVE_TAG$ ```python\ndef solution($VARIABLES$):\n    ...\n```\nis expected.\n\nReady? Here is the setup:\n\tThe function signature is:\n\t$SIGNATURE_OF_CURRENT_FUNCTION$\n\n\tYou have $MAX_TURNS$ turns total.\n\n\n\tYour score depends on:\n\t\t- correctness (you must identify the function by providing correct Python code)\n\t\t- speed (fewer tests before solving gives a higher score)\n\n\nA good strategy is to solve by the second-to-last turn if you are still unsure. This effectively means that on the $MAX_TURNS$ - 1 turn, you have to make an attempt with all the information you have gathered and make a guess.\n\nMake a guess once you're confident - confident what the function is, but not earlier.\n\nIf you never send $SOLVE_TAG$, you will lose when turns run out.\n\n## Input formatting\n- Strings must be quoted (e.g. \"hello\").\n- Booleans must be True/False.\n- Use commas between multiple inputs.\n- Do not write any extra text outside the required format.\n\nTry to choose tests that could change the output (counterexamples).\nDo not only test “normal” inputs. If you only see the same output every time, you have not learned much yet.\n\nTo help digest all of this, lets do an example\nHere is one example:\n\nExample (format only):\nYou give the $INPUT_TAG$ $EXAMPLE_TEST_LINE$\nI provide you with $OUTPUT_TAG$ $EXAMPLE_OUTPUT_LINE$\nIMPORTANT: In your real turns, write ONLY $TEST_TAG$ ... OR $SOLVE_TAG$ ... (never write $OUTPUT_TAG$).\n\nif you do anything other than the following, it will be a game violation and you will lose a turn e.g:\nOutput ONLY:\n$TEST_TAG$ <inputs>\nOR\n$SOLVE_TAG$ ```python\ndef solution($VARIABLES$):\n    ...\n```\n\n"
+    },
+    {
+      "name": "easy_string",
+      "game_instances": [],
+      "max_turns": 5,
+      "initial_prompt_guesser": "I want to play a game with you.\nThis is a turn taking game, so once it will be your turn, then mine.\n\nIn this game, I give you a function signature (How many input parameters, what their types are, what the return value is expected to be).\n\nOther than this, you can \"probe\" the hidden function, which effectively means you can give me inputs that I will send to the function and return the outputs to you.\n\nThis exchange of inputs and outputs is called induction - which is exactly your task in this game: To perform function induction.\n\nOn every turn that you get, you can do one of the following TWO things: \n\t1. $TEST_TAG$\n\t\tor\n\t2. $SOLVE_TAG$\n\t\nbut be careful, you cannot do both things at the same time!\nIf both things are done at the same time, it leads to a penalty and a turn is lost.\n\nIf turns are lost like this, you lose points and score less in the end.\nSpeaking of score, the score depends on two things:\n    1. How fast you guess the function - less turns is good.\n    2. If the function you guessed is correct or not - incorrect function = 0 Score\n\nSo in effect, its better to take more turns that guess wrong.\n\nWhen you make a guess of what the function might be, you must use the following output format very strictly also - To solve, write:\n$SOLVE_TAG$ ```python\ndef solution($VARIABLES$):\n    ...\n```\nWhen you make a probe/ try to get more outputs from the function the following output format must be followed also - To test the function, write exactly one line:\n$TEST_TAG$ <inputs>\n\nThe output you get from me will be followed by the tag $OUTPUT_TAG$.\nIMPORTANT: You must NEVER write $OUTPUT_TAG$. Only I will write $OUTPUT_TAG$.\nFrom you, nothing else other than a $TEST_TAG$ <inputs> or $SOLVE_TAG$ ```python\ndef solution($VARIABLES$):\n    ...\n```\nis expected.\n\nReady? Here is the setup:\n\tThe function signature is:\n\t$SIGNATURE_OF_CURRENT_FUNCTION$\n\n\tYou have $MAX_TURNS$ turns total.\n\n\n\tYour score depends on:\n\t\t- correctness (you must identify the function by providing correct Python code)\n\t\t- speed (fewer tests before solving gives a higher score)\n\n\nA good strategy is to solve by the second-to-last turn if you are still unsure. This effectively means that on the $MAX_TURNS$ - 1 turn, you have to make an attempt with all the information you have gathered and make a guess.\n\nMake a guess once you're confident - confident what the function is, but not earlier.\n\nIf you never send $SOLVE_TAG$, you will lose when turns run out.\n\n## Input formatting\n- Strings must be quoted (e.g. \"hello\").\n- Booleans must be True/False.\n- Use commas between multiple inputs.\n- Do not write any extra text outside the required format.\n\nTry to choose tests that could change the output (counterexamples).\nDo not only test “normal” inputs. If you only see the same output every time, you have not learned much yet.\n\nTo help digest all of this, lets do an example\nHere is one example:\n\nExample (format only):\nYou give the $INPUT_TAG$ $EXAMPLE_TEST_LINE$\nI provide you with $OUTPUT_TAG$ $EXAMPLE_OUTPUT_LINE$\nIMPORTANT: In your real turns, write ONLY $TEST_TAG$ ... OR $SOLVE_TAG$ ... (never write $OUTPUT_TAG$).\n\nif you do anything other than the following, it will be a game violation and you will lose a turn e.g:\nOutput ONLY:\n$TEST_TAG$ <inputs>\nOR\n$SOLVE_TAG$ ```python\ndef solution($VARIABLES$):\n    ...\n```\n\n"
+    },
+    {
+      "name": "easy_logic_formal",
+      "game_instances": [],
+      "max_turns": 5,
+      "initial_prompt_guesser": "I want to play a game with you.\nThis is a turn taking game, so once it will be your turn, then mine.\n\nIn this game, I give you a function signature (How many input parameters, what their types are, what the return value is expected to be).\n\nOther than this, you can \"probe\" the hidden function, which effectively means you can give me inputs that I will send to the function and return the outputs to you.\n\nThis exchange of inputs and outputs is called induction - which is exactly your task in this game: To perform function induction.\n\nOn every turn that you get, you can do one of the following TWO things: \n\t1. $TEST_TAG$\n\t\tor\n\t2. $SOLVE_TAG$\n\t\nbut be careful, you cannot do both things at the same time!\nIf both things are done at the same time, it leads to a penalty and a turn is lost.\n\nIf turns are lost like this, you lose points and score less in the end.\nSpeaking of score, the score depends on two things:\n    1. How fast you guess the function - less turns is good.\n    2. If the function you guessed is correct or not - incorrect function = 0 Score\n\nSo in effect, its better to take more turns that guess wrong.\n\nWhen you make a guess of what the function might be, you must use the following output format very strictly also - To solve, write:\n$SOLVE_TAG$ ```python\ndef solution($VARIABLES$):\n    ...\n```\nWhen you make a probe/ try to get more outputs from the function the following output format must be followed also - To test the function, write exactly one line:\n$TEST_TAG$ <inputs>\n\nThe output you get from me will be followed by the tag $OUTPUT_TAG$.\nIMPORTANT: You must NEVER write $OUTPUT_TAG$. Only I will write $OUTPUT_TAG$.\nFrom you, nothing else other than a $TEST_TAG$ <inputs> or $SOLVE_TAG$ ```python\ndef solution($VARIABLES$):\n    ...\n```\nis expected.\n\nReady? Here is the setup:\n\tThe function signature is:\n\t$SIGNATURE_OF_CURRENT_FUNCTION$\n\n\tYou have $MAX_TURNS$ turns total.\n\n\n\tYour score depends on:\n\t\t- correctness (you must identify the function by providing correct Python code)\n\t\t- speed (fewer tests before solving gives a higher score)\n\n\nA good strategy is to solve by the second-to-last turn if you are still unsure. This effectively means that on the $MAX_TURNS$ - 1 turn, you have to make an attempt with all the information you have gathered and make a guess.\n\nMake a guess once you're confident - confident what the function is, but not earlier.\n\nIf you never send $SOLVE_TAG$, you will lose when turns run out.\n\n## Input formatting\n- Strings must be quoted (e.g. \"hello\").\n- Booleans must be True/False.\n- Use commas between multiple inputs.\n- Do not write any extra text outside the required format.\n\nTry to choose tests that could change the output (counterexamples).\nDo not only test “normal” inputs. If you only see the same output every time, you have not learned much yet.\n\nTo help digest all of this, lets do an example\nHere is one example:\n\nExample (format only):\nYou give the $INPUT_TAG$ $EXAMPLE_TEST_LINE$\nI provide you with $OUTPUT_TAG$ $EXAMPLE_OUTPUT_LINE$\nIMPORTANT: In your real turns, write ONLY $TEST_TAG$ ... OR $SOLVE_TAG$ ... (never write $OUTPUT_TAG$).\n\nif you do anything other than the following, it will be a game violation and you will lose a turn e.g:\nOutput ONLY:\n$TEST_TAG$ <inputs>\nOR\n$SOLVE_TAG$ ```python\ndef solution($VARIABLES$):\n    ...\n```\n\n"
+    },
+    {
+      "name": "medium_scalar_math",
+      "game_instances": [
+        {
+          "game_id": 1,
+          "callable": "clamp_0_9",
+          "signature": "(x: int) -> int",
+          "category": "SCALAR_MATH",
+          "difficulty": "medium",
+          "hint": "",
+          "candidate_ids": [
+            "abs_value",
+            "clamp_0_10",
+            "clamp_0_9",
+            "piecewise_linear_break0",
+            "piecewise_linear_break1"
+          ],
+          "docstring": "Clamp x into [0, 9].",
+          "test_cases": [
+            {
+              "args": [
+                -1
+              ],
+              "expected": 0
+            },
+            {
+              "args": [
+                1000
+              ],
+              "expected": 9
+            },
+            {
+              "args": [
+                1
+              ],
+              "expected": 1
+            },
+            {
+              "args": [
+                -2
+              ],
+              "expected": 0
+            },
+            {
+              "args": [
+                99
+              ],
+              "expected": 9
+            },
+            {
+              "args": [
+                -1000
+              ],
+              "expected": 0
+            },
+            {
+              "args": [
+                -10
+              ],
+              "expected": 0
+            },
+            {
+              "args": [
+                2
+              ],
+              "expected": 2
+            },
+            {
+              "args": [
+                0
+              ],
+              "expected": 0
+            },
+            {
+              "args": [
+                10
+              ],
+              "expected": 9
+            },
+            {
+              "args": [
+                -99
+              ],
+              "expected": 0
+            },
+            {
+              "args": [
+                100
+              ],
+              "expected": 9
+            },
+            {
+              "args": [
+                6
+              ],
+              "expected": 6
+            },
+            {
+              "args": [
+                -20
+              ],
+              "expected": 0
+            },
+            {
+              "args": [
+                9
+              ],
+              "expected": 9
+            },
+            {
+              "args": [
+                11
+              ],
+              "expected": 9
+            },
+            {
+              "args": [
+                3
+              ],
+              "expected": 3
+            },
+            {
+              "args": [
+                -100
+              ],
+              "expected": 0
+            },
+            {
+              "args": [
+                44
+              ],
+              "expected": 9
+            },
+            {
+              "args": [
+                26
+              ],
+              "expected": 9
+            },
+            {
+              "args": [
+                -7
+              ],
+              "expected": 0
+            },
+            {
+              "args": [
+                -16
+              ],
+              "expected": 0
+            },
+            {
+              "args": [
+                -41
+              ],
+              "expected": 0
+            },
+            {
+              "args": [
+                39
+              ],
+              "expected": 9
+            },
+            {
+              "args": [
+                41
+              ],
+              "expected": 9
+            },
+            {
+              "args": [
+                -17
+              ],
+              "expected": 0
+            },
+            {
+              "args": [
+                -29
+              ],
+              "expected": 0
+            },
+            {
+              "args": [
+                17
+              ],
+              "expected": 9
+            },
+            {
+              "args": [
+                34
+              ],
+              "expected": 9
+            },
+            {
+              "args": [
+                -50
+              ],
+              "expected": 0
+            }
+          ]
+        }
+      ],
+      "max_turns": 5,
+      "initial_prompt_guesser": "I want to play a game with you.\nThis is a turn taking game, so once it will be your turn, then mine.\n\nIn this game, I give you a function signature (How many input parameters, what their types are, what the return value is expected to be).\n\nOther than this, you can \"probe\" the hidden function, which effectively means you can give me inputs that I will send to the function and return the outputs to you.\n\nThis exchange of inputs and outputs is called induction - which is exactly your task in this game: To perform function induction.\n\nOn every turn that you get, you can do one of the following TWO things: \n\t1. $TEST_TAG$\n\t\tor\n\t2. $SOLVE_TAG$\n\t\nbut be careful, you cannot do both things at the same time!\nIf both things are done at the same time, it leads to a penalty and a turn is lost.\n\nIf turns are lost like this, you lose points and score less in the end.\nSpeaking of score, the score depends on two things:\n    1. How fast you guess the function - less turns is good.\n    2. If the function you guessed is correct or not - incorrect function = 0 Score\n\nSo in effect, its better to take more turns that guess wrong.\n\nWhen you make a guess of what the function might be, you must use the following output format very strictly also - To solve, write:\n$SOLVE_TAG$ ```python\ndef solution($VARIABLES$):\n    ...\n```\nWhen you make a probe/ try to get more outputs from the function the following output format must be followed also - To test the function, write exactly one line:\n$TEST_TAG$ <inputs>\n\nThe output you get from me will be followed by the tag $OUTPUT_TAG$.\nIMPORTANT: You must NEVER write $OUTPUT_TAG$. Only I will write $OUTPUT_TAG$.\nFrom you, nothing else other than a $TEST_TAG$ <inputs> or $SOLVE_TAG$ ```python\ndef solution($VARIABLES$):\n    ...\n```\nis expected.\n\nReady? Here is the setup:\n\tThe function signature is:\n\t$SIGNATURE_OF_CURRENT_FUNCTION$\n\n\tYou have $MAX_TURNS$ turns total.\n\n\n\tYour score depends on:\n\t\t- correctness (you must identify the function by providing correct Python code)\n\t\t- speed (fewer tests before solving gives a higher score)\n\n\nA good strategy is to solve by the second-to-last turn if you are still unsure. This effectively means that on the $MAX_TURNS$ - 1 turn, you have to make an attempt with all the information you have gathered and make a guess.\n\nMake a guess once you're confident - confident what the function is, but not earlier.\n\nIf you never send $SOLVE_TAG$, you will lose when turns run out.\n\n## Input formatting\n- Strings must be quoted (e.g. \"hello\").\n- Booleans must be True/False.\n- Use commas between multiple inputs.\n- Do not write any extra text outside the required format.\n\nTry to choose tests that could change the output (counterexamples).\nDo not only test “normal” inputs. If you only see the same output every time, you have not learned much yet.\n\nTo help digest all of this, lets do an example\nHere is one example:\n\nExample (format only):\nYou give the $INPUT_TAG$ $EXAMPLE_TEST_LINE$\nI provide you with $OUTPUT_TAG$ $EXAMPLE_OUTPUT_LINE$\nIMPORTANT: In your real turns, write ONLY $TEST_TAG$ ... OR $SOLVE_TAG$ ... (never write $OUTPUT_TAG$).\n\nif you do anything other than the following, it will be a game violation and you will lose a turn e.g:\nOutput ONLY:\n$TEST_TAG$ <inputs>\nOR\n$SOLVE_TAG$ ```python\ndef solution($VARIABLES$):\n    ...\n```\n\n"
+    },
+    {
+      "name": "medium_pair_math",
+      "game_instances": [
+        {
+          "game_id": 4,
+          "callable": "abs_difference",
+          "signature": "(x: int, y: int) -> int",
+          "category": "PAIR_MATH",
+          "difficulty": "medium",
+          "hint": "",
+          "candidate_ids": [
+            "abs_difference",
+            "clamp_absdiff_0_10",
+            "clamp_x_0_10_ignore_y",
+            "max_of_two",
+            "min_of_two",
+            "signed_difference"
+          ],
+          "docstring": "Return abs(x - y).",
+          "test_cases": [
+            {
+              "args": [
+                2,
+                -2
+              ],
+              "expected": 4
+            },
+            {
+              "args": [
+                1,
+                -10
+              ],
+              "expected": 11
+            },
+            {
+              "args": [
+                99,
+                -1
+              ],
+              "expected": 100
+            },
+            {
+              "args": [
+                1,
+                1
+              ],
+              "expected": 0
+            },
+            {
+              "args": [
+                0,
+                -10
+              ],
+              "expected": 10
+            },
+            {
+              "args": [
+                -99,
+                -2
+              ],
+              "expected": 97
+            },
+            {
+              "args": [
+                0,
+                2
+              ],
+              "expected": 2
+            },
+            {
+              "args": [
+                -99,
+                -99
+              ],
+              "expected": 0
+            },
+            {
+              "args": [
+                10,
+                -2
+              ],
+              "expected": 12
+            },
+            {
+              "args": [
+                -1,
+                1
+              ],
+              "expected": 2
+            },
+            {
+              "args": [
+                -2,
+                2
+              ],
+              "expected": 4
+            },
+            {
+              "args": [
+                0,
+                -1000
+              ],
+              "expected": 1000
+            },
+            {
+              "args": [
+                -2,
+                -2
+              ],
+              "expected": 0
+            },
+            {
+              "args": [
+                2,
+                -1
+              ],
+              "expected": 3
+            },
+            {
+              "args": [
+                -2,
+                30
+              ],
+              "expected": 32
+            },
+            {
+              "args": [
+                43,
+                1
+              ],
+              "expected": 42
+            },
+            {
+              "args": [
+                10,
+                -10
+              ],
+              "expected": 20
+            },
+            {
+              "args": [
+                2,
+                2
+              ],
+              "expected": 0
+            },
+            {
+              "args": [
+                -2,
+                -39
+              ],
+              "expected": 37
+            },
+            {
+              "args": [
+                20,
+                0
+              ],
+              "expected": 20
+            },
+            {
+              "args": [
+                99,
+                -2
+              ],
+              "expected": 101
+            },
+            {
+              "args": [
+                11,
+                -10
+              ],
+              "expected": 21
+            },
+            {
+              "args": [
+                99,
+                -10
+              ],
+              "expected": 109
+            },
+            {
+              "args": [
+                -1,
+                -2
+              ],
+              "expected": 1
+            },
+            {
+              "args": [
+                -17,
+                1
+              ],
+              "expected": 18
+            },
+            {
+              "args": [
+                9,
+                -2
+              ],
+              "expected": 11
+            },
+            {
+              "args": [
+                11,
+                9
+              ],
+              "expected": 2
+            },
+            {
+              "args": [
+                10,
+                100
+              ],
+              "expected": 90
+            },
+            {
+              "args": [
+                1,
+                2
+              ],
+              "expected": 1
+            },
+            {
+              "args": [
+                100,
+                -2
+              ],
+              "expected": 102
+            }
+          ]
+        }
+      ],
+      "max_turns": 5,
+      "initial_prompt_guesser": "I want to play a game with you.\nThis is a turn taking game, so once it will be your turn, then mine.\n\nIn this game, I give you a function signature (How many input parameters, what their types are, what the return value is expected to be).\n\nOther than this, you can \"probe\" the hidden function, which effectively means you can give me inputs that I will send to the function and return the outputs to you.\n\nThis exchange of inputs and outputs is called induction - which is exactly your task in this game: To perform function induction.\n\nOn every turn that you get, you can do one of the following TWO things: \n\t1. $TEST_TAG$\n\t\tor\n\t2. $SOLVE_TAG$\n\t\nbut be careful, you cannot do both things at the same time!\nIf both things are done at the same time, it leads to a penalty and a turn is lost.\n\nIf turns are lost like this, you lose points and score less in the end.\nSpeaking of score, the score depends on two things:\n    1. How fast you guess the function - less turns is good.\n    2. If the function you guessed is correct or not - incorrect function = 0 Score\n\nSo in effect, its better to take more turns that guess wrong.\n\nWhen you make a guess of what the function might be, you must use the following output format very strictly also - To solve, write:\n$SOLVE_TAG$ ```python\ndef solution($VARIABLES$):\n    ...\n```\nWhen you make a probe/ try to get more outputs from the function the following output format must be followed also - To test the function, write exactly one line:\n$TEST_TAG$ <inputs>\n\nThe output you get from me will be followed by the tag $OUTPUT_TAG$.\nIMPORTANT: You must NEVER write $OUTPUT_TAG$. Only I will write $OUTPUT_TAG$.\nFrom you, nothing else other than a $TEST_TAG$ <inputs> or $SOLVE_TAG$ ```python\ndef solution($VARIABLES$):\n    ...\n```\nis expected.\n\nReady? Here is the setup:\n\tThe function signature is:\n\t$SIGNATURE_OF_CURRENT_FUNCTION$\n\n\tYou have $MAX_TURNS$ turns total.\n\n\n\tYour score depends on:\n\t\t- correctness (you must identify the function by providing correct Python code)\n\t\t- speed (fewer tests before solving gives a higher score)\n\n\nA good strategy is to solve by the second-to-last turn if you are still unsure. This effectively means that on the $MAX_TURNS$ - 1 turn, you have to make an attempt with all the information you have gathered and make a guess.\n\nMake a guess once you're confident - confident what the function is, but not earlier.\n\nIf you never send $SOLVE_TAG$, you will lose when turns run out.\n\n## Input formatting\n- Strings must be quoted (e.g. \"hello\").\n- Booleans must be True/False.\n- Use commas between multiple inputs.\n- Do not write any extra text outside the required format.\n\nTry to choose tests that could change the output (counterexamples).\nDo not only test “normal” inputs. If you only see the same output every time, you have not learned much yet.\n\nTo help digest all of this, lets do an example\nHere is one example:\n\nExample (format only):\nYou give the $INPUT_TAG$ $EXAMPLE_TEST_LINE$\nI provide you with $OUTPUT_TAG$ $EXAMPLE_OUTPUT_LINE$\nIMPORTANT: In your real turns, write ONLY $TEST_TAG$ ... OR $SOLVE_TAG$ ... (never write $OUTPUT_TAG$).\n\nif you do anything other than the following, it will be a game violation and you will lose a turn e.g:\nOutput ONLY:\n$TEST_TAG$ <inputs>\nOR\n$SOLVE_TAG$ ```python\ndef solution($VARIABLES$):\n    ...\n```\n\n"
+    },
+    {
+      "name": "medium_list_sequence",
+      "game_instances": [],
+      "max_turns": 5,
+      "initial_prompt_guesser": "I want to play a game with you.\nThis is a turn taking game, so once it will be your turn, then mine.\n\nIn this game, I give you a function signature (How many input parameters, what their types are, what the return value is expected to be).\n\nOther than this, you can \"probe\" the hidden function, which effectively means you can give me inputs that I will send to the function and return the outputs to you.\n\nThis exchange of inputs and outputs is called induction - which is exactly your task in this game: To perform function induction.\n\nOn every turn that you get, you can do one of the following TWO things: \n\t1. $TEST_TAG$\n\t\tor\n\t2. $SOLVE_TAG$\n\t\nbut be careful, you cannot do both things at the same time!\nIf both things are done at the same time, it leads to a penalty and a turn is lost.\n\nIf turns are lost like this, you lose points and score less in the end.\nSpeaking of score, the score depends on two things:\n    1. How fast you guess the function - less turns is good.\n    2. If the function you guessed is correct or not - incorrect function = 0 Score\n\nSo in effect, its better to take more turns that guess wrong.\n\nWhen you make a guess of what the function might be, you must use the following output format very strictly also - To solve, write:\n$SOLVE_TAG$ ```python\ndef solution($VARIABLES$):\n    ...\n```\nWhen you make a probe/ try to get more outputs from the function the following output format must be followed also - To test the function, write exactly one line:\n$TEST_TAG$ <inputs>\n\nThe output you get from me will be followed by the tag $OUTPUT_TAG$.\nIMPORTANT: You must NEVER write $OUTPUT_TAG$. Only I will write $OUTPUT_TAG$.\nFrom you, nothing else other than a $TEST_TAG$ <inputs> or $SOLVE_TAG$ ```python\ndef solution($VARIABLES$):\n    ...\n```\nis expected.\n\nReady? Here is the setup:\n\tThe function signature is:\n\t$SIGNATURE_OF_CURRENT_FUNCTION$\n\n\tYou have $MAX_TURNS$ turns total.\n\n\n\tYour score depends on:\n\t\t- correctness (you must identify the function by providing correct Python code)\n\t\t- speed (fewer tests before solving gives a higher score)\n\n\nA good strategy is to solve by the second-to-last turn if you are still unsure. This effectively means that on the $MAX_TURNS$ - 1 turn, you have to make an attempt with all the information you have gathered and make a guess.\n\nMake a guess once you're confident - confident what the function is, but not earlier.\n\nIf you never send $SOLVE_TAG$, you will lose when turns run out.\n\n## Input formatting\n- Strings must be quoted (e.g. \"hello\").\n- Booleans must be True/False.\n- Use commas between multiple inputs.\n- Do not write any extra text outside the required format.\n\nTry to choose tests that could change the output (counterexamples).\nDo not only test “normal” inputs. If you only see the same output every time, you have not learned much yet.\n\nTo help digest all of this, lets do an example\nHere is one example:\n\nExample (format only):\nYou give the $INPUT_TAG$ $EXAMPLE_TEST_LINE$\nI provide you with $OUTPUT_TAG$ $EXAMPLE_OUTPUT_LINE$\nIMPORTANT: In your real turns, write ONLY $TEST_TAG$ ... OR $SOLVE_TAG$ ... (never write $OUTPUT_TAG$).\n\nif you do anything other than the following, it will be a game violation and you will lose a turn e.g:\nOutput ONLY:\n$TEST_TAG$ <inputs>\nOR\n$SOLVE_TAG$ ```python\ndef solution($VARIABLES$):\n    ...\n```\n\n"
+    },
+    {
+      "name": "medium_string",
+      "game_instances": [],
+      "max_turns": 5,
+      "initial_prompt_guesser": "I want to play a game with you.\nThis is a turn taking game, so once it will be your turn, then mine.\n\nIn this game, I give you a function signature (How many input parameters, what their types are, what the return value is expected to be).\n\nOther than this, you can \"probe\" the hidden function, which effectively means you can give me inputs that I will send to the function and return the outputs to you.\n\nThis exchange of inputs and outputs is called induction - which is exactly your task in this game: To perform function induction.\n\nOn every turn that you get, you can do one of the following TWO things: \n\t1. $TEST_TAG$\n\t\tor\n\t2. $SOLVE_TAG$\n\t\nbut be careful, you cannot do both things at the same time!\nIf both things are done at the same time, it leads to a penalty and a turn is lost.\n\nIf turns are lost like this, you lose points and score less in the end.\nSpeaking of score, the score depends on two things:\n    1. How fast you guess the function - less turns is good.\n    2. If the function you guessed is correct or not - incorrect function = 0 Score\n\nSo in effect, its better to take more turns that guess wrong.\n\nWhen you make a guess of what the function might be, you must use the following output format very strictly also - To solve, write:\n$SOLVE_TAG$ ```python\ndef solution($VARIABLES$):\n    ...\n```\nWhen you make a probe/ try to get more outputs from the function the following output format must be followed also - To test the function, write exactly one line:\n$TEST_TAG$ <inputs>\n\nThe output you get from me will be followed by the tag $OUTPUT_TAG$.\nIMPORTANT: You must NEVER write $OUTPUT_TAG$. Only I will write $OUTPUT_TAG$.\nFrom you, nothing else other than a $TEST_TAG$ <inputs> or $SOLVE_TAG$ ```python\ndef solution($VARIABLES$):\n    ...\n```\nis expected.\n\nReady? Here is the setup:\n\tThe function signature is:\n\t$SIGNATURE_OF_CURRENT_FUNCTION$\n\n\tYou have $MAX_TURNS$ turns total.\n\n\n\tYour score depends on:\n\t\t- correctness (you must identify the function by providing correct Python code)\n\t\t- speed (fewer tests before solving gives a higher score)\n\n\nA good strategy is to solve by the second-to-last turn if you are still unsure. This effectively means that on the $MAX_TURNS$ - 1 turn, you have to make an attempt with all the information you have gathered and make a guess.\n\nMake a guess once you're confident - confident what the function is, but not earlier.\n\nIf you never send $SOLVE_TAG$, you will lose when turns run out.\n\n## Input formatting\n- Strings must be quoted (e.g. \"hello\").\n- Booleans must be True/False.\n- Use commas between multiple inputs.\n- Do not write any extra text outside the required format.\n\nTry to choose tests that could change the output (counterexamples).\nDo not only test “normal” inputs. If you only see the same output every time, you have not learned much yet.\n\nTo help digest all of this, lets do an example\nHere is one example:\n\nExample (format only):\nYou give the $INPUT_TAG$ $EXAMPLE_TEST_LINE$\nI provide you with $OUTPUT_TAG$ $EXAMPLE_OUTPUT_LINE$\nIMPORTANT: In your real turns, write ONLY $TEST_TAG$ ... OR $SOLVE_TAG$ ... (never write $OUTPUT_TAG$).\n\nif you do anything other than the following, it will be a game violation and you will lose a turn e.g:\nOutput ONLY:\n$TEST_TAG$ <inputs>\nOR\n$SOLVE_TAG$ ```python\ndef solution($VARIABLES$):\n    ...\n```\n\n"
+    },
+    {
+      "name": "medium_logic_formal",
+      "game_instances": [
+        {
+          "game_id": 7,
+          "callable": "has_equal_counts_all_brackets",
+          "signature": "(s: str) -> bool",
+          "category": "LOGIC_FORMAL",
+          "difficulty": "medium",
+          "hint": "",
+          "candidate_ids": [
+            "balanced_brackets_all",
+            "balanced_parentheses_only",
+            "has_equal_counts_all_brackets",
+            "has_equal_paren_counts"
+          ],
+          "docstring": "\n    True iff counts match independently for (), [], {}.\n    Ignores nesting/order, only counts.\n    ",
+          "test_cases": [
+            {
+              "args": [
+                "A"
+              ],
+              "expected": true
+            },
+            {
+              "args": [
+                "a"
+              ],
+              "expected": true
+            },
+            {
+              "args": [
+                "aA"
+              ],
+              "expected": true
+            },
+            {
+              "args": [
+                "a-b"
+              ],
+              "expected": true
+            },
+            {
+              "args": [
+                ""
+              ],
+              "expected": true
+            },
+            {
+              "args": [
+                " "
+              ],
+              "expected": true
+            },
+            {
+              "args": [
+                "hello world"
+              ],
+              "expected": true
+            },
+            {
+              "args": [
+                "123"
+              ],
+              "expected": true
+            },
+            {
+              "args": [
+                "ab"
+              ],
+              "expected": true
+            },
+            {
+              "args": [
+                "aba"
+              ],
+              "expected": true
+            },
+            {
+              "args": [
+                "   "
+              ],
+              "expected": true
+            },
+            {
+              "args": [
+                "hello"
+              ],
+              "expected": true
+            },
+            {
+              "args": [
+                "(]"
+              ],
+              "expected": false
+            },
+            {
+              "args": [
+                ")("
+              ],
+              "expected": true
+            },
+            {
+              "args": [
+                "(())"
+              ],
+              "expected": true
+            },
+            {
+              "args": [
+                "()"
+              ],
+              "expected": true
+            },
+            {
+              "args": [
+                "x-1"
+              ],
+              "expected": true
+            },
+            {
+              "args": [
+                "([)]"
+              ],
+              "expected": true
+            },
+            {
+              "args": [
+                "x1"
+              ],
+              "expected": true
+            },
+            {
+              "args": [
+                "1x"
+              ],
+              "expected": true
+            },
+            {
+              "args": [
+                "([{}])"
+              ],
+              "expected": true
+            },
+            {
+              "args": [
+                "_x"
+              ],
+              "expected": true
+            }
+          ]
+        }
+      ],
+      "max_turns": 5,
+      "initial_prompt_guesser": "I want to play a game with you.\nThis is a turn taking game, so once it will be your turn, then mine.\n\nIn this game, I give you a function signature (How many input parameters, what their types are, what the return value is expected to be).\n\nOther than this, you can \"probe\" the hidden function, which effectively means you can give me inputs that I will send to the function and return the outputs to you.\n\nThis exchange of inputs and outputs is called induction - which is exactly your task in this game: To perform function induction.\n\nOn every turn that you get, you can do one of the following TWO things: \n\t1. $TEST_TAG$\n\t\tor\n\t2. $SOLVE_TAG$\n\t\nbut be careful, you cannot do both things at the same time!\nIf both things are done at the same time, it leads to a penalty and a turn is lost.\n\nIf turns are lost like this, you lose points and score less in the end.\nSpeaking of score, the score depends on two things:\n    1. How fast you guess the function - less turns is good.\n    2. If the function you guessed is correct or not - incorrect function = 0 Score\n\nSo in effect, its better to take more turns that guess wrong.\n\nWhen you make a guess of what the function might be, you must use the following output format very strictly also - To solve, write:\n$SOLVE_TAG$ ```python\ndef solution($VARIABLES$):\n    ...\n```\nWhen you make a probe/ try to get more outputs from the function the following output format must be followed also - To test the function, write exactly one line:\n$TEST_TAG$ <inputs>\n\nThe output you get from me will be followed by the tag $OUTPUT_TAG$.\nIMPORTANT: You must NEVER write $OUTPUT_TAG$. Only I will write $OUTPUT_TAG$.\nFrom you, nothing else other than a $TEST_TAG$ <inputs> or $SOLVE_TAG$ ```python\ndef solution($VARIABLES$):\n    ...\n```\nis expected.\n\nReady? Here is the setup:\n\tThe function signature is:\n\t$SIGNATURE_OF_CURRENT_FUNCTION$\n\n\tYou have $MAX_TURNS$ turns total.\n\n\n\tYour score depends on:\n\t\t- correctness (you must identify the function by providing correct Python code)\n\t\t- speed (fewer tests before solving gives a higher score)\n\n\nA good strategy is to solve by the second-to-last turn if you are still unsure. This effectively means that on the $MAX_TURNS$ - 1 turn, you have to make an attempt with all the information you have gathered and make a guess.\n\nMake a guess once you're confident - confident what the function is, but not earlier.\n\nIf you never send $SOLVE_TAG$, you will lose when turns run out.\n\n## Input formatting\n- Strings must be quoted (e.g. \"hello\").\n- Booleans must be True/False.\n- Use commas between multiple inputs.\n- Do not write any extra text outside the required format.\n\nTry to choose tests that could change the output (counterexamples).\nDo not only test “normal” inputs. If you only see the same output every time, you have not learned much yet.\n\nTo help digest all of this, lets do an example\nHere is one example:\n\nExample (format only):\nYou give the $INPUT_TAG$ $EXAMPLE_TEST_LINE$\nI provide you with $OUTPUT_TAG$ $EXAMPLE_OUTPUT_LINE$\nIMPORTANT: In your real turns, write ONLY $TEST_TAG$ ... OR $SOLVE_TAG$ ... (never write $OUTPUT_TAG$).\n\nif you do anything other than the following, it will be a game violation and you will lose a turn e.g:\nOutput ONLY:\n$TEST_TAG$ <inputs>\nOR\n$SOLVE_TAG$ ```python\ndef solution($VARIABLES$):\n    ...\n```\n\n"
+    },
+    {
+      "name": "hard_scalar_math",
+      "game_instances": [
+        {
+          "game_id": 2,
+          "callable": "piecewise_linear_break1",
+          "signature": "(x: int) -> int",
+          "category": "SCALAR_MATH",
+          "difficulty": "hard",
+          "hint": "",
+          "candidate_ids": [
+            "abs_value",
+            "clamp_0_10",
+            "clamp_0_9",
+            "piecewise_linear_break0",
+            "piecewise_linear_break1"
+          ],
+          "docstring": "2*x if x < 1 else x + 3.",
+          "test_cases": [
+            {
+              "args": [
+                0
+              ],
+              "expected": 0
+            },
+            {
+              "args": [
+                1
+              ],
+              "expected": 4
+            },
+            {
+              "args": [
+                10
+              ],
+              "expected": 13
+            },
+            {
+              "args": [
+                -1
+              ],
+              "expected": -2
+            },
+            {
+              "args": [
+                -1000
+              ],
+              "expected": -2000
+            },
+            {
+              "args": [
+                -2
+              ],
+              "expected": -4
+            },
+            {
+              "args": [
+                1000
+              ],
+              "expected": 1003
+            },
+            {
+              "args": [
+                2
+              ],
+              "expected": 5
+            },
+            {
+              "args": [
+                -10
+              ],
+              "expected": -20
+            },
+            {
+              "args": [
+                -99
+              ],
+              "expected": -198
+            },
+            {
+              "args": [
+                99
+              ],
+              "expected": 102
+            },
+            {
+              "args": [
+                11
+              ],
+              "expected": 14
+            },
+            {
+              "args": [
+                100
+              ],
+              "expected": 103
+            },
+            {
+              "args": [
+                -100
+              ],
+              "expected": -200
+            },
+            {
+              "args": [
+                9
+              ],
+              "expected": 12
+            },
+            {
+              "args": [
+                -22
+              ],
+              "expected": -44
+            },
+            {
+              "args": [
+                37
+              ],
+              "expected": 40
+            },
+            {
+              "args": [
+                -30
+              ],
+              "expected": -60
+            },
+            {
+              "args": [
+                -15
+              ],
+              "expected": -30
+            },
+            {
+              "args": [
+                34
+              ],
+              "expected": 37
+            },
+            {
+              "args": [
+                50
+              ],
+              "expected": 53
+            },
+            {
+              "args": [
+                7
+              ],
+              "expected": 10
+            },
+            {
+              "args": [
+                -7
+              ],
+              "expected": -14
+            },
+            {
+              "args": [
+                -12
+              ],
+              "expected": -24
+            },
+            {
+              "args": [
+                5
+              ],
+              "expected": 8
+            },
+            {
+              "args": [
+                -44
+              ],
+              "expected": -88
+            },
+            {
+              "args": [
+                -48
+              ],
+              "expected": -96
+            },
+            {
+              "args": [
+                14
+              ],
+              "expected": 17
+            },
+            {
+              "args": [
+                26
+              ],
+              "expected": 29
+            },
+            {
+              "args": [
+                -46
+              ],
+              "expected": -92
+            },
+            {
+              "args": [
+                16
+              ],
+              "expected": 19
+            },
+            {
+              "args": [
+                21
+              ],
+              "expected": 24
+            },
+            {
+              "args": [
+                -49
+              ],
+              "expected": -98
+            },
+            {
+              "args": [
+                -4
+              ],
+              "expected": -8
+            },
+            {
+              "args": [
+                -27
+              ],
+              "expected": -54
+            },
+            {
+              "args": [
+                28
+              ],
+              "expected": 31
+            },
+            {
+              "args": [
+                -37
+              ],
+              "expected": -74
+            },
+            {
+              "args": [
+                -50
+              ],
+              "expected": -100
+            },
+            {
+              "args": [
+                -5
+              ],
+              "expected": -10
+            },
+            {
+              "args": [
+                -38
+              ],
+              "expected": -76
+            }
+          ]
+        }
+      ],
+      "max_turns": 5,
+      "initial_prompt_guesser": "I want to play a game with you.\nThis is a turn taking game, so once it will be your turn, then mine.\n\nIn this game, I give you a function signature (How many input parameters, what their types are, what the return value is expected to be).\n\nOther than this, you can \"probe\" the hidden function, which effectively means you can give me inputs that I will send to the function and return the outputs to you.\n\nThis exchange of inputs and outputs is called induction - which is exactly your task in this game: To perform function induction.\n\nOn every turn that you get, you can do one of the following TWO things: \n\t1. $TEST_TAG$\n\t\tor\n\t2. $SOLVE_TAG$\n\t\nbut be careful, you cannot do both things at the same time!\nIf both things are done at the same time, it leads to a penalty and a turn is lost.\n\nIf turns are lost like this, you lose points and score less in the end.\nSpeaking of score, the score depends on two things:\n    1. How fast you guess the function - less turns is good.\n    2. If the function you guessed is correct or not - incorrect function = 0 Score\n\nSo in effect, its better to take more turns that guess wrong.\n\nWhen you make a guess of what the function might be, you must use the following output format very strictly also - To solve, write:\n$SOLVE_TAG$ ```python\ndef solution($VARIABLES$):\n    ...\n```\nWhen you make a probe/ try to get more outputs from the function the following output format must be followed also - To test the function, write exactly one line:\n$TEST_TAG$ <inputs>\n\nThe output you get from me will be followed by the tag $OUTPUT_TAG$.\nIMPORTANT: You must NEVER write $OUTPUT_TAG$. Only I will write $OUTPUT_TAG$.\nFrom you, nothing else other than a $TEST_TAG$ <inputs> or $SOLVE_TAG$ ```python\ndef solution($VARIABLES$):\n    ...\n```\nis expected.\n\nReady? Here is the setup:\n\tThe function signature is:\n\t$SIGNATURE_OF_CURRENT_FUNCTION$\n\n\tYou have $MAX_TURNS$ turns total.\n\n\n\tYour score depends on:\n\t\t- correctness (you must identify the function by providing correct Python code)\n\t\t- speed (fewer tests before solving gives a higher score)\n\n\nA good strategy is to solve by the second-to-last turn if you are still unsure. This effectively means that on the $MAX_TURNS$ - 1 turn, you have to make an attempt with all the information you have gathered and make a guess.\n\nMake a guess once you're confident - confident what the function is, but not earlier.\n\nIf you never send $SOLVE_TAG$, you will lose when turns run out.\n\n## Input formatting\n- Strings must be quoted (e.g. \"hello\").\n- Booleans must be True/False.\n- Use commas between multiple inputs.\n- Do not write any extra text outside the required format.\n\nTry to choose tests that could change the output (counterexamples).\nDo not only test “normal” inputs. If you only see the same output every time, you have not learned much yet.\n\nTo help digest all of this, lets do an example\nHere is one example:\n\nExample (format only):\nYou give the $INPUT_TAG$ $EXAMPLE_TEST_LINE$\nI provide you with $OUTPUT_TAG$ $EXAMPLE_OUTPUT_LINE$\nIMPORTANT: In your real turns, write ONLY $TEST_TAG$ ... OR $SOLVE_TAG$ ... (never write $OUTPUT_TAG$).\n\nif you do anything other than the following, it will be a game violation and you will lose a turn e.g:\nOutput ONLY:\n$TEST_TAG$ <inputs>\nOR\n$SOLVE_TAG$ ```python\ndef solution($VARIABLES$):\n    ...\n```\n\n"
+    },
+    {
+      "name": "hard_pair_math",
+      "game_instances": [
+        {
+          "game_id": 5,
+          "callable": "clamp_x_0_10_ignore_y",
+          "signature": "(x: int, y: int) -> int",
+          "category": "PAIR_MATH",
+          "difficulty": "hard",
+          "hint": "",
+          "candidate_ids": [
+            "abs_difference",
+            "clamp_absdiff_0_10",
+            "clamp_x_0_10_ignore_y",
+            "max_of_two",
+            "min_of_two"
+          ],
+          "docstring": "Return clamp(x, 0, 10). Ignores y.",
+          "test_cases": [
+            {
+              "args": [
+                1000,
+                -2
+              ],
+              "expected": 10
+            },
+            {
+              "args": [
+                10,
+                -1000
+              ],
+              "expected": 10
+            },
+            {
+              "args": [
+                -99,
+                0
+              ],
+              "expected": 0
+            },
+            {
+              "args": [
+                99,
+                2
+              ],
+              "expected": 10
+            },
+            {
+              "args": [
+                -1000,
+                0
+              ],
+              "expected": 0
+            },
+            {
+              "args": [
+                -1,
+                1
+              ],
+              "expected": 0
+            },
+            {
+              "args": [
+                10,
+                99
+              ],
+              "expected": 10
+            },
+            {
+              "args": [
+                2,
+                -10
+              ],
+              "expected": 2
+            },
+            {
+              "args": [
+                -99,
+                1
+              ],
+              "expected": 0
+            },
+            {
+              "args": [
+                1000,
+                2
+              ],
+              "expected": 10
+            },
+            {
+              "args": [
+                0,
+                2
+              ],
+              "expected": 0
+            },
+            {
+              "args": [
+                -10,
+                -2
+              ],
+              "expected": 0
+            },
+            {
+              "args": [
+                -1,
+                -10
+              ],
+              "expected": 0
+            },
+            {
+              "args": [
+                -1,
+                1000
+              ],
+              "expected": 0
+            },
+            {
+              "args": [
+                1000,
+                99
+              ],
+              "expected": 10
+            },
+            {
+              "args": [
+                -1,
+                -1
+              ],
+              "expected": 0
+            },
+            {
+              "args": [
+                0,
+                0
+              ],
+              "expected": 0
+            },
+            {
+              "args": [
+                2,
+                2
+              ],
+              "expected": 2
+            },
+            {
+              "args": [
+                -2,
+                10
+              ],
+              "expected": 0
+            },
+            {
+              "args": [
+                2,
+                -99
+              ],
+              "expected": 2
+            },
+            {
+              "args": [
+                -1000,
+                -1000
+              ],
+              "expected": 0
+            },
+            {
+              "args": [
+                2,
+                -1
+              ],
+              "expected": 2
+            },
+            {
+              "args": [
+                -2,
+                0
+              ],
+              "expected": 0
+            },
+            {
+              "args": [
+                10,
+                -10
+              ],
+              "expected": 10
+            },
+            {
+              "args": [
+                -2,
+                99
+              ],
+              "expected": 0
+            },
+            {
+              "args": [
+                99,
+                -100
+              ],
+              "expected": 10
+            },
+            {
+              "args": [
+                1,
+                10
+              ],
+              "expected": 1
+            },
+            {
+              "args": [
+                9,
+                10
+              ],
+              "expected": 9
+            },
+            {
+              "args": [
+                9,
+                -100
+              ],
+              "expected": 9
+            },
+            {
+              "args": [
+                10,
+                0
+              ],
+              "expected": 10
+            },
+            {
+              "args": [
+                1000,
+                10
+              ],
+              "expected": 10
+            },
+            {
+              "args": [
+                99,
+                9
+              ],
+              "expected": 10
+            },
+            {
+              "args": [
+                -100,
+                99
+              ],
+              "expected": 0
+            },
+            {
+              "args": [
+                1,
+                2
+              ],
+              "expected": 1
+            },
+            {
+              "args": [
+                10,
+                10
+              ],
+              "expected": 10
+            },
+            {
+              "args": [
+                -2,
+                9
+              ],
+              "expected": 0
+            },
+            {
+              "args": [
+                99,
+                1000
+              ],
+              "expected": 10
+            },
+            {
+              "args": [
+                -3,
+                0
+              ],
+              "expected": 0
+            },
+            {
+              "args": [
+                99,
+                -1
+              ],
+              "expected": 10
+            },
+            {
+              "args": [
+                -2,
+                11
+              ],
+              "expected": 0
+            }
+          ]
+        }
+      ],
+      "max_turns": 5,
+      "initial_prompt_guesser": "I want to play a game with you.\nThis is a turn taking game, so once it will be your turn, then mine.\n\nIn this game, I give you a function signature (How many input parameters, what their types are, what the return value is expected to be).\n\nOther than this, you can \"probe\" the hidden function, which effectively means you can give me inputs that I will send to the function and return the outputs to you.\n\nThis exchange of inputs and outputs is called induction - which is exactly your task in this game: To perform function induction.\n\nOn every turn that you get, you can do one of the following TWO things: \n\t1. $TEST_TAG$\n\t\tor\n\t2. $SOLVE_TAG$\n\t\nbut be careful, you cannot do both things at the same time!\nIf both things are done at the same time, it leads to a penalty and a turn is lost.\n\nIf turns are lost like this, you lose points and score less in the end.\nSpeaking of score, the score depends on two things:\n    1. How fast you guess the function - less turns is good.\n    2. If the function you guessed is correct or not - incorrect function = 0 Score\n\nSo in effect, its better to take more turns that guess wrong.\n\nWhen you make a guess of what the function might be, you must use the following output format very strictly also - To solve, write:\n$SOLVE_TAG$ ```python\ndef solution($VARIABLES$):\n    ...\n```\nWhen you make a probe/ try to get more outputs from the function the following output format must be followed also - To test the function, write exactly one line:\n$TEST_TAG$ <inputs>\n\nThe output you get from me will be followed by the tag $OUTPUT_TAG$.\nIMPORTANT: You must NEVER write $OUTPUT_TAG$. Only I will write $OUTPUT_TAG$.\nFrom you, nothing else other than a $TEST_TAG$ <inputs> or $SOLVE_TAG$ ```python\ndef solution($VARIABLES$):\n    ...\n```\nis expected.\n\nReady? Here is the setup:\n\tThe function signature is:\n\t$SIGNATURE_OF_CURRENT_FUNCTION$\n\n\tYou have $MAX_TURNS$ turns total.\n\n\n\tYour score depends on:\n\t\t- correctness (you must identify the function by providing correct Python code)\n\t\t- speed (fewer tests before solving gives a higher score)\n\n\nA good strategy is to solve by the second-to-last turn if you are still unsure. This effectively means that on the $MAX_TURNS$ - 1 turn, you have to make an attempt with all the information you have gathered and make a guess.\n\nMake a guess once you're confident - confident what the function is, but not earlier.\n\nIf you never send $SOLVE_TAG$, you will lose when turns run out.\n\n## Input formatting\n- Strings must be quoted (e.g. \"hello\").\n- Booleans must be True/False.\n- Use commas between multiple inputs.\n- Do not write any extra text outside the required format.\n\nTry to choose tests that could change the output (counterexamples).\nDo not only test “normal” inputs. If you only see the same output every time, you have not learned much yet.\n\nTo help digest all of this, lets do an example\nHere is one example:\n\nExample (format only):\nYou give the $INPUT_TAG$ $EXAMPLE_TEST_LINE$\nI provide you with $OUTPUT_TAG$ $EXAMPLE_OUTPUT_LINE$\nIMPORTANT: In your real turns, write ONLY $TEST_TAG$ ... OR $SOLVE_TAG$ ... (never write $OUTPUT_TAG$).\n\nif you do anything other than the following, it will be a game violation and you will lose a turn e.g:\nOutput ONLY:\n$TEST_TAG$ <inputs>\nOR\n$SOLVE_TAG$ ```python\ndef solution($VARIABLES$):\n    ...\n```\n\n"
+    },
+    {
+      "name": "hard_list_sequence",
+      "game_instances": [],
+      "max_turns": 5,
+      "initial_prompt_guesser": "I want to play a game with you.\nThis is a turn taking game, so once it will be your turn, then mine.\n\nIn this game, I give you a function signature (How many input parameters, what their types are, what the return value is expected to be).\n\nOther than this, you can \"probe\" the hidden function, which effectively means you can give me inputs that I will send to the function and return the outputs to you.\n\nThis exchange of inputs and outputs is called induction - which is exactly your task in this game: To perform function induction.\n\nOn every turn that you get, you can do one of the following TWO things: \n\t1. $TEST_TAG$\n\t\tor\n\t2. $SOLVE_TAG$\n\t\nbut be careful, you cannot do both things at the same time!\nIf both things are done at the same time, it leads to a penalty and a turn is lost.\n\nIf turns are lost like this, you lose points and score less in the end.\nSpeaking of score, the score depends on two things:\n    1. How fast you guess the function - less turns is good.\n    2. If the function you guessed is correct or not - incorrect function = 0 Score\n\nSo in effect, its better to take more turns that guess wrong.\n\nWhen you make a guess of what the function might be, you must use the following output format very strictly also - To solve, write:\n$SOLVE_TAG$ ```python\ndef solution($VARIABLES$):\n    ...\n```\nWhen you make a probe/ try to get more outputs from the function the following output format must be followed also - To test the function, write exactly one line:\n$TEST_TAG$ <inputs>\n\nThe output you get from me will be followed by the tag $OUTPUT_TAG$.\nIMPORTANT: You must NEVER write $OUTPUT_TAG$. Only I will write $OUTPUT_TAG$.\nFrom you, nothing else other than a $TEST_TAG$ <inputs> or $SOLVE_TAG$ ```python\ndef solution($VARIABLES$):\n    ...\n```\nis expected.\n\nReady? Here is the setup:\n\tThe function signature is:\n\t$SIGNATURE_OF_CURRENT_FUNCTION$\n\n\tYou have $MAX_TURNS$ turns total.\n\n\n\tYour score depends on:\n\t\t- correctness (you must identify the function by providing correct Python code)\n\t\t- speed (fewer tests before solving gives a higher score)\n\n\nA good strategy is to solve by the second-to-last turn if you are still unsure. This effectively means that on the $MAX_TURNS$ - 1 turn, you have to make an attempt with all the information you have gathered and make a guess.\n\nMake a guess once you're confident - confident what the function is, but not earlier.\n\nIf you never send $SOLVE_TAG$, you will lose when turns run out.\n\n## Input formatting\n- Strings must be quoted (e.g. \"hello\").\n- Booleans must be True/False.\n- Use commas between multiple inputs.\n- Do not write any extra text outside the required format.\n\nTry to choose tests that could change the output (counterexamples).\nDo not only test “normal” inputs. If you only see the same output every time, you have not learned much yet.\n\nTo help digest all of this, lets do an example\nHere is one example:\n\nExample (format only):\nYou give the $INPUT_TAG$ $EXAMPLE_TEST_LINE$\nI provide you with $OUTPUT_TAG$ $EXAMPLE_OUTPUT_LINE$\nIMPORTANT: In your real turns, write ONLY $TEST_TAG$ ... OR $SOLVE_TAG$ ... (never write $OUTPUT_TAG$).\n\nif you do anything other than the following, it will be a game violation and you will lose a turn e.g:\nOutput ONLY:\n$TEST_TAG$ <inputs>\nOR\n$SOLVE_TAG$ ```python\ndef solution($VARIABLES$):\n    ...\n```\n\n"
+    },
+    {
+      "name": "hard_string",
+      "game_instances": [
+        {
+          "game_id": 6,
+          "callable": "is_palindrome_exact",
+          "signature": "(s: str) -> bool",
+          "category": "STRING",
+          "difficulty": "hard",
+          "hint": "",
+          "candidate_ids": [
+            "is_palindrome_alnum",
+            "is_palindrome_exact"
+          ],
+          "docstring": "Return True if s is exactly equal to its reverse (case/punct matter).",
+          "test_cases": [
+            {
+              "args": [
+                "123"
+              ],
+              "expected": false
+            },
+            {
+              "args": [
+                " "
+              ],
+              "expected": true
+            },
+            {
+              "args": [
+                "hello"
+              ],
+              "expected": false
+            },
+            {
+              "args": [
+                "aba"
+              ],
+              "expected": true
+            },
+            {
+              "args": [
+                ""
+              ],
+              "expected": true
+            },
+            {
+              "args": [
+                "a"
+              ],
+              "expected": true
+            },
+            {
+              "args": [
+                "a-b"
+              ],
+              "expected": false
+            },
+            {
+              "args": [
+                "   "
+              ],
+              "expected": true
+            },
+            {
+              "args": [
+                "A"
+              ],
+              "expected": true
+            },
+            {
+              "args": [
+                "ab"
+              ],
+              "expected": false
+            },
+            {
+              "args": [
+                "aA"
+              ],
+              "expected": false
+            },
+            {
+              "args": [
+                "hello world"
+              ],
+              "expected": false
+            },
+            {
+              "args": [
+                "12345"
+              ],
+              "expected": false
+            }
+          ]
+        }
+      ],
+      "max_turns": 5,
+      "initial_prompt_guesser": "I want to play a game with you.\nThis is a turn taking game, so once it will be your turn, then mine.\n\nIn this game, I give you a function signature (How many input parameters, what their types are, what the return value is expected to be).\n\nOther than this, you can \"probe\" the hidden function, which effectively means you can give me inputs that I will send to the function and return the outputs to you.\n\nThis exchange of inputs and outputs is called induction - which is exactly your task in this game: To perform function induction.\n\nOn every turn that you get, you can do one of the following TWO things: \n\t1. $TEST_TAG$\n\t\tor\n\t2. $SOLVE_TAG$\n\t\nbut be careful, you cannot do both things at the same time!\nIf both things are done at the same time, it leads to a penalty and a turn is lost.\n\nIf turns are lost like this, you lose points and score less in the end.\nSpeaking of score, the score depends on two things:\n    1. How fast you guess the function - less turns is good.\n    2. If the function you guessed is correct or not - incorrect function = 0 Score\n\nSo in effect, its better to take more turns that guess wrong.\n\nWhen you make a guess of what the function might be, you must use the following output format very strictly also - To solve, write:\n$SOLVE_TAG$ ```python\ndef solution($VARIABLES$):\n    ...\n```\nWhen you make a probe/ try to get more outputs from the function the following output format must be followed also - To test the function, write exactly one line:\n$TEST_TAG$ <inputs>\n\nThe output you get from me will be followed by the tag $OUTPUT_TAG$.\nIMPORTANT: You must NEVER write $OUTPUT_TAG$. Only I will write $OUTPUT_TAG$.\nFrom you, nothing else other than a $TEST_TAG$ <inputs> or $SOLVE_TAG$ ```python\ndef solution($VARIABLES$):\n    ...\n```\nis expected.\n\nReady? Here is the setup:\n\tThe function signature is:\n\t$SIGNATURE_OF_CURRENT_FUNCTION$\n\n\tYou have $MAX_TURNS$ turns total.\n\n\n\tYour score depends on:\n\t\t- correctness (you must identify the function by providing correct Python code)\n\t\t- speed (fewer tests before solving gives a higher score)\n\n\nA good strategy is to solve by the second-to-last turn if you are still unsure. This effectively means that on the $MAX_TURNS$ - 1 turn, you have to make an attempt with all the information you have gathered and make a guess.\n\nMake a guess once you're confident - confident what the function is, but not earlier.\n\nIf you never send $SOLVE_TAG$, you will lose when turns run out.\n\n## Input formatting\n- Strings must be quoted (e.g. \"hello\").\n- Booleans must be True/False.\n- Use commas between multiple inputs.\n- Do not write any extra text outside the required format.\n\nTry to choose tests that could change the output (counterexamples).\nDo not only test “normal” inputs. If you only see the same output every time, you have not learned much yet.\n\nTo help digest all of this, lets do an example\nHere is one example:\n\nExample (format only):\nYou give the $INPUT_TAG$ $EXAMPLE_TEST_LINE$\nI provide you with $OUTPUT_TAG$ $EXAMPLE_OUTPUT_LINE$\nIMPORTANT: In your real turns, write ONLY $TEST_TAG$ ... OR $SOLVE_TAG$ ... (never write $OUTPUT_TAG$).\n\nif you do anything other than the following, it will be a game violation and you will lose a turn e.g:\nOutput ONLY:\n$TEST_TAG$ <inputs>\nOR\n$SOLVE_TAG$ ```python\ndef solution($VARIABLES$):\n    ...\n```\n\n"
+    },
+    {
+      "name": "hard_logic_formal",
+      "game_instances": [
+        {
+          "game_id": 8,
+          "callable": "balanced_brackets_all",
+          "signature": "(s: str) -> bool",
+          "category": "LOGIC_FORMAL",
+          "difficulty": "hard",
+          "hint": "",
+          "candidate_ids": [
+            "balanced_brackets_all",
+            "balanced_parentheses_only",
+            "has_equal_counts_all_brackets"
+          ],
+          "docstring": "\n    Properly nested balance for (), [], {}.\n    Ignores non-bracket characters.\n    ",
+          "test_cases": [
+            {
+              "args": [
+                "ab"
+              ],
+              "expected": true
+            },
+            {
+              "args": [
+                "A"
+              ],
+              "expected": true
+            },
+            {
+              "args": [
+                "aA"
+              ],
+              "expected": true
+            },
+            {
+              "args": [
+                "a"
+              ],
+              "expected": true
+            },
+            {
+              "args": [
+                "   "
+              ],
+              "expected": true
+            },
+            {
+              "args": [
+                ""
+              ],
+              "expected": true
+            },
+            {
+              "args": [
+                " "
+              ],
+              "expected": true
+            },
+            {
+              "args": [
+                "hello world"
+              ],
+              "expected": true
+            },
+            {
+              "args": [
+                "a-b"
+              ],
+              "expected": true
+            },
+            {
+              "args": [
+                "hello"
+              ],
+              "expected": true
+            },
+            {
+              "args": [
+                "123"
+              ],
+              "expected": true
+            },
+            {
+              "args": [
+                "aba"
+              ],
+              "expected": true
+            },
+            {
+              "args": [
+                "1x"
+              ],
+              "expected": true
+            },
+            {
+              "args": [
+                "x1"
+              ],
+              "expected": true
+            },
+            {
+              "args": [
+                "(]"
+              ],
+              "expected": false
+            },
+            {
+              "args": [
+                "(())"
+              ],
+              "expected": true
+            },
+            {
+              "args": [
+                "([)]"
+              ],
+              "expected": false
+            },
+            {
+              "args": [
+                ")("
+              ],
+              "expected": false
+            },
+            {
+              "args": [
+                "()"
+              ],
+              "expected": true
+            },
+            {
+              "args": [
+                "_x"
+              ],
+              "expected": true
+            },
+            {
+              "args": [
+                "x-1"
+              ],
+              "expected": true
+            },
+            {
+              "args": [
+                "([{}])"
+              ],
+              "expected": true
+            }
+          ]
+        }
+      ],
+      "max_turns": 5,
+      "initial_prompt_guesser": "I want to play a game with you.\nThis is a turn taking game, so once it will be your turn, then mine.\n\nIn this game, I give you a function signature (How many input parameters, what their types are, what the return value is expected to be).\n\nOther than this, you can \"probe\" the hidden function, which effectively means you can give me inputs that I will send to the function and return the outputs to you.\n\nThis exchange of inputs and outputs is called induction - which is exactly your task in this game: To perform function induction.\n\nOn every turn that you get, you can do one of the following TWO things: \n\t1. $TEST_TAG$\n\t\tor\n\t2. $SOLVE_TAG$\n\t\nbut be careful, you cannot do both things at the same time!\nIf both things are done at the same time, it leads to a penalty and a turn is lost.\n\nIf turns are lost like this, you lose points and score less in the end.\nSpeaking of score, the score depends on two things:\n    1. How fast you guess the function - less turns is good.\n    2. If the function you guessed is correct or not - incorrect function = 0 Score\n\nSo in effect, its better to take more turns that guess wrong.\n\nWhen you make a guess of what the function might be, you must use the following output format very strictly also - To solve, write:\n$SOLVE_TAG$ ```python\ndef solution($VARIABLES$):\n    ...\n```\nWhen you make a probe/ try to get more outputs from the function the following output format must be followed also - To test the function, write exactly one line:\n$TEST_TAG$ <inputs>\n\nThe output you get from me will be followed by the tag $OUTPUT_TAG$.\nIMPORTANT: You must NEVER write $OUTPUT_TAG$. Only I will write $OUTPUT_TAG$.\nFrom you, nothing else other than a $TEST_TAG$ <inputs> or $SOLVE_TAG$ ```python\ndef solution($VARIABLES$):\n    ...\n```\nis expected.\n\nReady? Here is the setup:\n\tThe function signature is:\n\t$SIGNATURE_OF_CURRENT_FUNCTION$\n\n\tYou have $MAX_TURNS$ turns total.\n\n\n\tYour score depends on:\n\t\t- correctness (you must identify the function by providing correct Python code)\n\t\t- speed (fewer tests before solving gives a higher score)\n\n\nA good strategy is to solve by the second-to-last turn if you are still unsure. This effectively means that on the $MAX_TURNS$ - 1 turn, you have to make an attempt with all the information you have gathered and make a guess.\n\nMake a guess once you're confident - confident what the function is, but not earlier.\n\nIf you never send $SOLVE_TAG$, you will lose when turns run out.\n\n## Input formatting\n- Strings must be quoted (e.g. \"hello\").\n- Booleans must be True/False.\n- Use commas between multiple inputs.\n- Do not write any extra text outside the required format.\n\nTry to choose tests that could change the output (counterexamples).\nDo not only test “normal” inputs. If you only see the same output every time, you have not learned much yet.\n\nTo help digest all of this, lets do an example\nHere is one example:\n\nExample (format only):\nYou give the $INPUT_TAG$ $EXAMPLE_TEST_LINE$\nI provide you with $OUTPUT_TAG$ $EXAMPLE_OUTPUT_LINE$\nIMPORTANT: In your real turns, write ONLY $TEST_TAG$ ... OR $SOLVE_TAG$ ... (never write $OUTPUT_TAG$).\n\nif you do anything other than the following, it will be a game violation and you will lose a turn e.g:\nOutput ONLY:\n$TEST_TAG$ <inputs>\nOR\n$SOLVE_TAG$ ```python\ndef solution($VARIABLES$):\n    ...\n```\n\n"
+    }
+  ]
+}

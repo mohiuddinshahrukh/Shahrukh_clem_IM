@@ -1,0 +1,11 @@
+{
+  "game_name": "function_detective",
+  "description": "function_detective",
+  "main_game": "function_detective",
+  "players": 1,
+  "image": "none",
+  "languages": [
+    "en"
+  ],
+  "benchmark": []
+}

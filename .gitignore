@@ -181,4 +181,7 @@ cython_debug/
 # Ignore the taboo game
 clemgame-template/clembench
 
-
+# Removing registry files
+key.json
+model_registry.json
+clembench.log
