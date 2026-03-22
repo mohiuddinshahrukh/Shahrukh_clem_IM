@@ -1,0 +1,30 @@
+{
+  "clem_version": "3.3.4",
+  "created": "2026-03-10T14:39:33.276964",
+  "player_models": {
+    "0": {
+      "model_name": "gpt-3.5-turbo",
+      "backend": "openai",
+      "context_size": "128k",
+      "languages": [
+        "en"
+      ],
+      "license": {
+        "name": "Apache",
+        "url": "https://www.apache.org/licenses/LICENSE-2.0"
+      },
+      "lookup_source": "E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\clemgame-template\\model_registry.json",
+      "model_config": {},
+      "model_id": "gpt-3.5-turbo",
+      "open_weight": true,
+      "parameters": "1B",
+      "release_date": "2025-03-19"
+    }
+  },
+  "games": {
+    "function_detective": {
+      "game_path": "E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\clemgame-template\\function_detective",
+      "benchmark_start": "2026-03-10T14:39:33.299383"
+    }
+  }
+}

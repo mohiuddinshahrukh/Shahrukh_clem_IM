@@ -1,2 +1,3 @@
-,"-, clemscore","Functionigma Game, % Played","Functionigma Game, Quality Score","Functionigma Game, Quality Score (std)","all, Average % Played","all, Average Quality Score","function_detective, % Played","function_detective, Quality Score","function_detective, Quality Score (std)"
-Qwen3-VL-30B-A3B-Instruct-FP8-t0.0,28.57,100.0,57.14,53.45,100.0,28.57,100.0,0.0,0.0
+,"-, clemscore","all, Average % Played","all, Average Quality Score","function_detective, % Played","function_detective, Quality Score","function_detective, Quality Score (std)"
+Qwen3-VL-30B-A3B-Instruct-FP8-t0.0,0.0,100.0,0.0,100.0,0.0,0.0
+command-a-03-2025-t0.0,0.06,100.0,0.06,100.0,0.06,0.18

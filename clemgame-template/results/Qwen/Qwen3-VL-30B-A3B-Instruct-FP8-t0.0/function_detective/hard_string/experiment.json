@@ -1,0 +1,15 @@
+{
+  "name": "hard_string",
+  "max_turns": 15,
+  "initial_prompt_guesser": "**Role (AI):** You are playing Function Detective. Infer an unknown Python function by interacting with the Game Master.\n\n**Role (GM):** The GM returns the function output for the input you provide.\n\n**Goal:** Infer the exact function with signature: `$SIGNATURE_OF_CURRENT_FUNCTION$`\n\nCategory: `$CATEGORY$`  \nParams: `$NUM_PARAMS$`  \nParam list: `$PARAM_LIST$`\n\nYou have **$MAX_TURNS$** total turns.\n\n---\n\n## Output rules (STRICT)\n\n1) Output ONLY one of the allowed formats below.  \n2) No extra text before or after the allowed format.  \n3) Format errors consume a turn.\n\n### Hypotheses format (REQUIRED on every turn)\n\nAfter your main action, you MUST provide hypotheses like this:\n\nHYPOTHESES:\n- candidate: <candidate_id>\n- candidate: <candidate_id>\n- candidate: <candidate_id>\n\nCONFIDENCE:\n- <float>\n- <float>\n- <float>\n\nRules:\n- Candidate IDs must be chosen from the provided candidate list.\n- Candidates must be DISTINCT (no duplicates).\n- Provide at least 3 candidates if the candidate list has 3 or more.\n- Confidences must be floats and must sum to 1.\n\n---\n\n## Mode A: Standard (probe then final guess)\n\nUse this mode unless the GM explicitly tells you to use TRY mode.\n\n### A1) Probe format\n\nINPUT: $VARIABLES$\n\nThen add the hypotheses block.\n\n### A2) Final guess format\n\nGUESS: ```python\ndef solution($VARIABLES$):\n    ...\n```\n\nThen add the hypotheses block.\n\n---\n\n## Mode B: Iterative TRY mode (guess + REQUIRED next probe in one message)\n\nIf the GM says iterative/TRY mode is enabled, you MUST use this format EVERY turn:\n\nTRY: ```python\ndef solution($VARIABLES$):\n    ...\n```\n\nREQUIRED next probe (Every TRY turn must include exactly one NEXT_INPUT line.):\nNEXT_INPUT: $VARIABLES$\n\nThen add the hypotheses block.\n\nNotes:\n- TRY is always treated as a guess attempt.\n- If your guess is wrong, the game continues (in iterative mode).\n- If your guess is correct, the game ends immediately.\n\n---\n\n## Constraints\n\n- Types must match the signature exactly.\n- Strings must be quoted (e.g. \"abc\"). Booleans must be True/False.\n- Use commas between inputs.\n- Do not invent new variables. Use ONLY: $VARIABLES$.\n\nBegin now.\n",
+  "timestamp": "2026-03-07T20:55:06.214084",
+  "game_name": "function_detective",
+  "player_models": {
+    "0": {
+      "model_name": "Qwen/Qwen3-VL-30B-A3B-Instruct-FP8",
+      "backend": "openai_compatible",
+      "lookup_source": "E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\clemgame-template\\model_registry.json",
+      "model_id": "Qwen/Qwen3-VL-30B-A3B-Instruct-FP8"
+    }
+  }
+}

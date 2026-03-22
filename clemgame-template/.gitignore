@@ -1,11 +1,9 @@
 # Ignore everything
 *
 
-# Do not ignore directories (so Git can traverse into them)
+# Do not ignore directories
 !*/
 
-# Do not ignore the results directory
-!old_results/results/
-
-# Do not ignore files inside results
-!old_results/results/**
+# Track the top-level results folder
+!results/
+!results/**

@@ -1,0 +1,22 @@
+{
+  "clem_version": "3.3.4",
+  "created": "2026-03-07T20:38:31.604645",
+  "player_models": {
+    "0": {
+      "model_name": "Qwen/Qwen3-VL-30B-A3B-Instruct-FP8",
+      "backend": "openai_compatible",
+      "lookup_source": "E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\clemgame-template\\model_registry.json",
+      "model_id": "Qwen/Qwen3-VL-30B-A3B-Instruct-FP8"
+    }
+  },
+  "games": {
+    "function_detective": {
+      "game_path": "E:\\UNI\\Semester 5\\IM - Sherzod\\Code\\clemgame-template\\function_detective",
+      "benchmark_start": "2026-03-10T14:45:22.427382",
+      "benchmark_end": "2026-03-10T14:45:26.736177",
+      "duration": "0:00:04.308795",
+      "duration_seconds": 4.308795,
+      "num_instances": 9
+    }
+  }
+}
