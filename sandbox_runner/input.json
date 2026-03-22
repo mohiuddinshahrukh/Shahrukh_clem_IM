@@ -1,0 +1,4 @@
+{
+  "code": "def f(x,y):\n while True: pass",
+  "tests": [[1,2]]
+}
