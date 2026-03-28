@@ -40,9 +40,15 @@ Use only literal values in TEST inputs (no .replace(), no .lower(), etc.)
 A TIP
 Try “counterexample” tests — inputs that might make the output change. If you keep getting the same output, you probably haven’t learned much yet.
 
-EXAMPLE (format only)
+TO KICK THINGS OFF
+Here is one real example of the hidden function in action.
+If you had written:
 TEST: 2, 1000
+
+I would reply:
 OUTPUT: 2
-(Remember: you must never write OUTPUT.)
+
+This is the actual output of the function you need to guess, so you can use it as evidence.
+Remember: you must never write OUTPUT:. That is my job.
 
 Alright — your turn.

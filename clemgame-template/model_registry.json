@@ -1,169 +1,25 @@
 [
-    {
-        "model_name": "gpt-3.5-turbo",
-        "model_id": "gpt-3.5-turbo",
-        "backend": "openai",
-        "release_date": "2025-03-19",
-        "open_weight": true,
-        "parameters": "1B",
-        "languages": [
-            "en"
-        ],
-        "context_size": "128k",
-        "license": {
-            "name": "Apache",
-            "url": "https://www.apache.org/licenses/LICENSE-2.0"
-        },
-        "model_config": {}
-    },
-    {
-        "model_name": "gpt-4.1-2025-04-14",
-        "model_id": "gpt-4.1-2025-04-14",
-        "backend": "openai"
-    },
-    {
-        "model_name":"Qwen/Qwen3-VL-30B-A3B-Instruct-FP8",
-        "model_id": "Qwen/Qwen3-VL-30B-A3B-Instruct-FP8",
-        "backend": "openai_compatible"
-    },
+  { "model_name": "gpt-4o-2024-08-06", "model_id": "gpt-4o-2024-08-06", "backend": "openai" },
+  { "model_name": "gpt-4o-2024-05-13", "model_id": "gpt-4o-2024-05-13", "backend": "openai" },
+  { "model_name": "gpt-4o-mini-2024-07-18", "model_id": "gpt-4o-mini-2024-07-18", "backend": "openai" },
 
-    {
-        "model_name": "gemma-3-27b",
-        "model_id": "google/gemma-3-27b-it",
-        "backend": "openai_compatible",
-        "release_date": "2025-03-19",
-        "open_weight": true,
-        "parameters": "27B",
-        "languages": [
-            "en",
-            "de"
-        ],
-        "context_size": "100k",
-        "license": {},
-        "model_config": {
-            "multimodality": {
-                "single_image": true,
-                "multiple_images": true,
-                "audio": false,
-                "video": false
-            }
-        }
-    },
-    {
-        "model_name": "gpt-4o-2024-08-06",
-        "model_id": "gpt-4o-2024-08-06",
-        "backend": "openai",
-        "release_date": "2024-08-06",
-        "open_weight": false,
-        "parameters": "",
-        "languages": [
-            "en",
-            "es",
-            "fr",
-            "de",
-            "it",
-            "pt",
-            "ru",
-            "zh",
-            "ja",
-            "ko",
-            "ar",
-            "hi",
-            "bn",
-            "te",
-            "ta",
-            "ml",
-            "kn",
-            "gu",
-            "mr",
-            "pa",
-            "ur",
-            "vi",
-            "th",
-            "id",
-            "ms",
-            "tl",
-            "sw",
-            "yo",
-            "zu",
-            "tr",
-            "he",
-            "fa",
-            "uk",
-            "pl",
-            "cs",
-            "hu",
-            "ro",
-            "nl",
-            "sv",
-            "no",
-            "da",
-            "fi",
-            "el",
-            "bg",
-            "sr",
-            "hr",
-            "sk",
-            "is"
-        ],
-        "context_size": "128k",
-        "license": {
-            "name": "OpenAI",
-            "url": "https://openai.com/policies/row-terms-of-use/"
-        },
-        "model_config": {
-            "multimodality": {
-                "single_image": true,
-                "multiple_images": true,
-                "audio": false,
-                "video": false
-            }
-        }
-    },
-    {
-        "model_name": "Meta-Llama-3.1-8B-Instruct",
-        "model_id": "Meta-Llama-3.1-8B-Instruct",
-        "backend": "huggingface_local",
-        "huggingface_id": "meta-llama/Meta-Llama-3.1-8B-Instruct",
-        "release_date": "2024-07-23",
-        "open_weight": true,
-        "parameters": "8B",
-        "languages": [
-            "en",
-            "de",
-            "fr",
-            "it",
-            "pt",
-            "hi",
-            "es",
-            "th"
-        ],
-        "context_size": "128k",
-        "license": {
-            "name": "Meta",
-            "url": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_1/LICENSE"
-        },
-        "model_config": {
-            "requires_api_key": true,
-            "premade_chat_template": true,
-            "eos_to_cull": "<\\|eot_id\\|>"
-        }
-    },
-    {
-        "model_name": "command-a-03-2025",
-        "model_id": "command-a-03-2025",
-        "backend": "cohere",
-        "release_date": "2025-03-19",
-        "open_weight": true,
-        "parameters": "1B",
-        "languages": [
-            "en"
-        ],
-        "context_size": "128k",
-        "license": {
-            "name": "Apache",
-            "url": "https://www.apache.org/licenses/LICENSE-2.0"
-        },
-        "model_config": {}
-    }
+  { "model_name": "gpt-4.1-2025-04-14", "model_id": "gpt-4.1-2025-04-14", "backend": "openai" },
+  { "model_name": "gpt-4.1-mini", "model_id": "gpt-4.1-mini", "backend": "openai" },
+  { "model_name": "gpt-4.1-nano", "model_id": "gpt-4.1-nano", "backend": "openai" },
+
+  { "model_name": "gpt-4-turbo-2024-04-09", "model_id": "gpt-4-turbo-2024-04-09", "backend": "openai" },
+  { "model_name": "gpt-4-0125-preview", "model_id": "gpt-4-0125-preview", "backend": "openai" },
+  { "model_name": "gpt-4-1106-preview", "model_id": "gpt-4-1106-preview", "backend": "openai" },
+  { "model_name": "gpt-4-0613", "model_id": "gpt-4-0613", "backend": "openai" },
+  { "model_name": "gpt-4-0314", "model_id": "gpt-4-0314", "backend": "openai" },
+
+  { "model_name": "gpt-3.5-turbo", "model_id": "gpt-3.5-turbo", "backend": "openai" },
+  { "model_name": "gpt-3.5-turbo-0125", "model_id": "gpt-3.5-turbo-0125", "backend": "openai" },
+  { "model_name": "gpt-3.5-turbo-1106", "model_id": "gpt-3.5-turbo-1106", "backend": "openai" },
+  { "model_name": "gpt-3.5-turbo-0613", "model_id": "gpt-3.5-turbo-0613", "backend": "openai" },
+
+  { "model_name": "Qwen/Qwen3-VL-30B-A3B-Instruct-FP8", "model_id": "Qwen/Qwen3-VL-30B-A3B-Instruct-FP8", "backend": "openai_compatible" },
+  { "model_name": "gemma-3-27b", "model_id": "google/gemma-3-27b-it", "backend": "openai_compatible" },
+  { "model_name": "Meta-Llama-3.1-8B-Instruct", "model_id": "Meta-Llama-3.1-8B-Instruct", "backend": "huggingface_local", "huggingface_id": "meta-llama/Meta-Llama-3.1-8B-Instruct" },
+  { "model_name": "command-a-03-2025", "model_id": "command-a-03-2025", "backend": "cohere" }
 ]

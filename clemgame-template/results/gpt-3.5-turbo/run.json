@@ -1,0 +1,28 @@
+{
+  "clem_version": "3.7.1",
+  "created": "2026-03-28T16:12:54.384400",
+  "player_models": {
+    "0": {
+      "model_spec": {
+        "model_name": "gpt-3.5-turbo",
+        "backend": "openai",
+        "lookup_source": "D:\\Uni\\Semester 5\\IM - Clembench\\Shahrukh_clem_IM\\clemgame-template\\model_registry.json",
+        "model_id": "gpt-3.5-turbo"
+      },
+      "gen_args": {
+        "temperature": 0.0,
+        "max_tokens": 300
+      }
+    }
+  },
+  "games": {
+    "function_detective": {
+      "game_path": "D:\\Uni\\Semester 5\\IM - Clembench\\Shahrukh_clem_IM\\clemgame-template\\function_detective",
+      "benchmark_start": "2026-03-28T16:18:42.712457",
+      "benchmark_end": "2026-03-28T16:19:14.959942",
+      "duration": "0:00:32.247485",
+      "duration_seconds": 32.247485,
+      "num_instances": 9
+    }
+  }
+}

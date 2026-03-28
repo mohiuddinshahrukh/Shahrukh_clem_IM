@@ -18,6 +18,7 @@ from utils import extract_function_code, validate_function_logic
 from clemcore.backends import Model
 from clemcore.clemgame import GameSpec, GameBenchmark, GameMaster, Player, DialogueGameMaster, GameScorer, \
     GameError, ParseError
+from clemcore.clemgame.master import GameState as ClemGameState
 from clemcore.clemgame.metrics import METRIC_ABORTED, METRIC_SUCCESS, METRIC_LOSE, BENCH_SCORE
 from function_detective.protocol import TEST_TAG, SOLVE_TAG, TRY_TAG, NEXT_TEST_TAG, OUTPUT_TAG
 
@@ -71,7 +72,7 @@ logger = logging.getLogger(__name__)
 
 
 @dataclass
-class GameState:
+class GameState(ClemGameState):
     max_turns: int
 
     function_signature: str
@@ -120,6 +121,11 @@ class GameState:
     iterative_guesses_enabled: bool = False
     guess_count: int = 0
     wrong_guess_count: int = 0
+
+    def __post_init__(self):
+        # Initialize Clemcore's required base state fields so self.state replacement
+        # during setup remains compatible with the framework state contract.
+        super().__init__()
 
 
 class Guesser(Player):
