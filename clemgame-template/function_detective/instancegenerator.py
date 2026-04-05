@@ -1,7 +1,6 @@
 import os
-import logging
-import sys
 import random
+import logging
 import numpy as np
 from clemcore.clemgame import GameInstanceGenerator
 
@@ -37,12 +36,11 @@ class FunctionDetectiveInstanceGenerator(GameInstanceGenerator):
 
     def on_generate(self, seed=None, **kwargs):
         self.filename = "instances.json"
-        experiments = {}
 
         def create_experiment(name: str, max_turns: int):
             exp = self.add_experiment(name)
             exp["max_turns"] = max_turns
-            exp["initial_prompt_guesser"] = self.load_template("resources/initial_prompts/initial_guesser")
+            exp["guesser_initial_prompt"] = self.load_template("resources/initial_prompts/initial_guesser")
             return exp
 
         experiments = {}
@@ -66,33 +64,6 @@ class FunctionDetectiveInstanceGenerator(GameInstanceGenerator):
             game_instance["callable"] = function_data["function_name"]
             game_instance["signature"] = function_data["signature"]
             game_instance["category"] = function_data["category"]
-            game_instance["difficulty"] = diff_level
-            game_instance["hint"] = function_data.get("hint", "")
-            # Candidate pool for hypotheses: same signature + same category + same difficulty
-            # Base pool: same signature + same domain category (ignore difficulty)
-            # Base pool: same signature + same domain (ignore difficulty)
-            base_pool = [
-                fd["function_name"]
-                for fd in FUNCTION_REGISTRY
-                if fd["signature"] == function_data["signature"]
-                   and fd["category"] == domain
-            ]
-
-            pool = set(base_pool) | set(function_data.get("confusers", []))
-            pool.add(function_data["function_name"])
-
-            MAX_POOL = 12
-            pool = sorted(pool)
-            if len(pool) > MAX_POOL:
-                pool = sorted(random.sample(pool, MAX_POOL))
-
-            game_instance["candidate_ids"] = pool
-            print(
-                f"Candidate pool size for {function_data['function_name']}: "
-                f"{len(game_instance['candidate_ids'])}"
-            )
-
-            game_instance["docstring"] = function_data["callable"].__doc__
 
             # deterministic tests per (seed, function)
             base_seed = seed if seed is not None else 0
@@ -101,8 +72,6 @@ class FunctionDetectiveInstanceGenerator(GameInstanceGenerator):
             np.random.seed(case_seed)
 
             num_tests = NUM_TESTS_BY_DIFFICULTY.get(diff_level, 20)
-
-            print(f"Generating static tests for {function_data['function_name']}...")
 
             static_tests = create_static_test_cases(
                 function_data["callable"],
@@ -113,7 +82,7 @@ class FunctionDetectiveInstanceGenerator(GameInstanceGenerator):
             )
 
             game_instance["test_cases"] = static_tests
-            print(f"Saved {len(static_tests)} tests.")
+            logger.info("Generated %s static tests for %s", len(static_tests), function_data["function_name"])
 
 
 if __name__ == '__main__':

@@ -69,7 +69,7 @@ To help digest all of this, lets do an example
 Here is one example:
 
 Example (format only):
-You give the $INPUT_TAG$ $EXAMPLE_TEST_LINE$
+You give the $TEST_TAG$ $EXAMPLE_TEST_LINE$
 I provide you with $OUTPUT_TAG$ $EXAMPLE_OUTPUT_LINE$
 IMPORTANT: In your real turns, write ONLY $TEST_TAG$ ... OR $SOLVE_TAG$ ... (never write $OUTPUT_TAG$).
 

@@ -1,6 +1,6 @@
 # Function Detective
 
-Implemented by: Sherzod et al.
+Implemented by: Shahrukh Mohiuddin
 
 In this game a single player probes a hidden Python function through input-output interaction and must infer a functionally equivalent implementation. The player receives the function signature, can test candidate inputs, observes the resulting outputs, and eventually submits Python code as the final solution.
 
@@ -8,7 +8,7 @@ The game targets inductive reasoning over program behavior. It measures whether 
 
 ### Instantiation
 
-We instantiate the game with function families grouped by difficulty and domain. Each experiment specifies a maximum number of turns and includes pre-generated hidden-function test cases used for evaluation. Instances are created from the registry in `functions.py`, and each instance stores the hidden callable name, signature, category, difficulty, candidate metadata, and evaluation tests.
+We instantiate the game with function families grouped by difficulty and domain. Each experiment specifies a maximum number of turns and includes pre-generated hidden-function test cases used for evaluation. Instances are created from the registry in `functions.py`, and each instance stores the hidden callable name, signature, category, and evaluation tests.
 
 ### Evaluation
 
@@ -35,16 +35,16 @@ The game package follows the standard Clembench layout:
 
 ### Running
 
-Generate instances:
+Generate instances from the game directory:
 
 ```bash
-python function_detective/instancegenerator.py
+python instancegenerator.py
 ```
 
 Run the game with Clembench:
 
 ```bash
-clem run function_detective -m <model_name>
+clem run -g function_detective -m <model_name>
 ```
 
 Score the results:
