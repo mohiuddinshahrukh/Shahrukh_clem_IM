@@ -13,7 +13,7 @@ from clemcore.clemgame import GameSpec, GameBenchmark, GameMaster, Player, Dialo
     GameError, ParseError
 from clemcore.clemgame.master import GameState
 from clemcore.clemgame.metrics import METRIC_ABORTED, METRIC_SUCCESS, METRIC_LOSE, BENCH_SCORE
-from protocol import TEST_TAG, SOLVE_TAG, TRY_TAG, NEXT_TEST_TAG, OUTPUT_TAG
+from protocol import TEST_TAG, SOLVE_TAG, OUTPUT_TAG
 from utils import parse_signature_with_types
 from utils import extract_function_code, validate_function_logic
 
@@ -87,11 +87,6 @@ class FunctionDetectiveGameState(GameState):
     internal_consistency_score: float = 0.0
     internal_consistency_all_observed: bool = False
     internal_consistency_violations: int = 0
-
-    # Penalty-less mode
-    iterative_guesses_enabled: bool = False
-    guess_count: int = 0
-    wrong_guess_count: int = 0
 
     def __post_init__(self):
         # Initialize Clemcore's base fields such as outcome/current_turn.
@@ -180,8 +175,6 @@ class FunctionDetective(DialogueGameMaster):
         prompt = self.experiment["guesser_initial_prompt"]
         prompt = prompt.replace("$TEST_TAG$", TEST_TAG)
         prompt = prompt.replace("$SOLVE_TAG$", SOLVE_TAG)
-        prompt = prompt.replace("$TRY_TAG$", TRY_TAG)
-        prompt = prompt.replace("$NEXT_TEST_TAG$", NEXT_TEST_TAG)
         prompt = prompt.replace("$OUTPUT_TAG$", OUTPUT_TAG)
 
         # Replace standard placeholders
@@ -359,58 +352,6 @@ class FunctionDetective(DialogueGameMaster):
         print(f"PROBE: {response}")
         response_str = str(response).strip()
 
-        # If iterative mode is enabled, only TRY is allowed.
-        if self.state.iterative_guesses_enabled and not response_str.startswith(TRY_TAG):
-            raise ParseError(
-                f"Iterative {TRY_TAG} mode is enabled: you MUST use {TRY_TAG} ... with {NEXT_TEST_TAG} ... every turn."
-            )
-
-        # ----------------------------
-        # TRY mode: guess + mandatory NEXT_TEST (ONE per turn), reasoning allowed after
-        # ----------------------------
-        if response_str.startswith(TRY_TAG):
-            lines = response_str.splitlines()
-
-            # Require TRY on first line
-            if not lines[0].strip().startswith(TRY_TAG):
-                raise ParseError(f"{TRY_TAG} must be the first line.")
-
-            extracted_code = extract_function_code(response_str)
-            if not extracted_code:
-                raise ParseError(f"{TRY_TAG} must contain a markdown code block (```python ... ```).")
-
-            # Find NEXT_TEST (must appear exactly once)
-            next_input_idx = None
-            raw_after_next = None
-            for i, ln in enumerate(lines):
-                if ln.strip().startswith(NEXT_TEST_TAG):
-                    if next_input_idx is not None:
-                        raise ParseError(f"Only ONE {NEXT_TEST_TAG} is allowed per turn.")
-                    next_input_idx = i
-                    raw_after_next = ln.strip()[len(NEXT_TEST_TAG):].strip()
-
-            if next_input_idx is None:
-                raise ParseError(f"{TRY_TAG} mode requires {NEXT_TEST_TAG} ... on every turn.")
-
-            # Disallow other action tags anywhere else in the message (prevents batching)
-            for ln in lines:
-                s = ln.strip()
-                if s.startswith(TEST_TAG):
-                    raise ParseError(f"Do not include {TEST_TAG} in {TRY_TAG} mode. Use {NEXT_TEST_TAG} only.")
-                if s.startswith(SOLVE_TAG):
-                    raise ParseError(f"Do not include {SOLVE_TAG} in {TRY_TAG} mode.")
-
-            next_input_line = f"{TEST_TAG} {raw_after_next}"
-
-            if not self.check_given_inputs(next_input_line):
-                raise ParseError(f"{NEXT_TEST_TAG} values do not match the required signature/types.")
-
-            # Allow reasoning after NEXT_TEST; we ignore it.
-            return "try", {
-                "code": extracted_code,
-                "next_input_line": next_input_line,
-            }
-
         # ----------------------------
         # SOLVE mode: one solve per turn; reasoning allowed after code; no TEST in same message
         # ----------------------------
@@ -449,9 +390,7 @@ class FunctionDetective(DialogueGameMaster):
             # Allow reasoning lines after TEST; we ignore them.
             return "call", {"input_line": input_line}
 
-        raise ParseError(
-            f"Invalid format. Must be '{TEST_TAG} ...' or '{SOLVE_TAG} ```python ...```' or '{TRY_TAG} ... {NEXT_TEST_TAG} ...'"
-        )
+        raise ParseError(f"Invalid format. Must be '{TEST_TAG} ...' or '{SOLVE_TAG} ```python ...```'")
 
     def _advance_game(self, player: Player, parsed_response: Tuple[str, Any]):
 
@@ -473,77 +412,8 @@ class FunctionDetective(DialogueGameMaster):
                 self.state.runtime_error_count += 1
                 self.set_context_for(self.guesser_player, f"Error executing function: {e}")
 
-        elif action_type == "try":
-            # Reject {TRY_TAG} if iterative mode not enabled (do this early)
-            if not self.state.iterative_guesses_enabled:
-                raise ParseError(f"{TRY_TAG} mode is not enabled for this run.")
-
-            code = content["code"]
-            next_input_line = content["next_input_line"]
-
-            # Count {SOLVE_TAG} attempts
-            self.state.guess_count += 1
-
-            # Load hidden function source for reveal (only used on WIN)
-            actual_func = self.load_function("functions", self.state.function_callable)
-            actual_code = self._clean_source_for_reveal(actual_func)
-
-            # Evaluate {SOLVE_TAG} against static tests
-            is_correct, accuracy, feedback = validate_function_logic(code, self.test_cases)
-
-            # Log accuracy (rounded)
-            self.state.test_accuracy = accuracy
-            self.log_to_self("test_accuracy", f"Accuracy Score: {accuracy:.3f}")
-
-            if is_correct:
-                # WIN: end immediately, do NOT run {NEXT_TEST_TAG}
-                self.state.success = True
-                self.log_to_self("outcome", "Game Verdict: WIN")
-                reveal_msg = f"That is correct!\nThe hidden function was:\n\n{actual_code}"
-                self.log_to_self("reveal_function", reveal_msg)
-                self.log_to_self("final_guess_code", f"Your {SOLVE_TAG}\n\n{code}")
-
-                # Efficiency/slack at stop (use probe_round as-is)
-                den = max(1, (self.state.max_turns - 1))
-                efficiency = 1 - (self.state.probe_round - 1) / den
-                self.state.test_efficiency = efficiency
-                self.log_to_self("test_efficiency", f"Efficiency Score: {efficiency:.3f}")
-
-                self.state.test_slack = (self.state.max_turns - self.state.probe_round)
-                self.log_to_self("test_slack", f"Slack Score: {int(self.state.test_slack)}")
-                return
-
-            # WRONG GUESS in {TRY_TAG} mode: game continues, MUST run NEXT_TEST_TAG
-            self.state.success = False
-            self.state.wrong_guess_count += 1
-            self.log_to_self("outcome", f"Incorrect {SOLVE_TAG} ({TRY_TAG} mode continues). {feedback}")
-            self.log_to_self("final_guess_code", f"Your {SOLVE_TAG}\n\n{code}")
-
-            # Run the mandatory NEXT_TEST_TAG probe
-            try:
-                output = self.run_dynamic_function(self.state.function_callable, next_input_line)
-                self.set_context_for(self.guesser_player, f"{OUTPUT_TAG} {output}")
-                self.log_to_self("probe results", {
-                    "probe_round": self.state.probe_round,
-                    "probe_args": self.state.probe_args,
-                    "probe_output": self.state.probe_output
-                })
-            except Exception as e:
-                self.state.runtime_error_count += 1
-                self.set_context_for(self.guesser_player, f"Error executing function: {e}")
-
-            # After the mandatory probe, compute efficiency/slack consistently
-            den = max(1, (self.state.max_turns - 1))
-            efficiency = 1 - (self.state.probe_round - 1) / den
-            self.state.test_efficiency = efficiency
-            self.log_to_self("test_efficiency", f"Efficiency Score: {efficiency:.3f}")
-
-            self.state.test_slack = (self.state.max_turns - self.state.probe_round)
-            self.log_to_self("test_slack", f"Slack Score: {int(self.state.test_slack)}")
-
         elif action_type == "solve":
             print(f"Player guessed code:\n{content}")
-            self.state.guess_count += 1
 
             # Load actual function for reveal
             actual_func = self.load_function("functions", self.state.function_callable)
@@ -597,22 +467,10 @@ class FunctionDetective(DialogueGameMaster):
             else:
                 print(f"LOGIC MISMATCH. Accuracy: {accuracy * 100:.1f}%")
                 self.state.success = False
-                self.state.wrong_guess_count += 1
-
-                if self.state.iterative_guesses_enabled:
-                    # Iterative mode: do NOT end the game, do NOT reveal hidden function
-                    self.log_to_self("outcome", f"Incorrect {SOLVE_TAG} (iterative mode: game continues)")
-                    self.set_context_for(
-                        self.guesser_player,
-                        f"Guess was incorrect. {feedback}\nContinue probing with {TEST_TAG} ... or solve again with {SOLVE_TAG} ..."
-                    )
-                    # IMPORTANT: do not set failure=True
-                else:
-                    # Strict mode: wrong {SOLVE_TAG} ends the game
-                    self.state.failure = True
-                    self.log_to_self("outcome", "Game Verdict: LOSS")
-                    reveal_msg = f"Incorrect.\n{feedback}\n\nHidden function:\n\n{actual_code}"
-                    self.log_to_self("reveal_function", reveal_msg)
+                self.state.failure = True
+                self.log_to_self("outcome", "Game Verdict: LOSS")
+                reveal_msg = f"Incorrect.\n{feedback}\n\nHidden function:\n\n{actual_code}"
+                self.log_to_self("reveal_function", reveal_msg)
 
             self.log_to_self("final_guess_code", f"Your {SOLVE_TAG} \n\n{content}")
             self.log_to_self("total_turns_used_and_remaining", {
@@ -625,19 +483,13 @@ class FunctionDetective(DialogueGameMaster):
             self.log_to_self("runtime_error_count", f"Runtime error count: {self.state.runtime_error_count}")
 
     def _on_parse_error(self, error: GameError):
-        if self.state.iterative_guesses_enabled:
-            self.set_context_for(self.guesser_player,
-                                 f"Game Violation: {error}\n"
-                                 f"Iterative {TRY_TAG} mode is enabled. Output ONLY:\n"
-                                 f"{TRY_TAG} ```python ...```\n{NEXT_TEST_TAG} ...\nHYPOTHESES: ...\nCONFIDENCE: ...\n"
-                                 "No extra text.")
-        else:
-            self.set_context_for(self.guesser_player,
-                                 f"Game Violation: {error}\n"
-                                 f"Output ONLY:\n{TEST_TAG} ... (plus hypotheses)\nOR\n{SOLVE_TAG} ```python ... ``` (plus hypotheses)\n"
-                                 "No extra text.")
+        self.set_context_for(
+            self.guesser_player,
+            f"Game Violation: {error}\n"
+            f"Output ONLY:\n{TEST_TAG} ...\nOR\n{SOLVE_TAG} ```python ... ```\n"
+            "No extra text."
+        )
         self.state.parse_error_count += 1
-        self.success = False
         print(f"Parse Error: {error}. Consuming a turn.")
 
     def _does_game_proceed(self):
@@ -646,10 +498,10 @@ class FunctionDetective(DialogueGameMaster):
         return not (self.state.aborted or self.state.failure or self.state.success)
 
     def compute_turn_score(self):
-        return 1 if self.success else 0
+        return 1 if self.state.success else 0
 
     def compute_episode_score(self):
-        if self.success:
+        if self.state.success:
             return 100
         return 0
 
@@ -679,7 +531,6 @@ class FunctionDetective(DialogueGameMaster):
         self.log_key("runtime_error_count", self.state.runtime_error_count)
         self.log_key("turns_used", self.state.probe_round)  # or current_round+1 if you prefer “turns” semantics
         self.log_key("max_turns", self.state.max_turns)
-        self.log_key("iterative_guesses_enabled", self.state.iterative_guesses_enabled)
         self.log_key("observed_pairs", self.state.observed_pairs)
         pairs = self.state.observed_pairs or []
         probe_count = len(pairs)
@@ -733,18 +584,6 @@ class FunctionDetective(DialogueGameMaster):
                 f"Unique inputs: {unique_input_count} (diversity={input_diversity:.2f}) | "
                 f"Unique outputs: {unique_output_count} (novelty={novelty_rate:.2f}, entropy={output_entropy_bits:.2f} bits)"
             )
-        )
-        self.log_key("iterative_guesses_enabled", self.state.iterative_guesses_enabled)
-        self.log_key("guess_count", self.state.guess_count)
-        self.log_key("wrong_guess_count", self.state.wrong_guess_count)
-
-        self.log_to_self(
-            "guess_summary",
-            {
-                "iterative_mode": self.state.iterative_guesses_enabled,
-                "guess_count": self.state.guess_count,
-                "wrong_guess_count": self.state.wrong_guess_count,
-            }
         )
 
 
