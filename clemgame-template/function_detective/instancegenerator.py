@@ -4,8 +4,12 @@ import logging
 import numpy as np
 from clemcore.clemgame import GameInstanceGenerator
 
-from functions import FUNCTION_REGISTRY
-from utils import create_static_test_cases
+try:
+    from functions import FUNCTION_REGISTRY
+    from utils import create_static_test_cases
+except ModuleNotFoundError:
+    from function_detective.functions import FUNCTION_REGISTRY
+    from function_detective.utils import create_static_test_cases
 
 logger = logging.getLogger(__name__)
 

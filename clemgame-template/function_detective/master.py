@@ -2,9 +2,11 @@ from typing import Dict, Tuple, List, Any
 from dataclasses import dataclass, field
 import ast
 import importlib
+import importlib.util
 import inspect
 import json
 import logging
+import os
 
 import numpy as np
 
@@ -13,9 +15,15 @@ from clemcore.clemgame import GameSpec, GameBenchmark, GameMaster, Player, Dialo
     GameError, ParseError
 from clemcore.clemgame.master import GameState
 from clemcore.clemgame.metrics import METRIC_ABORTED, METRIC_SUCCESS, METRIC_LOSE, BENCH_SCORE
-from protocol import TEST_TAG, SOLVE_TAG, OUTPUT_TAG
-from utils import parse_signature_with_types
-from utils import extract_function_code, validate_function_logic
+
+try:
+    from protocol import TEST_TAG, SOLVE_TAG, OUTPUT_TAG
+    from utils import parse_signature_with_types
+    from utils import extract_function_code, validate_function_logic
+except ModuleNotFoundError:
+    from function_detective.protocol import TEST_TAG, SOLVE_TAG, OUTPUT_TAG
+    from function_detective.utils import parse_signature_with_types
+    from function_detective.utils import extract_function_code, validate_function_logic
 
 # --- FINAL ROBUST FIX: MONKEY PATCH FOR JSON SERIALIZATION ---
 _original_json_default = json.JSONEncoder.default
@@ -112,15 +120,11 @@ class FunctionGuesser(Player):
 
 
 class FunctionDetective(DialogueGameMaster):
-    """
-    Template class for game master.
-    """
 
     def __init__(self, game_spec: GameSpec, experiment: Dict, player_models: List[Model]):
         super().__init__(game_spec, experiment, player_models)
         self.experiment = experiment
 
-    ##################
     def _on_setup(self, **game_instance):
 
         self.game_instance = game_instance
@@ -214,16 +218,13 @@ class FunctionDetective(DialogueGameMaster):
             return str(obj)
 
     def check_given_inputs(self, response: str) -> bool:
-        # Accept only responses starting with "TEST:"
         if not isinstance(response, str):
             return False
         response = response.strip()
         raw = response[len(f"{TEST_TAG}"):].strip()
         if self.num_params == 0:
             return raw == ""
-        # Split by commas, but allow commas inside strings by using a small parser
         try:
-            # Build a tuple text and parse using ast.literal_eval
             tuple_text = f"({raw})" if self.num_params > 1 else raw
             parsed = ast.literal_eval(tuple_text)
             if self.num_params == 1:
@@ -233,7 +234,6 @@ class FunctionDetective(DialogueGameMaster):
             if len(parsed) != self.num_params:
                 self.log_to_self("Input parameter count mismatch.", "end game")
                 return False
-            # Type-check each parsed value against expected type strings
             for val, expected in zip(parsed, self.param_types):
                 if expected in ("int", "Integer"):
                     if not isinstance(val, int) or isinstance(val, bool):
@@ -248,19 +248,15 @@ class FunctionDetective(DialogueGameMaster):
                     if not isinstance(val, bool):
                         return False
                 else:
-                    # Any or unknown type: accept but no strict check
                     pass
             return True
-        except Exception as e:
-            # parsing failed
-            print(f"Exception caught: {e}")
+        except Exception:
             return False
 
     def extract_given_inputs(self, response: str):
         raw = response.strip()[len(f"{TEST_TAG}"):].strip()
         if self.num_params == 0:
             return []
-        # Use ast.literal_eval to safely parse values
         if self.num_params == 1:
             val = ast.literal_eval(raw)
             return [val]
@@ -326,8 +322,25 @@ class FunctionDetective(DialogueGameMaster):
 
         return func
 
+    def load_game_function(self, function_name: str):
+        module_path = os.path.join(os.path.dirname(__file__), "functions.py")
+        spec = importlib.util.spec_from_file_location(
+            "_function_detective_functions",
+            module_path,
+        )
+        if spec is None or spec.loader is None:
+            raise ValueError(f"Cannot load module from '{module_path}'")
+
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+
+        try:
+            return getattr(module, function_name)
+        except AttributeError:
+            raise ValueError(f"Function '{function_name}' not found in '{module_path}'")
+
     def run_dynamic_function(self, func_name: str, text: str) -> str:
-        func = self.load_function("functions", func_name)
+        func = self.load_game_function(func_name)
         args = self.extract_given_inputs(text)
 
         try:
@@ -416,7 +429,7 @@ class FunctionDetective(DialogueGameMaster):
             print(f"Player guessed code:\n{content}")
 
             # Load actual function for reveal
-            actual_func = self.load_function("functions", self.state.function_callable)
+            actual_func = self.load_game_function(self.state.function_callable)
             actual_code = self._clean_source_for_reveal(actual_func)
 
             # Evaluate {SOLVE_TAG} against static tests
