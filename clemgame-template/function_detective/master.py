@@ -1,26 +1,22 @@
 from typing import Dict, Tuple, List, Any
 from dataclasses import dataclass, field
-import logging
-import numpy as np
+import ast
 import importlib
 import inspect
-import sys
+import json
+import logging
 import os
 
-PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-if PROJECT_ROOT not in sys.path:
-    sys.path.insert(0, PROJECT_ROOT)
-import json
-import ast
-from utils import parse_signature_with_types
-from utils import extract_function_code, validate_function_logic
+import numpy as np
 
 from clemcore.backends import Model
 from clemcore.clemgame import GameSpec, GameBenchmark, GameMaster, Player, DialogueGameMaster, GameScorer, \
     GameError, ParseError
-from clemcore.clemgame.master import GameState as ClemGameState
+from clemcore.clemgame.master import GameState
 from clemcore.clemgame.metrics import METRIC_ABORTED, METRIC_SUCCESS, METRIC_LOSE, BENCH_SCORE
-from function_detective.protocol import TEST_TAG, SOLVE_TAG, TRY_TAG, NEXT_TEST_TAG, OUTPUT_TAG
+from protocol import TEST_TAG, SOLVE_TAG, TRY_TAG, NEXT_TEST_TAG, OUTPUT_TAG
+from utils import parse_signature_with_types
+from utils import extract_function_code, validate_function_logic
 
 # --- FINAL ROBUST FIX: MONKEY PATCH FOR JSON SERIALIZATION ---
 _original_json_default = json.JSONEncoder.default
@@ -72,7 +68,7 @@ logger = logging.getLogger(__name__)
 
 
 @dataclass
-class GameState(ClemGameState):
+class FunctionDetectiveGameState(GameState):
     max_turns: int
 
     function_signature: str
@@ -123,12 +119,11 @@ class GameState(ClemGameState):
     wrong_guess_count: int = 0
 
     def __post_init__(self):
-        # Initialize Clemcore's required base state fields so self.state replacement
-        # during setup remains compatible with the framework state contract.
+        # Initialize Clemcore's base fields such as outcome/current_turn.
         super().__init__()
 
 
-class Guesser(Player):
+class FunctionGuesser(Player):
     def __init__(self, model: Model):
         super().__init__(model)
 
@@ -146,7 +141,7 @@ class Guesser(Player):
         return " ".join(sanitized)
 
 
-class FunctionDetectiveGameMaster(DialogueGameMaster):
+class FunctionDetective(DialogueGameMaster):
     """
     Template class for game master.
     """
@@ -250,11 +245,11 @@ class FunctionDetectiveGameMaster(DialogueGameMaster):
         #     )
 
         # Add player with initial context
-        self.guesser_player = Guesser(self.player_models[0])
+        self.guesser_player = FunctionGuesser(self.player_models[0])
         self.add_player(self.guesser_player, initial_context=prompt)
 
         # Initialize state
-        self.state = GameState(
+        self.state = FunctionDetectiveGameState(
             max_turns=self.max_turns,
             function_signature=self.signature,
             function_callable=self.game_instance["callable"],
@@ -506,7 +501,7 @@ class FunctionDetectiveGameMaster(DialogueGameMaster):
         return func
 
     def run_dynamic_function(self, func_name: str, text: str) -> str:
-        func = self.load_function("function_detective.functions", func_name)
+        func = self.load_function("functions", func_name)
         args = self.extract_given_inputs(text)
 
         try:
@@ -670,7 +665,7 @@ class FunctionDetectiveGameMaster(DialogueGameMaster):
             self.state.guess_count += 1
 
             # Load hidden function source for reveal (only used on WIN)
-            actual_func = self.load_function("function_detective.functions", self.state.function_callable)
+            actual_func = self.load_function("functions", self.state.function_callable)
             actual_code = self._clean_source_for_reveal(actual_func)
 
             # Evaluate {SOLVE_TAG} against static tests
@@ -743,7 +738,7 @@ class FunctionDetectiveGameMaster(DialogueGameMaster):
             self.state.guess_count += 1
 
             # Load actual function for reveal
-            actual_func = self.load_function("function_detective.functions", self.state.function_callable)
+            actual_func = self.load_function("functions", self.state.function_callable)
             actual_code = self._clean_source_for_reveal(actual_func)
 
             # Evaluate {SOLVE_TAG} against static tests
@@ -965,7 +960,7 @@ class FunctionDetectiveGameMaster(DialogueGameMaster):
         )
 
 
-class SomeGameScorer(GameScorer):
+class FunctionDetectiveScorer(GameScorer):
     def __init__(self, game_name: str, experiment: Dict, game_instance: Dict):
         super().__init__(game_name, experiment, game_instance)
 
@@ -996,12 +991,12 @@ class SomeGameScorer(GameScorer):
         self.log_episode_score("efficiency", efficiency)
 
 
-class SomeGameBenchmark(GameBenchmark):
+class FunctionDetectiveGameBenchmark(GameBenchmark):
     def __init__(self, game_spec: GameSpec):
         super().__init__(game_spec)
 
     def create_game_master(self, experiment: Dict, player_models: List[Model]) -> GameMaster:
-        return FunctionDetectiveGameMaster(self.game_spec, experiment, player_models)
+        return FunctionDetective(self.game_spec, experiment, player_models)
 
     def create_game_scorer(self, experiment: Dict, game_instance: Dict) -> GameScorer:
-        return SomeGameScorer(self.game_name, experiment, game_instance)
+        return FunctionDetectiveScorer(self.game_name, experiment, game_instance)

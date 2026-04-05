@@ -5,10 +5,8 @@ import random
 import numpy as np
 from clemcore.clemgame import GameInstanceGenerator
 
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
-
-from function_detective.functions import FUNCTION_REGISTRY
-from function_detective.utils import create_static_test_cases
+from functions import FUNCTION_REGISTRY
+from utils import create_static_test_cases
 
 logger = logging.getLogger(__name__)
 
@@ -33,7 +31,7 @@ NUM_TESTS_BY_DIFFICULTY = {
 }
 
 
-class Functionigma(GameInstanceGenerator):
+class FunctionDetectiveInstanceGenerator(GameInstanceGenerator):
     def __init__(self):
         super().__init__(os.path.dirname(__file__))
 
@@ -44,9 +42,7 @@ class Functionigma(GameInstanceGenerator):
         def create_experiment(name: str, max_turns: int):
             exp = self.add_experiment(name)
             exp["max_turns"] = max_turns
-            exp["initial_prompt_guesser"] = self.load_template(
-                "resources/initial_prompts/initial_prompt_guesser"
-            )
+            exp["initial_prompt_guesser"] = self.load_template("resources/initial_prompts/initial_guesser")
             return exp
 
         experiments = {}
@@ -121,4 +117,4 @@ class Functionigma(GameInstanceGenerator):
 
 
 if __name__ == '__main__':
-    Functionigma().generate()
+    FunctionDetectiveInstanceGenerator().generate()

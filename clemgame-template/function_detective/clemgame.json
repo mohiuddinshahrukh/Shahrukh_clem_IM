@@ -1,11 +1,17 @@
 {
   "game_name": "function_detective",
-  "description": "function_detective",
+  "description": "Function induction game where a single agent probes a hidden Python function and must infer equivalent code.",
   "main_game": "function_detective",
   "players": 1,
   "image": "none",
   "languages": [
     "en"
   ],
-  "benchmark": []
+  "benchmark": [
+    "0.1"
+  ],
+  "regression": "small",
+  "roles": [
+    "Function Guesser"
+  ]
 }
