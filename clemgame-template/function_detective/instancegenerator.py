@@ -16,22 +16,12 @@ logger = logging.getLogger(__name__)
 DOMAIN_CATEGORIES = [
     "SCALAR_MATH",
     "PAIR_MATH",
-    "LIST_SEQUENCE",
     "STRING",
     "LOGIC_FORMAL",
 ]
 
-MAX_TURNS_BY_DIFFICULTY = {
-    "easy": 5,
-    "medium": 5,
-    "hard": 5,
-}
-
-NUM_TESTS_BY_DIFFICULTY = {
-    "easy": 20,
-    "medium": 30,
-    "hard": 40,
-}
+MAX_TURNS = 5
+NUM_TESTS = 30
 
 
 class FunctionDetectiveInstanceGenerator(GameInstanceGenerator):
@@ -48,21 +38,18 @@ class FunctionDetectiveInstanceGenerator(GameInstanceGenerator):
             return exp
 
         experiments = {}
-        for diff in ["easy", "medium", "hard"]:
-            for domain in DOMAIN_CATEGORIES:
-                exp_name = f"{diff}_{domain.lower()}"
-                experiments[(diff, domain)] = create_experiment(exp_name, MAX_TURNS_BY_DIFFICULTY[diff])
+        for domain in DOMAIN_CATEGORIES:
+            exp_name = domain.lower()
+            experiments[domain] = create_experiment(exp_name, MAX_TURNS)
 
         for i, function_data in enumerate(FUNCTION_REGISTRY):
-            diff_level = function_data["difficulty"]
             domain = function_data["category"]  # must be one of the 5 domain labels
 
-            key = (diff_level, domain)
-            if key not in experiments:
-                logger.warning(f"Unknown bucket (difficulty, domain)={key} for {function_data['function_name']}")
+            if domain not in experiments:
+                logger.warning(f"Unknown domain={domain} for {function_data['function_name']}")
                 continue
 
-            target_experiment = experiments[key]
+            target_experiment = experiments[domain]
 
             game_instance = self.add_game_instance(target_experiment, i)
             game_instance["callable"] = function_data["function_name"]
@@ -75,14 +62,12 @@ class FunctionDetectiveInstanceGenerator(GameInstanceGenerator):
             random.seed(case_seed)
             np.random.seed(case_seed)
 
-            num_tests = NUM_TESTS_BY_DIFFICULTY.get(diff_level, 20)
-
             static_tests = create_static_test_cases(
                 function_data["callable"],
                 function_data["category"],
                 signature=function_data["signature"],
-                difficulty=diff_level,
-                num_tests=num_tests,
+                difficulty=None,
+                num_tests=NUM_TESTS,
             )
 
             game_instance["test_cases"] = static_tests

@@ -4,7 +4,92 @@ import inspect
 import json
 import random
 import ast
+import subprocess
 from typing import Any, Callable, List, Dict, get_origin, get_args, Optional, Tuple
+
+
+SANDBOX_IMAGE = "functionigma-sandbox"
+_SANDBOX_STATUS_CACHE: Optional[Tuple[bool, str]] = None
+
+
+def get_sandbox_status(force_refresh: bool = False) -> Tuple[bool, str]:
+    """
+    Checks whether Docker is reachable and the sandbox image exists.
+    """
+    global _SANDBOX_STATUS_CACHE
+    if _SANDBOX_STATUS_CACHE is not None and not force_refresh:
+        return _SANDBOX_STATUS_CACHE
+
+    try:
+        docker_version = subprocess.run(
+            ["docker", "version", "--format", "{{.Server.Version}}"],
+            text=True,
+            capture_output=True,
+            timeout=5,
+        )
+    except FileNotFoundError:
+        _SANDBOX_STATUS_CACHE = (
+            False,
+            "Docker is not installed or not on PATH. Function validation requires Docker Desktop.",
+        )
+        return _SANDBOX_STATUS_CACHE
+    except subprocess.TimeoutExpired:
+        _SANDBOX_STATUS_CACHE = (
+            False,
+            "Docker did not respond in time. Start Docker Desktop and try again.",
+        )
+        return _SANDBOX_STATUS_CACHE
+    except Exception as exc:
+        _SANDBOX_STATUS_CACHE = (
+            False,
+            f"Docker availability check failed: {exc}",
+        )
+        return _SANDBOX_STATUS_CACHE
+
+    if docker_version.returncode != 0:
+        stderr = docker_version.stderr.strip() or docker_version.stdout.strip()
+        _SANDBOX_STATUS_CACHE = (
+            False,
+            "Docker is not running or not reachable. "
+            f"Start Docker Desktop and try again. Details: {stderr}",
+        )
+        return _SANDBOX_STATUS_CACHE
+
+    image_check = subprocess.run(
+        ["docker", "image", "inspect", SANDBOX_IMAGE],
+        text=True,
+        capture_output=True,
+        timeout=5,
+    )
+    if image_check.returncode != 0:
+        stderr = image_check.stderr.strip() or image_check.stdout.strip()
+        _SANDBOX_STATUS_CACHE = (
+            False,
+            f"Docker sandbox image '{SANDBOX_IMAGE}' is missing or not accessible. Details: {stderr}",
+        )
+        return _SANDBOX_STATUS_CACHE
+
+    _SANDBOX_STATUS_CACHE = (True, "")
+    return _SANDBOX_STATUS_CACHE
+
+
+def is_sandbox_failure(feedback: str) -> bool:
+    if not feedback:
+        return False
+
+    markers = (
+        "Sandbox Failure.",
+        "Docker execution failed:",
+        "Docker is not installed or not on PATH.",
+        "Docker did not respond in time.",
+        "Docker is not running or not reachable.",
+        f"Docker sandbox image '{SANDBOX_IMAGE}' is missing or not accessible.",
+        "failed to connect to the docker API",
+        "dockerdesktoplinuxengine",
+        "no such image",
+    )
+    lowered = feedback.lower()
+    return any(marker.lower() in lowered for marker in markers)
 
 
 def generate_random_value(annotation: Any, category: str = None) -> Any:
@@ -226,8 +311,9 @@ def validate_function_logic(guessed_code: str, test_cases: List[Dict]) -> Tuple[
     """
     Runs guessed code against PRE-GENERATED static test cases inside Docker.
     """
-    import subprocess
-    import json
+    sandbox_ok, sandbox_message = get_sandbox_status()
+    if not sandbox_ok:
+        return False, 0.0, sandbox_message
 
     # 1. Extract just the arguments to send to the container
     input_args_list = [case["args"] for case in test_cases]

@@ -1,7 +1,6 @@
 from typing import Dict, Tuple, List, Any
 from dataclasses import dataclass, field
 import ast
-import importlib
 import importlib.util
 import inspect
 import json
@@ -19,44 +18,16 @@ from clemcore.clemgame.metrics import METRIC_ABORTED, METRIC_SUCCESS, METRIC_LOS
 try:
     from protocol import TEST_TAG, SOLVE_TAG, OUTPUT_TAG
     from utils import parse_signature_with_types
-    from utils import extract_function_code, validate_function_logic
+    from utils import extract_function_code, validate_function_logic, get_sandbox_status, is_sandbox_failure
 except ModuleNotFoundError:
     from function_detective.protocol import TEST_TAG, SOLVE_TAG, OUTPUT_TAG
     from function_detective.utils import parse_signature_with_types
-    from function_detective.utils import extract_function_code, validate_function_logic
-
-# --- FINAL ROBUST FIX: MONKEY PATCH FOR JSON SERIALIZATION ---
-_original_json_default = json.JSONEncoder.default
-
-
-def _patched_json_default(self, obj):
-    # 1. Explicitly handle the classes we've seen so far
-    known_classes = [
-        "UserMessage", "SystemMessage", "AssistantMessage",
-        "Message", "ChatbotMessage", "ApiMeta"
-    ]
-
-    if type(obj).__name__ in known_classes:
-        if hasattr(obj, "__dict__"):
-            return obj.__dict__
-        return str(obj)
-
-    # 2. UNIVERSAL FALLBACK:
-    # If the object has a __dict__ attribute (standard Python objects),
-    # serialize that instead of crashing. This catches any future unknown classes.
-    if hasattr(obj, "__dict__"):
-        return obj.__dict__
-
-    # 3. Last resort for weird objects: return their string representation
-    # (Only do this if it's not a basic type that json handles naturally)
-    if not isinstance(obj, (int, float, str, bool, list, dict, tuple, type(None))):
-        return str(obj)
-
-    return _original_json_default(self, obj)
-
-
-json.JSONEncoder.default = _patched_json_default
-# -----------------------------------------------------------
+    from function_detective.utils import (
+        extract_function_code,
+        validate_function_logic,
+        get_sandbox_status,
+        is_sandbox_failure,
+    )
 
 
 logger = logging.getLogger(__name__)
@@ -125,82 +96,301 @@ class FunctionDetective(DialogueGameMaster):
         super().__init__(game_spec, experiment, player_models)
         self.experiment = experiment
 
+    def _format_arg(self, value: Any) -> str:
+        if isinstance(value, str):
+            return repr(value)
+        if isinstance(value, bool):
+            return "True" if value else "False"
+        if isinstance(value, float):
+            return f"{value:.3f}"
+        return str(value)
+
+    def _format_args_for_log(self, args: List[Any]) -> str:
+        return ", ".join(self._format_value(arg) for arg in args)
+
+    def _build_example_lines(self) -> Tuple[str, str]:
+        example_test_line = f"{TEST_TAG} <example>"
+        example_output_line = f"{OUTPUT_TAG} <example>"
+
+        if not self.test_cases:
+            return example_test_line, example_output_line
+
+        example_case = self.test_cases[0]
+        example_args = example_case.get("args", [])
+        example_expected = example_case.get("expected")
+
+        if isinstance(example_args, list):
+            if len(example_args) == 1:
+                arg_text = self._format_arg(example_args[0])
+            else:
+                arg_text = ", ".join(self._format_arg(arg) for arg in example_args)
+        else:
+            arg_text = self._format_arg(example_args)
+
+        return (
+            f"{TEST_TAG} {arg_text}",
+            f"{OUTPUT_TAG} {self._format_value(example_expected)}",
+        )
+
+    def _build_initial_prompt(self, example_test_line: str, example_output_line: str) -> str:
+        param_list_str = ", ".join(
+            f"{name}: {param_type}" for name, param_type in zip(self.param_names, self.param_types)
+        ) if self.param_names else "none"
+        variables = ", ".join(f"<value{i + 1}>" for i in range(self.num_params))
+
+        prompt = self.experiment["guesser_initial_prompt"]
+        replacements = {
+            "$TEST_TAG$": TEST_TAG,
+            "$SOLVE_TAG$": SOLVE_TAG,
+            "$OUTPUT_TAG$": OUTPUT_TAG,
+            "$SIGNATURE_OF_CURRENT_FUNCTION$": self.signature,
+            "$NUM_PARAMS$": str(self.num_params),
+            "$PARAM_LIST$": param_list_str,
+            "$CATEGORY$": str(self.category),
+            "$MAX_TURNS$": str(self.max_turns),
+            "$VARIABLES$": variables,
+            "$EXAMPLE_TEST_LINE$": example_test_line,
+            "$EXAMPLE_OUTPUT_LINE$": example_output_line,
+        }
+
+        for placeholder, value in replacements.items():
+            prompt = prompt.replace(placeholder, value)
+
+        return prompt
+
+    def _parse_input_values(self, response: str):
+        raw = response[len(TEST_TAG):].strip()
+        if self.num_params == 0:
+            return tuple()
+
+        tuple_text = f"({raw})" if self.num_params > 1 else raw
+        parsed = ast.literal_eval(tuple_text)
+
+        if self.num_params == 1:
+            return (parsed,)
+        if isinstance(parsed, tuple):
+            return parsed
+        return tuple(parsed)
+
+    def _inputs_match_signature(self, parsed_values: Tuple[Any, ...]) -> bool:
+        if len(parsed_values) != self.num_params:
+            self.log_to_self("Input parameter count mismatch.", "end game")
+            return False
+
+        for value, expected in zip(parsed_values, self.param_types):
+            if expected in ("int", "Integer"):
+                if not isinstance(value, int) or isinstance(value, bool):
+                    return False
+            elif expected in ("float", "double"):
+                if not isinstance(value, (int, float)) or isinstance(value, bool):
+                    return False
+            elif expected in ("str", "string"):
+                if not isinstance(value, str):
+                    return False
+            elif expected in ("bool", "boolean"):
+                if not isinstance(value, bool):
+                    return False
+
+        return True
+
+    def _record_probe(self, args: List[Any], result: Any) -> None:
+        self.state.probe_args = args
+        self.state.probe_round += 1
+        self.state.probe_output = result
+        self.state.observed_pairs.append({
+            "round": self.state.probe_round,
+            "args": self.state.probe_args,
+            "output": self.state.probe_output,
+        })
+
+    def _set_efficiency_metrics(self) -> None:
+        denominator = max(1, self.state.max_turns - 1)
+        efficiency = 1 - (self.state.probe_round - 1) / denominator
+        self.state.test_efficiency = efficiency
+        self.state.test_slack = self.state.max_turns - self.state.probe_round
+
+    def _build_observed_cases(self) -> List[Dict[str, Any]]:
+        return [
+            {"args": pair["args"], "expected": pair["output"]}
+            for pair in (self.state.observed_pairs or [])
+        ]
+
+    def _compute_internal_consistency(self, guessed_code: str) -> None:
+        observed_cases = self._build_observed_cases()
+        if not observed_cases:
+            self.state.internal_consistency_score = 1.0
+            self.state.internal_consistency_all_observed = True
+            self.state.internal_consistency_violations = 0
+        else:
+            obs_all_correct, obs_accuracy, feedback = validate_function_logic(guessed_code, observed_cases)
+            if is_sandbox_failure(feedback):
+                raise RuntimeError(feedback)
+            self.state.internal_consistency_score = float(obs_accuracy)
+            self.state.internal_consistency_all_observed = bool(obs_all_correct)
+            self.state.internal_consistency_violations = int(round((1.0 - obs_accuracy) * len(observed_cases)))
+
+    def _compute_probe_summary(self) -> Dict[str, float]:
+        pairs = self.state.observed_pairs or []
+        probe_count = len(pairs)
+
+        unique_input_keys = {self._stable_key(pair.get("args")) for pair in pairs}
+        unique_output_keys = {self._stable_key(pair.get("output")) for pair in pairs}
+
+        unique_input_count = len(unique_input_keys)
+        unique_output_count = len(unique_output_keys)
+        novelty_rate = (unique_output_count / probe_count) if probe_count else 0.0
+        input_diversity = (unique_input_count / probe_count) if probe_count else 0.0
+
+        output_entropy_bits = 0.0
+        if probe_count:
+            from collections import Counter
+            import math
+
+            out_counts = Counter(self._stable_key(pair.get("output")) for pair in pairs)
+            for count in out_counts.values():
+                probability = count / probe_count
+                output_entropy_bits -= probability * math.log2(probability)
+
+        return {
+            "probe_count": probe_count,
+            "unique_input_count": unique_input_count,
+            "unique_output_count": unique_output_count,
+            "novelty_rate": float(novelty_rate),
+            "input_diversity": float(input_diversity),
+            "output_entropy_bits": float(output_entropy_bits),
+        }
+
+    def _log_probe_summary(self) -> None:
+        summary = self._compute_probe_summary()
+        for key, value in summary.items():
+            self.log_key(key, value)
+
+        self.log_key("internal_consistency_score", getattr(self.state, "internal_consistency_score", 0.0))
+        self.log_key(
+            "internal_consistency_all_observed",
+            getattr(self.state, "internal_consistency_all_observed", False),
+        )
+        self.log_key(
+            "internal_consistency_violations",
+            getattr(self.state, "internal_consistency_violations", 0),
+        )
+
+        self.log_to_self(
+            "probe_information_summary",
+            (
+                f"Probes: {summary['probe_count']} | "
+                f"Unique inputs: {summary['unique_input_count']} "
+                f"(diversity={summary['input_diversity']:.2f}) | "
+                f"Unique outputs: {summary['unique_output_count']} "
+                f"(novelty={summary['novelty_rate']:.2f}, "
+                f"entropy={summary['output_entropy_bits']:.2f} bits)"
+            )
+        )
+
+    def _log_probe_result(self) -> None:
+        self.log_to_self(
+            "probe_result",
+            (
+                f"Probe {self.state.probe_round}\n"
+                f"Inputs: {self._format_args_for_log(self.state.probe_args)}\n"
+                f"Output: {self._format_value(self.state.probe_output)}"
+            )
+        )
+
+    def _log_episode_summary(self) -> None:
+        self.log_to_self(
+            "episode_summary",
+            (
+                f"Turns used: {self.state.probe_round}/{self.state.max_turns}\n"
+                f"Turns remaining: {self.state.max_turns - self.state.probe_round}\n"
+                f"Accuracy: {self.state.test_accuracy:.3f}\n"
+                f"Efficiency: {self.state.test_efficiency:.3f}\n"
+                f"Slack: {int(self.state.test_slack)}\n"
+                f"Observed-probe consistency: {self.state.internal_consistency_score:.3f}\n"
+                f"Parse errors: {self.state.parse_error_count}\n"
+                f"Runtime errors: {self.state.runtime_error_count}"
+            )
+        )
+
+    def _handle_call_action(self, input_line: str) -> None:
+        try:
+            output = self.run_dynamic_function(self.state.function_callable, input_line)
+            self.set_context_for(self.guesser_player, f"{OUTPUT_TAG} {output}")
+            self._log_probe_result()
+        except Exception as error:
+            self.state.runtime_error_count += 1
+            self.set_context_for(self.guesser_player, f"Error executing function: {error}")
+
+    def _handle_solve_action(self, guessed_code: str) -> None:
+        actual_func = self.load_game_function(self.state.function_callable)
+        actual_code = self._clean_source_for_reveal(actual_func)
+        is_correct, accuracy, feedback = validate_function_logic(guessed_code, self.test_cases)
+
+        if is_sandbox_failure(feedback):
+            self.state.aborted = True
+            self.state.failure = False
+            self.state.success = False
+            abort_message = (
+                "Infrastructure Failure: Docker sandbox is unavailable.\n"
+                f"{feedback}\n\n"
+                "Start Docker Desktop and rerun the benchmark."
+            )
+            logger.error(abort_message)
+            print(abort_message)
+            self.log_to_self("outcome", "Game Verdict: ABORTED (sandbox unavailable)")
+            self.log_to_self("infrastructure_error", abort_message)
+            return
+
+        self._compute_internal_consistency(guessed_code)
+        self.state.test_accuracy = accuracy
+        self._set_efficiency_metrics()
+
+        if is_correct:
+            self.state.success = True
+            self.log_to_self("outcome", "Game Verdict: WIN")
+            reveal_msg = f"That is correct!\nThe hidden function was:\n\n{actual_code}"
+        else:
+            self.state.success = False
+            self.state.failure = True
+            self.log_to_self("outcome", "Game Verdict: LOSS")
+            reveal_msg = f"Incorrect.\n{feedback}\n\nHidden function:\n\n{actual_code}"
+
+        self.log_to_self("reveal_function", reveal_msg)
+        self.log_to_self("submitted_solution", guessed_code)
+        self._log_episode_summary()
+
     def _on_setup(self, **game_instance):
 
         self.game_instance = game_instance
         self.signature = game_instance["signature"]
         self.max_turns = self.experiment["max_turns"]
         self.test_cases = game_instance.get("test_cases", [])
-        # ---- Example I/O pair (free, shown in initial prompt) ----
-        example_test_line = f"{TEST_TAG} <example>"
-        example_output_line = f"{OUTPUT_TAG} <example>"
-
-        if self.test_cases:
-            ex = self.test_cases[0]
-            ex_args = ex.get("args", [])
-            ex_expected = ex.get("expected", None)
-
-            # Format args exactly like the player must type them
-            def _format_arg(a):
-                if isinstance(a, str):
-                    return repr(a)  # quotes
-                if isinstance(a, bool):
-                    return "True" if a else "False"
-                if isinstance(a, float):
-                    return f"{a:.3f}"
-                return str(a)
-
-            if isinstance(ex_args, list):
-                if len(ex_args) == 1:
-                    arg_text = _format_arg(ex_args[0])
-                else:
-                    arg_text = ", ".join(_format_arg(a) for a in ex_args)
-            else:
-                # If stored as a scalar, still handle it
-                arg_text = _format_arg(ex_args)
-
-            example_test_line = f"{TEST_TAG} {arg_text}"
-            example_output_line = f"{OUTPUT_TAG} {self._format_value(ex_expected)}"
-
-        # parse signature to get param names/types
+        example_test_line, example_output_line = self._build_example_lines()
         self.param_names, self.param_types, self.return_type = parse_signature_with_types(self.signature)
         self.num_params = len(self.param_names)
-
-        # category is optional metadata (does not get used in the simplified prompt)
         self.category = game_instance.get("category", "MATH")
-
-        # parameter list string for prompt
-        param_list_str = ", ".join(
-            f"{n}: {t}" for n, t in zip(self.param_names, self.param_types)
-        ) if self.param_names else "none"
-        variables = ", ".join(f"<value{i + 1}>" for i in range(self.num_params))
-
-        # Load template and replace protocol placeholders
-        prompt = self.experiment["guesser_initial_prompt"]
-        prompt = prompt.replace("$TEST_TAG$", TEST_TAG)
-        prompt = prompt.replace("$SOLVE_TAG$", SOLVE_TAG)
-        prompt = prompt.replace("$OUTPUT_TAG$", OUTPUT_TAG)
-
-        # Replace standard placeholders
-        prompt = prompt.replace("$SIGNATURE_OF_CURRENT_FUNCTION$", self.signature)
-        prompt = prompt.replace("$NUM_PARAMS$", str(self.num_params))
-        prompt = prompt.replace("$PARAM_LIST$", param_list_str)
-        prompt = prompt.replace("$CATEGORY$", str(self.category))
-        prompt = prompt.replace("$MAX_TURNS$", str(self.max_turns))
-        prompt = prompt.replace("$VARIABLES$", variables)
-        prompt = prompt.replace("$EXAMPLE_TEST_LINE$", example_test_line)
-        prompt = prompt.replace("$EXAMPLE_OUTPUT_LINE$", example_output_line)
-
-        # Add player with initial context
+        prompt = self._build_initial_prompt(example_test_line, example_output_line)
         self.guesser_player = FunctionGuesser(self.player_models[0])
         self.add_player(self.guesser_player, initial_context=prompt)
 
-        # Initialize state
         self.state = FunctionDetectiveGameState(
             max_turns=self.max_turns,
             function_signature=self.signature,
             function_callable=self.game_instance["callable"],
         )
+
+        sandbox_ok, sandbox_message = get_sandbox_status()
+        if not sandbox_ok:
+            user_message = (
+                "Docker sandbox is not available. FunctionDetective cannot validate solutions without it.\n"
+                f"{sandbox_message}\n"
+                "Start Docker Desktop and rerun the benchmark."
+            )
+            logger.error(user_message)
+            print(user_message)
+            self.state.aborted = True
+            self.log_to_self("outcome", "Game Verdict: ABORTED (sandbox unavailable)")
+            self.log_to_self("infrastructure_error", user_message)
 
     def _format_value(self, v):
         """Human-readable, stable formatting for transcript + context."""
@@ -220,48 +410,14 @@ class FunctionDetective(DialogueGameMaster):
     def check_given_inputs(self, response: str) -> bool:
         if not isinstance(response, str):
             return False
-        response = response.strip()
-        raw = response[len(f"{TEST_TAG}"):].strip()
-        if self.num_params == 0:
-            return raw == ""
         try:
-            tuple_text = f"({raw})" if self.num_params > 1 else raw
-            parsed = ast.literal_eval(tuple_text)
-            if self.num_params == 1:
-                parsed = (parsed,)
-            if not isinstance(parsed, tuple):
-                parsed = tuple(parsed)
-            if len(parsed) != self.num_params:
-                self.log_to_self("Input parameter count mismatch.", "end game")
-                return False
-            for val, expected in zip(parsed, self.param_types):
-                if expected in ("int", "Integer"):
-                    if not isinstance(val, int) or isinstance(val, bool):
-                        return False
-                elif expected in ("float", "double"):
-                    if not isinstance(val, (int, float)) or isinstance(val, bool):
-                        return False
-                elif expected in ("str", "string"):
-                    if not isinstance(val, str):
-                        return False
-                elif expected in ("bool", "boolean"):
-                    if not isinstance(val, bool):
-                        return False
-                else:
-                    pass
-            return True
+            parsed_values = self._parse_input_values(response.strip())
+            return self._inputs_match_signature(parsed_values)
         except Exception:
             return False
 
     def extract_given_inputs(self, response: str):
-        raw = response.strip()[len(f"{TEST_TAG}"):].strip()
-        if self.num_params == 0:
-            return []
-        if self.num_params == 1:
-            val = ast.literal_eval(raw)
-            return [val]
-        parsed = ast.literal_eval(f"({raw})")
-        return list(parsed)
+        return list(self._parse_input_values(response.strip()))
 
     def _clean_source_for_reveal(self, func) -> str:
         """
@@ -309,19 +465,6 @@ class FunctionDetective(DialogueGameMaster):
 
         return "\n".join(lines).strip()
 
-    def load_function(self, module_name: str, function_name: str):
-        try:
-            module = importlib.import_module(module_name)
-        except ImportError as e:
-            raise ValueError(f"Cannot import module '{module_name}' — {e}")
-
-        try:
-            func = getattr(module, function_name)
-        except AttributeError:
-            raise ValueError(f"Function '{function_name}' not found in '{module_name}'")
-
-        return func
-
     def load_game_function(self, function_name: str):
         module_path = os.path.join(os.path.dirname(__file__), "functions.py")
         spec = importlib.util.spec_from_file_location(
@@ -347,18 +490,7 @@ class FunctionDetective(DialogueGameMaster):
             result = func(*args)
         except Exception as e:
             raise RuntimeError(f"Function execution error: {e}")
-        # Return a string representation consistent with return type
-        # For strings, return as-is; for bool, True/False; for numbers, str()
-        self.state.probe_args = args
-        self.state.probe_round += 1
-        self.state.probe_output = result
-
-        self.state.observed_pairs.append({
-            "round": self.state.probe_round,
-            "args": self.state.probe_args,
-            "output": self.state.probe_output,
-        })
-
+        self._record_probe(args, result)
         return self._format_value(result)
 
     def _parse_response(self, player: Player, response: str) -> Tuple[str, Any]:
@@ -410,90 +542,10 @@ class FunctionDetective(DialogueGameMaster):
         action_type, content = parsed_response
 
         if action_type == "call":
-            try:
-                input_line = content["input_line"]
-                output = self.run_dynamic_function(self.state.function_callable, input_line)
-
-                self.set_context_for(self.guesser_player, f"{OUTPUT_TAG} {output}")
-                self.log_to_self(
-                    "probe results",
-                    {"probe_round": self.state.probe_round, "probe_args": self.state.probe_args,
-                     "probe_output": self.state.probe_output}
-                )
-
-            except Exception as e:
-                self.state.runtime_error_count += 1
-                self.set_context_for(self.guesser_player, f"Error executing function: {e}")
+            self._handle_call_action(content["input_line"])
 
         elif action_type == "solve":
-            print(f"Player guessed code:\n{content}")
-
-            # Load actual function for reveal
-            actual_func = self.load_game_function(self.state.function_callable)
-            actual_code = self._clean_source_for_reveal(actual_func)
-
-            # Evaluate {SOLVE_TAG} against static tests
-            is_correct, accuracy, feedback = validate_function_logic(content, self.test_cases)
-
-            # --- INTERNAL CONSISTENCY (observed probe pairs) ---
-            observed_cases = []
-            for pair in (self.state.observed_pairs or []):
-                observed_cases.append({"args": pair["args"], "expected": pair["output"]})
-
-            if len(observed_cases) == 0:
-                self.state.internal_consistency_score = 1.0
-                self.state.internal_consistency_all_observed = True
-                self.state.internal_consistency_violations = 0
-            else:
-                obs_all_correct, obs_accuracy, _ = validate_function_logic(content, observed_cases)
-                self.state.internal_consistency_score = float(obs_accuracy)
-                self.state.internal_consistency_all_observed = bool(obs_all_correct)
-                self.state.internal_consistency_violations = int(round((1.0 - obs_accuracy) * len(observed_cases)))
-
-            self.log_to_self(
-                "internal_consistency",
-                {
-                    "internal_consistency_score": self.state.internal_consistency_score,
-                    "internal_consistency_all_observed": self.state.internal_consistency_all_observed,
-                    "internal_consistency_violations": self.state.internal_consistency_violations,
-                    "observed_pair_count": len(observed_cases),
-                }
-            )
-
-            self.state.test_accuracy = accuracy
-            self.log_to_self("test_accuracy", f"Accuracy Score: {accuracy:.3f}")
-
-            den = max(1, (self.state.max_turns - 1))
-            efficiency = 1 - (self.state.probe_round - 1) / den
-            self.state.test_efficiency = efficiency
-            self.log_to_self("test_efficiency", f"Efficiency Score: {efficiency:.3f}")
-
-            self.state.test_slack = (self.state.max_turns - self.state.probe_round)
-            self.log_to_self("test_slack", f"Slack Score: {int(self.state.test_slack)}")
-
-            if is_correct:
-                print("LOGIC MATCH! Game Won.")
-                self.state.success = True
-                self.log_to_self("outcome", "Game Verdict: WIN")
-                reveal_msg = f"That is correct!\nThe hidden function was:\n\n{actual_code}"
-                self.log_to_self("reveal_function", reveal_msg)
-            else:
-                print(f"LOGIC MISMATCH. Accuracy: {accuracy * 100:.1f}%")
-                self.state.success = False
-                self.state.failure = True
-                self.log_to_self("outcome", "Game Verdict: LOSS")
-                reveal_msg = f"Incorrect.\n{feedback}\n\nHidden function:\n\n{actual_code}"
-                self.log_to_self("reveal_function", reveal_msg)
-
-            self.log_to_self("final_guess_code", f"Your {SOLVE_TAG} \n\n{content}")
-            self.log_to_self("total_turns_used_and_remaining", {
-                "max_allowed_turns": self.state.max_turns,
-                "total_turns_used": self.state.probe_round,
-                "total_turns_remaining": self.state.max_turns - self.state.probe_round
-            })
-
-            self.log_to_self("parse_error_count", f"Parse error count: {self.state.parse_error_count}")
-            self.log_to_self("runtime_error_count", f"Runtime error count: {self.state.runtime_error_count}")
+            self._handle_solve_action(content)
 
     def _on_parse_error(self, error: GameError):
         self.set_context_for(
@@ -545,59 +597,7 @@ class FunctionDetective(DialogueGameMaster):
         self.log_key("turns_used", self.state.probe_round)  # or current_round+1 if you prefer “turns” semantics
         self.log_key("max_turns", self.state.max_turns)
         self.log_key("observed_pairs", self.state.observed_pairs)
-        pairs = self.state.observed_pairs or []
-        probe_count = len(pairs)
-
-        # unique inputs / outputs
-        unique_input_keys = set()
-        unique_output_keys = set()
-
-        for p in pairs:
-            unique_input_keys.add(self._stable_key(p.get("args")))
-            unique_output_keys.add(self._stable_key(p.get("output")))
-
-        unique_input_count = len(unique_input_keys)
-        unique_output_count = len(unique_output_keys)
-
-        novelty_rate = (unique_output_count / probe_count) if probe_count else 0.0
-        input_diversity = (unique_input_count / probe_count) if probe_count else 0.0
-
-        # Optional: output entropy (bits)
-        # H = -sum p(o) log2 p(o)
-        output_entropy_bits = 0.0
-        if probe_count:
-            from collections import Counter
-            import math
-            out_counts = Counter(self._stable_key(p.get("output")) for p in pairs)
-            for c in out_counts.values():
-                p = c / probe_count
-                output_entropy_bits -= p * math.log2(p)
-
-        # Log keys (these will appear in interactions + get passed through by scorer)
-        self.log_key("probe_count", probe_count)
-        self.log_key("unique_input_count", unique_input_count)
-        self.log_key("unique_output_count", unique_output_count)
-
-        # Names your scorer already expects:
-        self.log_key("novelty_rate", float(novelty_rate))
-        self.log_key("input_diversity", float(input_diversity))
-
-        # Optional (new): useful in analysis, keep numeric so it can go to raw.csv too
-        self.log_key("output_entropy_bits", float(output_entropy_bits))
-
-        self.log_key("internal_consistency_score", getattr(self.state, "internal_consistency_score", 0.0))
-        self.log_key("internal_consistency_all_observed",
-                     getattr(self.state, "internal_consistency_all_observed", False))
-        self.log_key("internal_consistency_violations", getattr(self.state, "internal_consistency_violations", 0))
-
-        self.log_to_self(
-            "probe_information_summary",
-            (
-                f"Probes: {probe_count} | "
-                f"Unique inputs: {unique_input_count} (diversity={input_diversity:.2f}) | "
-                f"Unique outputs: {unique_output_count} (novelty={novelty_rate:.2f}, entropy={output_entropy_bits:.2f} bits)"
-            )
-        )
+        self._log_probe_summary()
 
 
 class FunctionDetectiveScorer(GameScorer):
@@ -610,25 +610,16 @@ class FunctionDetectiveScorer(GameScorer):
                 self.log_round_score(round_idx, 'response_received', 1)
 
     def compute_episode_scores(self, interactions: Dict):
-        # 1) Binary success
         binary_success = 1 if interactions.get(METRIC_SUCCESS, False) else 0
-
-        # 2) Efficiency (already logged by the GameMaster)
         efficiency = float(interactions.get("efficiency", 0.0))
-
-        # 3) Main score: efficiency * success
-        score = efficiency * binary_success
-
-        # 4) Aborts override
+        quality_score = 100.0 * efficiency * binary_success
         if interactions.get(METRIC_ABORTED, False):
-            score = np.nan
+            quality_score = np.nan
 
-        # 5) Log benchmark score (0..1)
-        self.log_episode_score(BENCH_SCORE, score)
-
-        # Optional: log components for analysis
+        self.log_episode_score(BENCH_SCORE, quality_score)
+        self.log_episode_score("quality_score", quality_score)
         self.log_episode_score("binary_success", binary_success)
-        self.log_episode_score("efficiency", efficiency)
+        self.log_episode_score("efficiency", efficiency * 100.0)
 
 
 class FunctionDetectiveGameBenchmark(GameBenchmark):
