@@ -4,7 +4,7 @@
 
 - Project: `function_detective`
 - Repository root: `e:\UNI\Semester 5\IM - Sherzod\Code`
-- Primary workspace: [`clemgame-template/function_detective`](e:\UNI\Semester 5\IM%20-%20Sherzod\Code\clemgame-template\function_detective)
+- Primary workspace: [`Code/function_detective`](e:\UNI\Semester 5\IM%20-%20Sherzod\Code\Code\function_detective)
 - Author of the game: Shahrukh Mohiuddin
 - Main objective:
   - align `function_detective` structurally with the Clembench `taboo` game while preserving the game’s own mechanics
@@ -57,13 +57,13 @@ This was the first major structural normalization pass.
 
 Key changes:
 
-- aligned public class naming in [`master.py`](e:\UNI\Semester 5\IM%20-%20Sherzod\Code\clemgame-template\function_detective\master.py)
-- aligned generator naming in [`instancegenerator.py`](e:\UNI\Semester 5\IM%20-%20Sherzod\Code\clemgame-template\function_detective\instancegenerator.py)
-- improved [`clemgame.json`](e:\UNI\Semester 5\IM%20-%20Sherzod\Code\clemgame-template\function_detective\clemgame.json)
+- aligned public class naming in [`master.py`](e:\UNI\Semester 5\IM%20-%20Sherzod\Code\Code\function_detective\master.py)
+- aligned generator naming in [`instancegenerator.py`](e:\UNI\Semester 5\IM%20-%20Sherzod\Code\Code\function_detective\instancegenerator.py)
+- improved [`clemgame.json`](e:\UNI\Semester 5\IM%20-%20Sherzod\Code\Code\function_detective\clemgame.json)
 - added missing game-level support files such as:
-  - [`requirements.txt`](e:\UNI\Semester 5\IM%20-%20Sherzod\Code\clemgame-template\function_detective\requirements.txt)
-  - [`.gitignore`](e:\UNI\Semester 5\IM%20-%20Sherzod\Code\clemgame-template\function_detective\.gitignore)
-  - [`test_function_detective.py`](e:\UNI\Semester 5\IM%20-%20Sherzod\Code\clemgame-template\function_detective\test_function_detective.py)
+  - [`requirements.txt`](e:\UNI\Semester 5\IM%20-%20Sherzod\Code\Code\function_detective\requirements.txt)
+  - [`.gitignore`](e:\UNI\Semester 5\IM%20-%20Sherzod\Code\Code\function_detective\.gitignore)
+  - [`test_function_detective.py`](e:\UNI\Semester 5\IM%20-%20Sherzod\Code\Code\function_detective\test_function_detective.py)
   - prompt template files
 - moved the game closer to the Clembench package pattern used by `taboo`
 
@@ -94,8 +94,8 @@ This commit focused on documentation and package cleanup.
 Key changes:
 
 - rewrote the root repository `README`
-- rewrote [`clemgame-template/README.md`](e:\UNI\Semester 5\IM%20-%20Sherzod\Code\clemgame-template\README.md)
-- fixed [`function_detective/README.md`](e:\UNI\Semester 5\IM%20-%20Sherzod\Code\clemgame-template\function_detective\README.md)
+- rewrote [`Code/README.md`](e:\UNI\Semester 5\IM%20-%20Sherzod\Code\Code\README.md)
+- fixed [`function_detective/README.md`](e:\UNI\Semester 5\IM%20-%20Sherzod\Code\Code\function_detective\README.md)
 - documented the game as implemented by Shahrukh Mohiuddin
 
 Why this mattered:
@@ -127,7 +127,7 @@ Key changes:
 - replaced fragile runtime imports with file-local function loading
 - fixed `function_detective.*` package-style import problems under Clembench loading
 - fixed prompt example formatting
-- regenerated [`in/instances.json`](e:\UNI\Semester 5\IM%20-%20Sherzod\Code\clemgame-template\function_detective\in\instances.json)
+- regenerated [`in/instances.json`](e:\UNI\Semester 5\IM%20-%20Sherzod\Code\Code\function_detective\in\instances.json)
 
 Why this mattered:
 
@@ -140,7 +140,7 @@ After `d1b92b3`, substantial additional work was completed in the working tree. 
 
 ### 1. `master.py` Refactor Into Smaller Helpers
 
-The main game master in [`master.py`](e:\UNI\Semester 5\IM%20-%20Sherzod\Code\clemgame-template\function_detective\master.py) was further refactored to make it structurally cleaner and closer to the compact organization style of `taboo`.
+The main game master in [`master.py`](e:\UNI\Semester 5\IM%20-%20Sherzod\Code\Code\function_detective\master.py) was further refactored to make it structurally cleaner and closer to the compact organization style of `taboo`.
 
 Refactor highlights:
 
@@ -159,7 +159,7 @@ Why this mattered:
 
 ### 2. Quality Score Normalized To `0-100`
 
-The scorer in [`master.py`](e:\UNI\Semester 5\IM%20-%20Sherzod\Code\clemgame-template\function_detective\master.py) was changed so the benchmark score is explicitly on a `0-100` scale.
+The scorer in [`master.py`](e:\UNI\Semester 5\IM%20-%20Sherzod\Code\Code\function_detective\master.py) was changed so the benchmark score is explicitly on a `0-100` scale.
 
 Current logic:
 
@@ -183,7 +183,7 @@ Docker / sandbox failures were originally showing up as ordinary gameplay losses
 
 Changes:
 
-- added Docker sandbox availability checks in [`utils.py`](e:\UNI\Semester 5\IM%20-%20Sherzod\Code\clemgame-template\function_detective\utils.py)
+- added Docker sandbox availability checks in [`utils.py`](e:\UNI\Semester 5\IM%20-%20Sherzod\Code\Code\function_detective\utils.py)
 - added sandbox failure classification helpers
 - made the game abort instead of lose when Docker is unavailable
 - printed clear error messages to the console
@@ -232,8 +232,8 @@ Current benchmark layout:
 
 Implemented in:
 
-- [`instancegenerator.py`](e:\UNI\Semester 5\IM%20-%20Sherzod\Code\clemgame-template\function_detective\instancegenerator.py)
-- regenerated [`in/instances.json`](e:\UNI\Semester 5\IM%20-%20Sherzod\Code\clemgame-template\function_detective\in\instances.json)
+- [`instancegenerator.py`](e:\UNI\Semester 5\IM%20-%20Sherzod\Code\Code\function_detective\instancegenerator.py)
+- regenerated [`in/instances.json`](e:\UNI\Semester 5\IM%20-%20Sherzod\Code\Code\function_detective\in\instances.json)
 
 Additional changes:
 
@@ -310,14 +310,14 @@ Reason:
 
 Main files:
 
-- [`master.py`](e:\UNI\Semester 5\IM%20-%20Sherzod\Code\clemgame-template\function_detective\master.py)
-- [`instancegenerator.py`](e:\UNI\Semester 5\IM%20-%20Sherzod\Code\clemgame-template\function_detective\instancegenerator.py)
-- [`utils.py`](e:\UNI\Semester 5\IM%20-%20Sherzod\Code\clemgame-template\function_detective\utils.py)
-- [`functions.py`](e:\UNI\Semester 5\IM%20-%20Sherzod\Code\clemgame-template\function_detective\functions.py)
-- [`protocol.py`](e:\UNI\Semester 5\IM%20-%20Sherzod\Code\clemgame-template\function_detective\protocol.py)
-- [`clemgame.json`](e:\UNI\Semester 5\IM%20-%20Sherzod\Code\clemgame-template\function_detective\clemgame.json)
-- [`README.md`](e:\UNI\Semester 5\IM%20-%20Sherzod\Code\clemgame-template\function_detective\README.md)
-- [`in/instances.json`](e:\UNI\Semester 5\IM%20-%20Sherzod\Code\clemgame-template\function_detective\in\instances.json)
+- [`master.py`](e:\UNI\Semester 5\IM%20-%20Sherzod\Code\Code\function_detective\master.py)
+- [`instancegenerator.py`](e:\UNI\Semester 5\IM%20-%20Sherzod\Code\Code\function_detective\instancegenerator.py)
+- [`utils.py`](e:\UNI\Semester 5\IM%20-%20Sherzod\Code\Code\function_detective\utils.py)
+- [`functions.py`](e:\UNI\Semester 5\IM%20-%20Sherzod\Code\Code\function_detective\functions.py)
+- [`protocol.py`](e:\UNI\Semester 5\IM%20-%20Sherzod\Code\Code\function_detective\protocol.py)
+- [`clemgame.json`](e:\UNI\Semester 5\IM%20-%20Sherzod\Code\Code\function_detective\clemgame.json)
+- [`README.md`](e:\UNI\Semester 5\IM%20-%20Sherzod\Code\Code\function_detective\README.md)
+- [`in/instances.json`](e:\UNI\Semester 5\IM%20-%20Sherzod\Code\Code\function_detective\in\instances.json)
 
 ### Current Benchmark Layout
 
@@ -361,7 +361,7 @@ Visible transcript now emphasizes:
 
 ### Current Test Status
 
-Unit tests in [`test_function_detective.py`](e:\UNI\Semester 5\IM%20-%20Sherzod\Code\clemgame-template\function_detective\test_function_detective.py) were used repeatedly throughout the work to verify refactors and runtime fixes.
+Unit tests in [`test_function_detective.py`](e:\UNI\Semester 5\IM%20-%20Sherzod\Code\Code\function_detective\test_function_detective.py) were used repeatedly throughout the work to verify refactors and runtime fixes.
 
 ## Current Results Interpretation
 
@@ -383,14 +383,14 @@ Interpretation:
 
 Relevant output files:
 
-- [`results.csv`](e:\UNI\Semester 5\IM%20-%20Sherzod\Code\clemgame-template\results\results.csv)
-- [`raw.csv`](e:\UNI\Semester 5\IM%20-%20Sherzod\Code\clemgame-template\results\raw.csv)
-- [`results.html`](e:\UNI\Semester 5\IM%20-%20Sherzod\Code\clemgame-template\results\results.html)
+- [`results.csv`](e:\UNI\Semester 5\IM%20-%20Sherzod\Code\Code\results\results.csv)
+- [`raw.csv`](e:\UNI\Semester 5\IM%20-%20Sherzod\Code\Code\results\raw.csv)
+- [`results.html`](e:\UNI\Semester 5\IM%20-%20Sherzod\Code\Code\results\results.html)
 
 Example transcript files:
 
-- [`transcript.html` string example](e:\UNI\Semester 5\IM%20-%20Sherzod\Code\clemgame-template\results\gpt-4.1-2025-04-14\function_detective\string\instance_00006\transcript.html)
-- [`transcript.html` pair-math example](e:\UNI\Semester 5\IM%20-%20Sherzod\Code\clemgame-template\results\gpt-4.1-2025-04-14\function_detective\pair_math\instance_00003\transcript.html)
+- [`transcript.html` string example](e:\UNI\Semester 5\IM%20-%20Sherzod\Code\Code\results\gpt-4.1-2025-04-14\function_detective\string\instance_00006\transcript.html)
+- [`transcript.html` pair-math example](e:\UNI\Semester 5\IM%20-%20Sherzod\Code\Code\results\gpt-4.1-2025-04-14\function_detective\pair_math\instance_00003\transcript.html)
 
 ## Open Questions / Remaining Work
 
@@ -398,7 +398,7 @@ The following items remain good candidates for future work or discussion in the 
 
 - whether the official score should include partial correctness rather than pure binary success
 - whether `max_turns = 5` is too strict for some domains
-- whether difficulty metadata in [`functions.py`](e:\UNI\Semester 5\IM%20-%20Sherzod\Code\clemgame-template\function_detective\functions.py) should be removed or retained only as annotation
+- whether difficulty metadata in [`functions.py`](e:\UNI\Semester 5\IM%20-%20Sherzod\Code\Code\function_detective\functions.py) should be removed or retained only as annotation
 - whether transcript-visible internal analytics should be trimmed even further
 - whether old archived result folders should be cleaned up once Windows file locks are no longer an issue
 

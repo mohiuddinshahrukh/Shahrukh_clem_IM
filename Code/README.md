@@ -1,4 +1,4 @@
-# Clemgame Template Workspace
+# Code Workspace
 
 This directory is the active Clembench workspace used in this repository.
 

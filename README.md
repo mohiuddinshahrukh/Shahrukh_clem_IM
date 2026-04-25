@@ -6,11 +6,11 @@ This repository contains my local Clembench workspace and the custom game `funct
 
 ## Repository Layout
 
-- `clemgame-template/`: active Clembench workspace used for development and benchmark runs
-- `clemgame-template/function_detective/`: the custom game implementation by Shahrukh Mohiuddin
-- `clemgame-template/model_registry.json`: local model registry entries
-- `clemgame-template/key.json`: local API/backend credential file
-- `clemgame-template/results/`: generated benchmark outputs kept out of version control
+- `Code/`: active Clembench workspace used for development and benchmark runs
+- `Code/function_detective/`: the custom game implementation by Shahrukh Mohiuddin
+- `Code/model_registry.json`: local model registry entries
+- `Code/key.json`: local API/backend credential file
+- `Code/results/`: generated benchmark outputs kept out of version control
 
 ## Main Game
 
@@ -28,7 +28,7 @@ Core files:
 
 ## Running
 
-From `clemgame-template/`:
+From `Code/`:
 
 ```bash
 clem run -g function_detective -m <model_name>
