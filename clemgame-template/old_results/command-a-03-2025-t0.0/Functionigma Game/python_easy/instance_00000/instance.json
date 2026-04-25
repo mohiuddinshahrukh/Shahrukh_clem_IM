@@ -1,8 +1,0 @@
-{
-  "game_id": 0,
-  "callable": "f_add",
-  "signature": "(x: int, y: int) -> int",
-  "category": "math",
-  "difficulty": "easy",
-  "docstring": null
-}

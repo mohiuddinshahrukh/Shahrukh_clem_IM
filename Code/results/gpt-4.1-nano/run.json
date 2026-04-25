@@ -1,0 +1,28 @@
+{
+  "clem_version": "3.7.1",
+  "created": "2026-03-28T16:33:06.490502",
+  "player_models": {
+    "0": {
+      "model_spec": {
+        "model_name": "gpt-4.1-nano",
+        "backend": "openai",
+        "lookup_source": "D:\\Uni\\Semester 5\\IM - Clembench\\Shahrukh_clem_IM\\clemgame-template\\model_registry.json",
+        "model_id": "gpt-4.1-nano"
+      },
+      "gen_args": {
+        "temperature": 0.0,
+        "max_tokens": 300
+      }
+    }
+  },
+  "games": {
+    "function_detective": {
+      "game_path": "D:\\Uni\\Semester 5\\IM - Clembench\\Shahrukh_clem_IM\\clemgame-template\\function_detective",
+      "benchmark_start": "2026-03-28T16:33:06.499812",
+      "benchmark_end": "2026-03-28T16:33:32.091491",
+      "duration": "0:00:25.591679",
+      "duration_seconds": 25.591679,
+      "num_instances": 9
+    }
+  }
+}
